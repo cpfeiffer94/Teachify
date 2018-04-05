@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
+		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
+		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
 		AA12AF70207615170090404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF6F207615170090404A /* AppDelegate.swift */; };
 		AA12AF72207615170090404A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF71207615170090404A /* ViewController.swift */; };
 		AA12AF75207615170090404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF73207615170090404A /* Main.storyboard */; };
@@ -34,6 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
+		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		589BDF22BCCBC2694D4213FE /* Pods-TeachifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.debug.xcconfig"; sourceTree = "<group>"; };
+		A64284DD3AC14D1AE5910B2D /* Pods-TeachifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA12AF6C207615170090404A /* Teachify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teachify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA12AF6F207615170090404A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA12AF71207615170090404A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33FA51978547303283D73F64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */,
+				8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */,
+				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		744AAC0A28FFD35EC1152180 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */,
+				1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */,
+				51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */,
+				A64284DD3AC14D1AE5910B2D /* Pods-TeachifyTests.release.xcconfig */,
+				589BDF22BCCBC2694D4213FE /* Pods-TeachifyUITests.debug.xcconfig */,
+				4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AA12AF63207615170090404A = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				AA12AF83207615190090404A /* TeachifyTests */,
 				AA12AF8E2076151A0090404A /* TeachifyUITests */,
 				AA12AF6D207615170090404A /* Products */,
+				744AAC0A28FFD35EC1152180 /* Pods */,
+				33FA51978547303283D73F64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA12AF942076151A0090404A /* Build configuration list for PBXNativeTarget "Teachify" */;
 			buildPhases = (
+				C3C6C6A07C91191C7DB89CBB /* [CP] Check Pods Manifest.lock */,
 				AA12AF68207615170090404A /* Sources */,
 				AA12AF69207615170090404A /* Frameworks */,
 				AA12AF6A207615170090404A /* Resources */,
+				DD1350B167DAFE80002D4145 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +191,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA12AF972076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyTests" */;
 			buildPhases = (
+				A23DE66BADB613F005821757 /* [CP] Check Pods Manifest.lock */,
 				AA12AF7C207615190090404A /* Sources */,
 				AA12AF7D207615190090404A /* Frameworks */,
 				AA12AF7E207615190090404A /* Resources */,
@@ -167,6 +210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA12AF9A2076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyUITests" */;
 			buildPhases = (
+				BFB55313A6199B1A56B0DDF3 /* [CP] Check Pods Manifest.lock */,
 				AA12AF872076151A0090404A /* Sources */,
 				AA12AF882076151A0090404A /* Frameworks */,
 				AA12AF892076151A0090404A /* Resources */,
@@ -250,6 +294,83 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A23DE66BADB613F005821757 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeachifyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFB55313A6199B1A56B0DDF3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeachifyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3C6C6A07C91191C7DB89CBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teachify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD1350B167DAFE80002D4145 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teachify/Pods-Teachify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teachify/Pods-Teachify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA12AF68207615170090404A /* Sources */ = {
@@ -428,16 +549,14 @@
 		};
 		AA12AF952076151A0090404A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = Teachify/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -447,16 +566,14 @@
 		};
 		AA12AF962076151A0090404A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = Teachify/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -466,17 +583,14 @@
 		};
 		AA12AF982076151A0090404A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = TeachifyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -487,17 +601,14 @@
 		};
 		AA12AF992076151A0090404A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A64284DD3AC14D1AE5910B2D /* Pods-TeachifyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = TeachifyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -508,16 +619,13 @@
 		};
 		AA12AF9B2076151A0090404A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 589BDF22BCCBC2694D4213FE /* Pods-TeachifyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = TeachifyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -528,16 +636,13 @@
 		};
 		AA12AF9C2076151A0090404A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5H5DB854MQ;
 				INFOPLIST_FILE = TeachifyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
