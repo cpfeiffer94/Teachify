@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA12AF70207615170090404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF6F207615170090404A /* AppDelegate.swift */; };
+		AA12AF72207615170090404A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF71207615170090404A /* ViewController.swift */; };
+		AA12AF75207615170090404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF73207615170090404A /* Main.storyboard */; };
+		AA12AF77207615190090404A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF76207615190090404A /* Assets.xcassets */; };
+		AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF78207615190090404A /* LaunchScreen.storyboard */; };
+		AA12AF85207615190090404A /* TeachifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF84207615190090404A /* TeachifyTests.swift */; };
+		AA12AF902076151A0090404A /* TeachifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF8F2076151A0090404A /* TeachifyUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA12AF81207615190090404A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA12AF64207615170090404A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA12AF6B207615170090404A;
+			remoteInfo = Teachify;
+		};
+		AA12AF8C2076151A0090404A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA12AF64207615170090404A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA12AF6B207615170090404A;
+			remoteInfo = Teachify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA12AF6C207615170090404A /* Teachify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teachify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA12AF6F207615170090404A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA12AF71207615170090404A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA12AF74207615170090404A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA12AF76207615190090404A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA12AF79207615190090404A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA12AF7B207615190090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA12AF80207615190090404A /* TeachifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeachifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA12AF84207615190090404A /* TeachifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachifyTests.swift; sourceTree = "<group>"; };
+		AA12AF86207615190090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeachifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA12AF8F2076151A0090404A /* TeachifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachifyUITests.swift; sourceTree = "<group>"; };
+		AA12AF912076151A0090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA12AF69207615170090404A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF7D207615190090404A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF882076151A0090404A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA12AF63207615170090404A = {
+			isa = PBXGroup;
+			children = (
+				AA12AF6E207615170090404A /* Teachify */,
+				AA12AF83207615190090404A /* TeachifyTests */,
+				AA12AF8E2076151A0090404A /* TeachifyUITests */,
+				AA12AF6D207615170090404A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA12AF6D207615170090404A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA12AF6C207615170090404A /* Teachify.app */,
+				AA12AF80207615190090404A /* TeachifyTests.xctest */,
+				AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA12AF6E207615170090404A /* Teachify */ = {
+			isa = PBXGroup;
+			children = (
+				AA12AF6F207615170090404A /* AppDelegate.swift */,
+				AA12AF71207615170090404A /* ViewController.swift */,
+				AA12AF73207615170090404A /* Main.storyboard */,
+				AA12AF76207615190090404A /* Assets.xcassets */,
+				AA12AF78207615190090404A /* LaunchScreen.storyboard */,
+				AA12AF7B207615190090404A /* Info.plist */,
+			);
+			path = Teachify;
+			sourceTree = "<group>";
+		};
+		AA12AF83207615190090404A /* TeachifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA12AF84207615190090404A /* TeachifyTests.swift */,
+				AA12AF86207615190090404A /* Info.plist */,
+			);
+			path = TeachifyTests;
+			sourceTree = "<group>";
+		};
+		AA12AF8E2076151A0090404A /* TeachifyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA12AF8F2076151A0090404A /* TeachifyUITests.swift */,
+				AA12AF912076151A0090404A /* Info.plist */,
+			);
+			path = TeachifyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA12AF6B207615170090404A /* Teachify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA12AF942076151A0090404A /* Build configuration list for PBXNativeTarget "Teachify" */;
+			buildPhases = (
+				AA12AF68207615170090404A /* Sources */,
+				AA12AF69207615170090404A /* Frameworks */,
+				AA12AF6A207615170090404A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Teachify;
+			productName = Teachify;
+			productReference = AA12AF6C207615170090404A /* Teachify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA12AF7F207615190090404A /* TeachifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA12AF972076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyTests" */;
+			buildPhases = (
+				AA12AF7C207615190090404A /* Sources */,
+				AA12AF7D207615190090404A /* Frameworks */,
+				AA12AF7E207615190090404A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA12AF82207615190090404A /* PBXTargetDependency */,
+			);
+			name = TeachifyTests;
+			productName = TeachifyTests;
+			productReference = AA12AF80207615190090404A /* TeachifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA12AF8A2076151A0090404A /* TeachifyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA12AF9A2076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyUITests" */;
+			buildPhases = (
+				AA12AF872076151A0090404A /* Sources */,
+				AA12AF882076151A0090404A /* Frameworks */,
+				AA12AF892076151A0090404A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA12AF8D2076151A0090404A /* PBXTargetDependency */,
+			);
+			name = TeachifyUITests;
+			productName = TeachifyUITests;
+			productReference = AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA12AF64207615170090404A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Christian Pfeiffer";
+				TargetAttributes = {
+					AA12AF6B207615170090404A = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					AA12AF7F207615190090404A = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = AA12AF6B207615170090404A;
+					};
+					AA12AF8A2076151A0090404A = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = AA12AF6B207615170090404A;
+					};
+				};
+			};
+			buildConfigurationList = AA12AF67207615170090404A /* Build configuration list for PBXProject "Teachify" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA12AF63207615170090404A;
+			productRefGroup = AA12AF6D207615170090404A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA12AF6B207615170090404A /* Teachify */,
+				AA12AF7F207615190090404A /* TeachifyTests */,
+				AA12AF8A2076151A0090404A /* TeachifyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA12AF6A207615170090404A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
+				AA12AF77207615190090404A /* Assets.xcassets in Resources */,
+				AA12AF75207615170090404A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF7E207615190090404A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF892076151A0090404A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA12AF68207615170090404A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA12AF72207615170090404A /* ViewController.swift in Sources */,
+				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF7C207615190090404A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA12AF85207615190090404A /* TeachifyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12AF872076151A0090404A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA12AF902076151A0090404A /* TeachifyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA12AF82207615190090404A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA12AF6B207615170090404A /* Teachify */;
+			targetProxy = AA12AF81207615190090404A /* PBXContainerItemProxy */;
+		};
+		AA12AF8D2076151A0090404A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA12AF6B207615170090404A /* Teachify */;
+			targetProxy = AA12AF8C2076151A0090404A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA12AF73207615170090404A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA12AF74207615170090404A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA12AF78207615190090404A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA12AF79207615190090404A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA12AF922076151A0090404A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA12AF932076151A0090404A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA12AF952076151A0090404A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = Teachify/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA12AF962076151A0090404A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = Teachify/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA12AF982076151A0090404A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = TeachifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teachify.app/Teachify";
+			};
+			name = Debug;
+		};
+		AA12AF992076151A0090404A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = TeachifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teachify.app/Teachify";
+			};
+			name = Release;
+		};
+		AA12AF9B2076151A0090404A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = TeachifyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Teachify;
+			};
+			name = Debug;
+		};
+		AA12AF9C2076151A0090404A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				INFOPLIST_FILE = TeachifyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.TeachifyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Teachify;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA12AF67207615170090404A /* Build configuration list for PBXProject "Teachify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA12AF922076151A0090404A /* Debug */,
+				AA12AF932076151A0090404A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA12AF942076151A0090404A /* Build configuration list for PBXNativeTarget "Teachify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA12AF952076151A0090404A /* Debug */,
+				AA12AF962076151A0090404A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA12AF972076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA12AF982076151A0090404A /* Debug */,
+				AA12AF992076151A0090404A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA12AF9A2076151A0090404A /* Build configuration list for PBXNativeTarget "TeachifyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA12AF9B2076151A0090404A /* Debug */,
+				AA12AF9C2076151A0090404A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA12AF64207615170090404A /* Project object */;
+}
