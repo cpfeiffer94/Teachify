@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F999DDA207B4D7900FF5542 /* TKSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DC5207B4D7900FF5542 /* TKSettingsController.swift */; };
+		0F999DDB207B4D7900FF5542 /* TKLeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */; };
+		0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */; };
+		0F999DDD207B4D7900FF5542 /* TKClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DC8207B4D7900FF5542 /* TKClassController.swift */; };
+		0F999DDE207B4D7900FF5542 /* TKTeacherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DC9207B4D7900FF5542 /* TKTeacherController.swift */; };
+		0F999DDF207B4D7900FF5542 /* TKDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */; };
+		0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCB207B4D7900FF5542 /* TKShareController.swift */; };
+		0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCD207B4D7900FF5542 /* TKScore.swift */; };
+		0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCE207B4D7900FF5542 /* TKDocument.swift */; };
+		0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCF207B4D7900FF5542 /* TKExercise.swift */; };
+		0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD0207B4D7900FF5542 /* TKUser.swift */; };
+		0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD1207B4D7900FF5542 /* TKLeaderboardEntry.swift */; };
+		0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD2207B4D7900FF5542 /* TKExerciseType.swift */; };
+		0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD4207B4D7900FF5542 /* TKError.swift */; };
+		0F999DE8207B4D7900FF5542 /* TKRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD5207B4D7900FF5542 /* TKRank.swift */; };
+		0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD6207B4D7900FF5542 /* TKFetchSortOption.swift */; };
+		0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD7207B4D7900FF5542 /* TKColor.swift */; };
+		0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD8207B4D7900FF5542 /* TKSubject.swift */; };
+		0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD9207B4D7900FF5542 /* TKClass.swift */; };
+		0F999DEE207B4DF300FF5542 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DED207B4DF300FF5542 /* Others.swift */; };
+		0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
@@ -41,6 +62,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F999DC5207B4D7900FF5542 /* TKSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKSettingsController.swift; sourceTree = "<group>"; };
+		0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKLeaderboardController.swift; sourceTree = "<group>"; };
+		0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKUserProfileController.swift; sourceTree = "<group>"; };
+		0F999DC8207B4D7900FF5542 /* TKClassController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClassController.swift; sourceTree = "<group>"; };
+		0F999DC9207B4D7900FF5542 /* TKTeacherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKTeacherController.swift; sourceTree = "<group>"; };
+		0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKDocumentController.swift; sourceTree = "<group>"; };
+		0F999DCB207B4D7900FF5542 /* TKShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKShareController.swift; sourceTree = "<group>"; };
+		0F999DCD207B4D7900FF5542 /* TKScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKScore.swift; sourceTree = "<group>"; };
+		0F999DCE207B4D7900FF5542 /* TKDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKDocument.swift; sourceTree = "<group>"; };
+		0F999DCF207B4D7900FF5542 /* TKExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKExercise.swift; sourceTree = "<group>"; };
+		0F999DD0207B4D7900FF5542 /* TKUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKUser.swift; sourceTree = "<group>"; };
+		0F999DD1207B4D7900FF5542 /* TKLeaderboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKLeaderboardEntry.swift; sourceTree = "<group>"; };
+		0F999DD2207B4D7900FF5542 /* TKExerciseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKExerciseType.swift; sourceTree = "<group>"; };
+		0F999DD4207B4D7900FF5542 /* TKError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKError.swift; sourceTree = "<group>"; };
+		0F999DD5207B4D7900FF5542 /* TKRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKRank.swift; sourceTree = "<group>"; };
+		0F999DD6207B4D7900FF5542 /* TKFetchSortOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKFetchSortOption.swift; sourceTree = "<group>"; };
+		0F999DD7207B4D7900FF5542 /* TKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKColor.swift; sourceTree = "<group>"; };
+		0F999DD8207B4D7900FF5542 /* TKSubject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKSubject.swift; sourceTree = "<group>"; };
+		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
+		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
+		0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCloud.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +139,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F999DC1207B4D4300FF5542 /* TeachKit */ = {
+			isa = PBXGroup;
+			children = (
+				0F999DC4207B4D7900FF5542 /* Controller */,
+				0F999DCC207B4D7900FF5542 /* Model */,
+				0F999DED207B4DF300FF5542 /* Others.swift */,
+				0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */,
+			);
+			path = TeachKit;
+			sourceTree = "<group>";
+		};
+		0F999DC4207B4D7900FF5542 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F999DC5207B4D7900FF5542 /* TKSettingsController.swift */,
+				0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */,
+				0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */,
+				0F999DC8207B4D7900FF5542 /* TKClassController.swift */,
+				0F999DC9207B4D7900FF5542 /* TKTeacherController.swift */,
+				0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */,
+				0F999DCB207B4D7900FF5542 /* TKShareController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F999DCC207B4D7900FF5542 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F999DCD207B4D7900FF5542 /* TKScore.swift */,
+				0F999DCE207B4D7900FF5542 /* TKDocument.swift */,
+				0F999DCF207B4D7900FF5542 /* TKExercise.swift */,
+				0F999DD0207B4D7900FF5542 /* TKUser.swift */,
+				0F999DD1207B4D7900FF5542 /* TKLeaderboardEntry.swift */,
+				0F999DD2207B4D7900FF5542 /* TKExerciseType.swift */,
+				0F999DD3207B4D7900FF5542 /* Enums */,
+				0F999DD8207B4D7900FF5542 /* TKSubject.swift */,
+				0F999DD9207B4D7900FF5542 /* TKClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F999DD3207B4D7900FF5542 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0F999DD4207B4D7900FF5542 /* TKError.swift */,
+				0F999DD5207B4D7900FF5542 /* TKRank.swift */,
+				0F999DD6207B4D7900FF5542 /* TKFetchSortOption.swift */,
+				0F999DD7207B4D7900FF5542 /* TKColor.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +239,7 @@
 		AA12AF6E207615170090404A /* Teachify */ = {
 			isa = PBXGroup;
 			children = (
-				AA6A068920761BB700C9420E /* TeachKit */,
+				0F999DC1207B4D4300FF5542 /* TeachKit */,
 				AA6A068820761BAD00C9420E /* Teacher */,
 				AA6A068720761B9400C9420E /* Student */,
 				AA12AF6F207615170090404A /* AppDelegate.swift */,
@@ -192,13 +286,6 @@
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
 			path = Teacher;
-			sourceTree = "<group>";
-		};
-		AA6A068920761BB700C9420E /* TeachKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TeachKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,10 +502,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F999DE8207B4D7900FF5542 /* TKRank.swift in Sources */,
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
+				0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */,
+				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
+				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
+				0F999DDA207B4D7900FF5542 /* TKSettingsController.swift in Sources */,
+				0F999DDD207B4D7900FF5542 /* TKClassController.swift in Sources */,
+				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
+				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
+				0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */,
+				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
+				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
+				0F999DDF207B4D7900FF5542 /* TKDocumentController.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
+				0F999DDB207B4D7900FF5542 /* TKLeaderboardController.swift in Sources */,
+				0F999DDE207B4D7900FF5542 /* TKTeacherController.swift in Sources */,
+				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
 				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
+				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
+				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
+				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
+				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
+				0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */,
+				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
