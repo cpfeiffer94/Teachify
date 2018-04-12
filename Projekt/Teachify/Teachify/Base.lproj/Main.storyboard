@@ -26,6 +26,7 @@
                                 <state key="normal" title="Login as Teacher"/>
                                 <connections>
                                     <action selector="TeacherLoginAction:" destination="Xel-7l-iJz" eventType="touchUpInside" id="cYa-qE-q6j"/>
+                                    <segue destination="vUW-jR-P5B" kind="show" id="Q2b-tk-sMU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN9-NT-G5D">
@@ -60,6 +61,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FD3-Gd-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="833"/>
+        </scene>
+        <!--TeacherStoryboard-->
+        <scene sceneID="CrI-eB-csM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TeacherStoryboard" id="vUW-jR-P5B" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9fc-6H-EPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="648"/>
         </scene>
     </scenes>
 </document>
