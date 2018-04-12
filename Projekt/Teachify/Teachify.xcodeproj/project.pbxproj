@@ -29,6 +29,15 @@
 		0F999DEE207B4DF300FF5542 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DED207B4DF300FF5542 /* Others.swift */; };
 		0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */; };
 		0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC79706207F50C20058813E /* CloudKit.framework */; };
+		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
+		4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */; };
+		4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */; };
+		4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */; };
+		4047BFE4207FAC8500A0C076 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE0207FAC8400A0C076 /* ClassCell.swift */; };
+		4047BFE5207FAC8500A0C076 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE1207FAC8400A0C076 /* SubjectCollectionView.swift */; };
+		4047BFE6207FAC8500A0C076 /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE2207FAC8400A0C076 /* SubjectCell.swift */; };
+		4047BFE7207FAC8500A0C076 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE3207FAC8400A0C076 /* CenteredCollectionViewDelegate.swift */; };
+		4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE9207FACA500A0C076 /* Extensions.swift */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
@@ -88,6 +97,15 @@
 		0FC79706207F50C20058813E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMainViewController.swift; sourceTree = "<group>"; };
+		4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherStoryboardID.swift; sourceTree = "<group>"; };
+		4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesCollectionView.swift; sourceTree = "<group>"; };
+		4047BFE0207FAC8400A0C076 /* ClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
+		4047BFE1207FAC8400A0C076 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
+		4047BFE2207FAC8400A0C076 /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
+		4047BFE3207FAC8400A0C076 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		4047BFE9207FACA500A0C076 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +224,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4047BFE8207FAC8A00A0C076 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFE3207FAC8400A0C076 /* CenteredCollectionViewDelegate.swift */,
+				4047BFE0207FAC8400A0C076 /* ClassCell.swift */,
+				4047BFE2207FAC8400A0C076 /* SubjectCell.swift */,
+				4047BFE1207FAC8400A0C076 /* SubjectCollectionView.swift */,
+			);
+			name = CustomViews;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		4047BFEB207FACB300A0C076 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFE9207FACA500A0C076 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		744AAC0A28FFD35EC1152180 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +327,12 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */,
+				4047BFEB207FACB300A0C076 /* Extensions */,
+				4047BFE8207FAC8A00A0C076 /* CustomViews */,
+				4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */,
+				4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */,
+				4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */,
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
 			path = Teacher;
@@ -528,18 +572,27 @@
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
 				0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */,
 				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
+				4047BFE7207FAC8500A0C076 /* CenteredCollectionViewDelegate.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
 				0F999DDF207B4D7900FF5542 /* TKDocumentController.swift in Sources */,
+				4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
 				0F999DDB207B4D7900FF5542 /* TKLeaderboardController.swift in Sources */,
 				0F999DDE207B4D7900FF5542 /* TKTeacherController.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
+				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
+				4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */,
 				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
+				4047BFE4207FAC8500A0C076 /* ClassCell.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
+				4047BFE5207FAC8500A0C076 /* SubjectCollectionView.swift in Sources */,
+				4047BFE6207FAC8500A0C076 /* SubjectCell.swift in Sources */,
 				0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */,
+				4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */,
+				4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */,
 				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
