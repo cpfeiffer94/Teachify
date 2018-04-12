@@ -28,6 +28,7 @@
 		0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD9207B4D7900FF5542 /* TKClass.swift */; };
 		0F999DEE207B4DF300FF5542 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DED207B4DF300FF5542 /* Others.swift */; };
 		0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */; };
+		0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC79706207F50C20058813E /* CloudKit.framework */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F22D33B207F4E44004C9024 /* Teachify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teachify.entitlements; sourceTree = "<group>"; };
 		0F999DC5207B4D7900FF5542 /* TKSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKSettingsController.swift; sourceTree = "<group>"; };
 		0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKLeaderboardController.swift; sourceTree = "<group>"; };
 		0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKUserProfileController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
 		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCloud.swift; sourceTree = "<group>"; };
+		0FC79706207F50C20058813E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */,
+				0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +198,7 @@
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FC79706207F50C20058813E /* CloudKit.framework */,
 				42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */,
 				8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */,
 				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,
@@ -239,6 +244,7 @@
 		AA12AF6E207615170090404A /* Teachify */ = {
 			isa = PBXGroup;
 			children = (
+				0F22D33B207F4E44004C9024 /* Teachify.entitlements */,
 				0F999DC1207B4D4300FF5542 /* TeachKit */,
 				AA6A068820761BAD00C9420E /* Teacher */,
 				AA6A068720761B9400C9420E /* Student */,
@@ -360,6 +366,14 @@
 				TargetAttributes = {
 					AA12AF6B207615170090404A = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					AA12AF7F207615190090404A = {
 						CreatedOnToolsVersion = 9.3;
@@ -700,18 +714,19 @@
 			baseConfigurationReference = A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				DEVELOPMENT_TEAM = FM446M8BR4;
 				INFOPLIST_FILE = Teachify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
+				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -720,18 +735,19 @@
 			baseConfigurationReference = 1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DB854MQ;
+				DEVELOPMENT_TEAM = FM446M8BR4;
 				INFOPLIST_FILE = Teachify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cpfeiffer.Teachify;
+				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
