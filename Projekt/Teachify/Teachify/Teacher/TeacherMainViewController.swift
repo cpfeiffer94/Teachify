@@ -15,6 +15,8 @@ class TeacherMainViewController: UIViewController {
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
     
+    @IBOutlet var excerciseCollectionView: UICollectionView!
+    let excerciseDataSource = ExerciseCollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +37,13 @@ class TeacherMainViewController: UIViewController {
         //collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = dataSource
         collectionView.delegate = dataSource
-        
-        
+        setupExcerciseCollectionView()
+    
+    }
+    
+    func setupExcerciseCollectionView(){
+        excerciseCollectionView.dataSource = excerciseDataSource
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

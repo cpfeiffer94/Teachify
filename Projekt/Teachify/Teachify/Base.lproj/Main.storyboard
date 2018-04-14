@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,6 +25,7 @@
                                 <state key="normal" title="Login as Teacher"/>
                                 <connections>
                                     <action selector="TeacherLoginAction:" destination="Xel-7l-iJz" eventType="touchUpInside" id="cYa-qE-q6j"/>
+                                    <segue destination="Nq0-O4-jnU" kind="show" id="oBG-7d-xJQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN9-NT-G5D">
@@ -60,6 +60,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FD3-Gd-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="833"/>
+        </scene>
+        <!--TeacherStoryboard-->
+        <scene sceneID="JQW-0e-gXy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TeacherStoryboard" id="Nq0-O4-jnU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgi-Lo-5pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1128" y="551"/>
         </scene>
     </scenes>
 </document>
