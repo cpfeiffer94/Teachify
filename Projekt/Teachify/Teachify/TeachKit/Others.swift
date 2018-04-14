@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import CloudKit
 
 protocol TKCloudObject {
     var name: String { get set }
-    var creationDate: Date? { get set }
+    var creationDate: Date? { get }
 }
 
 
@@ -23,8 +24,51 @@ func randomDelay(completion: @escaping () -> Void) {
 
 
 struct TKStudent {
-    var firstname: String?
-    var lastname: String?
+    var firstname: String {
+        didSet {
+            record?[CloudKey.firstname] = firstname as CKRecordValue
+        }
+    }
+    var lastname: String {
+        didSet {
+            record?[CloudKey.lastname] = lastname as CKRecordValue
+        }
+    }
+    var email: String {
+        didSet {
+            record?[CloudKey.email] = email as CKRecordValue
+        }
+    }
+    var creationDate: Date? {
+        return record?.creationDate
+    }
+    
+    var record: CKRecord?
+    
+    
+    // MARK: - Initializer
+    init(firstname: String, lastname: String, email: String) {
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
+    }
+    
+    init(record: CKRecord) {
+        self.firstname = record[CloudKey.firstname] as? String ?? "TKStudent-init-Error"
+        self.lastname = record[CloudKey.lastname] as? String ?? "TKStudent-init-Error"
+        self.email = record[CloudKey.email] as? String ?? "TKStudent-init-Error"
+        
+        self.record = record
+    }
+    
+    
+    // MARK: Keys
+    struct CloudKey {
+        private init() {}
+        static let firstname = "firstname"
+        static let lastname = "lastname"
+        static let email = "email"
+    }
 }
 
 extension TKStudent: Equatable {

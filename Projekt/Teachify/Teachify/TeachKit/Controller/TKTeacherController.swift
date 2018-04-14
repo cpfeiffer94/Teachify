@@ -7,104 +7,70 @@
 //
 
 import Foundation
+import CloudKit
 
-struct TKTeacherController {
-    private var offlineCloud = OfflineCloud.server
+struct TKTeacherController: TeachKitCloudController {
+    private var privateDatabase = CKContainer.default().privateCloudDatabase
     
     // MARK: - Student Group Operations
-    func fetchUserGroups(withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
-                         completion: @escaping ([String], TKError?) -> ()) {
-        randomDelay {
-            let teacherGroups = self.offlineCloud.teacherGroups
-            completion(teacherGroups, nil)
+    func fetchStudents(withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
+                         completion: @escaping ([TKStudent], TKError?) -> ()) {
+        
+        fetchTeachKitRecordZone { (teachKitRecordZone, error) in
+            guard let teachKitRecordZone = teachKitRecordZone else {
+                completion([], TKError.dooooImplement)
+                return
+            }
+            
+            let predicate = NSPredicate(format: "TRUEPREDICATE")
+            let query = CKQuery(recordType: TKCloudKey.RecordType.students, predicate: predicate)
+            self.privateDatabase.perform(query, inZoneWith: teachKitRecordZone.zoneID, completionHandler: { (fetchedStudentRecords, error) in
+                let students = fetchedStudentRecords?.compactMap { TKStudent(record: $0) } ?? []
+                if error == nil {
+                    completion(students, nil)
+                } else {
+                    completion([], nil)
+                }
+            })
         }
+        
     }
     
     func fetchStudents(inGroup groupName: String,
                        withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                        completion: @escaping ([TKStudent], TKError?) -> ()) {
-        randomDelay {
-            if let fetchedStudents = self.offlineCloud.teacherGroupsDic[groupName] {
-                completion(fetchedStudents, nil)
-            } else {
-                completion([], TKError.classGroupDoesNotExist)
-            }
-        }
-    }
-    
-    func createGroup(withClassGroupName classGroupName: String) {
-        randomDelay {
-            let newGroupName = classGroupName
-            self.offlineCloud.teacherGroups.append(newGroupName)
-            self.offlineCloud.teacherGroupsDic[newGroupName] = []
-        }
+        
     }
     
     func update(oldClassGroupName: String, withNewClassGroupName newClassGroupName: String, completion: @escaping ([String], TKError?) -> ()) {
-        randomDelay {
-            for index in 0..<self.offlineCloud.teacherGroups.count {
-                let classGroupName = self.offlineCloud.teacherGroups[index]
-                if classGroupName == oldClassGroupName {
-                    self.offlineCloud.teacherGroups.remove(at: index)
-                    self.offlineCloud.teacherGroups.insert(newClassGroupName, at: index)
-                    break
-                }
-            }
-            let classGroupNames = self.offlineCloud.teacherGroups
-            completion(classGroupNames, nil)
-        }
     }
     
     func delete(classGroupName: String, completion: @escaping (TKError?) -> ()) {
-        randomDelay {
-            for index in (0..<self.offlineCloud.teacherGroups.count).reversed() {
-                let groupName = self.offlineCloud.teacherGroups[index]
-                if classGroupName == groupName {
-                    self.offlineCloud.teacherGroups.remove(at: index)
-                    self.offlineCloud.teacherGroupsDic[groupName] = nil
-                    completion(nil)
-                }
-            }
-            completion(nil)
-        }
     }
     
-    func add(students: [TKStudent], toGroupName groupName: String, completion: @escaping (TKError?) -> ()) {
-        randomDelay {
-            let studentsToAdd = students
-            if var studentGroup = self.offlineCloud.teacherGroupsDic[groupName] {
-                studentGroup.append(contentsOf: studentsToAdd)
-                self.offlineCloud.teacherGroupsDic[groupName] = studentGroup
-                completion(nil)
+    func add(student: TKStudent, toTKClass tkClass: TKClass, completion: @escaping (TKStudent?, TKError?) -> ()) {
+        guard let classRecord = tkClass.record else {
+            completion(nil, TKError.dooooImplement)
+            return
+        }
+        
+        let zone = CKRecordZone.teachKitZone
+        let studentRecord = CKRecord(student: student, withRecordZoneID: zone.zoneID)
+        let recordTypeID = classRecord.recordID.recordName.replacingOccurrences(of: "-", with: "pmp")
+        studentRecord["\(recordTypeID)"] = CKReference(record: classRecord, action: CKReferenceAction.none)
+        
+        privateDatabase.save(studentRecord) { (uploadedRecord, error) in
+            if error == nil {
+                var student = student
+                student.record = uploadedRecord
+                completion(student, nil)
             } else {
-                completion(TKError.classGroupDoesNotExist)
+                completion(nil, TKError.dooooImplement)
             }
         }
     }
     
     func remove(students: [TKStudent], fromGroupName groupName: String, completion: @escaping (TKError?) -> ()) {
-        randomDelay {
-            let studentsToRemove = students
-            if var cloudGroup = self.offlineCloud.teacherGroupsDic[groupName] {
-                for i in 0..<studentsToRemove.count {
-                    let studentToRemove = studentsToRemove[i]
-                    
-                    for m in (0..<cloudGroup.count).reversed() {
-                        let cloudStudent = cloudGroup[m]
-                        if cloudStudent == studentToRemove {
-                            cloudGroup.remove(at: m)
-                            self.offlineCloud.teacherGroupsDic[groupName] = cloudGroup
-                        }
-                    }
-                }
-            }
-            completion(nil)
-        }
     }
 }
-
-
-
-
-
 
