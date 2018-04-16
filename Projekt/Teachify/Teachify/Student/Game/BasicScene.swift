@@ -21,15 +21,7 @@ class BasicScene: SKScene{
     var question: [String]! = []
     var correctAnswer: [Int]! = []
     var labels: [SKLabelNode] = []
-<<<<<<< HEAD
     var answers: [[Int]]! = []
-    
-    override func didMove(to view: SKView) {
-        //setup
-        let memoryGames = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 9)
-
-=======
-    var answers: [(Int,Int,Int)]!
     var score: Int!{
         didSet{
             if scoreLabel != nil{
@@ -41,8 +33,8 @@ class BasicScene: SKScene{
                     self.scoreLabel.run(scale1)
                 }
                 
-//                let scale1 = SKAction.scale(to: 1.0, duration: 0.5)
-//                scoreLabel.run(scale1)
+                //                let scale1 = SKAction.scale(to: 1.0, duration: 0.5)
+                //                scoreLabel.run(scale1)
                 scoreLabel.text = String(score)
             }
         }
@@ -51,34 +43,37 @@ class BasicScene: SKScene{
     
     override func didMove(to view: SKView) {
         //setup
-        score = 3
-        scoreLabel = SKLabelNode(text: String(score))
-        scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
-        scoreLabel.fontSize = 50
-        addChild(scoreLabel)
-        question = ["2+2","8+2","5+1","1+1","0+1"]
-        correctAnswer = [4,10,6,2,1]
-        answers = [(1,4,3),(4,10,8),(5,10,6),(2,8,9),(4,1,2)]
->>>>>>> d31514310dc4710903c1baafc4687b1973fbb268
+        let memoryGames = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 9)
         
+        // translate games
         for gameItem in memoryGames.gameQuestions {
             question.append(gameItem.getQuestionAsString())
             correctAnswer.append(gameItem.correctAnswer!) // forced
-            
+        
             var questionsOfAGame : [Int] = []
             
             for answer in gameItem.allAnswers! { // forced
                 questionsOfAGame.append(answer)
             }
             answers.append(questionsOfAGame)
-            
         }
+        
+        
+        score = 3
+        scoreLabel = SKLabelNode(text: String(score))
+        scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
+        scoreLabel.fontSize = 50
+        addChild(scoreLabel)
+        
+        
         
         //timer
         generateQuestion()
         generateButtons(answers: answers[0])
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveLabel), userInfo: nil, repeats: true)
+        timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
     }
+        
     
     @objc func moveLabel(){
         
@@ -110,13 +105,8 @@ class BasicScene: SKScene{
             rightAnswer()
         }
         else{
-<<<<<<< HEAD
-    }
-=======
             wrongAnswer()
         }
->>>>>>> d31514310dc4710903c1baafc4687b1973fbb268
-        
     }
     func buttonCallback3() -> Void{
         if gameBtn2.label.text == String(correctAnswer[0]){
@@ -172,29 +162,17 @@ class BasicScene: SKScene{
     func generateButtons(answers: [Int]){
         
         //### 1 ###
-<<<<<<< HEAD
-        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback1,text: String(answers[0]))
-=======
-        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback1,text: String(answers.0), fontColor: UIColor.white)
->>>>>>> d31514310dc4710903c1baafc4687b1973fbb268
+        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback1,text: String(answers[0]), fontColor: UIColor.white)
         gameBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 15)
         gameBtn.isUserInteractionEnabled = true
         
         //### 2 ###
-<<<<<<< HEAD
-        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback2,text: String(answers[1]))
-=======
-        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback2,text: String(answers.1), fontColor: UIColor.white)
->>>>>>> d31514310dc4710903c1baafc4687b1973fbb268
+        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback2,text: String(answers[1]), fontColor: UIColor.white)
         gameBtn1.position = CGPoint(x: self.frame.width / 2 + 200, y: self.frame.height / 15)
         gameBtn1.isUserInteractionEnabled = true
         
         //### 3 ###
-<<<<<<< HEAD
-        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback3,text: String(answers[2]))
-=======
-        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback3,text: String(answers.2), fontColor: UIColor.white)
->>>>>>> d31514310dc4710903c1baafc4687b1973fbb268
+        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback3,text: String(answers[2]), fontColor: UIColor.white)
         gameBtn2.position = CGPoint(x: self.frame.width / 2 - 200, y: self.frame.height / 15)
         gameBtn2.isUserInteractionEnabled = true
         
