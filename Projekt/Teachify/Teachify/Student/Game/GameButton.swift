@@ -17,11 +17,13 @@ class BasicButton: SKSpriteNode{
     var middleConstraint: SKConstraint!
     var rightConstraint: SKConstraint!
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize,action: @escaping () -> Void, text: String) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize,action: @escaping () -> Void, text: String, fontColor: UIColor) {
         buttonAction = action
         super.init(texture: texture, color: color, size: size)
-        label = SKLabelNode(text: String(text))
-        label.position = CGPoint(x: self.position.x, y: self.position.y - 10)
+        label = SKLabelNode(text: text)
+        label.fontSize = 60
+        label.fontColor = fontColor
+        label.position = CGPoint(x: self.position.x, y: self.position.y - 13)
         self.addChild(label)
     }
     
@@ -37,12 +39,14 @@ class BasicButton: SKSpriteNode{
         print("moved")
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("began")
-        buttonAction()
+        let scale = SKAction.scale(to: 0.7, duration: 0.2)
+        self.run(scale)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("end")
+        let scale = SKAction.scale(to: 1, duration: 0.2)
+        self.run(scale)
+        buttonAction()
     }
     
 }
