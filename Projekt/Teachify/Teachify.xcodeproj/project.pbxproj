@@ -54,6 +54,9 @@
 		AAB68CE82084AD58001B6655 /* RandomQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB68CE52084AD58001B6655 /* RandomQuestionGenerator.swift */; };
 		AAB68CE92084AD58001B6655 /* MathPianoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB68CE62084AD58001B6655 /* MathPianoGame.swift */; };
 		AAB68CEA2084AD58001B6655 /* MathPianoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB68CE72084AD58001B6655 /* MathPianoQuestionModel.swift */; };
+		D405534B2084AFDC00B74CAF /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534A2084AFDC00B74CAF /* GameButton.swift */; };
+		D405534D2084B00300B74CAF /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534C2084B00300B74CAF /* BasicScene.swift */; };
+		D405534F2084B02E00B74CAF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534E2084B02E00B74CAF /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		AAB68CE52084AD58001B6655 /* RandomQuestionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomQuestionGenerator.swift; sourceTree = "<group>"; };
 		AAB68CE62084AD58001B6655 /* MathPianoGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoGame.swift; sourceTree = "<group>"; };
 		AAB68CE72084AD58001B6655 /* MathPianoQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoQuestionModel.swift; sourceTree = "<group>"; };
+		D405534A2084AFDC00B74CAF /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		D405534C2084B00300B74CAF /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
+		D405534E2084B02E00B74CAF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +337,7 @@
 		AA6A068720761B9400C9420E /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				D40553492084AFB000B74CAF /* Game */,
 				AAB68CE62084AD58001B6655 /* MathPianoGame.swift */,
 				AAB68CE72084AD58001B6655 /* MathPianoQuestionModel.swift */,
 				AAB68CE52084AD58001B6655 /* RandomQuestionGenerator.swift */,
@@ -349,6 +356,16 @@
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
 			path = Teacher;
+			sourceTree = "<group>";
+		};
+		D40553492084AFB000B74CAF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D405534A2084AFDC00B74CAF /* GameButton.swift */,
+				D405534C2084B00300B74CAF /* BasicScene.swift */,
+				D405534E2084B02E00B74CAF /* GameViewController.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -577,6 +594,7 @@
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AAB68CE92084AD58001B6655 /* MathPianoGame.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
+				D405534F2084B02E00B74CAF /* GameViewController.swift in Sources */,
 				AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */,
 				0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
@@ -586,6 +604,7 @@
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
 				AA48617C207F7FFF00C43588 /* GameCardCell.swift in Sources */,
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
+				D405534D2084B00300B74CAF /* BasicScene.swift in Sources */,
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
 				0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */,
 				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
@@ -600,6 +619,7 @@
 				AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */,
 				AAB68CEA2084AD58001B6655 /* MathPianoQuestionModel.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
+				D405534B2084AFDC00B74CAF /* GameButton.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
