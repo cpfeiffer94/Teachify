@@ -48,7 +48,7 @@ class BasicScene: SKScene{
         generateQuestion()
         generateButtons(answers: answers[0])
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveLabel), userInfo: nil, repeats: true)
-        timer1 = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
+        timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
     }
     
     @objc func moveLabel(){
@@ -61,7 +61,7 @@ class BasicScene: SKScene{
                 lose()
             }
             else{
-                let moveDown = SKAction.moveBy(x: 0, y:-100, duration: 0.95)
+                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 0.95)
                 item.run(moveDown)
             }
         }
@@ -129,7 +129,6 @@ class BasicScene: SKScene{
                     addChild(label)
                     labels.append(label)
                 }
-                
             }
         }
         if question.count == 0{

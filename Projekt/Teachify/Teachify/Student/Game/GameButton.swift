@@ -39,10 +39,14 @@ class BasicButton: SKSpriteNode{
         print("moved")
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        buttonAction()
+        let scale = SKAction.scale(to: 0.7, duration: 0.2)
+        self.run(scale)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let scale = SKAction.scale(to: 1, duration: 0.2)
+        self.run(scale)
+        buttonAction()
     }
     
 }
