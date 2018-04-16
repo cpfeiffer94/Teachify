@@ -19,7 +19,7 @@ class SubjectCell: UICollectionViewCell {
     
     let iconView : UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named:"testTube")?.withRenderingMode(.alwaysTemplate)
+        iv.image = #imageLiteral(resourceName: "testTube").withRenderingMode(.alwaysTemplate)
         return iv
     }()
     

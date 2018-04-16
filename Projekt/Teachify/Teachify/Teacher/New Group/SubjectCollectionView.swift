@@ -45,11 +45,11 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
         collectionView.register(SubjectCell.self, forCellWithReuseIdentifier: "subjectCell")
         collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
-        triangleView = UIImageView(image: UIImage(named:"triangle"))
+        triangleView = UIImageView(image: #imageLiteral(resourceName: "triangle"))
         
         addSubview(triangleView)
         triangleView.translatesAutoresizingMaskIntoConstraints = false
-        triangleView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
+        triangleView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 2).isActive = true
         leftConstraint = triangleView.leftAnchor.constraint(equalTo: collectionView.leftAnchor, constant: frame.width/2-triangleView.frame.width/2)
         leftConstraint.isActive = true
 

@@ -47,7 +47,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6e-0N-Y4s">
-                                                    <rect key="frame" x="14.5" y="0.0" width="71" height="71"/>
+                                                    <rect key="frame" x="14.5" y="0.0" width="70" height="70"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="S6e-0N-Y4s" secondAttribute="height" multiplier="1:1" id="Txk-Je-MmV"/>
@@ -55,7 +55,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="37"/>
+                                                            <integer key="value" value="40"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -84,7 +84,7 @@
                                             <constraint firstAttribute="trailing" secondItem="qf9-4m-tbD" secondAttribute="trailing" constant="20" id="Q3f-5x-1gJ"/>
                                             <constraint firstItem="qf9-4m-tbD" firstAttribute="top" secondItem="ZGh-pi-oaT" secondAttribute="top" constant="-3" id="ROF-Tq-GfP"/>
                                             <constraint firstItem="qf9-4m-tbD" firstAttribute="leading" secondItem="ZGh-pi-oaT" secondAttribute="leading" constant="19" id="Vzc-E9-hUB"/>
-                                            <constraint firstItem="Ce5-iP-9xH" firstAttribute="top" secondItem="S6e-0N-Y4s" secondAttribute="bottom" constant="1" id="n7I-cz-Ef1"/>
+                                            <constraint firstItem="Ce5-iP-9xH" firstAttribute="top" secondItem="S6e-0N-Y4s" secondAttribute="bottom" constant="2" id="n7I-cz-Ef1"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="qf9-4m-tbD" secondAttribute="bottom" constant="19" id="pqQ-2d-XMO"/>
                                         </constraints>
                                     </collectionViewCell>
@@ -185,13 +185,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="40" minimumInteritemSpacing="10" id="ay4-QE-pzq">
                                     <size key="itemSize" width="300" height="300"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="20" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="excerciseCell" id="KcW-or-EVZ" customClass="ExcerciseCollectionViewCell" customModule="Teachify" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="10" y="70" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -242,7 +242,61 @@
                                             <outlet property="subjectTitle" destination="6Ak-FM-BXw" id="Wn2-yc-k1m"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="Hg7-Iw-N4u" customClass="AddExerciseCell" customModule="Teachify" customModuleProvider="target">
+                                        <rect key="frame" x="354" y="70" width="300" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y3-Wu-hFY">
+                                                    <rect key="frame" x="72" y="72" width="156" height="156"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dg-oc-4Te">
+                                                            <rect key="frame" x="19.5" y="-56.5" width="117" height="239"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="200"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="8dg-oc-4Te" firstAttribute="centerY" secondItem="1Y3-Wu-hFY" secondAttribute="centerY" constant="-15" id="AbX-G1-0IU"/>
+                                                        <constraint firstItem="8dg-oc-4Te" firstAttribute="centerX" secondItem="1Y3-Wu-hFY" secondAttribute="centerX" id="ByK-3z-okw"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="1Y3-Wu-hFY" secondAttribute="trailing" constant="64" id="HFc-J1-ISD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="1Y3-Wu-hFY" secondAttribute="bottom" constant="64" id="chb-nS-ILk"/>
+                                            <constraint firstItem="1Y3-Wu-hFY" firstAttribute="top" secondItem="Hg7-Iw-N4u" secondAttribute="topMargin" constant="64" id="nPQ-rr-tPv"/>
+                                            <constraint firstItem="1Y3-Wu-hFY" firstAttribute="leading" secondItem="Hg7-Iw-N4u" secondAttribute="leadingMargin" constant="64" id="pNO-ab-piM"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="roundView" destination="1Y3-Wu-hFY" id="wVr-l2-Erk"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="headerView" id="aJW-OS-dxJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="1008" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nPp-AN-T6Z">
+                                            <rect key="frame" x="367" y="10.5" width="275" height="29"/>
+                                            <segments>
+                                                <segment title="Active"/>
+                                                <segment title="Completed"/>
+                                                <segment title="Unpublished"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nPp-AN-T6Z" firstAttribute="centerY" secondItem="aJW-OS-dxJ" secondAttribute="centerY" id="DZL-VY-Ng3"/>
+                                        <constraint firstItem="nPp-AN-T6Z" firstAttribute="centerX" secondItem="aJW-OS-dxJ" secondAttribute="centerX" id="mmW-Sz-4Ib"/>
+                                    </constraints>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
