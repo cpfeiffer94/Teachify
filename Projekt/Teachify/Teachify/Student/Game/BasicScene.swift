@@ -26,6 +26,15 @@ class BasicScene: SKScene{
         didSet{
             if scoreLabel != nil{
                 //update the score label
+                
+                let scale = SKAction.scale(to: 0.6, duration: 1.0)
+                scoreLabel.run(scale){
+                    let scale1 = SKAction.scale(to: 1.0, duration: 1.0)
+                    self.scoreLabel.run(scale1)
+                }
+                
+//                let scale1 = SKAction.scale(to: 1.0, duration: 0.5)
+//                scoreLabel.run(scale1)
                 scoreLabel.text = String(score)
             }
         }
@@ -172,6 +181,10 @@ class BasicScene: SKScene{
         let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
         self.scene!.view?.presentScene(result, transition: transition)
+    }
+    
+    func BG(_ block: @escaping ()->Void) {
+        DispatchQueue.global(qos: .default).async(execute: block)
     }
     
 }
