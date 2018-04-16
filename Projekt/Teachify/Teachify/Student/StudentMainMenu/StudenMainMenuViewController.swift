@@ -27,12 +27,6 @@ class StudentMainMenuViewController: UIViewController {
         GameCollectionView.delegate = collectionDel
         super.viewDidLoad()
         
-        
-        let randomQuestionGenerator = RandomQuestionGenerator()
-
-        randomQuestionGenerator.generateGame(numberOfTasks: 3, lifes: 9)
-        print("### Return: \(randomQuestionGenerator.generateGame(numberOfTasks: 3, lifes: 9))")
-
         // Do any additional setup after loading the view, typically from a nib.
     }
     

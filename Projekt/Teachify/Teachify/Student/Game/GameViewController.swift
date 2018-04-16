@@ -22,6 +22,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Game")
+        
+
+        
         // Do any additional setup after loading the view.
         view.addSubview(skView)
         skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

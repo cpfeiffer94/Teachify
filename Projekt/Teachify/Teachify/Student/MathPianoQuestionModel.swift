@@ -10,18 +10,44 @@ import Foundation
 
 class MathPianoQuestionModel : NSObject {
     
-    var leftSide : [String]?
-    var rightSide : [String]?
+    var leftSide : [String] = []
+    var rightSide : [String] = []
     
     var correctAnswer : Int?
-    var wrongAnswers : [Int]?
+    var allAnswers : [Int]?
     
     
-    init(leftSide : [String], rightSide : [String], correctAnswer : Int, wrongAnswers : [Int]) {
+    init(leftSide : [String], rightSide : [String], correctAnswer : Int, allAnswers : [Int]) {
         self.leftSide = leftSide
         self.rightSide = rightSide
         self.correctAnswer = correctAnswer
-        self.wrongAnswers = wrongAnswers
+        self.allAnswers = allAnswers
     }
     
+    func getLeftSideAsString() -> String {
+        var assembled : String = ""
+        
+        for item in leftSide {
+//            print(item)
+            assembled = assembled + item
+            assembled = assembled + " "
+        }
+//        print(assembled)
+        return assembled
+    }
+    
+    func getRightSideAsString() -> String {
+        var assembled : String = ""
+        
+        for item in rightSide {
+            assembled = assembled + item
+            assembled = assembled + " "
+        }
+//        print(assembled)
+        return assembled
+    }
+    
+    func getQuestionAsString() -> String {
+        return getLeftSideAsString() + " = " + getRightSideAsString()
+    }
 }
