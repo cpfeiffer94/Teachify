@@ -15,6 +15,7 @@ class StudentMainMenuViewController: UIViewController {
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
+
     
     
     override func viewDidLoad() {
@@ -28,10 +29,10 @@ class StudentMainMenuViewController: UIViewController {
         
         
         let randomQuestionGenerator = RandomQuestionGenerator()
-        
-        //randomQuestionGenerator.generateGame(numberOfTasks: 3, lifes: 9)
+
+        randomQuestionGenerator.generateGame(numberOfTasks: 3, lifes: 9)
         print("### Return: \(randomQuestionGenerator.generateGame(numberOfTasks: 3, lifes: 9))")
-        
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
