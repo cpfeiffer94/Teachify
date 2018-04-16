@@ -13,12 +13,20 @@ class ResultScene: SKScene{
     
     var playButton: BasicButton!
     var text = "Play again"
+    var winner: Bool!
+    var score: SKLabelNode!
     
     override func didMove(to view: SKView) {
         playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 200, height: 50), action: playAgain,text: text, fontColor: UIColor.black)
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
-        let score = SKLabelNode(text: "Game over")
+        if winner{
+            score = SKLabelNode(text: "Winner Winner Chicken Dinner")
+        }
+        else{
+            score = SKLabelNode(text: "Game over")
+
+        }
         score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 2)
         addChild(score)
         addChild(playButton)

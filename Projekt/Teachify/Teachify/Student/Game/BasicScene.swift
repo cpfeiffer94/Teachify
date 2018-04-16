@@ -119,16 +119,21 @@ class BasicScene: SKScene{
     
     @objc func generateQuestion(){
         if labels.count < 5{
-            if question.count > 1{
-                let label = SKLabelNode(text: question[0 + labels.count])
-                label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
-                label.fontSize = 40
-                addChild(label)
-                labels.append(label)
+            if question.count >= 1{
+                print("question.count: \(question.count)")
+                print("labels.count: \(labels.count)")
+                if labels.count < question.count{
+                    let label = SKLabelNode(text: question[labels.count])
+                    label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
+                    label.fontSize = 40
+                    addChild(label)
+                    labels.append(label)
+                }
+                
             }
         }
         if question.count == 0{
-            timer.invalidate()
+            win()
         }
     }
     func generateButtons(answers: (Int,Int,Int)){
@@ -154,16 +159,19 @@ class BasicScene: SKScene{
         
     }
     func win(){
-        print("Winner Winner Chicken Dinner")
-        timer.invalidate()
-        timer1.invalidate()
-    }
-    func lose(){
-        print("Nice try")
         timer.invalidate()
         timer1.invalidate()
         let result = ResultScene(size: self.size)
         let transition = SKTransition.flipVertical(withDuration: 1.0)
+        result.winner = true
+        self.scene!.view?.presentScene(result, transition: transition)
+    }
+    func lose(){
+        timer.invalidate()
+        timer1.invalidate()
+        let result = ResultScene(size: self.size)
+        let transition = SKTransition.flipVertical(withDuration: 1.0)
+        result.winner = false
         self.scene!.view?.presentScene(result, transition: transition)
     }
     

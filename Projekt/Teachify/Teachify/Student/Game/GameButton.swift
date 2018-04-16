@@ -39,12 +39,10 @@ class BasicButton: SKSpriteNode{
         print("moved")
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("began")
         buttonAction()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("end")
     }
     
 }
