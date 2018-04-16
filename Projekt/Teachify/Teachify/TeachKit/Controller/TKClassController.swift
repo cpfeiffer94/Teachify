@@ -71,6 +71,7 @@ struct TKClassController: TeachKitCloudController {
     private let privateDatabase = CKContainer.default().privateCloudDatabase
     
     // MARK: - Class Operations
+    // ✅
     func fetchClasses(withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                       completion: @escaping ([TKClass], TKError?) -> ()) {
         
@@ -93,6 +94,7 @@ struct TKClassController: TeachKitCloudController {
         }
     }
     
+    // ✅
     func create(tkClass: TKClass, completion: @escaping (TKClass?, TKError?) -> ()) {
         var tkClass = tkClass
         let zone = CKRecordZone.teachKitZone
@@ -116,6 +118,7 @@ struct TKClassController: TeachKitCloudController {
     }
     
     // TODO: ✅ werfe ein ERROR, wenn --> Record noch nicht vorhanden!
+    // ✅
     func update(tkClass: TKClass, completion: @escaping (TKClass?, TKError?) -> ()) {
         guard let record = tkClass.record else {
             completion(nil, TKError.dooooImplement)
@@ -131,6 +134,7 @@ struct TKClassController: TeachKitCloudController {
         }
     }
     
+    // ✅
     func delete(tkClass: TKClass, completion: @escaping (TKError?) -> ()) {
         guard let record = tkClass.record else {
             completion(TKError.dooooImplement)
