@@ -57,6 +57,7 @@
 		D405534B2084AFDC00B74CAF /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534A2084AFDC00B74CAF /* GameButton.swift */; };
 		D405534D2084B00300B74CAF /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534C2084B00300B74CAF /* BasicScene.swift */; };
 		D405534F2084B02E00B74CAF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D405534E2084B02E00B74CAF /* GameViewController.swift */; };
+		D40553512084C5CB00B74CAF /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40553502084C5CB00B74CAF /* ResultScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		D405534A2084AFDC00B74CAF /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		D405534C2084B00300B74CAF /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
 		D405534E2084B02E00B74CAF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D40553502084C5CB00B74CAF /* ResultScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 				D405534A2084AFDC00B74CAF /* GameButton.swift */,
 				D405534C2084B00300B74CAF /* BasicScene.swift */,
 				D405534E2084B02E00B74CAF /* GameViewController.swift */,
+				D40553502084C5CB00B74CAF /* ResultScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
+				D40553512084C5CB00B74CAF /* ResultScene.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
 				AA486180207F8C1100C43588 /* GameCardModelSingleton.swift in Sources */,
 				AAB68CE82084AD58001B6655 /* RandomQuestionGenerator.swift in Sources */,

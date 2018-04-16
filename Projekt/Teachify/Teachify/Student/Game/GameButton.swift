@@ -17,11 +17,13 @@ class BasicButton: SKSpriteNode{
     var middleConstraint: SKConstraint!
     var rightConstraint: SKConstraint!
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize,action: @escaping () -> Void, text: String) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize,action: @escaping () -> Void, text: String, fontColor: UIColor) {
         buttonAction = action
         super.init(texture: texture, color: color, size: size)
-        label = SKLabelNode(text: String(text))
-        label.position = CGPoint(x: self.position.x, y: self.position.y - 10)
+        label = SKLabelNode(text: text)
+        label.fontSize = 40
+        label.fontColor = fontColor
+        label.position = CGPoint(x: self.position.x, y: self.position.y - 13)
         self.addChild(label)
     }
     
