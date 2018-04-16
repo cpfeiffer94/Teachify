@@ -22,19 +22,12 @@ class BasicScene: SKScene{
     var correctAnswer: [Int]!
     var labels: [SKLabelNode] = []
     var answers: [(Int,Int,Int)]!
+    
     var score: Int!{
         didSet{
             if scoreLabel != nil{
                 //update the score label
-                
-                let scale = SKAction.scale(to: 0.6, duration: 1.0)
-                scoreLabel.run(scale){
-                    let scale1 = SKAction.scale(to: 1.0, duration: 1.0)
-                    self.scoreLabel.run(scale1)
-                }
-                
-//                let scale1 = SKAction.scale(to: 1.0, duration: 0.5)
-//                scoreLabel.run(scale1)
+                animateScoreLabel()
                 scoreLabel.text = String(score)
             }
         }
@@ -46,7 +39,7 @@ class BasicScene: SKScene{
         score = 3
         scoreLabel = SKLabelNode(text: String(score))
         scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
-        scoreLabel.fontSize = 50
+        scoreLabel.fontSize = 60
         addChild(scoreLabel)
         question = ["2+2","8+2","5+1","1+1","0+1"]
         correctAnswer = [4,10,6,2,1]
@@ -73,6 +66,25 @@ class BasicScene: SKScene{
                 let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 0.95)
                 item.run(moveDown)
             }
+        }
+    }
+    func animateScoreLabel(){
+        var group1 = Array<SKAction>()
+        let srinkSize = SKAction.scale(to: 0.6, duration: 1.0)
+        let changeColor = SKAction.colorize(with: UIColor.red, colorBlendFactor: CGFloat(100), duration: 1.0)
+        group1.append(changeColor)
+        group1.append(srinkSize)
+        let actions = SKAction.group(group1)
+        scoreLabel.run(actions){
+            var group2 = Array<SKAction>()
+            let strechSize = SKAction.scale(to: 1.0, duration: 1.0)
+            let changeColorBack = SKAction.colorize(with: UIColor.white, colorBlendFactor: CGFloat(100), duration: 1.0)
+            
+            group2.append(strechSize)
+            group2.append(changeColorBack)
+            let actions1 = SKAction.group(group2)
+            
+            self.scoreLabel.run(actions1)
         }
     }
     
@@ -106,11 +118,16 @@ class BasicScene: SKScene{
     
     func rightAnswer(){
         if(labels.count > 0){
-            labels[0].removeFromParent()
-            labels.removeFirst()
-            question.removeFirst()
-            answers.removeFirst()
-            correctAnswer.removeFirst()
+            let action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! - self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
+            let destroyedLabel = labels.first
+            labels.first?.run(action){
+                destroyedLabel?.removeFromParent()
+            }
+            self.labels.removeFirst()
+            self.question.removeFirst()
+            self.answers.removeFirst()
+            self.correctAnswer.removeFirst()
+            
         }
         if question.count == 0{
             win()
@@ -166,6 +183,7 @@ class BasicScene: SKScene{
         addChild(gameBtn2)
         
     }
+    
     func win(){
         timer.invalidate()
         timer1.invalidate()
@@ -174,6 +192,7 @@ class BasicScene: SKScene{
         result.winner = true
         self.scene!.view?.presentScene(result, transition: transition)
     }
+    
     func lose(){
         timer.invalidate()
         timer1.invalidate()
@@ -182,9 +201,4 @@ class BasicScene: SKScene{
         result.winner = false
         self.scene!.view?.presentScene(result, transition: transition)
     }
-    
-    func BG(_ block: @escaping ()->Void) {
-        DispatchQueue.global(qos: .default).async(execute: block)
-    }
-    
 }
