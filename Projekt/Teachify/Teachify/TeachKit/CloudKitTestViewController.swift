@@ -13,6 +13,7 @@ class CloudKitTestViewController: UIViewController {
     var classCtrl = TKClassController()
     var teacherCtrl = TKTeacherController()
     var subjectCtrl = TKSubjectController()
+    var documentCtrl = TKDocumentController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +46,28 @@ class CloudKitTestViewController: UIViewController {
 //            }
 //        }
         
-        classCtrl.fetchClasses { (classes, error) in
-            for c in classes {
-                self.teacherCtrl.fetchStudents(forTKClass: c) { (students, error) in
-                    for student in students {
-                        print("Klasse: \(c.name) ---- \(student.firstname)")
-                    }
+        //Create Documents
+        
+        let doc = TKDocument(name: "IfSätze", deadline: Date())
+        subjectCtrl.fetchSubject(forClass: nil) { (fetchedSubjects, error) in
+            for fetchedSubject in fetchedSubjects {
+                if fetchedSubject.name == "Deutsch" {
+                    self.documentCtrl.add(document: doc, toSubject: fetchedSubject, completion: { (addedDoc, error) in
+                        print("Subject \(fetchedSubject.name) Doc \(addedDoc?.name) -- error: \(error)")
+                    })
                 }
             }
         }
+        
+//        classCtrl.fetchClasses { (classes, error) in
+//            for c in classes {
+//                self.teacherCtrl.fetchStudents(forTKClass: c) { (students, error) in
+//                    for student in students {
+//                        print("Klasse: \(c.name) ---- \(student.firstname)")
+//                    }
+//                }
+//            }
+//        }
         
 //        classCtrl.fetchClasses { (fetchedClasses, error) in
 //            for c in fetchedClasses {

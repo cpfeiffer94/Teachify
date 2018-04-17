@@ -10,21 +10,20 @@ import Foundation
 import CloudKit
 
 struct TKSubjectController {
-    private let privateDatabase = CKContainer.default().privateCloudDatabase
     
     var cloudCtrl = TKGenericCloudController<TKSubject>(zone: CKRecordZone.teachKitZone)
     
     // MARK: - Subject Operations
     // ✅
-    func fetchSubject(forClass tkClass: TKClass,
+    func fetchSubject(forClass tkClass: TKClass? = nil,
                       withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                       completion: @escaping ([TKSubject], TKError?) -> ()) {
-        guard let record = tkClass.record else {
-            completion([], TKError.dooooImplement)
-            return
+        
+        var predicate = NSPredicate(format: "TRUEPREDICATE")
+        if let classRecord = tkClass?.record {
+            predicate = NSPredicate(format: "%K == %@", TKSubject.CloudKey.referenceToClass, CKReference(record: classRecord, action: CKReferenceAction.none))
         }
         
-        let predicate = NSPredicate(format: "%K == %@", "class", CKReference(record: record, action: CKReferenceAction.none))
         cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.subjectes, predicate: predicate) { (fetchedSubjects, error) in
             completion(fetchedSubjects, error)
         }
@@ -40,7 +39,7 @@ struct TKSubjectController {
             
             self.cloudCtrl.add(object: createdSubject,
                                parentObject: tkClass,
-                               withReferenceKey: "class",
+                               withReferenceKey: TKSubject.CloudKey.referenceToClass,
                                andAction: CKReferenceAction.deleteSelf,
                                completion: { (subject, error) in
                 completion(subject, error)

@@ -50,5 +50,7 @@ struct TKSubject: TKCloudObject {
         private init() {}
         static let name = "name"
         static let color = "color"
+        
+        static let referenceToClass = "class"
     }
 }

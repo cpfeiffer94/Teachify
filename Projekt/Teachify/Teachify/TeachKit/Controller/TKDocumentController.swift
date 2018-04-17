@@ -10,21 +10,56 @@ import Foundation
 import CloudKit
 
 struct TKDocumentController {
+    
+    var cloudCtrl = TKGenericCloudController<TKDocument>(zone: CKRecordZone.teachKitZone)
 
     // MARK: - Document Operations
+    // ✅
     func fetchDocuments(forSubject subject: TKSubject,
                         withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                         completion: @escaping ([TKDocument], TKError?) -> ()) {
-    }
-    
-    func add(document: TKDocument, toSubject subject: TKSubject, completion: @escaping (TKDocument?, TKError?) -> ()) {
         
+        guard let record = subject.record else {
+            completion([], TKError.dooooImplement)
+            return
+        }
+        
+        let predicate = NSPredicate(format: "%K == %@", TKDocument.CloudKey.referenceToSubject, CKReference(record: record, action: CKReferenceAction.none))
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.documents, predicate: predicate) { (fetchedDocuments, error) in
+            completion(fetchedDocuments, error)
+        }
     }
     
+    // ✅
+    func add(document: TKDocument, toSubject subject: TKSubject, completion: @escaping (TKDocument?, TKError?) -> ()) {
+        cloudCtrl.create(object: document) { (createdDocument, error) in
+            guard let createdDocument = createdDocument else {
+                completion(nil, TKError.dooooImplement)
+                return
+            }
+            
+            self.cloudCtrl.add(object: createdDocument,
+                               parentObject: subject,
+                               withReferenceKey: TKDocument.CloudKey.referenceToSubject,
+                               andAction: CKReferenceAction.deleteSelf,
+                               completion: { (addedDocument, error) in
+                                completion(addedDocument, error)
+            })
+        }
+    }
+    
+    // ✅
     func update(document: TKDocument, completion: @escaping (TKDocument?, TKError?) -> ()) {
+        cloudCtrl.update(object: document) { (updatedDocument, error) in
+            completion(updatedDocument, error)
+        }
     }
     
-    func delete(document: TKDocument, completion: @escaping (TKDocument?, TKError?) -> ()) {
+    // ✅
+    func delete(document: TKDocument, completion: @escaping (TKError?) -> ()) {
+        cloudCtrl.delete(object: document) { (error) in
+            completion(error)
+        }
     }
     
 }

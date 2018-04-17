@@ -11,16 +11,15 @@ import CloudKit
 
 // ✅
 struct TKTeacherController {
-    private var privateDatabase = CKContainer.default().privateCloudDatabase
     
     var cloudCtrl = TKGenericCloudController<TKStudent>(zone: CKRecordZone.teachKitZone)
     
     // MARK: - Student Group Operations
     // ✅
-    func fetchStudents(forTKClass tkClass: TKClass?, withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
+    func fetchStudents(forTKClass tkClass: TKClass? = nil, withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                          completion: @escaping ([TKStudent], TKError?) -> ()) {
         
-        var predicate = NSPredicate(format: "TRUEPREDICATE") // TODO: ✅⚠️ Implementieren
+        var predicate = NSPredicate(format: "TRUEPREDICATE")
         if let classRecord = tkClass?.record {
             guard let classKey = tkClass?.recordTypeID else {
                 completion([], nil)

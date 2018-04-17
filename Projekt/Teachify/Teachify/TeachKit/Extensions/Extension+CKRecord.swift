@@ -31,6 +31,12 @@ extension CKRecord {
     
     convenience init(document: TKDocument, withRecordZoneID recordZoneID: CKRecordZoneID) {
         self.init(recordType: TKCloudKey.RecordType.documents, zoneID: recordZoneID)
+        self[TKDocument.CloudKey.name] = document.name as CKRecordValue
+        
+        guard let deadline = document.deadline else {
+            return
+        }
+        self[TKDocument.CloudKey.deadline] = deadline as CKRecordValue
     }
     
     convenience init?(cloudObject: TKCloudObject, withRecordZoneID recordZoneID: CKRecordZoneID) {

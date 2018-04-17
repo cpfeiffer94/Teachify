@@ -12,7 +12,6 @@ import CloudKit
 
 // ✅
 struct TKClassController {
-    private let privateDatabase = CKContainer.default().privateCloudDatabase
     
     var cloudCtrl = TKGenericCloudController<TKClass>(zone: CKRecordZone.teachKitZone)
     
