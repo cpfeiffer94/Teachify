@@ -28,8 +28,14 @@
 		0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DD9207B4D7900FF5542 /* TKClass.swift */; };
 		0F999DEE207B4DF300FF5542 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DED207B4DF300FF5542 /* Others.swift */; };
 		0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */; };
-		0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC79706207F50C20058813E /* CloudKit.framework */; };
+		0FAB966F2085E38A00FE7F76 /* TKGenericCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */; };
 		0FC797102080CD2B0058813E /* CloudKitTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */; };
+		0FEFB4E6208499B60065A460 /* TKSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4E5208499B60065A460 /* TKSubjectController.swift */; };
+		0FEFB4E82084A86B0065A460 /* TKExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */; };
+		0FEFB4EB2084A8D30065A460 /* Extension+CKRecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */; };
+		0FEFB4ED2084A8E50065A460 /* Extension+CKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */; };
+		0FEFB4EF2084A9000065A460 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EE2084A9000065A460 /* Keys.swift */; };
+		0FEFB4F12084A9210065A460 /* TeachKitCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
@@ -95,8 +101,14 @@
 		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
 		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCloud.swift; sourceTree = "<group>"; };
-		0FC79706207F50C20058813E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKGenericCloudController.swift; sourceTree = "<group>"; };
 		0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTestViewController.swift; sourceTree = "<group>"; };
+		0FEFB4E5208499B60065A460 /* TKSubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSubjectController.swift; sourceTree = "<group>"; };
+		0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKExerciseController.swift; sourceTree = "<group>"; };
+		0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecordZone.swift"; sourceTree = "<group>"; };
+		0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecord.swift"; sourceTree = "<group>"; };
+		0FEFB4EE2084A9000065A460 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachKitCloudController.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,11 +178,13 @@
 		0F999DC1207B4D4300FF5542 /* TeachKit */ = {
 			isa = PBXGroup;
 			children = (
+				0FEFB4E92084A8C60065A460 /* Extensions */,
 				0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */,
 				0F999DC4207B4D7900FF5542 /* Controller */,
 				0F999DCC207B4D7900FF5542 /* Model */,
 				0F999DED207B4DF300FF5542 /* Others.swift */,
 				0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */,
+				0FEFB4EE2084A9000065A460 /* Keys.swift */,
 			);
 			path = TeachKit;
 			sourceTree = "<group>";
@@ -182,9 +196,13 @@
 				0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */,
 				0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */,
 				0F999DC8207B4D7900FF5542 /* TKClassController.swift */,
+				0FEFB4E5208499B60065A460 /* TKSubjectController.swift */,
 				0F999DC9207B4D7900FF5542 /* TKTeacherController.swift */,
 				0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */,
+				0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */,
 				0F999DCB207B4D7900FF5542 /* TKShareController.swift */,
+				0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */,
+				0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +232,15 @@
 				0F999DD7207B4D7900FF5542 /* TKColor.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		0FEFB4E92084A8C60065A460 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */,
+				0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		33FA51978547303283D73F64 /* Frameworks */ = {
@@ -573,13 +600,17 @@
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
 				AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */,
+				0FEFB4EF2084A9000065A460 /* Keys.swift in Sources */,
+				0FEFB4E82084A86B0065A460 /* TKExerciseController.swift in Sources */,
 				0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
+				0FEFB4F12084A9210065A460 /* TeachKitCloudController.swift in Sources */,
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
 				0F999DDA207B4D7900FF5542 /* TKSettingsController.swift in Sources */,
 				0F999DDD207B4D7900FF5542 /* TKClassController.swift in Sources */,
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
 				AA48617C207F7FFF00C43588 /* GameCardCell.swift in Sources */,
+				0FEFB4EB2084A8D30065A460 /* Extension+CKRecordZone.swift in Sources */,
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
 				0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */,
@@ -593,6 +624,7 @@
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
 				0FC797102080CD2B0058813E /* CloudKitTestViewController.swift in Sources */,
 				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
+				0FEFB4ED2084A8E50065A460 /* Extension+CKRecord.swift in Sources */,
 				AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
@@ -603,6 +635,8 @@
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
 				0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */,
 				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
+				0FEFB4E6208499B60065A460 /* TKSubjectController.swift in Sources */,
+				0FAB966F2085E38A00FE7F76 /* TKGenericCloudController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

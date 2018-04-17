@@ -7,10 +7,16 @@
 //
 
 import Foundation
+import CloudKit
 
 struct TKDocument: TKCloudObject {
     var name: String
     var creationDate: Date?
     var exerciseIDs: [String]
     var deadline: Date?
+    var record: CKRecord?
+    
+    init?(record: CKRecord) {
+        return nil
+    }
 }

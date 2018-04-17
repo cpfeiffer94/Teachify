@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 struct TKDocumentController {
 
@@ -16,7 +17,8 @@ struct TKDocumentController {
                         completion: @escaping ([TKDocument], TKError?) -> ()) {
     }
     
-    func create(document: TKDocument, completion: @escaping (TKDocument?, TKError?) -> ()) {
+    func add(document: TKDocument, toSubject subject: TKSubject, completion: @escaping (TKDocument?, TKError?) -> ()) {
+        
     }
     
     func update(document: TKDocument, completion: @escaping (TKDocument?, TKError?) -> ()) {
@@ -25,20 +27,13 @@ struct TKDocumentController {
     func delete(document: TKDocument, completion: @escaping (TKDocument?, TKError?) -> ()) {
     }
     
-    
-    // MARK: - Exercise Operations
-    func fetchExercises(forDocument document: TKDocument,
-                        withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
-                        completion: @escaping ([TKExercise], TKError?) -> ()) {
-    }
-    
-    func create(exercise: TKExercise, completion: @escaping (TKExercise?, TKError?) -> ()) {
-    }
-    
-    func update(exercise: TKExercise, completion: @escaping (TKExercise?, TKError?) -> ()) {
-        
-    }
-    
-    func delete(exercise: TKExercise, completion: @escaping (TKExercise?, TKError?) -> ()) {
-    }
 }
+
+
+
+
+
+
+
+
+
