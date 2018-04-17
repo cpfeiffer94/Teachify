@@ -28,6 +28,9 @@ class TeacherMainViewController: UIViewController {
         titleView.font = UIFont.systemFont(ofSize: 48)
         navigationItem.titleView = titleView
         navigationItem.prompt = " "
+        print(navigationController?.navigationBar.barTintColor)
+        navigationController?.navigationBar.barTintColor = .barBlue
+
     
         
         //get Rid of Background Shaodw Image in iOS 10

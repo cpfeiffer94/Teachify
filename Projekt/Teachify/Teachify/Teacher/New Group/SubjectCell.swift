@@ -33,12 +33,15 @@ class SubjectCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
+    }
+    
+    func setup(){
         addSubview(background)
         background.translatesAutoresizingMaskIntoConstraints = false
         addSubview(iconView)
         addSubview(subjectLabel)
-        
-       //Height & Width Constraint iconView
+        //Height & Width Constraint iconView
         addConstraints(withFormat: "H:[v0(28)]", forViews: iconView)
         addConstraints(withFormat: "V:[v0(28)]", forViews: iconView)
         //Left & Right Constriant SubjectLabel
@@ -62,7 +65,7 @@ class SubjectCell: UICollectionViewCell {
         
         //Aspect Ratio Background
         addConstraint(NSLayoutConstraint(item: background, attribute: .height, relatedBy: .equal, toItem: background, attribute: .width, multiplier: 1, constant: 0))
-     
+        
     }
     
     override func layoutSubviews() {
@@ -89,3 +92,84 @@ class SubjectCell: UICollectionViewCell {
     }
     
 }
+
+class AllSubjectsCell : SubjectCell {
+    
+    let secondBg : UIView = {
+        let view = UIView()
+        view.layer.masksToBounds = false
+        view.backgroundColor = .teacherBlue
+        return view
+    }()
+    
+    let thirdBg : UIView = {
+        let view = UIView()
+        view.layer.masksToBounds = false
+        view.backgroundColor = .teacherRed
+        return view
+    }()
+    
+    override func setup() {
+        
+        
+        addSubview(thirdBg)
+        addSubview(secondBg)
+        addSubview(background)
+        addSubview(iconView)
+        addSubview(subjectLabel)
+        addSubview(iconView)
+        
+        addConstraints(withFormat: "H:|[v0]|", forViews: subjectLabel)
+        addConstraints(withFormat: "V:|-16-[v0][v1]-20-|", forViews: background, subjectLabel)
+        addConstraints(withFormat: "V:|-16-[v0][v1]-20-|", forViews: secondBg, subjectLabel)
+        addConstraints(withFormat: "V:|-16-[v0][v1]-20-|", forViews: thirdBg, subjectLabel)
+        addConstraints(withFormat: "H:|-16-[v0]", forViews: background)
+        addConstraints(withFormat: "H:[v0]-16-|", forViews: thirdBg)
+        addConstraint(NSLayoutConstraint(item: secondBg, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: background, attribute: .width, relatedBy: .equal, toItem: background, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: secondBg, attribute: .width, relatedBy: .equal, toItem: secondBg, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: thirdBg, attribute: .width, relatedBy: .equal, toItem: thirdBg, attribute: .height, multiplier: 1, constant: 0))
+        
+        addConstraints(withFormat: "V:[v0(28)]", forViews: iconView)
+        addConstraints(withFormat: "H:[v0(28)]", forViews: iconView)
+        addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerX, relatedBy: .equal, toItem: background, attribute: .centerX, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: background, attribute: .centerY, multiplier: 1, constant: 0))
+        
+        subjectLabel.text = "All"
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        secondBg.layer.cornerRadius = secondBg.frame.width/2
+        thirdBg.layer.cornerRadius = thirdBg.frame.width/2
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

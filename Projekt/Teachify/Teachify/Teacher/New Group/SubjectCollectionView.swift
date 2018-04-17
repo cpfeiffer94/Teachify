@@ -44,6 +44,8 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
         
         collectionView.register(SubjectCell.self, forCellWithReuseIdentifier: "subjectCell")
         collectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell")
+        collectionView.register(AllSubjectsCell.self, forCellWithReuseIdentifier: "allSubjectsCell")
+        
         collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
         triangleView = UIImageView(image: #imageLiteral(resourceName: "triangle"))
