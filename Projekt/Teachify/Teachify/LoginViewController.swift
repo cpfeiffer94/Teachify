@@ -29,6 +29,11 @@ class LoginViewController: UIViewController {
     @IBAction func TeacherLoginAction(_ sender: Any) {
     }
     
+    @IBAction func ShowGame(_ sender: UIButton) {
+        let gameVC = GameViewController()
+        self.present(gameVC,animated: true)
+    }
+    
     
     
 

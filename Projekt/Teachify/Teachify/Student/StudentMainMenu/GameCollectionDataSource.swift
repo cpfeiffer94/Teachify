@@ -9,13 +9,14 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
+    let GameCollectionController : GameDownloadController = GameDownloadController()
     
     override init(){
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return GameCollectionController.getGamesLength()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -23,13 +24,14 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         var tlc = collectionView.window?.rootViewController as! UIViewController
         tlc = UIWindow.getVisibleViewControllerFrom(vc: tlc)
         
+        let game : GameInformationItem = GameCollectionController.getGame(forIndex: indexPath.item)
         
         
         cell.card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
         cell.card.icon = UIImage(named: "flappy")
-        cell.card.title = "Mathekniffel"
-        cell.card.itemTitle = "Mathematik"
-        cell.card.itemSubtitle = "leicht"
+        cell.card.title = game.name
+        cell.card.itemTitle = game.subject
+        cell.card.itemSubtitle = game.difficulty
         cell.card.textColor = UIColor.white
         
         cell.card.hasParallax = true

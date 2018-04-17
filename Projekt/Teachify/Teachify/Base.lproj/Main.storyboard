@@ -52,6 +52,14 @@
                                     <segue destination="z5S-Ey-kkg" kind="show" id="uMV-cb-jwW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-kJ-pG3">
+                                <rect key="frame" x="151" y="571" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Game"/>
+                                <connections>
+                                    <action selector="ShowGame:" destination="Xel-7l-iJz" eventType="touchUpInside" id="ord-zw-jbl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -64,6 +72,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o76-K1-Gop"/>
                     </view>
+                    <connections>
+                        <segue destination="eg2-nh-8aN" kind="show" id="CrY-Rl-Rru"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FD3-Gd-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,6 +104,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ng3-Bu-KuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="1641"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="BqM-YM-YoV">
+            <objects>
+                <viewController id="eg2-nh-8aN" customClass="GameViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c73-4h-JFE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bqE-yd-HP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xH3-F8-caR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1231" y="1324"/>
         </scene>
         <!--TeacherStoryboard-->
         <scene sceneID="CrI-eB-csM">

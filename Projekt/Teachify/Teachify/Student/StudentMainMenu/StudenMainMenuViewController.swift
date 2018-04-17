@@ -15,6 +15,7 @@ class StudentMainMenuViewController: UIViewController {
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
+
     
     
     override func viewDidLoad() {
@@ -25,7 +26,6 @@ class StudentMainMenuViewController: UIViewController {
         GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
         super.viewDidLoad()
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
