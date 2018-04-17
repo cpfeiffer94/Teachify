@@ -43,7 +43,6 @@
 		0FEFB4EB2084A8D30065A460 /* Extension+CKRecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */; };
 		0FEFB4ED2084A8E50065A460 /* Extension+CKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */; };
 		0FEFB4EF2084A9000065A460 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EE2084A9000065A460 /* Keys.swift */; };
-		0FEFB4F12084A9210065A460 /* TeachKitCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
@@ -122,7 +121,6 @@
 		0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecordZone.swift"; sourceTree = "<group>"; };
 		0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecord.swift"; sourceTree = "<group>"; };
 		0FEFB4EE2084A9000065A460 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachKitCloudController.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,7 +211,6 @@
 				0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */,
 				0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */,
 				0F999DCB207B4D7900FF5542 /* TKShareController.swift */,
-				0FEFB4F02084A9210065A460 /* TeachKitCloudController.swift */,
 				0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */,
 			);
 			path = Controller;
@@ -634,7 +631,6 @@
 				0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */,
 				0FBA793B2085F80400D20807 /* ResultScene.swift in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
-				0FEFB4F12084A9210065A460 /* TeachKitCloudController.swift in Sources */,
 				0FBA79422085F84F00D20807 /* MathPianoQuestionModel.swift in Sources */,
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
 				0F999DDA207B4D7900FF5542 /* TKSettingsController.swift in Sources */,

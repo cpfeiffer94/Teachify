@@ -9,86 +9,56 @@
 import Foundation
 import CloudKit
 
-struct TKSubjectController: TeachKitCloudController {
+struct TKSubjectController {
     private let privateDatabase = CKContainer.default().privateCloudDatabase
     
+    var cloudCtrl = TKGenericCloudController<TKSubject>(zone: CKRecordZone.teachKitZone)
     
     // MARK: - Subject Operations
     // ✅
     func fetchSubject(forClass tkClass: TKClass,
                       withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                       completion: @escaping ([TKSubject], TKError?) -> ()) {
+        guard let record = tkClass.record else {
+            completion([], TKError.dooooImplement)
+            return
+        }
         
-        fetchTeachKitRecordZone { (teachKitRecordZone, error) in
-            guard let teachKitRecordZone = teachKitRecordZone else {
-                completion([], TKError.dooooImplement)
-                return
-            }
-            
-            let predicate = NSPredicate(format: "TRUEPREDICATE")
-            let query = CKQuery(recordType: TKCloudKey.RecordType.subjectes, predicate: predicate)
-            self.privateDatabase.perform(query, inZoneWith: teachKitRecordZone.zoneID, completionHandler: { (subjectRecords, error) in
-                let subjects = subjectRecords?.compactMap { TKSubject(record: $0) } ?? []
-                if error == nil {
-                    completion(subjects, nil)
-                } else {
-                    completion([], TKError.dooooImplement)
-                }
-            })
+        let predicate = NSPredicate(format: "%K == %@", "class", CKReference(record: record, action: CKReferenceAction.none))
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.subjectes, predicate: predicate) { (fetchedSubjects, error) in
+            completion(fetchedSubjects, error)
         }
     }
     
     // ✅
     func add(subject: TKSubject, toTKClass tkClass: TKClass, completion: @escaping (TKSubject?, TKError?) -> ()) {
-        guard let classRecord = tkClass.record else {
-            completion(nil, TKError.dooooImplement)
-            return
-        }
-        
-        let recordZoneID = CKRecordZone.teachKitZone.zoneID
-        let subjectRecord = CKRecord(subject: subject, withRecordZoneID: recordZoneID)
-        subjectRecord["class"] = CKReference(record: classRecord, action: .deleteSelf)
-        
-        privateDatabase.save(subjectRecord) { (savedSubjectRecord, error) in
-            if let savedSubjectRecord = savedSubjectRecord {
-                let subject = TKSubject(record: savedSubjectRecord)
-                completion(subject, nil)
-            } else {
+        cloudCtrl.create(object: subject) { (createdSubject, error) in
+            guard let createdSubject = createdSubject else {
                 completion(nil, TKError.dooooImplement)
+                return
             }
+            
+            self.cloudCtrl.add(object: createdSubject,
+                               parentObject: tkClass,
+                               withReferenceKey: "class",
+                               andAction: CKReferenceAction.deleteSelf,
+                               completion: { (subject, error) in
+                completion(subject, error)
+            })
         }
-        
     }
     
     // ✅
     func update(subject: TKSubject, completion: @escaping (TKSubject?, TKError?) -> ()) {
-        guard let record = subject.record else {
-            completion(nil, TKError.dooooImplement)
-            return
-        }
-        
-        privateDatabase.save(record) { (savedRecord, error) in
-            if let savedRecord = savedRecord {
-                let subject = TKSubject(record: savedRecord)
-                completion(subject, nil)
-            } else {
-                completion(nil, TKError.dooooImplement)
-            }
+        cloudCtrl.update(object: subject) { (updatedSubject, error) in
+            completion(updatedSubject, error)
         }
     }
     
     // ✅
     func delete(subject: TKSubject, completion: @escaping (TKError?) -> ()) {
-        guard let record = subject.record else {
-            completion(TKError.dooooImplement)
-            return
-        }
-        privateDatabase.delete(withRecordID: record.recordID) { (deletedRecordID, error) in
-            if error == nil {
-                completion(nil)
-            } else {
-                completion(TKError.dooooImplement)
-            }
+        cloudCtrl.delete(object: subject) { (error) in
+            completion(error)
         }
     }
 }

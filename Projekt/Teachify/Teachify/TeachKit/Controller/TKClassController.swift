@@ -11,7 +11,7 @@ import CloudKit
 
 
 // ✅
-struct TKClassController: TeachKitCloudController {
+struct TKClassController {
     private let privateDatabase = CKContainer.default().privateCloudDatabase
     
     var cloudCtrl = TKGenericCloudController<TKClass>(zone: CKRecordZone.teachKitZone)
@@ -22,7 +22,8 @@ struct TKClassController: TeachKitCloudController {
                       completion: @escaping ([TKClass], TKError?) -> ()) {
         
         let recordType = TKCloudKey.RecordType.classes
-        cloudCtrl.fetch(forRecordType: recordType) { (fetchedClasses, error) in
+        let predicate = NSPredicate(format: "TRUEPREDICATE")
+        cloudCtrl.fetch(forRecordType: recordType, predicate: predicate) { (fetchedClasses, error) in
             completion(fetchedClasses, error)
         }
     }

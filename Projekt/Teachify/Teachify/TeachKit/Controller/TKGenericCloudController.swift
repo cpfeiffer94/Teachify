@@ -31,6 +31,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
     // ✅
     func fetch(forRecordType recordType: String,
                withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
+               predicate: NSPredicate,
                completion: @escaping ([T], TKError?) -> ()) {
         
         fetch(recordZone: recordZoneName) { (recordZone, error) in
@@ -38,7 +39,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 completion([], TKError.dooooImplement)
                 return
             }
-            let predicate = NSPredicate(format: "TRUEPREDICATE")
+//            let predicate = NSPredicate(format: "TRUEPREDICATE")
             let query = CKQuery(recordType: recordType, predicate: predicate)
             self.privateDatabase.perform(query, inZoneWith: recordZone.zoneID, completionHandler: { (fetchedRecords, error) in
                 let cloudObjects: [T] = fetchedRecords?.compactMap { T(record: $0) } ?? []

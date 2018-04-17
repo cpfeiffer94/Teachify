@@ -22,6 +22,65 @@ class CloudKitTestViewController: UIViewController {
 
     @IBAction func doSomethingAction(_ sender: UIButton) {
         
+        // CREATE SUBJECT
+//        let subject = TKSubject(name: "Englisch", color: .red)
+//        classCtrl.fetchClasses { (fetchedClasses, error) in
+//            for fetchedClasse in fetchedClasses {
+//                if fetchedClasse.name == "9a" {
+//                    self.subjectCtrl.add(subject: subject, toTKClass: fetchedClasse, completion: { (updatedSubject, error) in
+//                        print("error: \(error) -- \(updatedSubject)")
+//                    })
+//                }
+//            }
+//        }
+        
+        // FETCH SUBJECTS
+//        classCtrl.fetchClasses { (fetchedClasses, error) in
+//            for fetchedClasse in fetchedClasses {
+//                self.subjectCtrl.fetchSubject(forClass: fetchedClasse, completion: { (fetchedSubjects, error) in
+//                    for subject in fetchedSubjects {
+//                        print("\(fetchedClasse.name) --- \(subject.name) - \(subject.color)")
+//                    }
+//                })
+//            }
+//        }
+        
+        classCtrl.fetchClasses { (classes, error) in
+            for c in classes {
+                self.teacherCtrl.fetchStudents(forTKClass: c) { (students, error) in
+                    for student in students {
+                        print("Klasse: \(c.name) ---- \(student.firstname)")
+                    }
+                }
+            }
+        }
+        
+//        classCtrl.fetchClasses { (fetchedClasses, error) in
+//            for c in fetchedClasses {
+//                self.subjectCtrl.fetchSubject(forClass: c, completion: { (fetchedSubjects, error) in
+//                    print(fetchedSubjects)
+//                    for var subj in fetchedSubjects {
+//                        if subj.name == "Englisch" {
+//                            subj.name = "Deutsch"
+//                            self.subjectCtrl.update(subject: subj, completion: { (updatedSubject, error) in
+//                                print("Worked")
+//                            })
+//                        }
+//                    }
+//                })
+//            }
+//        }
+        
+        
+//        teacherCtrl.fetchStudents(forTKClass: nil) { (students, error) in
+//
+//            for student in students {
+//                print("\(student.firstname)")
+//            }
+//        }
+        
+        
+        
     }
     
 }

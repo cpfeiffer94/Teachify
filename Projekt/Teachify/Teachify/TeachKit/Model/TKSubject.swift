@@ -18,7 +18,7 @@ struct TKSubject: TKCloudObject {
     var creationDate: Date?
     var color: TKColor {
         didSet {
-            record?[CloudKey.color] = name as CKRecordValue
+            record?[CloudKey.color] = color.tkCloudKey as CKRecordValue
         }
     }
     var participants: [TKUser] = []
@@ -34,11 +34,13 @@ struct TKSubject: TKCloudObject {
     }
     
     init?(record: CKRecord) {
-        guard let name = record[CloudKey.name] as? String else {
+        guard let name = record[CloudKey.name] as? String,
+            let colorKey = record[CloudKey.color] as? String,
+            let color = TKColor(tkCloudKey: colorKey) else {
             return nil
         }
         self.name = name
-        self.color = TKColor.red
+        self.color = color
         self.record = record
     }
     

@@ -26,6 +26,7 @@ extension CKRecord {
     convenience init(subject: TKSubject, withRecordZoneID recordZoneID: CKRecordZoneID) {
         self.init(recordType: TKCloudKey.RecordType.subjectes, zoneID: recordZoneID)
         self[TKSubject.CloudKey.name] = subject.name as CKRecordValue
+        self[TKSubject.CloudKey.color] = subject.color.tkCloudKey as CKRecordValue
     }
     
     convenience init(document: TKDocument, withRecordZoneID recordZoneID: CKRecordZoneID) {
