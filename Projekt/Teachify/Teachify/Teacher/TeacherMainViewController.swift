@@ -34,14 +34,19 @@ class TeacherMainViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        //collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
         collectionView.dataSource = dataSource
         collectionView.delegate = dataSource
         setupExcerciseCollectionView()
+        
+        if let headerView = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
+            //do Stuff
+        }
     
     }
     
     func setupExcerciseCollectionView(){
+        
         excerciseCollectionView.dataSource = excerciseDataSource
 
     }

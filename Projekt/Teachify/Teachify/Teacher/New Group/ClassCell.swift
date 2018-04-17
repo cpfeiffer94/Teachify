@@ -10,6 +10,7 @@ import UIKit
 
 class ClassCell: UICollectionViewCell {
     
+    @IBOutlet var className: UILabel!
     @IBOutlet var rightImageView: UIImageView!  {
         didSet{
             rightImageView.layer.borderWidth = 1
@@ -27,6 +28,18 @@ class ClassCell: UICollectionViewCell {
         didSet{
             leftImageView.layer.borderWidth = 1
             leftImageView.layer.borderColor = UIColor.rgb(red: 55, green: 105, blue: 182).cgColor
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet{
+            className.font = isSelected ? UIFont.boldSystemFont(ofSize: className.font.pointSize) : UIFont.systemFont(ofSize: className.font.pointSize)
+        }
+    }
+    
+    override var isHighlighted: Bool {
+        didSet{
+            className.font = isSelected ? UIFont.boldSystemFont(ofSize: className.font.pointSize) : UIFont.systemFont(ofSize: className.font.pointSize)
         }
     }
 }

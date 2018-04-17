@@ -46,6 +46,7 @@ class SubjectCell: UICollectionViewCell {
         //Bottom Constriant subjectLabel
         addConstraints(withFormat: "V:[v0]-20-|", forViews: subjectLabel)
         
+        
         //Center iconView X & Y
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerX, relatedBy: .equal, toItem: background, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: background, attribute: .centerY, multiplier: 1, constant: 0))

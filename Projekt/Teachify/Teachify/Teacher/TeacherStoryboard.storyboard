@@ -39,7 +39,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="ZGh-pi-oaT">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="ZGh-pi-oaT" customClass="RoundAddCell" customModule="Teachify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="10" width="100" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -87,6 +87,9 @@
                                             <constraint firstItem="Ce5-iP-9xH" firstAttribute="top" secondItem="S6e-0N-Y4s" secondAttribute="bottom" constant="2" id="n7I-cz-Ef1"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="qf9-4m-tbD" secondAttribute="bottom" constant="19" id="pqQ-2d-XMO"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="addLabel" destination="Ce5-iP-9xH" id="erq-rb-gJ2"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Qv8-AB-8XO" customClass="ClassCell" customModule="Teachify" customModuleProvider="target">
                                         <rect key="frame" x="110" y="10" width="100" height="90"/>
@@ -166,6 +169,7 @@
                                             <constraint firstItem="MRH-Zx-Kob" firstAttribute="top" secondItem="Qv8-AB-8XO" secondAttribute="top" id="tUW-j8-rBd"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="className" destination="4Ys-4z-RDg" id="J4e-cq-ICU"/>
                                             <outlet property="leftImageView" destination="WSc-M9-q5j" id="BAZ-Ci-Rfh"/>
                                             <outlet property="middleImageView" destination="MRH-Zx-Kob" id="s2M-a1-HQT"/>
                                             <outlet property="rightImageView" destination="YKS-xg-FLD" id="u3t-Ml-eGZ"/>
@@ -279,7 +283,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="headerView" id="aJW-OS-dxJ">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="headerView" id="aJW-OS-dxJ" customClass="SegmentedControlHeaderView" customModule="Teachify" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="1008" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -290,12 +294,18 @@
                                                 <segment title="Completed"/>
                                                 <segment title="Unpublished"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="didChangeFilterType:" destination="aJW-OS-dxJ" eventType="valueChanged" id="k7T-Ct-82v"/>
+                                            </connections>
                                         </segmentedControl>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nPp-AN-T6Z" firstAttribute="centerY" secondItem="aJW-OS-dxJ" secondAttribute="centerY" id="DZL-VY-Ng3"/>
                                         <constraint firstItem="nPp-AN-T6Z" firstAttribute="centerX" secondItem="aJW-OS-dxJ" secondAttribute="centerX" id="mmW-Sz-4Ib"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="filterSegmentedControl" destination="nPp-AN-T6Z" id="p5I-15-KFu"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
