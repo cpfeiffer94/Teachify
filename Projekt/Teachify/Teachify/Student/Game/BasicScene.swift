@@ -159,8 +159,6 @@ class BasicScene: SKScene{
     @objc func generateQuestion(){
         if labels.count < 5{
             if question.count >= 1{
-                print("question.count: \(question.count)")
-                print("labels.count: \(labels.count)")
                 if labels.count < question.count{
                     let label = SKLabelNode(text: question[labels.count])
                     label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
