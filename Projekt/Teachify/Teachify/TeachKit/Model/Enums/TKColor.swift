@@ -24,4 +24,21 @@ enum TKColor {
     static let allColors: [TKColor] = [TKColor.black,
                                        .red,
                                        .yellow]
+    
+    init?(tkCloudKey: String) {
+        switch tkCloudKey {
+        case "black": self = .black
+        case "red": self = .red
+        case "yellow": self = .yellow
+        default: return nil
+        }
+    }
+    
+    var tkCloudKey: String {
+        switch self {
+        case .black: return "black"
+        case .red: return "red"
+        case .yellow: return "yellow"
+        }
+    }
 }

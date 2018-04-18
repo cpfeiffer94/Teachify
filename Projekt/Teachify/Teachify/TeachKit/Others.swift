@@ -10,8 +10,9 @@ import Foundation
 import CloudKit
 
 protocol TKCloudObject {
-    var name: String { get set }
     var creationDate: Date? { get }
+    var record: CKRecord? { get set }
+    init?(record: CKRecord)
 }
 
 
@@ -23,7 +24,7 @@ func randomDelay(completion: @escaping () -> Void) {
 }
 
 
-struct TKStudent {
+struct TKStudent: TKCloudObject {
     var firstname: String {
         didSet {
             record?[CloudKey.firstname] = firstname as CKRecordValue
@@ -53,7 +54,7 @@ struct TKStudent {
         self.email = email
     }
     
-    init(record: CKRecord) {
+    init?(record: CKRecord) {
         self.firstname = record[CloudKey.firstname] as? String ?? "TKStudent-init-Error"
         self.lastname = record[CloudKey.lastname] as? String ?? "TKStudent-init-Error"
         self.email = record[CloudKey.email] as? String ?? "TKStudent-init-Error"
@@ -82,3 +83,4 @@ enum TKShareOption {
     case addParticipant
     case removeParticipant
 }
+

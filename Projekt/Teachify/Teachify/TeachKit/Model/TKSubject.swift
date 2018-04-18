@@ -7,11 +7,50 @@
 //
 
 import Foundation
+import CloudKit
 
 struct TKSubject: TKCloudObject {
-    var name: String
+    var name: String {
+        didSet {
+            record?[CloudKey.name] = name as CKRecordValue
+        }
+    }
     var creationDate: Date?
-    var color: TKColor
-    var participants: [TKUser]
-    var documentIDs: [String]
+    var color: TKColor {
+        didSet {
+            record?[CloudKey.color] = color.tkCloudKey as CKRecordValue
+        }
+    }
+    var participants: [TKUser] = []
+    var documentIDs: [String] = []
+    
+    var record: CKRecord?
+    
+    
+    // MARK: - Initializer
+    init(name: String, color: TKColor) {
+        self.name = name
+        self.color = color
+    }
+    
+    init?(record: CKRecord) {
+        guard let name = record[CloudKey.name] as? String,
+            let colorKey = record[CloudKey.color] as? String,
+            let color = TKColor(tkCloudKey: colorKey) else {
+            return nil
+        }
+        self.name = name
+        self.color = color
+        self.record = record
+    }
+    
+    
+    // MARK: Keys
+    struct CloudKey {
+        private init() {}
+        static let name = "name"
+        static let color = "color"
+        
+        static let referenceToClass = "class"
+    }
 }

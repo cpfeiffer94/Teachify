@@ -21,6 +21,14 @@ struct TKClass: TKCloudObject {
     
     var record: CKRecord?
     
+    var recordTypeID: String? {
+        if var id = record?.recordID.recordName.replacingOccurrences(of: "-", with: "") {
+            id.insert(contentsOf: "class", at: id.startIndex)
+            return id
+        }
+        return nil
+    }
+    
     
     // MARK: - Initializer
     init(name: String) {

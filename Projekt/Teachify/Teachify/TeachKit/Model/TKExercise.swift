@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import CloudKit
 
 struct TKExercise: TKCloudObject {
     var name: String
     var creationDate: Date?
-    var hint: String
     var type: TKExerciseType
     var deadline: Date?
-    var answers: [String]
-    var questions: [String]
+    var data: String
+    var record: CKRecord?
+    
+    init?(record: CKRecord) {
+        return nil
+    }
 }
