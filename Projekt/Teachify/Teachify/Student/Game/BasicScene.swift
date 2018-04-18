@@ -1,11 +1,10 @@
-//
+
 //  BasicScene.swift
 //  Teachify
 //
 //  Created by Normen Krug on 11.04.18.
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
-
 import Foundation
 import SpriteKit
 
@@ -21,8 +20,7 @@ class BasicScene: SKScene{
     var question: [String]! = []
     var correctAnswer: [Int]! = []
     var labels: [SKLabelNode] = []
-    var answers: [(Int,Int,Int)]!
-    
+    var answers: [[Int]]! = []
     var score: Int!{
         didSet{
             if scoreLabel != nil{
@@ -42,7 +40,7 @@ class BasicScene: SKScene{
         for gameItem in memoryGames.gameQuestions {
             question.append(gameItem.getQuestionAsString())
             correctAnswer.append(gameItem.correctAnswer!) // forced
-        
+            
             var questionsOfAGame : [Int] = []
             
             for answer in gameItem.allAnswers! { // forced
@@ -55,7 +53,7 @@ class BasicScene: SKScene{
         score = 3
         scoreLabel = SKLabelNode(text: String(score))
         scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
-        scoreLabel.fontSize = 60
+        scoreLabel.fontSize = 50
         addChild(scoreLabel)
         
         
@@ -66,23 +64,7 @@ class BasicScene: SKScene{
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveLabel), userInfo: nil, repeats: true)
         timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
     }
-        
     
-    @objc func moveLabel(){
-        
-        for item in labels{
-            if item.position.y < 150{
-                labels.removeFirst()
-                question.removeFirst()
-                item.removeFromParent()
-                lose()
-            }
-            else{
-                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 0.95)
-                item.run(moveDown)
-            }
-        }
-    }
     func animateScoreLabel(){
         var group1 = Array<SKAction>()
         let srinkSize = SKAction.scale(to: 0.6, duration: 1.0)
@@ -100,6 +82,22 @@ class BasicScene: SKScene{
             let actions1 = SKAction.group(group2)
             
             self.scoreLabel.run(actions1)
+        }
+    }
+    
+    @objc func moveLabel(){
+        
+        for item in labels{
+            if item.position.y < 150{
+                labels.removeFirst()
+                question.removeFirst()
+                item.removeFromParent()
+                lose()
+            }
+            else{
+                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 0.95)
+                item.run(moveDown)
+            }
         }
     }
     
@@ -150,6 +148,7 @@ class BasicScene: SKScene{
             generateButtons(answers: answers[0])
         }
     }
+    
     func wrongAnswer(){
         score = score - 1
         if score <= 0{
@@ -198,7 +197,6 @@ class BasicScene: SKScene{
         addChild(gameBtn2)
         
     }
-    
     func win(){
         timer.invalidate()
         timer1.invalidate()
@@ -207,7 +205,6 @@ class BasicScene: SKScene{
         result.winner = true
         self.scene!.view?.presentScene(result, transition: transition)
     }
-    
     func lose(){
         timer.invalidate()
         timer1.invalidate()
@@ -215,5 +212,9 @@ class BasicScene: SKScene{
         let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
         self.scene!.view?.presentScene(result, transition: transition)
+    }
+    
+    func BG(_ block: @escaping ()->Void) {
+        DispatchQueue.global(qos: .default).async(execute: block)
     }
 }
