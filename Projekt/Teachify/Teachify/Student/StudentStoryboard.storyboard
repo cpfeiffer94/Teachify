@@ -50,7 +50,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="620" height="270"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="620" height="420"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="GG"/>
@@ -105,15 +105,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWJ-xP-TzF">
-                                <rect key="frame" x="363" y="111" width="25" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mathekniffel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJa-hs-du7">
+                                <rect key="frame" x="20" y="28" width="269" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="kxf-OE-lnd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="brO-fe-JiS">
+                                <rect key="frame" x="20" y="94" width="728" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fnk-ho-OQ2"/>
+                                </constraints>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typ: Mathespiel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-KV-oKo">
+                                <rect key="frame" x="20" y="222" width="103" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="ZtJ-EF-RJt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abgabedatum : 18.4.2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIG-g5-jrW">
+                                <rect key="frame" x="20" y="245" width="166" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="Stt-ES-U8U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fach : Mathematik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLp-2T-uIC">
+                                <rect key="frame" x="20" y="270" width="119" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="B1H-Fj-E4r"/>
+                                    <constraint firstAttribute="height" constant="17" id="fFc-Yg-SeQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schwierigkeitsgrad : Mittelschwer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZi-Kc-zVv">
+                                <rect key="frame" x="20" y="295" width="217" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="p0M-RH-xKM"/>
+                                    <constraint firstAttribute="height" constant="17" id="x78-cQ-zJ8"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="17" id="xuY-Rr-W6P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="brO-fe-JiS" firstAttribute="top" secondItem="DJa-hs-du7" secondAttribute="bottom" constant="15" id="6ym-Lo-Al5"/>
+                            <constraint firstItem="qZi-Kc-zVv" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="8hZ-5n-s1i"/>
+                            <constraint firstItem="qZi-Kc-zVv" firstAttribute="top" secondItem="FLp-2T-uIC" secondAttribute="bottom" constant="8" id="DFs-1U-cq6"/>
+                            <constraint firstItem="FLp-2T-uIC" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="IFo-JM-w41"/>
+                            <constraint firstItem="RMe-KV-oKo" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="OHV-Tq-P77"/>
+                            <constraint firstItem="DJa-hs-du7" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="RGq-Q0-Egc"/>
+                            <constraint firstItem="brO-fe-JiS" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="WqV-yE-9Oy"/>
+                            <constraint firstItem="aIG-g5-jrW" firstAttribute="top" secondItem="RMe-KV-oKo" secondAttribute="bottom" constant="8" id="fdl-6F-PN7"/>
+                            <constraint firstItem="aIG-g5-jrW" firstAttribute="leading" secondItem="4MW-WR-wL1" secondAttribute="leading" constant="20" id="gwe-vH-rae"/>
+                            <constraint firstItem="FLp-2T-uIC" firstAttribute="top" secondItem="aIG-g5-jrW" secondAttribute="bottom" constant="8" id="sYo-pu-XLK"/>
+                            <constraint firstItem="4MW-WR-wL1" firstAttribute="trailing" secondItem="brO-fe-JiS" secondAttribute="trailing" constant="20" id="uf9-BB-yoE"/>
+                            <constraint firstItem="RMe-KV-oKo" firstAttribute="top" secondItem="brO-fe-JiS" secondAttribute="bottom" constant="8" id="wK5-fF-D1o"/>
+                            <constraint firstItem="DJa-hs-du7" firstAttribute="top" secondItem="4MW-WR-wL1" secondAttribute="top" constant="8" id="xo9-GX-dJd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4MW-WR-wL1"/>
                     </view>
                 </viewController>
@@ -159,6 +225,7 @@
                 <tabBarController storyboardIdentifier="StudentMainMenuViewController" automaticallyAdjustsScrollViewInsets="NO" id="HLt-zf-sZ9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QS0-MD-E9C">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

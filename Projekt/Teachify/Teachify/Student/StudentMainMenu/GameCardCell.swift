@@ -14,5 +14,9 @@ class GameCardCell: UICollectionViewCell {
     
     @IBOutlet weak var view: CardHighlight!
     
+    func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
+        
+        card.buttonText = "HEY!"
+    } 
     
 }

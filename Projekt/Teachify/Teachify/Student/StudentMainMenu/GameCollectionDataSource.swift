@@ -27,14 +27,16 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         let game : GameInformationItem = GameCollectionController.getGame(forIndex: indexPath.item)
         
         
-        cell.card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
-        cell.card.icon = UIImage(named: "flappy")
+        cell.card.backgroundColor = UIColor(red: 48/255, green: 98/255, blue: 165/255, alpha: 1)
+        cell.card.icon = UIImage(named: "calculator")
         cell.card.title = game.name
         cell.card.itemTitle = game.subject
         cell.card.itemSubtitle = game.difficulty
+        cell.card.buttonText = "Spielen"
         cell.card.textColor = UIColor.white
         
         cell.card.hasParallax = true
+        cell.card.action
         
         let cardContentVC = tlc.storyboard!.instantiateViewController(withIdentifier: "CardContent")
         cell.card.shouldPresent(cardContentVC, from: tlc, fullscreen: false)
@@ -44,6 +46,13 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
     }
     
 
+    func startGame(_ collectionView: UICollectionView){
+        let storyboard = UIStoryboard(name: StudentStoryboardID.class, bundle: nil)
+        let StudentMainMenuVCtrl = storyboard.instantiateViewController(withIdentifier: StudentStoryboardID.StudentMainMenuID)
+        var tlc = collectionView.window?.rootViewController as! UIViewController
+        tlc = UIWindow.getVisibleViewControllerFrom(vc: tlc)
+        tlc.present(StudentMainMenuVCtrl, animated: true)
+        }
 }
 
 extension UIWindow {
