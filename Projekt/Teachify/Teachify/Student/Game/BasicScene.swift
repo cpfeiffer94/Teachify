@@ -1,11 +1,10 @@
-//
+
 //  BasicScene.swift
 //  Teachify
 //
 //  Created by Normen Krug on 11.04.18.
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
-
 import Foundation
 import SpriteKit
 
@@ -26,15 +25,7 @@ class BasicScene: SKScene{
         didSet{
             if scoreLabel != nil{
                 //update the score label
-                
-                let scale = SKAction.scale(to: 0.6, duration: 1.0)
-                scoreLabel.run(scale){
-                    let scale1 = SKAction.scale(to: 1.0, duration: 1.0)
-                    self.scoreLabel.run(scale1)
-                }
-                
-                //                let scale1 = SKAction.scale(to: 1.0, duration: 0.5)
-                //                scoreLabel.run(scale1)
+                animateScoreLabel()
                 scoreLabel.text = String(score)
             }
         }
@@ -49,7 +40,7 @@ class BasicScene: SKScene{
         for gameItem in memoryGames.gameQuestions {
             question.append(gameItem.getQuestionAsString())
             correctAnswer.append(gameItem.correctAnswer!) // forced
-        
+            
             var questionsOfAGame : [Int] = []
             
             for answer in gameItem.allAnswers! { // forced
@@ -73,7 +64,26 @@ class BasicScene: SKScene{
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveLabel), userInfo: nil, repeats: true)
         timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
     }
-        
+    
+    func animateScoreLabel(){
+        var group1 = Array<SKAction>()
+        let srinkSize = SKAction.scale(to: 0.6, duration: 1.0)
+        let changeColor = SKAction.colorize(with: UIColor.red, colorBlendFactor: CGFloat(100), duration: 1.0)
+        group1.append(changeColor)
+        group1.append(srinkSize)
+        let actions = SKAction.group(group1)
+        scoreLabel.run(actions){
+            var group2 = Array<SKAction>()
+            let strechSize = SKAction.scale(to: 1.0, duration: 1.0)
+            let changeColorBack = SKAction.colorize(with: UIColor.white, colorBlendFactor: CGFloat(100), duration: 1.0)
+            
+            group2.append(strechSize)
+            group2.append(changeColorBack)
+            let actions1 = SKAction.group(group2)
+            
+            self.scoreLabel.run(actions1)
+        }
+    }
     
     @objc func moveLabel(){
         
@@ -120,11 +130,16 @@ class BasicScene: SKScene{
     
     func rightAnswer(){
         if(labels.count > 0){
-            labels[0].removeFromParent()
-            labels.removeFirst()
-            question.removeFirst()
-            answers.removeFirst()
-            correctAnswer.removeFirst()
+            let action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! - self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
+            let destroyedLabel = labels.first
+            labels.first?.run(action){
+                destroyedLabel?.removeFromParent()
+            }
+            self.labels.removeFirst()
+            self.question.removeFirst()
+            self.answers.removeFirst()
+            self.correctAnswer.removeFirst()
+            
         }
         if question.count == 0{
             win()
@@ -133,6 +148,7 @@ class BasicScene: SKScene{
             generateButtons(answers: answers[0])
         }
     }
+    
     func wrongAnswer(){
         score = score - 1
         if score <= 0{
@@ -143,8 +159,6 @@ class BasicScene: SKScene{
     @objc func generateQuestion(){
         if labels.count < 5{
             if question.count >= 1{
-                print("question.count: \(question.count)")
-                print("labels.count: \(labels.count)")
                 if labels.count < question.count{
                     let label = SKLabelNode(text: question[labels.count])
                     label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)

@@ -21,7 +21,7 @@ class BasicButton: SKSpriteNode{
         buttonAction = action
         super.init(texture: texture, color: color, size: size)
         label = SKLabelNode(text: text)
-        label.fontSize = 60
+        label.fontSize = 40
         label.fontColor = fontColor
         label.position = CGPoint(x: self.position.x, y: self.position.y - 13)
         self.addChild(label)
