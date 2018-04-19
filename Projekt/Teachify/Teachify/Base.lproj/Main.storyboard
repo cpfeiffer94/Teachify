@@ -25,7 +25,7 @@
                                 <state key="normal" title="Login as Teacher"/>
                                 <connections>
                                     <action selector="TeacherLoginAction:" destination="Xel-7l-iJz" eventType="touchUpInside" id="cYa-qE-q6j"/>
-                                    <segue destination="vUW-jR-P5B" kind="show" id="Q2b-tk-sMU"/>
+                                    <segue destination="Nq0-O4-jnU" kind="show" id="oBG-7d-xJQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN9-NT-G5D">
@@ -44,22 +44,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfr-4z-OEL">
-                                <rect key="frame" x="85" y="455" width="205" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cloud Kit Test View Controller"/>
-                                <connections>
-                                    <segue destination="z5S-Ey-kkg" kind="show" id="uMV-cb-jwW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-kJ-pG3">
-                                <rect key="frame" x="151" y="571" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play Game"/>
-                                <connections>
-                                    <action selector="ShowGame:" destination="Xel-7l-iJz" eventType="touchUpInside" id="ord-zw-jbl"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -72,61 +56,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o76-K1-Gop"/>
                     </view>
-                    <connections>
-                        <segue destination="eg2-nh-8aN" kind="show" id="CrY-Rl-Rru"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FD3-Gd-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="833"/>
         </scene>
-        <!--Cloud Kit Test View Controller-->
-        <scene sceneID="DqY-GL-CI4">
-            <objects>
-                <viewController id="z5S-Ey-kkg" customClass="CloudKitTestViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jfc-Ia-jMf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlz-V4-IZn">
-                                <rect key="frame" x="22" y="157" width="96" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Do something"/>
-                                <connections>
-                                    <action selector="doSomethingAction:" destination="z5S-Ey-kkg" eventType="touchUpInside" id="TxA-Rk-9Ox"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="A7c-xo-NPe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ng3-Bu-KuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="353" y="1641"/>
-        </scene>
-        <!--Game View Controller-->
-        <scene sceneID="BqM-YM-YoV">
-            <objects>
-                <viewController id="eg2-nh-8aN" customClass="GameViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c73-4h-JFE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="bqE-yd-HP3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xH3-F8-caR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1231" y="1324"/>
-        </scene>
         <!--TeacherStoryboard-->
-        <scene sceneID="CrI-eB-csM">
+        <scene sceneID="JQW-0e-gXy">
             <objects>
-                <viewControllerPlaceholder storyboardName="TeacherStoryboard" id="vUW-jR-P5B" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9fc-6H-EPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="TeacherStoryboard" id="Nq0-O4-jnU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgi-Lo-5pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="649"/>
+            <point key="canvasLocation" x="1128" y="551"/>
         </scene>
     </scenes>
 </document>

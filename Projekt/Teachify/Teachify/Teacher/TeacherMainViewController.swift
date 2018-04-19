@@ -15,6 +15,8 @@ class TeacherMainViewController: UIViewController {
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
     
+    @IBOutlet var excerciseCollectionView: UICollectionView!
+    let excerciseDataSource = ExerciseCollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +28,30 @@ class TeacherMainViewController: UIViewController {
         titleView.font = UIFont.systemFont(ofSize: 48)
         navigationItem.titleView = titleView
         navigationItem.prompt = " "
+        print(navigationController?.navigationBar.barTintColor)
+        navigationController?.navigationBar.barTintColor = .barBlue
+
     
         
         //get Rid of Background Shaodw Image in iOS 10
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        //collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
         collectionView.dataSource = dataSource
         collectionView.delegate = dataSource
+        setupExcerciseCollectionView()
         
+        if let headerView = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
+            //do Stuff
+        }
+    
+    }
+    
+    func setupExcerciseCollectionView(){
         
+        excerciseCollectionView.dataSource = excerciseDataSource
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

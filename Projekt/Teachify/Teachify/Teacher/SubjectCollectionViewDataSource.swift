@@ -15,6 +15,16 @@ class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allSubjectsCell", for: indexPath)
+            return cell
+        }
+        
+        if indexPath.item == collectionView.numberOfItems(inSection: 0)-1, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCell", for: indexPath) as? RoundAddCell2{
+            //cell.addLabel.text = "Add Subject"
+            
+            return cell
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath)
         
         return cell

@@ -29,17 +29,49 @@
 		0F999DEE207B4DF300FF5542 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DED207B4DF300FF5542 /* Others.swift */; };
 		0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */; };
 <<<<<<< HEAD
-		0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC79706207F50C20058813E /* CloudKit.framework */; };
+		0FAB966F2085E38A00FE7F76 /* TKGenericCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */; };
+		0FBA79382085F80400D20807 /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA79342085F80400D20807 /* BasicScene.swift */; };
+		0FBA79392085F80400D20807 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA79352085F80400D20807 /* GameViewController.swift */; };
+		0FBA793A2085F80400D20807 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA79362085F80400D20807 /* GameButton.swift */; };
+		0FBA793B2085F80400D20807 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA79372085F80400D20807 /* ResultScene.swift */; };
+		0FBA793D2085F84600D20807 /* GameCardModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA793C2085F84600D20807 /* GameCardModelSingleton.swift */; };
+		0FBA79412085F84F00D20807 /* MathPianoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA793E2085F84E00D20807 /* MathPianoGame.swift */; };
+		0FBA79422085F84F00D20807 /* MathPianoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA793F2085F84E00D20807 /* MathPianoQuestionModel.swift */; };
+		0FBA79432085F84F00D20807 /* RandomQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA79402085F84F00D20807 /* RandomQuestionGenerator.swift */; };
 		0FC797102080CD2B0058813E /* CloudKitTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */; };
+		0FEFB4E6208499B60065A460 /* TKSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4E5208499B60065A460 /* TKSubjectController.swift */; };
+		0FEFB4E82084A86B0065A460 /* TKExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */; };
+		0FEFB4EB2084A8D30065A460 /* Extension+CKRecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */; };
+		0FEFB4ED2084A8E50065A460 /* Extension+CKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */; };
+		0FEFB4EF2084A9000065A460 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFB4EE2084A9000065A460 /* Keys.swift */; };
 =======
->>>>>>> 81a0d58f95d2466c9a6a12de86e823ad96c3c169
+		0FC79707207F50C20058813E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC79706207F50C20058813E /* CloudKit.framework */; };
+		401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401422F520863A03009EF8D9 /* SegmentCell.swift */; };
+		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
+		4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */; };
+		4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */; };
+		4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */; };
+		4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE9207FACA500A0C076 /* Extensions.swift */; };
+		404CDA8D208623B9001FEA15 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */; };
+		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
+		40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */; };
+		40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68B20824E3E008A45A7 /* ClassCell.swift */; };
+		40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */; };
+		40AAF69120824E3E008A45A7 /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68D20824E3E008A45A7 /* SubjectCell.swift */; };
+		40AAF693208255FA008A45A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AAF692208255FA008A45A7 /* Assets.xcassets */; };
+		40AAF69620825714008A45A7 /* ExcerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69520825714008A45A7 /* ExcerciseCollectionViewCell.swift */; };
+		40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF6972082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift */; };
+		40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */; };
+		40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */; };
+		40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */; };
+		40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */; };
+>>>>>>> teacher
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
 		AA12AF70207615170090404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF6F207615170090404A /* AppDelegate.swift */; };
 		AA12AF72207615170090404A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF71207615170090404A /* LoginViewController.swift */; };
 		AA12AF75207615170090404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF73207615170090404A /* Main.storyboard */; };
-		AA12AF77207615190090404A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF76207615190090404A /* Assets.xcassets */; };
 		AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF78207615190090404A /* LaunchScreen.storyboard */; };
 		AA12AF85207615190090404A /* TeachifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF84207615190090404A /* TeachifyTests.swift */; };
 		AA12AF902076151A0090404A /* TeachifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF8F2076151A0090404A /* TeachifyUITests.swift */; };
@@ -47,8 +79,6 @@
 		AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486175207F78C300C43588 /* StudentAwardViewController.swift */; };
 		AA48617C207F7FFF00C43588 /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48617B207F7FFF00C43588 /* GameCardCell.swift */; };
 		AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48617D207F801F00C43588 /* GameMenuObject.swift */; };
-		AA486180207F8C1100C43588 /* GameCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48617F207F8C1100C43588 /* GameCardModel.swift */; };
-		AA486182207F8C2700C43588 /* GameDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486181207F8C2700C43588 /* GameDownloadController.swift */; };
 		AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486183207F8C4200C43588 /* GameInformationItem.swift */; };
 		AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */; };
 		AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */; };
@@ -98,13 +128,42 @@
 		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
 		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCloud.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		0FC79706207F50C20058813E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKGenericCloudController.swift; sourceTree = "<group>"; };
+		0FBA79342085F80400D20807 /* BasicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
+		0FBA79352085F80400D20807 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0FBA79362085F80400D20807 /* GameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		0FBA79372085F80400D20807 /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
+		0FBA793C2085F84600D20807 /* GameCardModelSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardModelSingleton.swift; sourceTree = "<group>"; };
+		0FBA793E2085F84E00D20807 /* MathPianoGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoGame.swift; sourceTree = "<group>"; };
+		0FBA793F2085F84E00D20807 /* MathPianoQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoQuestionModel.swift; sourceTree = "<group>"; };
+		0FBA79402085F84F00D20807 /* RandomQuestionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomQuestionGenerator.swift; sourceTree = "<group>"; };
 		0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTestViewController.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 81a0d58f95d2466c9a6a12de86e823ad96c3c169
+		0FEFB4E5208499B60065A460 /* TKSubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSubjectController.swift; sourceTree = "<group>"; };
+		0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKExerciseController.swift; sourceTree = "<group>"; };
+		0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecordZone.swift"; sourceTree = "<group>"; };
+		0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecord.swift"; sourceTree = "<group>"; };
+		0FEFB4EE2084A9000065A460 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		401422F520863A03009EF8D9 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
+		4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMainViewController.swift; sourceTree = "<group>"; };
+		4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherStoryboardID.swift; sourceTree = "<group>"; };
+		4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesCollectionView.swift; sourceTree = "<group>"; };
+		4047BFE9207FACA500A0C076 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		40AAF68B20824E3E008A45A7 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
+		40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
+		40AAF68D20824E3E008A45A7 /* SubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
+		40AAF692208255FA008A45A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40AAF69520825714008A45A7 /* ExcerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseCollectionViewCell.swift; sourceTree = "<group>"; };
+		40AAF6972082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
+		40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHeaderView.swift; sourceTree = "<group>"; };
+		40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundAddCell.swift; path = Teachify/Teacher/CustomViews/RoundAddCell.swift; sourceTree = SOURCE_ROOT; };
+		40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDataSource.swift; sourceTree = "<group>"; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,7 +175,6 @@
 		AA12AF6F207615170090404A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA12AF71207615170090404A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AA12AF74207615170090404A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AA12AF76207615190090404A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA12AF79207615190090404A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA12AF7B207615190090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA12AF80207615190090404A /* TeachifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeachifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,8 +187,6 @@
 		AA486175207F78C300C43588 /* StudentAwardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAwardViewController.swift; sourceTree = "<group>"; };
 		AA48617B207F7FFF00C43588 /* GameCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
 		AA48617D207F801F00C43588 /* GameMenuObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuObject.swift; sourceTree = "<group>"; };
-		AA48617F207F8C1100C43588 /* GameCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardModel.swift; sourceTree = "<group>"; };
-		AA486181207F8C2700C43588 /* GameDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDownloadController.swift; sourceTree = "<group>"; };
 		AA486183207F8C4200C43588 /* GameInformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationItem.swift; sourceTree = "<group>"; };
 		AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDelegate.swift; sourceTree = "<group>"; };
 		AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDataSource.swift; sourceTree = "<group>"; };
@@ -172,11 +228,13 @@
 		0F999DC1207B4D4300FF5542 /* TeachKit */ = {
 			isa = PBXGroup;
 			children = (
+				0FEFB4E92084A8C60065A460 /* Extensions */,
 				0FC7970F2080CD2B0058813E /* CloudKitTestViewController.swift */,
 				0F999DC4207B4D7900FF5542 /* Controller */,
 				0F999DCC207B4D7900FF5542 /* Model */,
 				0F999DED207B4DF300FF5542 /* Others.swift */,
 				0F999DEF207B4E2800FF5542 /* OfflineCloud.swift */,
+				0FEFB4EE2084A9000065A460 /* Keys.swift */,
 			);
 			path = TeachKit;
 			sourceTree = "<group>";
@@ -188,9 +246,12 @@
 				0F999DC6207B4D7900FF5542 /* TKLeaderboardController.swift */,
 				0F999DC7207B4D7900FF5542 /* TKUserProfileController.swift */,
 				0F999DC8207B4D7900FF5542 /* TKClassController.swift */,
+				0FEFB4E5208499B60065A460 /* TKSubjectController.swift */,
 				0F999DC9207B4D7900FF5542 /* TKTeacherController.swift */,
 				0F999DCA207B4D7900FF5542 /* TKDocumentController.swift */,
+				0FEFB4E72084A86B0065A460 /* TKExerciseController.swift */,
 				0F999DCB207B4D7900FF5542 /* TKShareController.swift */,
+				0FAB966E2085E38A00FE7F76 /* TKGenericCloudController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,6 +283,26 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		0FBA79332085F80400D20807 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0FBA79342085F80400D20807 /* BasicScene.swift */,
+				0FBA79352085F80400D20807 /* GameViewController.swift */,
+				0FBA79362085F80400D20807 /* GameButton.swift */,
+				0FBA79372085F80400D20807 /* ResultScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0FEFB4E92084A8C60065A460 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0FEFB4EA2084A8D30065A460 /* Extension+CKRecordZone.swift */,
+				0FEFB4EC2084A8E50065A460 /* Extension+CKRecord.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +312,49 @@
 				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4047BFEB207FACB300A0C076 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFE9207FACA500A0C076 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		404CDA8B20862380001FEA15 /* ExcerciseInfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */,
+				404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */,
+				401422F520863A03009EF8D9 /* SegmentCell.swift */,
+				40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */,
+			);
+			path = ExcerciseInfoScreen;
+			sourceTree = "<group>";
+		};
+		40AAF68920824E27008A45A7 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */,
+				40AAF68B20824E3E008A45A7 /* ClassCell.swift */,
+				40AAF68D20824E3E008A45A7 /* SubjectCell.swift */,
+				40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */,
+				40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */,
+			);
+			name = CustomViews;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		40AAF694208256EC008A45A7 /* ExcerciseCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				40AAF69520825714008A45A7 /* ExcerciseCollectionViewCell.swift */,
+				40AAF6972082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift */,
+				40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */,
+				40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */,
+			);
+			path = ExcerciseCollectionView;
 			sourceTree = "<group>";
 		};
 		744AAC0A28FFD35EC1152180 /* Pods */ = {
@@ -278,9 +402,9 @@
 				AA12AF6F207615170090404A /* AppDelegate.swift */,
 				AA12AF71207615170090404A /* LoginViewController.swift */,
 				AA12AF73207615170090404A /* Main.storyboard */,
-				AA12AF76207615190090404A /* Assets.xcassets */,
 				AA12AF78207615190090404A /* LaunchScreen.storyboard */,
 				AA12AF7B207615190090404A /* Info.plist */,
+				40AAF692208255FA008A45A7 /* Assets.xcassets */,
 			);
 			path = Teachify;
 			sourceTree = "<group>";
@@ -326,8 +450,7 @@
 		AA48617A207F7BB000C43588 /* StudentGameModel */ = {
 			isa = PBXGroup;
 			children = (
-				AA48617F207F8C1100C43588 /* GameCardModel.swift */,
-				AA486181207F8C2700C43588 /* GameDownloadController.swift */,
+				0FBA793C2085F84600D20807 /* GameCardModelSingleton.swift */,
 				AA486183207F8C4200C43588 /* GameInformationItem.swift */,
 			);
 			path = StudentGameModel;
@@ -336,6 +459,10 @@
 		AA6A068720761B9400C9420E /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				0FBA793E2085F84E00D20807 /* MathPianoGame.swift */,
+				0FBA793F2085F84E00D20807 /* MathPianoQuestionModel.swift */,
+				0FBA79402085F84F00D20807 /* RandomQuestionGenerator.swift */,
+				0FBA79332085F80400D20807 /* Game */,
 				AA48617A207F7BB000C43588 /* StudentGameModel */,
 				AA486179207F7B9800C43588 /* StudentAwardMenu */,
 				AA486178207F7B8B00C43588 /* StudentMainMenu */,
@@ -348,6 +475,14 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				404CDA8B20862380001FEA15 /* ExcerciseInfoScreen */,
+				40AAF694208256EC008A45A7 /* ExcerciseCollectionView */,
+				40AAF68920824E27008A45A7 /* CustomViews */,
+				4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */,
+				4047BFEB207FACB300A0C076 /* Extensions */,
+				4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */,
+				4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */,
+				4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */,
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
 			path = Teacher;
@@ -471,9 +606,9 @@
 			files = (
 				AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */,
 				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
-				AA12AF77207615190090404A /* Assets.xcassets in Resources */,
 				AA12AF75207615170090404A /* Main.storyboard in Resources */,
 				AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */,
+				40AAF693208255FA008A45A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,40 +710,81 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */,
 				0F999DE8207B4D7900FF5542 /* TKRank.swift in Sources */,
+				0FBA79382085F80400D20807 /* BasicScene.swift in Sources */,
+				0FBA79412085F84F00D20807 /* MathPianoGame.swift in Sources */,
+				0FBA793A2085F80400D20807 /* GameButton.swift in Sources */,
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
 				AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */,
+				0FEFB4EF2084A9000065A460 /* Keys.swift in Sources */,
+				0FEFB4E82084A86B0065A460 /* TKExerciseController.swift in Sources */,
 				0F999DE0207B4D7900FF5542 /* TKShareController.swift in Sources */,
+				0FBA793B2085F80400D20807 /* ResultScene.swift in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
+<<<<<<< HEAD
+				0FBA79422085F84F00D20807 /* MathPianoQuestionModel.swift in Sources */,
+=======
+				404CDA8D208623B9001FEA15 /* ExerciseViewController.swift in Sources */,
+>>>>>>> teacher
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
 				0F999DDA207B4D7900FF5542 /* TKSettingsController.swift in Sources */,
 				0F999DDD207B4D7900FF5542 /* TKClassController.swift in Sources */,
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
+<<<<<<< HEAD
 				AA48617C207F7FFF00C43588 /* GameCardCell.swift in Sources */,
+				0FEFB4EB2084A8D30065A460 /* Extension+CKRecordZone.swift in Sources */,
+=======
+				40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */,
+				40AAF69120824E3E008A45A7 /* SubjectCell.swift in Sources */,
+>>>>>>> teacher
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
+				0FBA793D2085F84600D20807 /* GameCardModelSingleton.swift in Sources */,
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
 				0F999DDC207B4D7900FF5542 /* TKUserProfileController.swift in Sources */,
 				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
+				40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */,
+				404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */,
 				0F999DDF207B4D7900FF5542 /* TKDocumentController.swift in Sources */,
+				4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
-				AA486182207F8C2700C43588 /* GameDownloadController.swift in Sources */,
 				0F999DDB207B4D7900FF5542 /* TKLeaderboardController.swift in Sources */,
+<<<<<<< HEAD
+				0FBA79432085F84F00D20807 /* RandomQuestionGenerator.swift in Sources */,
 				0F999DDE207B4D7900FF5542 /* TKTeacherController.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
 				0FC797102080CD2B0058813E /* CloudKitTestViewController.swift in Sources */,
+=======
+				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
+				0F999DDE207B4D7900FF5542 /* TKTeacherController.swift in Sources */,
+				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
+				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
+				4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */,
+>>>>>>> teacher
 				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
+				0FBA79392085F80400D20807 /* GameViewController.swift in Sources */,
+				0FEFB4ED2084A8E50065A460 /* Extension+CKRecord.swift in Sources */,
 				AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
+				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
-				AA486180207F8C1100C43588 /* GameCardModel.swift in Sources */,
+				401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
+				40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */,
 				0F999DF0207B4E2800FF5542 /* OfflineCloud.swift in Sources */,
+				4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */,
+				4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */,
+				40AAF69620825714008A45A7 /* ExcerciseCollectionViewCell.swift in Sources */,
+				40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */,
+				40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */,
 				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
+				0FEFB4E6208499B60065A460 /* TKSubjectController.swift in Sources */,
+				0FAB966F2085E38A00FE7F76 /* TKGenericCloudController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
