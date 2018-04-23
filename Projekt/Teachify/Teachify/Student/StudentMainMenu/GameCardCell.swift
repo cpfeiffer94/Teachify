@@ -14,9 +14,22 @@ class GameCardCell: UICollectionViewCell {
     
     @IBOutlet weak var view: CardHighlight!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        card.delegate = self
+    }
+    
+}
+
+extension GameCardCell: CardDelegate {
+    
+    func cardDidTapInside(card: Card) {
+        print("i got Tapped 1")
+    }
+    
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
-        
-        card.buttonText = "HEY!"
-    } 
+        print("i got Tapped 2")
+        NotificationCenter.default.post(name: .startGame , object: nil)
+    }
     
 }
