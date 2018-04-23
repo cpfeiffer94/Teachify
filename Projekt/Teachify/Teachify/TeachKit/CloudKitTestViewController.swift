@@ -14,6 +14,7 @@ class CloudKitTestViewController: UIViewController {
     var teacherCtrl = TKTeacherController()
     var subjectCtrl = TKSubjectController()
     var documentCtrl = TKDocumentController()
+    var exerciseCtrl = TKExerciseController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,78 +24,56 @@ class CloudKitTestViewController: UIViewController {
 
     @IBAction func doSomethingAction(_ sender: UIButton) {
         
-        // CREATE SUBJECT
-//        let subject = TKSubject(name: "Englisch", color: .red)
-//        classCtrl.fetchClasses { (fetchedClasses, error) in
-//            for fetchedClasse in fetchedClasses {
-//                if fetchedClasse.name == "9a" {
-//                    self.subjectCtrl.add(subject: subject, toTKClass: fetchedClasse, completion: { (updatedSubject, error) in
-//                        print("error: \(error) -- \(updatedSubject)")
-//                    })
-//                }
-//            }
-//        }
-        
-        // FETCH SUBJECTS
-//        classCtrl.fetchClasses { (fetchedClasses, error) in
-//            for fetchedClasse in fetchedClasses {
-//                self.subjectCtrl.fetchSubject(forClass: fetchedClasse, completion: { (fetchedSubjects, error) in
-//                    for subject in fetchedSubjects {
-//                        print("\(fetchedClasse.name) --- \(subject.name) - \(subject.color)")
-//                    }
+        exerciseCtrl.fetchExercises { (fetchedExercises, error) in
+            print("error: \(error) - \(fetchedExercises.count)")
+            
+            for var exercise in fetchedExercises {
+                exercise.name = "Aufgabe XXX"
+                exercise.deadline = Date()
+                
+//                self.exerciseCtrl.update(exercise: exercise, completion: { (updatedExercise, error) in
+//                    print("error: \(error) - \(updatedExercise?.name)")
 //                })
-//            }
-//        }
-        
-        //Create Documents
-        
-        let doc = TKDocument(name: "IfSätze", deadline: Date())
-        subjectCtrl.fetchSubject(forClass: nil) { (fetchedSubjects, error) in
-            for fetchedSubject in fetchedSubjects {
-                if fetchedSubject.name == "Deutsch" {
-                    self.documentCtrl.add(document: doc, toSubject: fetchedSubject, completion: { (addedDoc, error) in
-                        print("Subject \(fetchedSubject.name) Doc \(addedDoc?.name) -- error: \(error)")
-                    })
-                }
+                self.exerciseCtrl.delete(exercise: exercise, completion: { (error) in
+                    print("Error: \(error)")
+                })
             }
         }
+    }
+    
+    func createExercise() {
+        let exercise = TKExercise(name: "Aufgabe 120", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
         
-//        classCtrl.fetchClasses { (classes, error) in
-//            for c in classes {
-//                self.teacherCtrl.fetchStudents(forTKClass: c) { (students, error) in
-//                    for student in students {
-//                        print("Klasse: \(c.name) ---- \(student.firstname)")
-//                    }
-//                }
-//            }
-//        }
-        
-//        classCtrl.fetchClasses { (fetchedClasses, error) in
-//            for c in fetchedClasses {
-//                self.subjectCtrl.fetchSubject(forClass: c, completion: { (fetchedSubjects, error) in
-//                    print(fetchedSubjects)
-//                    for var subj in fetchedSubjects {
-//                        if subj.name == "Englisch" {
-//                            subj.name = "Deutsch"
-//                            self.subjectCtrl.update(subject: subj, completion: { (updatedSubject, error) in
-//                                print("Worked")
-//                            })
-//                        }
-//                    }
-//                })
-//            }
-//        }
-        
-        
-//        teacherCtrl.fetchStudents(forTKClass: nil) { (students, error) in
-//
-//            for student in students {
-//                print("\(student.firstname)")
-//            }
-//        }
-        
-        
-        
+        classCtrl.fetchClasses { (fetchedClasses, error) in
+            
+            for fetchedClass in fetchedClasses {
+                if fetchedClass.name == "9a" {
+                    
+                    self.subjectCtrl.fetchSubject(forClass: fetchedClass, withFetchSortOptions: [], completion: { (fetchedSubjects, error) in
+                        for subject in fetchedSubjects {
+                            
+                            if subject.name == "Deutsch" {
+                                
+                                self.documentCtrl.fetchDocuments(forSubject: subject, completion: { (fetchedDocuments, error) in
+                                    for document in fetchedDocuments {
+                                        if document.name == "If-Sätze" {
+                                            
+                                            self.exerciseCtrl.create(exercise: exercise, toDocument: document, completion: { (createdExercise, error) in
+                                                print("error: \(error) -- \(createdExercise?.name)")
+                                            })
+                                            
+                                        }
+                                    }
+                                })
+                                
+                            }
+                        }
+                    })
+                    
+                }
+            }
+            
+        }
     }
     
 }

@@ -44,15 +44,6 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         cell.view.addSubview(cell.card)
         return cell
     }
-    
-
-    func startGame(_ collectionView: UICollectionView){
-        let storyboard = UIStoryboard(name: StudentStoryboardID.class, bundle: nil)
-        let StudentMainMenuVCtrl = storyboard.instantiateViewController(withIdentifier: StudentStoryboardID.StudentMainMenuID)
-        var tlc = collectionView.window?.rootViewController as! UIViewController
-        tlc = UIWindow.getVisibleViewControllerFrom(vc: tlc)
-        tlc.present(StudentMainMenuVCtrl, animated: true)
-        }
 }
 
 extension UIWindow {

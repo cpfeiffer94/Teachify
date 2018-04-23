@@ -44,12 +44,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKa-VH-uii">
+                                <rect key="frame" x="0.0" y="617" width="375" height="30"/>
+                                <state key="normal" title="Lasst den Button oder es klatscht 👋"/>
+                                <connections>
+                                    <segue destination="j4h-Hl-NbV" kind="show" id="aEU-h8-EVS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xpb-mP-pKH" firstAttribute="top" secondItem="o76-K1-Gop" secondAttribute="top" constant="40" id="5Ri-aG-t7t"/>
                             <constraint firstItem="o76-K1-Gop" firstAttribute="trailing" secondItem="RN9-NT-G5D" secondAttribute="trailing" constant="16" id="70t-Mf-erx"/>
+                            <constraint firstItem="o76-K1-Gop" firstAttribute="trailing" secondItem="hKa-VH-uii" secondAttribute="trailing" id="HWt-Zy-GTn"/>
                             <constraint firstItem="1KO-qz-N2g" firstAttribute="centerY" secondItem="Bop-wQ-DfY" secondAttribute="centerY" id="Uj2-vJ-ADF"/>
+                            <constraint firstItem="hKa-VH-uii" firstAttribute="leading" secondItem="o76-K1-Gop" secondAttribute="leading" id="Vbg-Kc-IvB"/>
+                            <constraint firstItem="o76-K1-Gop" firstAttribute="bottom" secondItem="hKa-VH-uii" secondAttribute="bottom" constant="20" id="a4e-Xc-GPr"/>
                             <constraint firstItem="1KO-qz-N2g" firstAttribute="leading" secondItem="o76-K1-Gop" secondAttribute="leading" constant="16" id="cYQ-3q-xxn"/>
                             <constraint firstItem="RN9-NT-G5D" firstAttribute="centerY" secondItem="Bop-wQ-DfY" secondAttribute="centerY" id="ePl-Iu-nL6"/>
                             <constraint firstItem="xpb-mP-pKH" firstAttribute="centerX" secondItem="Bop-wQ-DfY" secondAttribute="centerX" id="flW-kX-BrV"/>
@@ -59,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FD3-Gd-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="833"/>
+            <point key="canvasLocation" x="352.80000000000001" y="832.53373313343332"/>
         </scene>
         <!--TeacherStoryboard-->
         <scene sceneID="JQW-0e-gXy">
@@ -68,6 +78,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgi-Lo-5pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128" y="551"/>
+        </scene>
+        <!--Cloud Kit Test View Controller-->
+        <scene sceneID="Jyi-ek-5Ks">
+            <objects>
+                <viewController id="j4h-Hl-NbV" customClass="CloudKitTestViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5P8-b0-qoc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VI-c7-8Rd">
+                                <rect key="frame" x="150" y="298" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="doSomethingAction:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="A8O-t9-jwF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bitte diesen ViewController nicht wieder löschen.. wir brauchen den zum Testen (Schnittstelle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwj-WB-zvu">
+                                <rect key="frame" x="16" y="70" width="343" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sGF-G3-70A"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esK-8T-JD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353" y="1654"/>
         </scene>
     </scenes>
 </document>

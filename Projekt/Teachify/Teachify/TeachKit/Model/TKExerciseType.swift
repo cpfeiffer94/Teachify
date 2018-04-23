@@ -13,7 +13,20 @@ enum TKExerciseType {
     
     var name: String {
         switch self {
+        case .wordTranslation: return "Word Translation"
+        }
+    }
+    
+    var tkCloudKey: String {
+        switch self {
         case .wordTranslation: return "wordTranslation"
+        }
+    }
+    
+    init?(tkCloudKey: String) {
+        switch tkCloudKey {
+        case "wordTranslation": self = .wordTranslation
+        default: return nil
         }
     }
     
