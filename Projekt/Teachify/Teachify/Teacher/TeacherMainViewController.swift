@@ -28,7 +28,6 @@ class TeacherMainViewController: UIViewController {
         titleView.font = UIFont.systemFont(ofSize: 48)
         navigationItem.titleView = titleView
         navigationItem.prompt = " "
-        print(navigationController?.navigationBar.barTintColor)
         navigationController?.navigationBar.barTintColor = .barBlue
 
     
@@ -52,6 +51,10 @@ class TeacherMainViewController: UIViewController {
         
         excerciseCollectionView.dataSource = excerciseDataSource
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = .barBlue
     }
     
     override func viewDidAppear(_ animated: Bool) {

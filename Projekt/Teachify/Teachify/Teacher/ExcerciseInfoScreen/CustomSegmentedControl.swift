@@ -48,7 +48,7 @@ import UIKit
     private func setup(){
         backgroundColor = .teacherLightBlue
         
-        self.dataSource = self
+        //self.dataSource = self
         self.delegate = self
         self.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
