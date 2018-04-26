@@ -53,7 +53,8 @@ class BasicScene: SKScene{
         score = 3
         scoreLabel = SKLabelNode(text: String(score))
         scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
-        scoreLabel.fontSize = 50
+        scoreLabel.fontSize = 60
+        scoreLabel.fontName = "AvenirNext-Bold"
         addChild(scoreLabel)
         
         
@@ -92,10 +93,10 @@ class BasicScene: SKScene{
                 labels.removeFirst()
                 question.removeFirst()
                 item.removeFromParent()
-                lose()
+                wrongAnswer()
             }
             else{
-                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 0.95)
+                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 1.0)
                 item.run(moveDown)
             }
         }
@@ -111,6 +112,7 @@ class BasicScene: SKScene{
         }
     }
     func buttonCallback2() -> Void{
+        
         if gameBtn1.label.text == String(correctAnswer[0]){
             rightAnswer()
         }
@@ -119,6 +121,7 @@ class BasicScene: SKScene{
         }
     }
     func buttonCallback3() -> Void{
+        
         if gameBtn2.label.text == String(correctAnswer[0]){
             rightAnswer()
         }
@@ -129,8 +132,15 @@ class BasicScene: SKScene{
     }
     
     func rightAnswer(){
+        
         if(labels.count > 0){
-            let action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! - self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
+            let number = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+            var action: SKAction
+            if number > 0.5{
+                action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! - self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
+            }else{
+                action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! + self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
+            }
             let destroyedLabel = labels.first
             labels.first?.run(action){
                 destroyedLabel?.removeFromParent()
@@ -150,6 +160,7 @@ class BasicScene: SKScene{
     }
     
     func wrongAnswer(){
+        
         score = score - 1
         if score <= 0{
             lose()
@@ -163,6 +174,7 @@ class BasicScene: SKScene{
                     let label = SKLabelNode(text: question[labels.count])
                     label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
                     label.fontSize = 40
+                    label.fontName = "AvenirNext-Bold"
                     addChild(label)
                     labels.append(label)
                 }
@@ -175,19 +187,30 @@ class BasicScene: SKScene{
     
     func generateButtons(answers: [Int]){
         
+       
+        
+        if gameBtn != nil{
+            gameBtn.removeFromParent()
+        }
         //### 1 ###
-        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback1,text: String(answers[0]), fontColor: UIColor.white)
+        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback1,text: String(answers[0]), fontColor: UIColor.white)
         gameBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 15)
         gameBtn.isUserInteractionEnabled = true
         
+        if gameBtn1 != nil{
+            gameBtn1.removeFromParent()
+        }
         //### 2 ###
-        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback2,text: String(answers[1]), fontColor: UIColor.white)
-        gameBtn1.position = CGPoint(x: self.frame.width / 2 + 200, y: self.frame.height / 15)
+        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback2,text: String(answers[1]), fontColor: UIColor.white)
+        gameBtn1.position = CGPoint(x: self.frame.width / 2 + 250, y: self.frame.height / 15)
         gameBtn1.isUserInteractionEnabled = true
         
+        if gameBtn2 != nil{
+            gameBtn2.removeFromParent()
+        }
         //### 3 ###
-        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 150, height: 50), action: buttonCallback3,text: String(answers[2]), fontColor: UIColor.white)
-        gameBtn2.position = CGPoint(x: self.frame.width / 2 - 200, y: self.frame.height / 15)
+        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback3,text: String(answers[2]), fontColor: UIColor.white)
+        gameBtn2.position = CGPoint(x: self.frame.width / 2 - 250, y: self.frame.height / 15)
         gameBtn2.isUserInteractionEnabled = true
         
         addChild(gameBtn)
