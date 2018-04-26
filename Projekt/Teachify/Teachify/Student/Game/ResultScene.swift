@@ -17,7 +17,7 @@ class ResultScene: SKScene{
     var score: SKLabelNode!
     
     override func didMove(to view: SKView) {
-        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 200, height: 50), action: playAgain,text: text, fontColor: UIColor.black)
+        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75), action: playAgain,text: text, fontColor: UIColor.black)
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
         if winner{
@@ -28,6 +28,8 @@ class ResultScene: SKScene{
 
         }
         score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 2)
+        score.fontName = "AvenirNext-Bold"
+        score.fontSize = 45
         addChild(score)
         addChild(playButton)
     }
