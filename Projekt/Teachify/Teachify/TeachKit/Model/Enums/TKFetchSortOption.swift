@@ -11,4 +11,15 @@ import Foundation
 enum TKFetchSortOption {
     case creationDate
     case name
+    case firstname
+    case lastname
+    
+    var sortDescriptor: NSSortDescriptor {
+        switch self {
+        case .creationDate: return NSSortDescriptor(key: "creationDate", ascending: true)
+        case .name: return NSSortDescriptor(key: "name", ascending: true)
+        case .firstname: return NSSortDescriptor(key: "firstname", ascending: true)
+        case .lastname: return NSSortDescriptor(key: "lastname", ascending: true)
+        }
+    }
 }

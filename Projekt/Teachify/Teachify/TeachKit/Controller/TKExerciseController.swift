@@ -24,7 +24,7 @@ struct TKExerciseController {
             predicate = NSPredicate(format: "%K == %@", TKExercise.CloudKey.referenceToDocument, CKReference(record: classRecord, action: CKReferenceAction.none))
         }
         
-        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.exercises, predicate: predicate) { (fetchedDocuments, error) in
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.exercises, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
             completion(fetchedDocuments, error)
         }
     }

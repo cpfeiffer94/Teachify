@@ -13,17 +13,17 @@ import CloudKit
 struct TKUser {
     var firstname: String? {
         didSet {
-            record[CloudKey.firstname] = firstname as CKRecordValue?
+            record?[CloudKey.firstname] = firstname as CKRecordValue?
         }
     }
     var lastname: String? {
         didSet {
-            record[CloudKey.lastname] = lastname as CKRecordValue?
+            record?[CloudKey.lastname] = lastname as CKRecordValue?
         }
     }
     var image: UIImage? {
         didSet {
-            if let image = image {
+            if let record = record, let image = image {
                 let fileURL = saveImageToFile(image, withFileName: record.recordID.recordName)
                 let asset = CKAsset(fileURL: fileURL)
                 record[CloudKey.image] = asset
@@ -32,15 +32,20 @@ struct TKUser {
     }
     var email: String? {
         didSet {
-            record[CloudKey.email] = email as CKRecordValue?
+            record?[CloudKey.email] = email as CKRecordValue?
         }
     }
-    private(set) var recordID: CKRecordID
-    private(set) var record: CKRecord
     
-    init(record: CKRecord) {
+    var record: CKRecord?
+    
+    
+    // MARK: - Initializer
+    init?(record: CKRecord) {
+        self.firstname = record[CloudKey.firstname] as? String
+        self.lastname = record[CloudKey.lastname] as? String
+        self.email = record[CloudKey.email] as? String
+        
         self.record = record
-        self.recordID = record.recordID
     }
     
     struct CloudKey {
@@ -50,7 +55,7 @@ struct TKUser {
         static let email = "email"
     }
     
-    func saveImageToFile(_ image: UIImage, withFileName fileName: String) -> URL {
+    private func saveImageToFile(_ image: UIImage, withFileName fileName: String) -> URL {
         let fileManager = FileManager.default
         let dirPaths = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = dirPaths[0].appendingPathComponent("\(fileName).jpg")
@@ -60,25 +65,25 @@ struct TKUser {
         return fileURL
     }
 }
-
-extension TKUser {
-    init?(ofRecord record: CKRecord?) {
-        guard let record = record else { return nil }
-        
-        var user = TKUser(record: record)
-        
-        user.firstname = record[CloudKey.firstname] as? String
-        user.lastname = record[CloudKey.lastname] as? String
-        user.image = record[CloudKey.image] as? UIImage
-        if let imageAsset = record[CloudKey.image] as? CKAsset {
-            let imageAssetPath = imageAsset.fileURL.path
-            let image = UIImage(contentsOfFile: imageAssetPath)
-            user.image = image
-        }
-        user.email = record[CloudKey.email] as? String
-        user.recordID = record.recordID
-        user.record = record
-        
-        self = user
-    }
-}
+//
+//extension TKUser {
+//    init?(ofRecord record: CKRecord?) {
+//        guard let record = record else { return nil }
+//        
+//        var user = TKUser(record: record)
+//        
+//        user.firstname = record[CloudKey.firstname] as? String
+//        user.lastname = record[CloudKey.lastname] as? String
+//        user.image = record[CloudKey.image] as? UIImage
+//        if let imageAsset = record[CloudKey.image] as? CKAsset {
+//            let imageAssetPath = imageAsset.fileURL.path
+//            let image = UIImage(contentsOfFile: imageAssetPath)
+//            user.image = image
+//        }
+//        user.email = record[CloudKey.email] as? String
+//        user.recordID = record.recordID
+//        user.record = record
+//        
+//        self = user
+//    }
+//}

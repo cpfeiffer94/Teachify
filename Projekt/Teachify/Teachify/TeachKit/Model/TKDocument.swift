@@ -15,7 +15,9 @@ struct TKDocument: TKCloudObject {
             record?[CloudKey.name] = name as CKRecordValue
         }
     }
-    var creationDate: Date?
+    var creationDate: Date? {
+        return record?.creationDate
+    }
     //var exerciseIDs: [String]
     var deadline: Date? {
         didSet {

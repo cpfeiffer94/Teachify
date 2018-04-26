@@ -15,7 +15,9 @@ struct TKExercise: TKCloudObject {
             record?[CloudKey.name] = name as CKRecordValue
         }
     }
-    var creationDate: Date?
+    var creationDate: Date? {
+        return record?.creationDate
+    }
     var type: TKExerciseType {
         didSet {
             record?[CloudKey.type] = type.tkCloudKey as CKRecordValue

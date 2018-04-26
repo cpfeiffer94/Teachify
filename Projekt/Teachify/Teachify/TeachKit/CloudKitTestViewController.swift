@@ -24,21 +24,26 @@ class CloudKitTestViewController: UIViewController {
 
     @IBAction func doSomethingAction(_ sender: UIButton) {
         
-        exerciseCtrl.fetchExercises { (fetchedExercises, error) in
-            print("error: \(error) - \(fetchedExercises.count)")
-            
-            for var exercise in fetchedExercises {
-                exercise.name = "Aufgabe XXX"
-                exercise.deadline = Date()
-                
-//                self.exerciseCtrl.update(exercise: exercise, completion: { (updatedExercise, error) in
-//                    print("error: \(error) - \(updatedExercise?.name)")
-//                })
-                self.exerciseCtrl.delete(exercise: exercise, completion: { (error) in
-                    print("Error: \(error)")
-                })
+        classCtrl.fetchClasses(withFetchSortOptions: [.name]) { (fetchedClasses, error) in
+            print("error: \(error)")
+            for fetchedClass in fetchedClasses {
+                print(fetchedClass.name)
             }
         }
+        
+        
+        exerciseCtrl.fetchExercises(forDocument: nil, withFetchSortOptions: [TKFetchSortOption.name]) { (exercises, error) in
+            if error == nil {
+                for exercise in exercises {
+                    exercise.data
+                }
+            }
+        }
+        
+        
+        let ex = TKExercise(name: "Aufgabe 1a)", deadline: nil, type: .wordTranslation, data: "json")
+        
+        
     }
     
     func createExercise() {
