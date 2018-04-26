@@ -24,7 +24,7 @@ struct TKSubjectController {
             predicate = NSPredicate(format: "%K == %@", TKSubject.CloudKey.referenceToClass, CKReference(record: classRecord, action: CKReferenceAction.none))
         }
         
-        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.subjectes, predicate: predicate) { (fetchedSubjects, error) in
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.subjectes, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedSubjects, error) in
             completion(fetchedSubjects, error)
         }
     }

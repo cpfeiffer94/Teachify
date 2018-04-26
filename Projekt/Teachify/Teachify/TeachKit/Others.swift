@@ -84,3 +84,88 @@ enum TKShareOption {
     case removeParticipant
 }
 
+
+struct TKSolution: TKCloudObject {
+    var creationDate: Date?
+    var status: TKSolutionStatus
+    var userSolution: String
+    
+    var record: CKRecord?
+    
+    
+    // MARK: - Initializer
+    init(userSolution: String, status: TKSolutionStatus) {
+        self.userSolution = userSolution
+        self.status = status
+    }
+    
+    init?(record: CKRecord) {
+        guard let userSolution = record[CloudKey.userSolution] as? String,
+            let statusCloudKey = record[CloudKey.status] as? String,
+            let status = TKSolutionStatus(tkCloudKey: statusCloudKey) else {
+                return nil
+        }
+        
+        self.userSolution = userSolution
+        self.status = status
+        self.record = record
+    }
+    
+    
+    // MARK: Keys
+    struct CloudKey {
+        private init() {}
+        static let status = "status"
+        static let userSolution = "userSolution"
+        
+        static let referenceToExercise = "exercise"
+    }
+}
+
+
+enum TKSolutionStatus {
+    case correct
+    case wrong
+    case unreviewed
+    
+    init?(tkCloudKey: String) {
+        switch tkCloudKey {
+        case "correct": self = .correct
+        case "wrong": self = .wrong
+        case "unreviewed": self = .unreviewed
+        default: return nil
+        }
+    }
+    
+    var tkCloudKey: String {
+        switch self {
+        case .correct: return "correct"
+        case .wrong: return "wrong"
+        case .unreviewed: return "unreviewed"
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

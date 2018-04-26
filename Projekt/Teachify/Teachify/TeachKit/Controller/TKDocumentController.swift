@@ -15,17 +15,16 @@ struct TKDocumentController {
 
     // MARK: - Document Operations
     // ✅
-    func fetchDocuments(forSubject subject: TKSubject,
+    func fetchDocuments(forSubject subject: TKSubject? = nil,
                         withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
                         completion: @escaping ([TKDocument], TKError?) -> ()) {
         
-        guard let record = subject.record else {
-            completion([], TKError.dooooImplement)
-            return
+        var predicate = NSPredicate(format: "TRUEPREDICATE")
+        if let classRecord = subject?.record {
+            predicate = NSPredicate(format: "%K == %@", TKDocument.CloudKey.referenceToSubject, CKReference(record: classRecord, action: CKReferenceAction.none))
         }
         
-        let predicate = NSPredicate(format: "%K == %@", TKDocument.CloudKey.referenceToSubject, CKReference(record: record, action: CKReferenceAction.none))
-        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.documents, predicate: predicate) { (fetchedDocuments, error) in
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.documents, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
             completion(fetchedDocuments, error)
         }
     }

@@ -37,5 +37,14 @@ class StudentMainMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(launchGame), name: .startGame, object: nil)
+    }
+    
+    @objc func launchGame(){
+        let gameVC = GameViewController()
+        self.present(gameVC,animated: true)
+    }
+    
     
 }

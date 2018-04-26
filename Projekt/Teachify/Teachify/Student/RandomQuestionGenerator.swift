@@ -21,7 +21,7 @@ class RandomQuestionGenerator {
             let num1 : Int = Int(arc4random_uniform(10)+1)
             
             let leftSide : [String] = [String(num0), "+", String(num1)]
-            let rightSide : [String] = ["X"]
+            let rightSide : [String] = ["?"]
             let correctAnswer : Int = num0 + num1
             
             var allAnswers : [Int] = [num0 + num1 + 2, num0 + num1 - 2]

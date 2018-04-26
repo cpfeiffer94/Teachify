@@ -15,14 +15,17 @@ struct TKSubject: TKCloudObject {
             record?[CloudKey.name] = name as CKRecordValue
         }
     }
-    var creationDate: Date?
+    var creationDate: Date? {
+        return record?.creationDate
+    }
     var color: TKColor {
         didSet {
             record?[CloudKey.color] = color.tkCloudKey as CKRecordValue
         }
     }
-    var participants: [TKUser] = []
-    var documentIDs: [String] = []
+    // ✅ TODO: wird von Schnittstellenteam noch bearbeitet
+//    var participants: [TKUser] = []
+//    var documentIDs: [String] = []
     
     var record: CKRecord?
     

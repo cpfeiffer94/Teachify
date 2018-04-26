@@ -10,10 +10,24 @@ import Foundation
 import CloudKit
 
 struct TKDocument: TKCloudObject {
-    var name: String
-    var creationDate: Date?
+    var name: String {
+        didSet {
+            record?[CloudKey.name] = name as CKRecordValue
+        }
+    }
+    var creationDate: Date? {
+        return record?.creationDate
+    }
     //var exerciseIDs: [String]
-    var deadline: Date?
+    var deadline: Date? {
+        didSet {
+            if let deadline = deadline {
+                record?[CloudKey.deadline] = deadline as CKRecordValue
+            } else {
+                record?[CloudKey.deadline] = nil
+            }
+        }
+    }
     
     var record: CKRecord?
     
