@@ -9,7 +9,9 @@
 import Foundation
 import SpriteKit
 
-class ResultScene: SKScene{
+class ResultScene: SKScene, BasicButtonDelegate{
+    
+    
     
     var playButton: BasicButton!
     var text = "Play again"
@@ -17,7 +19,8 @@ class ResultScene: SKScene{
     var score: SKLabelNode!
     
     override func didMove(to view: SKView) {
-        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75), action: playAgain,text: text, fontColor: UIColor.black)
+        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),text: text, fontColor: UIColor.black)
+        playButton.delegate = self
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
         if winner{
@@ -34,10 +37,13 @@ class ResultScene: SKScene{
         addChild(playButton)
     }
     
-    func playAgain() -> Void{
-        let basic = BasicScene(size: self.size)
-        let transition = SKTransition.flipVertical(withDuration: 1.0)
-        self.scene!.view?.presentScene(basic, transition: transition)
+    func basicButtonPressed(_ button: BasicButton) {
+        if button.label.text == text{
+            let basic = BasicScene(size: self.size)
+            let transition = SKTransition.flipVertical(withDuration: 1.0)
+            self.scene!.view?.presentScene(basic, transition: transition)
+        }
     }
+    
     
 }

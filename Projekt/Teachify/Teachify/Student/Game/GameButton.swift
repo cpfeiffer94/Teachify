@@ -9,19 +9,23 @@
 import Foundation
 import SpriteKit
 
+protocol BasicButtonDelegate: class {
+    func basicButtonPressed(_ button: BasicButton)
+}
+
 class BasicButton: SKSpriteNode{
     
+    weak var delegate: BasicButtonDelegate?
+
+    
     var label: SKLabelNode!
-    var buttonAction: () -> Void
     var leftConstraint: SKConstraint!
     var middleConstraint: SKConstraint!
     var rightConstraint: SKConstraint!
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize,action: @escaping () -> Void, text: String, fontColor: UIColor) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, text: String, fontColor: UIColor) {
         
        
-        
-        buttonAction = action
         super.init(texture: texture, color: color, size: size)
         
         let shape = SKShapeNode()
@@ -45,14 +49,12 @@ class BasicButton: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func changeText(input: String){
-        
-    }
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("moved")
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         let scale = SKAction.scale(to: 0.7, duration: 0.2)
         self.run(scale)
     }
@@ -60,7 +62,7 @@ class BasicButton: SKSpriteNode{
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let scale = SKAction.scale(to: 1, duration: 0.2)
         self.run(scale)
-        buttonAction()
+        delegate?.basicButtonPressed(self)
     }
     
 }

@@ -9,18 +9,20 @@ import Foundation
 import SpriteKit
 
 
-class BasicScene: SKScene{
-    
+class BasicScene: SKScene, BasicButtonDelegate{
+  
     var timer : Timer!
     var timer1: Timer!
+    
     var gameBtn: BasicButton!
     var gameBtn1: BasicButton!
     var gameBtn2: BasicButton!
+    
     let buttonSize = 150
-    var question: [String]! = []
-    var correctAnswer: [Int]! = []
+    var question: [String] = []
+    var correctAnswer: [Int] = []
     var labels: [SKLabelNode] = []
-    var answers: [[Int]]! = []
+    var answers: [[Int]] = []
     var score: Int!{
         didSet{
             if scoreLabel != nil{
@@ -102,35 +104,6 @@ class BasicScene: SKScene{
         }
     }
     
-    func buttonCallback1() -> Void {
-        
-        if gameBtn.label.text == String(correctAnswer[0]){
-            rightAnswer()
-        }
-        else{
-            wrongAnswer()
-        }
-    }
-    func buttonCallback2() -> Void{
-        
-        if gameBtn1.label.text == String(correctAnswer[0]){
-            rightAnswer()
-        }
-        else{
-            wrongAnswer()
-        }
-    }
-    func buttonCallback3() -> Void{
-        
-        if gameBtn2.label.text == String(correctAnswer[0]){
-            rightAnswer()
-        }
-        else{
-            wrongAnswer()
-        }
-        
-    }
-    
     func rightAnswer(){
         
         if(labels.count > 0){
@@ -167,6 +140,15 @@ class BasicScene: SKScene{
         }
     }
     
+    func basicButtonPressed(_ button: BasicButton) {
+        if button.label.text == String(correctAnswer[0]){
+            rightAnswer()
+        }
+        else{
+            wrongAnswer()
+        }
+    }
+    
     @objc func generateQuestion(){
         if labels.count < 5{
             if question.count >= 1{
@@ -193,31 +175,39 @@ class BasicScene: SKScene{
             gameBtn.removeFromParent()
         }
         //### 1 ###
-        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback1,text: String(answers[0]), fontColor: UIColor.white)
+        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[0]), fontColor: UIColor.white)
         gameBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 15)
         gameBtn.isUserInteractionEnabled = true
+        gameBtn.delegate = self
         
         if gameBtn1 != nil{
             gameBtn1.removeFromParent()
         }
         //### 2 ###
-        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback2,text: String(answers[1]), fontColor: UIColor.white)
+        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[1]), fontColor: UIColor.white)
         gameBtn1.position = CGPoint(x: self.frame.width / 2 + 250, y: self.frame.height / 15)
         gameBtn1.isUserInteractionEnabled = true
+        gameBtn1.delegate = self
         
         if gameBtn2 != nil{
             gameBtn2.removeFromParent()
         }
         //### 3 ###
-        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75), action: buttonCallback3,text: String(answers[2]), fontColor: UIColor.white)
+        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[2]), fontColor: UIColor.white)
         gameBtn2.position = CGPoint(x: self.frame.width / 2 - 250, y: self.frame.height / 15)
         gameBtn2.isUserInteractionEnabled = true
+        gameBtn2.delegate = self
         
         addChild(gameBtn)
         addChild(gameBtn1)
         addChild(gameBtn2)
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchesBegan")
+    }
+    
     func win(){
         timer.invalidate()
         timer1.invalidate()
