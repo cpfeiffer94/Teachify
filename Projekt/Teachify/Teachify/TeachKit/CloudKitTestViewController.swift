@@ -15,34 +15,60 @@ class CloudKitTestViewController: UIViewController {
     var subjectCtrl = TKSubjectController()
     var documentCtrl = TKDocumentController()
     var exerciseCtrl = TKExerciseController()
+    var sharingCtrl: TKShareController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        sharingCtrl = TKShareController(view: self.view)
     }
 
     @IBAction func doSomethingAction(_ sender: UIButton) {
         
-        classCtrl.fetchClasses(withFetchSortOptions: [.name]) { (fetchedClasses, error) in
-            print("error: \(error)")
-            for fetchedClass in fetchedClasses {
-                print(fetchedClass.name)
-            }
+//        classCtrl.fetchClasses(withFetchSortOptions: [.name]) { (fetchedClasses, error) in
+//            print("error: \(error)")
+//            for fetchedClass in fetchedClasses {
+//                print(fetchedClass.name)
+//            }
+//        }
+//
+//
+//        exerciseCtrl.fetchExercises(forDocument: nil, withFetchSortOptions: [TKFetchSortOption.name]) { (exercises, error) in
+//            if error == nil {
+//                for exercise in exercises {
+//                    exercise.data
+//                }
+//            }
+//        }
+//
+//
+//        let ex = TKExercise(name: "Aufgabe 1a)", deadline: nil, type: .wordTranslation, data: "json")
+        
+        let mhClass = TKClass(name: "MH Class")
+        let subject = TKSubject(name: "MH Subject 1", color: TKColor.yellow)
+        
+        classCtrl.create(tkClass: mhClass) { (uploadedClass, error) in
+            self.subjectCtrl.add(subject: subject, toTKClass: uploadedClass!, completion: { (uploadedSubject, error) in
+                print("Everything went okay :)")
+            })
         }
         
-        
-        exerciseCtrl.fetchExercises(forDocument: nil, withFetchSortOptions: [TKFetchSortOption.name]) { (exercises, error) in
-            if error == nil {
-                for exercise in exercises {
-                    exercise.data
-                }
-            }
-        }
-        
-        
-        let ex = TKExercise(name: "Aufgabe 1a)", deadline: nil, type: .wordTranslation, data: "json")
-        
+//        subjectCtrl.fetchSubject { (fetchedSubjects, error) in
+//            for subject in fetchedSubjects {
+//                if subject.name == "Deutsch" {
+//                    print("Found \(subject.name)")
+//
+//                    self.sharingCtrl.createCloudSharingController(forSubject: subject, withShareOption: .addParticipant) { sharingVC, error in
+//
+//                        if let sharingVC = sharingVC {
+//                            self.present(sharingVC, animated: true)
+//                        }
+//
+//                    }
+//
+//                }
+//            }
+//        }
         
     }
     

@@ -139,6 +139,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
                     object.record = createdRecord
                     completion(object, nil)
                 } else {
+                    print("error: \(error)")
                     completion(nil, TKError.dooooImplement)
                 }
             }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
+
+// MARK: - TeachKit
+extension AppDelegate {
+    func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
+        let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
+        acceptSharesOperation.perShareCompletionBlock = { metadata, share, error in
+            if error != nil {
+                print("ERROR-AppDelegate-userDidAcceptCloudKitShareWith: \(error?.localizedDescription)")
+            } else {
+                print("Implement - Fetching the share object")
+            }
+        }
+        CKContainer(identifier: cloudKitShareMetadata.containerIdentifier).add(acceptSharesOperation)
+    }
+}
+
+
+
+
+
 
