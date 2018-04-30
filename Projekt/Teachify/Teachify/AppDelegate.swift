@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        //application.statusBarStyle = .lightContent
+        
+        askForUserPushNotifications(application: application)
+        
         return true
     }
 
@@ -45,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-// MARK: - TeachKit
+// MARK: - TeachKit - Share
 extension AppDelegate {
     func application(_ application: UIApplication, userDidAcceptCloudKitShareWith cloudKitShareMetadata: CKShareMetadata) {
         let acceptSharesOperation = CKAcceptSharesOperation(shareMetadatas: [cloudKitShareMetadata])
@@ -53,15 +55,61 @@ extension AppDelegate {
             if error != nil {
                 print("ERROR-AppDelegate-userDidAcceptCloudKitShareWith: \(error?.localizedDescription)")
             } else {
-                print("Implement - Fetching the share object")
+                self.fetchShare(fromMetadata: metadata)
             }
         }
         CKContainer(identifier: cloudKitShareMetadata.containerIdentifier).add(acceptSharesOperation)
     }
+    
+    private func fetchShare(fromMetadata metadata: CKShareMetadata) {
+        let operation = CKFetchRecordsOperation(recordIDs: [metadata.rootRecordID])
+        operation.perRecordCompletionBlock = { record, _, error in
+            if let error = error {
+                print("Fetch error: \(error)")
+                return
+            } else {
+                print("Fetched successfully - \(record)")
+            }
+        }
+        CKContainer.default().sharedCloudDatabase.add(operation)
+    }
 }
 
 
-
+// MARK: - TeachKit - Notifications
+extension AppDelegate {
+    func askForUserPushNotifications(application: UIApplication) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            if granted {
+                print("Push-Request-Success")
+            } else {
+                print("Push-Request-Error")
+            }
+        }
+        
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let userInfo = userInfo as? [String:NSObject] {
+            let notification: CKNotification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+            if notification.notificationType == CKNotificationType.query {
+                let queryNotification = notification as! CKQueryNotification
+                let recordID = queryNotification.recordID
+                print("Record to fetch: \(recordID)")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Registerd Successfully - \(deviceToken)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("\nSomething went wrong... \(error) \n")
+    }
+}
 
 
 

@@ -11,7 +11,7 @@ import CloudKit
 
 // ✅
 struct TKGenericCloudController<T: TKCloudObject> {
-    private let privateDatabase = CKContainer.default().privateCloudDatabase
+    private let privateDatabase = CKContainer.default().sharedCloudDatabase
     
     /**
      Für **create()** notwendig
@@ -133,14 +133,16 @@ struct TKGenericCloudController<T: TKCloudObject> {
     func create(object: T, completion: @escaping (T?, TKError?) -> ()) {
         var object = object
         
-        if let record = CKRecord(cloudObject: object, withRecordZoneID: zone.zoneID) {
-            privateDatabase.save(record) { (createdRecord, error) in
-                if error == nil {
-                    object.record = createdRecord
-                    completion(object, nil)
-                } else {
-                    print("error: \(error)")
-                    completion(nil, TKError.dooooImplement)
+        privateDatabase.save(zone) { (savedZone, error) in
+            if let record = CKRecord(cloudObject: object, withRecordZoneID: self.zone.zoneID) {
+                self.privateDatabase.save(record) { (createdRecord, error) in
+                    if error == nil {
+                        object.record = createdRecord
+                        completion(object, nil)
+                    } else {
+                        print("error: \(error)")
+                        completion(nil, TKError.dooooImplement)
+                    }
                 }
             }
         }
