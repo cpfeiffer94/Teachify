@@ -9,7 +9,7 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
-    let GameCollectionController : GameDownloadController = GameDownloadController()
+    let GameCollectionController : TKFetchController = TKFetchController()
     
     override init(){
         
