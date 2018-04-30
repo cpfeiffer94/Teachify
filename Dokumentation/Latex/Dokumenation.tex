@@ -1,0 +1,123 @@
+\documentclass[
+    DIV12,
+    cleardouble=plain,
+    headings=normal,
+    pdftex,
+    headexclude,footexclude,
+    final
+]{scrreprt}
+
+%\usepackage{spreadtab}
+\usepackage{xspace}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage[bookmarks]{hyperref}
+\usepackage{scrpage2}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{color tbl}
+\usepackage{tabularx}
+\usepackage{multirow} % tabelle
+\usepackage{listings} % code aus datei einbinden
+\usepackage{scrhack}
+\usepackage{comment}
+\usepackage{hyperref}
+% \usepackage{minted} % package for swift
+
+% Swift language definition
+\lstdefinelanguage{swift}
+{
+  morekeywords={
+    func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+    typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,
+    subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+    final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,
+  },
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstset{
+  language=swift,
+  basicstyle=\ttfamily,
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  columns=fixed,
+  keepspaces=true,
+  keywordstyle=\color{keyword},
+  stringstyle=\color{string},
+  commentstyle=\color{comment},
+}
+
+% word wrap with a red arrow
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\graphicspath{{./}{./images/}}
+
+% #################################################################
+
+\hyphenation{Cha-otn-gsch-werl}
+\setlength\headheight{1.75cm}
+
+\ihead{\small{Fortgeschrittene Programmierung unter Swift 3 (FWPM)}}
+\chead{}
+\ohead{\includegraphics[height=0.05\textheight]{fh_logo}}
+\pagestyle{scrheadings}
+
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\renewcommand{\arraystretch}{1}
+
+\parskip0.5\baselineskip plus 0.125\baselineskip minus 0.25\baselineskip
+\parindent0em
+
+%\automark[section]{chapter}
+
+\titlehead{\begin{center}\includegraphics[width=5cm]{fh_logo}\end{center}}
+ \title{
+  Weiterentwicklung der iOS Stundenplan App der Hochschule Hof \\[1em]
+  Dokumentation, Spezifikation, Konstruktion
+}
+
+
+\author{Angelina Scheler, Bastian Kusserow, Christian Pfeiffer, Christian Pöhlmann, \\Johannes Franz, Marcel Hagmann, Maxi Sonntag, Normen Krug,\\Patrick Niepel,
+Phillipp Dümleim, Phillipp Knoblauch}
+
+\date{26.01.2018\\ Vorgelegt bei Prof. Dr.  Sven Rill} %##Abgabedatum einfügen
+
+
+\begin{document}
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+
+%\listoftables
+
+\newpage
+\pagenumbering{arabic}
+
+%hier die einzelnen Punkte einfügen
+\include{content/exampleHeading}
+%usw. ...
+
+
+\listoffigures
+
+\end{document}
