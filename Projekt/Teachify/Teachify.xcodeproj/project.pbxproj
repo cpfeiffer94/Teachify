@@ -297,11 +297,8 @@
 		0FBA79332085F80400D20807 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				D4DE8D052099EA6A005C2A33 /* PianoGame */,
 				D4D3CF6C20888EE900D0692D /* FollowTheOrder */,
-				AA8229F020888C550018AB0E /* BasicScene.swift */,
-				AA8229F320888C560018AB0E /* GameButton.swift */,
-				AA8229F220888C560018AB0E /* GameViewController.swift */,
-				AA8229F120888C560018AB0E /* ResultScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -508,6 +505,17 @@
 			);
 			name = FollowTheOrder;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		D4DE8D052099EA6A005C2A33 /* PianoGame */ = {
+			isa = PBXGroup;
+			children = (
+				AA8229F120888C560018AB0E /* ResultScene.swift */,
+				AA8229F220888C560018AB0E /* GameViewController.swift */,
+				AA8229F320888C560018AB0E /* GameButton.swift */,
+				AA8229F020888C550018AB0E /* BasicScene.swift */,
+			);
+			path = PianoGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
