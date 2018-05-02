@@ -32,6 +32,7 @@
 		0FEFB4E82084A86B0065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FEFB4ED2084A8E50065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FEFB4EF2084A9000065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
 		401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401422F520863A03009EF8D9 /* SegmentCell.swift */; };
 		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
 		4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */; };
@@ -131,6 +132,7 @@
 		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
 		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
+		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		401422F520863A03009EF8D9 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMainViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		17FA67A22091F8BD009BC753 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17FA67A32091F90D009BC753 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +498,7 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				17FA67A22091F8BD009BC753 /* Profile */,
 				404CDA8B20862380001FEA15 /* ExcerciseInfoScreen */,
 				40AAF694208256EC008A45A7 /* ExcerciseCollectionView */,
 				40AAF68920824E27008A45A7 /* CustomViews */,
@@ -768,6 +779,7 @@
 				AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */,
 				AA8229F520888C560018AB0E /* ResultScene.swift in Sources */,
 				D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */,
+				17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
 				40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */,
 				404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */,
