@@ -22,7 +22,7 @@ class TKModelSingleton {
 
 
 class TKFetchController: NSObject {
-    fileprivate var model = TKModelSingleton.sharedInstance
+    fileprivate var gameCardModel = TKModelSingleton.sharedInstance
     let TKExerciseCtrl : TKExerciseController = TKExerciseController()
     let TKDocumentCtrl : TKDocumentController = TKDocumentController()
     let TKSubjectCtrl : TKSubjectController = TKSubjectController()
@@ -30,32 +30,41 @@ class TKFetchController: NSObject {
     
     
     func fetchDatabase() {
-        model.downloadedClasses = []
-        model.downloadedSubjects = []
-        model.downloadedDocuments = []
-        model.downloadedExercises = []
+        gameCardModel.downloadedClasses = []
+        gameCardModel.downloadedSubjects = []
+        gameCardModel.downloadedDocuments = []
+        gameCardModel.downloadedExercises = []
         
         fetchClassesFromTK()
     }
     
-    @objc func debugPrintAfterFetch () {
-        for myclass in model.downloadedClasses {
+    func updateGamesList() {
+        gameCardModel.data = []
+        for mydocuments in gameCardModel.downloadedDocuments {
+            for document in mydocuments {
+                gameCardModel.data.append(GameInformationItem(name: document.name, typ: "Kristallmathe", deadline: document.deadline, subject: "Mathematik", tries: 3))
+            }
+        }
+    }
+    
+    func debugPrintAfterFetch () {
+        for myclass in gameCardModel.downloadedClasses {
             print("Downloaded Class:" + myclass.name)
         }
         
-        for mysubjects in model.downloadedSubjects {
+        for mysubjects in gameCardModel.downloadedSubjects {
             for subject in mysubjects{
                 print("Downloaded Subject:" + subject.name)
             }
         }
         
-        for mydocuments in model.downloadedDocuments {
+        for mydocuments in gameCardModel.downloadedDocuments {
             for document in mydocuments {
                 print("Downloaded Document:" + document.name)
             }
         }
         
-        for myexercises in model.downloadedExercises {
+        for myexercises in gameCardModel.downloadedExercises {
             for exercies in myexercises {
                 print("Downloaded Exercise: " + exercies.name)
             }
@@ -70,7 +79,7 @@ class TKFetchController: NSObject {
                 print("Failed fetching Classes from TK!" + error.debugDescription)
             }
             else {
-                self.model.downloadedClasses = fetchedClasses
+                self.gameCardModel.downloadedClasses = fetchedClasses
                 for myclass in fetchedClasses {
                     self.fetchSubjectsForClassFromTK(mytkclass: myclass)
                 }
@@ -85,7 +94,7 @@ class TKFetchController: NSObject {
                 print("Failed fetching Subject from TK! class:" + mytkclass.recordTypeID! + "with Error Message: " + error.debugDescription)
             }
             else {
-                self.model.downloadedSubjects.append(fetchedSubjects)
+                self.gameCardModel.downloadedSubjects.append(fetchedSubjects)
                 for mysubject in fetchedSubjects{
                     self.fetchDocumentsForSubjectFromTK(mytksubject: mysubject)
                     }
@@ -100,7 +109,7 @@ class TKFetchController: NSObject {
                 print("Failed fetching Documents from TK! Subjects:" + mytksubject.name + "with Error Message: " + error.debugDescription)
             }
             else {
-                self.model.downloadedDocuments.append(fetchedDocuments)
+                self.gameCardModel.downloadedDocuments.append(fetchedDocuments)
                 for mydocument in fetchedDocuments{
                     self.fetchExercisesForDocumentFromTK(mytkdocument: mydocument)
                 }
@@ -115,29 +124,31 @@ class TKFetchController: NSObject {
                 print("Failed fetching Exercises from TK! Subjects:" + mytkdocument.name + "with Error Message: " + error.debugDescription)
             }
             else {
-                self.model.downloadedExercises.append(fetchedExercises)
+                self.gameCardModel.downloadedExercises.append(fetchedExercises)
                 print("Fetched Exercises from TK sucessfully")
                 self.debugPrintAfterFetch()
             }
         }
     }
     
-    func addGame(name : String, typ : String, deadline : Date?, subject : String, description : String, difficulty : String) {
-        let tempGameInformation = GameInformationItem(name: name, typ: typ, deadline: deadline, subject: subject, description: description, difficulty: difficulty)
+    func addGame(name : String, typ : String, deadline : Date?, subject : String, tries : Int) {
+        let tempGameInformation = GameInformationItem(name: name, typ: typ, deadline: deadline, subject: subject, tries: tries)
         
-        model.data.append(tempGameInformation)
+        gameCardModel.data.append(tempGameInformation)
+        
+        NotificationCenter.default.post(name: .reloadGameCards , object: nil)
     }
     
     func resetGames(){
-        model.data = []
+        gameCardModel.data = []
     }
     
     func getGamesLength() -> Int {
-        return model.data.count
+        return gameCardModel.data.count
     }
     
     func getGame(forIndex : Int) -> GameInformationItem {
-        return model.data[forIndex]
+        return gameCardModel.data[forIndex]
     }
     
     
