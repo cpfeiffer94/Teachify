@@ -34,7 +34,6 @@
 		0FEFB4ED2084A8E50065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FEFB4EF2084A9000065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
-		401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401422F520863A03009EF8D9 /* SegmentCell.swift */; };
 		402183042091E18000DF772D /* CustomSegmentedControlDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */; };
 		402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */; };
 		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
@@ -45,6 +44,8 @@
 		404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */; };
 		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
 		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
+		40A773CE209B3CF30030D1FE /* SegmentCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773CC209B3CF30030D1FE /* SegmentCell3.swift */; };
+		40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A773CD209B3CF30030D1FE /* SegmentCell.xib */; };
 		40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */; };
 		40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68B20824E3E008A45A7 /* ClassCell.swift */; };
 		40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */; };
@@ -139,7 +140,6 @@
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		401422F520863A03009EF8D9 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControlDataSource.swift; sourceTree = "<group>"; };
 		402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMainViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +150,8 @@
 		404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		40A773CC209B3CF30030D1FE /* SegmentCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell3.swift; sourceTree = "<group>"; };
+		40A773CD209B3CF30030D1FE /* SegmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentCell.xib; sourceTree = "<group>"; };
 		40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		40AAF68B20824E3E008A45A7 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 		40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
@@ -395,7 +397,8 @@
 			children = (
 				404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */,
 				402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */,
-				401422F520863A03009EF8D9 /* SegmentCell.swift */,
+				40A773CC209B3CF30030D1FE /* SegmentCell3.swift */,
+				40A773CD209B3CF30030D1FE /* SegmentCell.xib */,
 			);
 			path = ExerciseInfoScreen;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */,
 				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
 				AA12AF75207615170090404A /* Main.storyboard in Resources */,
+				40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */,
 				AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */,
 				40AAF693208255FA008A45A7 /* Assets.xcassets in Resources */,
 			);
@@ -841,6 +845,7 @@
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
 				40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */,
 				404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */,
+				40A773CE209B3CF30030D1FE /* SegmentCell3.swift in Sources */,
 				4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
 				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
@@ -867,7 +872,6 @@
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
-				401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
 				40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */,
 				4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */,

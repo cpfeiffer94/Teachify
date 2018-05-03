@@ -21,8 +21,10 @@ class ExerciseInfoViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .teacherLightBlue
         navigationItem.prompt = " "
         customSegmentedControl.addTarget(action: didChangeIndex)
+        customSegmentedControl.register(UINib(nibName: String(describing: SegmentCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: "segmentCell")
         customSegmentedControl.dataSource = customSegmentedControlDataSource
         pupilStatisticsTableView.dataSource = pupilStatisticsDataSource
+        customSegmentedControl.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
     }
 
