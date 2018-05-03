@@ -9,14 +9,23 @@
 import UIKit
 
 class CustomSegmentedControlDataSource: NSObject, UICollectionViewDataSource {
+    
+    private let titles = ["DONE", "NOT DONE", "STATISTICS"]
+    private let countTitles = ["Students", "Students", "% correct"]
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return titles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "segmentCell", for: indexPath)
-        cell.layer.cornerRadius = 15
+        
+        if let cell = cell as? SegmentCell {
+            cell.layer.cornerRadius = 15
+            cell.cellTitle.text = titles[indexPath.item]
+            cell.countTitle.text = countTitles[indexPath.item]
+        }
+        
         
         return cell
     }

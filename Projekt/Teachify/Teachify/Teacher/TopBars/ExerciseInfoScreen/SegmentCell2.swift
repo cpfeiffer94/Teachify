@@ -1,22 +1,16 @@
 //
-//  SegmentCell.swift
+//  SegmentCell2.swift
 //  Teachify
 //
-//  Created by Bastian Kusserow on 17.04.18.
+//  Created by Bastian Kusserow on 03.05.18.
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
 
 import UIKit
 
-class SegmentCell: UICollectionViewCell {
-    
-    
+class SegmentCell2: UICollectionViewCell {
     
     @IBOutlet var cellTitle: UILabel!
-    
-    @IBOutlet var countLabel: UILabel!
-    @IBOutlet var count: UILabel!
-    
     
     override var isHighlighted: Bool {
         didSet {

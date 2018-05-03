@@ -40,7 +40,7 @@ import UIKit
         
         //self.dataSource = self
         self.delegate = self
-        self.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+        
         
     }
     
