@@ -11,18 +11,31 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileTableView: UITableView!
+    @IBOutlet weak var customSegmentedControl: CustomSegmentedControl!
+    
+    
+    fileprivate let customSegmentedControlDataSource = CustomSegmentedControlDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         profileTableView.dataSource = self
         profileTableView.delegate = self
+        customSegmentedControl.dataSource = customSegmentedControlDataSource
+        
+        customSegmentedControl.register(UINib(nibName: String(describing: SegmentCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: "segmentCell")
+        customSegmentedControl.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+        customSegmentedControl.addTarget(action: didChangeIndex)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func didChangeIndex(){
+        print("Changed index ProfileViewController: \(customSegmentedControl.selectedSegmentIndex)")
     }
     
 

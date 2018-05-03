@@ -1052,6 +1052,7 @@
                         <viewLayoutGuide key="safeArea" id="Vir-0d-V6R"/>
                     </view>
                     <connections>
+                        <outlet property="customSegmentedControl" destination="bjo-HS-0v4" id="iBE-j1-NvJ"/>
                         <outlet property="profileTableView" destination="RGa-YT-Le9" id="Hr2-UR-IH9"/>
                     </connections>
                 </viewController>
