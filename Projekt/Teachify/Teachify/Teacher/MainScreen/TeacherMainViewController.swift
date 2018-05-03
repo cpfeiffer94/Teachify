@@ -10,26 +10,28 @@ import UIKit
 
 class TeacherMainViewController: UIViewController {
 
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var classesCollectionView: UICollectionView!
     let dataSource = ClassesCollectionViewDataSource()
     let delegate = ClassesCollectionViewDelegate()
+    var titleView : UILabel!
     
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
     
     @IBOutlet var excerciseCollectionView: UICollectionView!
     let excerciseDataSource = ExerciseCollectionViewDataSource()
+    let excerciseDelegate = ExcerciseCollectionViewDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Excercises"
         titleView.textColor = UIColor.white
         titleView.textAlignment = .center
-        titleView.font = UIFont.systemFont(ofSize: 48)
+        //titleView.font = UIFont.systemFont(ofSize: 48)
         navigationItem.titleView = titleView
-        navigationItem.prompt = " "
+        //navigationItem.prompt = " "
         navigationController?.navigationBar.barTintColor = .barBlue
 
     
@@ -38,13 +40,13 @@ class TeacherMainViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        collectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
-        collectionView.dataSource = dataSource
-        collectionView.delegate = delegate
+       //classesCollectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
+        classesCollectionView.dataSource = dataSource
+        classesCollectionView.delegate = delegate
         setupExcerciseCollectionView()
         loadData()
         
-        if let headerView = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
+        if let headerView = classesCollectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
             //do Stuff
         }
     
@@ -59,16 +61,16 @@ class TeacherMainViewController: UIViewController {
             dataSource?.classes = classes
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+                self.classesCollectionView.reloadData()
+                self.classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
             }
                 let subjectController = TKSubjectController()
-                print(self.dataSource.classes)
+
                 subjectController.fetchSubject(forClass: self.dataSource.classes[0], withFetchSortOptions: [.name]) { [unowned self] (subjects, error) in
                     if let error = error {
                         print("Error fetching Subjects \(error)")
                     }
-                    print("SUBJECTSCOUNT: \(subjects.count)")
+  
                     self.subjectCollectionView.dataSource.subjects = subjects
                     DispatchQueue.main.async {
                         self.subjectCollectionView.collectionView.reloadData()
@@ -88,18 +90,35 @@ class TeacherMainViewController: UIViewController {
     func setupExcerciseCollectionView(){
         
         excerciseCollectionView.dataSource = excerciseDataSource
+        excerciseCollectionView.delegate = excerciseDelegate
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = .barBlue
     }
+  
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        //When device is rotated, the layout of te cv should be updated
+        excerciseCollectionView.collectionViewLayout.invalidateLayout()
+        classesCollectionView.collectionViewLayout.invalidateLayout()
+        subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
+        subjectCollectionView.collectionView.layoutIfNeeded()
+        subjectCollectionView.didSelectItem(at: 0)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         subjectCollectionView.didSelectItem(at: 0)
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.titleView.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }
     }
    
 
    
 
 }
+
+

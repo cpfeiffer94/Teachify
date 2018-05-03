@@ -45,6 +45,7 @@
 		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
 		40A773CE209B3CF30030D1FE /* SegmentCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773CC209B3CF30030D1FE /* SegmentCell3.swift */; };
 		40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A773CD209B3CF30030D1FE /* SegmentCell.xib */; };
+		40A773D1209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773D0209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift */; };
 		40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */; };
 		40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68B20824E3E008A45A7 /* ClassCell.swift */; };
 		40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */; };
@@ -150,6 +151,7 @@
 		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40A773CC209B3CF30030D1FE /* SegmentCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell3.swift; sourceTree = "<group>"; };
 		40A773CD209B3CF30030D1FE /* SegmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentCell.xib; sourceTree = "<group>"; };
+		40A773D0209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		40AAF68B20824E3E008A45A7 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 		40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				40AAF6972082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift */,
 				40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */,
 				40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */,
+				40A773D0209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift */,
 			);
 			path = ExcerciseCollectionView;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				0FAB966F2085E38A00FE7F76 /* (null) in Sources */,
 				AA8229EB20888C260018AB0E /* TKTeacherController.swift in Sources */,
 				AA8229E420888C260018AB0E /* TKSubjectController.swift in Sources */,
+				40A773D1209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

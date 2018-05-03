@@ -18,8 +18,8 @@ class ExerciseInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.barTintColor = .teacherLightBlue
-        navigationItem.prompt = " "
+        //navigationController?.navigationBar.barTintColor = .teacherLightBlue
+        //navigationItem.prompt = " "
         customSegmentedControl.addTarget(action: didChangeIndex)
         customSegmentedControl.register(UINib(nibName: String(describing: SegmentCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: "segmentCell")
         customSegmentedControl.dataSource = customSegmentedControlDataSource
@@ -32,5 +32,15 @@ class ExerciseInfoViewController: UIViewController {
     func didChangeIndex(){
         print("Changed index \(customSegmentedControl.selectedSegmentIndex)")
     }
+
     
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.navigationController?.navigationBar.barTintColor = .teacherLightBlue
+            self.navigationController?.navigationBar.layoutIfNeeded()
+            self.customSegmentedControl.backgroundColor = .teacherLightBlue
+            self.customSegmentedControl.layoutIfNeeded()
+
+        }
+    }
 }

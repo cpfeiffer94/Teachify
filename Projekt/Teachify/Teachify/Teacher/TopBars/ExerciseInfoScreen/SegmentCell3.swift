@@ -12,7 +12,7 @@ class SegmentCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Nib dequed")
+
     }
 
     @IBOutlet var cellTitle: UILabel!
