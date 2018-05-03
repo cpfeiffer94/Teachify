@@ -11,7 +11,7 @@ import CloudKit
 
 // ✅
 struct TKGenericCloudController<T: TKCloudObject> {
-    private let privateDatabase = CKContainer.default().sharedCloudDatabase
+    private var database: CKDatabase
     
     /**
      Für **create()** notwendig
@@ -23,9 +23,10 @@ struct TKGenericCloudController<T: TKCloudObject> {
      */
     var recordZoneName: String
     
-    init(zone: CKRecordZone) {
+    init(zone: CKRecordZone, database: CKDatabase) {
         self.zone = zone
         self.recordZoneName = zone.zoneID.zoneName
+        self.database = database
     }
     
     // ✅
@@ -34,17 +35,17 @@ struct TKGenericCloudController<T: TKCloudObject> {
                predicate: NSPredicate,
                completion: @escaping ([T], TKError?) -> ()) {
         
-        fetch(recordZone: recordZoneName) { (recordZone, error) in
+        TKGenericCloudController.fetch(recordZone: recordZoneName, forDatabase: database) { (recordZone, error) in
             guard let recordZone = recordZone else {
                 completion([], TKError.dooooImplement)
                 return
             }
-
+            
             let query = CKQuery(recordType: recordType, predicate: predicate)
             let sortDescriptors = fetchSortOptions.map { $0.sortDescriptor }
             query.sortDescriptors = sortDescriptors
             
-            self.privateDatabase.perform(query, inZoneWith: recordZone.zoneID, completionHandler: { (fetchedRecords, error) in
+            self.database.perform(query, inZoneWith: recordZone.zoneID, completionHandler: { (fetchedRecords, error) in
                 let cloudObjects: [T] = fetchedRecords?.compactMap { T(record: $0) } ?? []
                 completion(cloudObjects, nil)
             })
@@ -58,7 +59,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             return
         }
         
-        privateDatabase.save(record) { (savedRecord, error) in
+        database.save(record) { (savedRecord, error) in
             if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                 completion(cloudObject, nil)
             } else {
@@ -74,7 +75,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             return
         }
         
-        privateDatabase.delete(withRecordID: record.recordID) { (deletedRecord, error) in
+        database.delete(withRecordID: record.recordID) { (deletedRecord, error) in
             if error == nil {
                 completion(nil)
             } else {
@@ -92,7 +93,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         
         record[referenceKey] = nil
         
-        privateDatabase.save(record) { (updatedRecord, error) in
+        database.save(record) { (updatedRecord, error) in
             if error == nil {
                 if let updatedRecord = updatedRecord, let cloudObject = T(record: updatedRecord) {
                     completion(cloudObject, nil)
@@ -116,7 +117,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         
         objectRecord[referenceKey] = CKReference(record: parentRecord, action: action)
         
-        privateDatabase.save(objectRecord) { (savedRecord, error) in
+        database.save(objectRecord) { (savedRecord, error) in
             if error == nil {
                 if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                     completion(cloudObject, nil)
@@ -133,9 +134,9 @@ struct TKGenericCloudController<T: TKCloudObject> {
     func create(object: T, completion: @escaping (T?, TKError?) -> ()) {
         var object = object
         
-        privateDatabase.save(zone) { (savedZone, error) in
+        database.save(zone) { (savedZone, error) in
             if let record = CKRecord(cloudObject: object, withRecordZoneID: self.zone.zoneID) {
-                self.privateDatabase.save(record) { (createdRecord, error) in
+                self.database.save(record) { (createdRecord, error) in
                     if error == nil {
                         object.record = createdRecord
                         completion(object, nil)
@@ -143,6 +144,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
                         print("error: \(error)")
                         completion(nil, TKError.dooooImplement)
                     }
+                    
                 }
             }
         }
@@ -151,8 +153,9 @@ struct TKGenericCloudController<T: TKCloudObject> {
     
     // MARK: - Hilfsmethoden
     // ✅
-    private func fetch(recordZone recordZoneName: String, completion: @escaping (CKRecordZone?, TKError?) -> ()) {
-        CKContainer.default().privateCloudDatabase.fetchAllRecordZones { (recordZones, error) in
+    static func fetch(recordZone recordZoneName: String, forDatabase database: CKDatabase, completion: @escaping (CKRecordZone?, TKError?) -> ()) {
+        
+        database.fetchAllRecordZones { (recordZones, error) in
             guard let recordZones = recordZones else {
                 completion(nil, TKError.dooooImplement)
                 return
@@ -167,4 +170,22 @@ struct TKGenericCloudController<T: TKCloudObject> {
             completion(classRecordZone, nil)
         }
     }
+    
+    // ✅
+    static func fetch(recordZone recordZoneName: String, forDatabase database: CKDatabase) -> CKRecordZone? {
+        var result: CKRecordZone? = nil
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        fetch(recordZone: recordZoneName, forDatabase: database) { (fetchedRecordZone, error) in
+            result = fetchedRecordZone
+            group.leave()
+        }
+        
+        group.wait()
+        
+        return result
+    }
+
 }

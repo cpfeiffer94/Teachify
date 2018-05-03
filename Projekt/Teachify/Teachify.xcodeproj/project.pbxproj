@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F39FDE4209AFD690072A27E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F39FDE3209AFD690072A27E /* CloudKit.framework */; };
 		0F4EE9CC2091CDE500AF165A /* TKSolutionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4EE9CB2091CDE500AF165A /* TKSolutionController.swift */; };
 		0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCD207B4D7900FF5542 /* TKScore.swift */; };
 		0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F999DCE207B4D7900FF5542 /* TKDocument.swift */; };
@@ -60,7 +61,6 @@
 		AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF78207615190090404A /* LaunchScreen.storyboard */; };
 		AA12AF85207615190090404A /* TeachifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF84207615190090404A /* TeachifyTests.swift */; };
 		AA12AF902076151A0090404A /* TeachifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF8F2076151A0090404A /* TeachifyUITests.swift */; };
-		AA486174207F545500C43588 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA486173207F545500C43588 /* CloudKit.framework */; };
 		AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486175207F78C300C43588 /* StudentAwardViewController.swift */; };
 		AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48617D207F801F00C43588 /* GameMenuObject.swift */; };
 		AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486183207F8C4200C43588 /* GameInformationItem.swift */; };
@@ -116,6 +116,7 @@
 
 /* Begin PBXFileReference section */
 		0F22D33B207F4E44004C9024 /* Teachify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teachify.entitlements; sourceTree = "<group>"; };
+		0F39FDE3209AFD690072A27E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0F4EE9CB2091CDE500AF165A /* TKSolutionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionController.swift; sourceTree = "<group>"; };
 		0F999DCD207B4D7900FF5542 /* TKScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKScore.swift; sourceTree = "<group>"; };
 		0F999DCE207B4D7900FF5542 /* TKDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKDocument.swift; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeachifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA12AF8F2076151A0090404A /* TeachifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachifyUITests.swift; sourceTree = "<group>"; };
 		AA12AF912076151A0090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA486173207F545500C43588 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AA486175207F78C300C43588 /* StudentAwardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAwardViewController.swift; sourceTree = "<group>"; };
 		AA48617D207F801F00C43588 /* GameMenuObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuObject.swift; sourceTree = "<group>"; };
 		AA486183207F8C4200C43588 /* GameInformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationItem.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */,
-				AA486174207F545500C43588 /* CloudKit.framework in Frameworks */,
+				0F39FDE4209AFD690072A27E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +318,7 @@
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA486173207F545500C43588 /* CloudKit.framework */,
+				0F39FDE3209AFD690072A27E /* CloudKit.framework */,
 				42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */,
 				8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */,
 				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,

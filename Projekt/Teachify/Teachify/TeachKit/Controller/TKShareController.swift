@@ -38,8 +38,6 @@ class TKShareController: NSObject {
             vCtrl.view.backgroundColor = UIColor.white
             completion(vCtrl, nil)
         }
-        
-        completion(nil, TKError.dooooImplement)
     }
     
     private func createViewController(withText text: String) -> UIViewController {
