@@ -9,7 +9,7 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
-    let GameCollectionController : GameDownloadController = GameDownloadController()
+    let GameCollectionController : TKFetchController = TKFetchController()
     
     override init(){
         
@@ -31,7 +31,7 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         cell.card.icon = UIImage(named: "calculator")
         cell.card.title = game.name
         cell.card.itemTitle = game.subject
-        cell.card.itemSubtitle = game.difficulty
+        cell.card.itemSubtitle = game.type
         cell.card.buttonText = "Spielen"
         cell.card.textColor = UIColor.white
         

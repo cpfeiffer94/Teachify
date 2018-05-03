@@ -11,7 +11,11 @@ import CloudKit
 
 // ✅
 struct TKGenericCloudController<T: TKCloudObject> {
+<<<<<<< HEAD
     private var database: CKDatabase
+=======
+    private let privateDatabase = CKContainer.default().privateCloudDatabase
+>>>>>>> 7b83e382e20ddf9e8f1b1e16e20127a923f24425
     
     /**
      Für **create()** notwendig
@@ -63,6 +67,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                 completion(cloudObject, nil)
             } else {
+                print("CloudKit-Error: \(error)")
                 completion(nil, TKError.dooooImplement)
             }
         }
@@ -79,6 +84,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             if error == nil {
                 completion(nil)
             } else {
+                print("CloudKit-Error: \(error)")
                 completion(TKError.dooooImplement)
             }
         }
@@ -98,9 +104,11 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 if let updatedRecord = updatedRecord, let cloudObject = T(record: updatedRecord) {
                     completion(cloudObject, nil)
                 } else {
+                    print("CloudKit-Error: \(error)")
                     completion(nil, TKError.dooooImplement)
                 }
             } else {
+                print("CloudKit-Error: \(error)")
                 completion(nil, TKError.dooooImplement)
             }
         }
@@ -122,9 +130,11 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                     completion(cloudObject, nil)
                 } else {
+                    print("CloudKit-Error: \(error)")
                     completion(nil, TKError.dooooImplement)
                 }
             } else {
+                print("CloudKit-Error: \(error)")
                 completion(nil, TKError.dooooImplement)
             }
         }
@@ -141,6 +151,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
                         object.record = createdRecord
                         completion(object, nil)
                     } else {
+                        print("CloudKit-Error: \(error)")
                         print("error: \(error)")
                         completion(nil, TKError.dooooImplement)
                     }
@@ -163,6 +174,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             
             let classRecordZones = recordZones.compactMap { $0.zoneID.zoneName == recordZoneName ? $0 : nil }
             guard let classRecordZone = classRecordZones.first else {
+                print("CloudKit-Error: \(error)")
                 completion(nil, TKError.dooooImplement)
                 return
             }
