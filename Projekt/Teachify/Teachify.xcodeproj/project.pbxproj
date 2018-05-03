@@ -43,7 +43,6 @@
 		4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE9207FACA500A0C076 /* Extensions.swift */; };
 		404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */; };
 		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
-		40A773C7209B05630030D1FE /* TKDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773C6209B05630030D1FE /* TKDownloadController.swift */; };
 		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
 		40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */; };
 		40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68B20824E3E008A45A7 /* ClassCell.swift */; };
@@ -148,7 +147,6 @@
 		4047BFE9207FACA500A0C076 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		40A773C6209B05630030D1FE /* TKDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDownloadController.swift; sourceTree = "<group>"; };
 		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		40AAF68B20824E3E008A45A7 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
@@ -417,14 +415,6 @@
 			path = ExcerciseInfoScreen;
 			sourceTree = "<group>";
 		};
-		40A773C5209B053D0030D1FE /* TKDownloader */ = {
-			isa = PBXGroup;
-			children = (
-				40A773C6209B05630030D1FE /* TKDownloadController.swift */,
-			);
-			path = TKDownloader;
-			sourceTree = "<group>";
-		};
 		40AAF694208256EC008A45A7 /* ExcerciseCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,7 +546,6 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
-				40A773C5209B053D0030D1FE /* TKDownloader */,
 				402182FD2091DE3900DF772D /* TopBars */,
 				402183012091E09B00DF772D /* MainScreen */,
 				17FA67A22091F8BD009BC753 /* Profile */,
@@ -854,7 +843,6 @@
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
 				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
-				40A773C7209B05630030D1FE /* TKDownloadController.swift in Sources */,
 				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
 				402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */,
 				4047BFDF207FAC6F00A0C076 /* ClassesCollectionViewDelegate.swift in Sources */,
