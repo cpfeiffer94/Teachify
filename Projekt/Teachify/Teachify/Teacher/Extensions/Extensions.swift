@@ -19,6 +19,7 @@ extension UIColor {
     static let teacherGreen = UIColor.rgb(red: 137, green: 201, blue: 98)
     static let teacherLightBlue = UIColor.rgb(red: 60, green: 175, blue: 190)    
     static let teacherSelectedLightBlue = UIColor.rgb(red: 90, green: 188, blue: 200)
+    static let mathBlue = UIColor.rgb(red: 64, green: 120, blue: 178)
 }
 
 extension UIView {

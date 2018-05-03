@@ -51,5 +51,24 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }  
+}
+
+class ProfileTableViewCell : UITableViewCell{
+    
+    @IBOutlet weak var iconView: UIView!
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        iconView.backgroundColor = selected ? .mathBlue : .mathBlue
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        iconView.backgroundColor = highlighted ? .mathBlue : .mathBlue
+    }
+    
     
 }
