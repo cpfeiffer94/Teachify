@@ -13,6 +13,7 @@ class ExerciseInfoViewController: UIViewController {
     @IBOutlet var customSegmentedControl: CustomSegmentedControl!
     @IBOutlet var pupilStatisticsTableView: UITableView!
     let pupilStatisticsDataSource = PupilStatisticsTableViewDataSource()
+    let pupilStatisticsDelegate = PupilStatisticsTableViewDelegate()
     fileprivate let customSegmentedControlDataSource = CustomSegmentedControlDataSource()
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class ExerciseInfoViewController: UIViewController {
         customSegmentedControl.register(UINib(nibName: String(describing: SegmentCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: "segmentCell")
         customSegmentedControl.dataSource = customSegmentedControlDataSource
         pupilStatisticsTableView.dataSource = pupilStatisticsDataSource
+        pupilStatisticsTableView.delegate = pupilStatisticsDelegate
         customSegmentedControl.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
     }

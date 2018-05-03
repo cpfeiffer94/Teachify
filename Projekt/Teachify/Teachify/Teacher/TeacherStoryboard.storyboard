@@ -361,10 +361,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="segmentCell" id="GbS-OI-3RJ" customClass="SegmentCell" customModule="Teachify" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="0.0" width="192" height="76.799999999999997"/>
+                                        <rect key="frame" x="0.0" y="20" width="166" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="192" height="76.799999999999997"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-Zp-iTx">
@@ -674,10 +674,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="segmentCell" id="0sv-a4-xB9" customClass="SegmentCell" customModule="Teachify" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="0.0" width="192" height="76.799999999999997"/>
+                                        <rect key="frame" x="0.0" y="20" width="166" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="192" height="76.799999999999997"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztm-Cj-MOW">
@@ -873,7 +873,7 @@
                                 <rect key="frame" x="64" y="420" width="640" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileCell" rowHeight="170" id="6V2-CP-PHr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileCell" rowHeight="170" id="6V2-CP-PHr" customClass="ProfileTableViewCell" customModule="Teachify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="640" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6V2-CP-PHr" id="8r4-Tq-efS">
@@ -922,6 +922,11 @@
                                                         <constraint firstItem="lOs-im-bf1" firstAttribute="centerY" secondItem="ZV3-9U-o70" secondAttribute="centerY" id="rKd-iC-88q"/>
                                                         <constraint firstItem="lOs-im-bf1" firstAttribute="height" secondItem="ZV3-9U-o70" secondAttribute="height" multiplier="2:5" id="zl3-tL-VGB"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-H1-bc1">
                                                     <rect key="frame" x="389" y="76" width="228" height="75"/>
@@ -1009,6 +1014,9 @@
                                                 <constraint firstItem="ZV3-9U-o70" firstAttribute="top" secondItem="8r4-Tq-efS" secondAttribute="topMargin" constant="8" id="fUp-cl-QNI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconView" destination="ZV3-9U-o70" id="J3w-Rm-ff3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1047,6 +1055,7 @@
                         <viewLayoutGuide key="safeArea" id="Vir-0d-V6R"/>
                     </view>
                     <connections>
+                        <outlet property="customSegmentedControl" destination="bjo-HS-0v4" id="iBE-j1-NvJ"/>
                         <outlet property="profileTableView" destination="RGa-YT-Le9" id="Hr2-UR-IH9"/>
                     </connections>
                 </viewController>

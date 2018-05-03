@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import CloudKit
 
 enum TKRank {
     case teacher
     case student
+    
+    var database: CKDatabase {
+        switch self {
+        case .teacher: return CKContainer.default().privateCloudDatabase
+        case .student: return CKContainer.default().sharedCloudDatabase
+        }
+    }
 }
