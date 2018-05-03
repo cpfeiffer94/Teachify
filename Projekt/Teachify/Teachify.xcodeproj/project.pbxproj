@@ -34,13 +34,17 @@
 		0FEFB4EF2084A9000065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
 		401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401422F520863A03009EF8D9 /* SegmentCell.swift */; };
+		402183042091E18000DF772D /* CustomSegmentedControlDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */; };
+		402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */; };
 		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
 		4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */; };
 		4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */; };
-		4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */; };
+		4047BFDF207FAC6F00A0C076 /* ClassesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD9207FAC6E00A0C076 /* ClassesCollectionViewDelegate.swift */; };
 		4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE9207FACA500A0C076 /* Extensions.swift */; };
-		404CDA8D208623B9001FEA15 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */; };
+		404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */; };
 		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
+		40A773C7209B05630030D1FE /* TKDownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773C6209B05630030D1FE /* TKDownloadController.swift */; };
+		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
 		40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */; };
 		40AAF68F20824E3E008A45A7 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68B20824E3E008A45A7 /* ClassCell.swift */; };
 		40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */; };
@@ -61,7 +65,6 @@
 		AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF78207615190090404A /* LaunchScreen.storyboard */; };
 		AA12AF85207615190090404A /* TeachifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF84207615190090404A /* TeachifyTests.swift */; };
 		AA12AF902076151A0090404A /* TeachifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF8F2076151A0090404A /* TeachifyUITests.swift */; };
-		AA486174207F545500C43588 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA486173207F545500C43588 /* CloudKit.framework */; };
 		AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486175207F78C300C43588 /* StudentAwardViewController.swift */; };
 		AA48617E207F801F00C43588 /* GameMenuObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48617D207F801F00C43588 /* GameMenuObject.swift */; };
 		AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486183207F8C4200C43588 /* GameInformationItem.swift */; };
@@ -135,13 +138,17 @@
 		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		401422F520863A03009EF8D9 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
+		402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControlDataSource.swift; sourceTree = "<group>"; };
+		402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMainViewController.swift; sourceTree = "<group>"; };
 		4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherStoryboardID.swift; sourceTree = "<group>"; };
-		4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesCollectionView.swift; sourceTree = "<group>"; };
+		4047BFD9207FAC6E00A0C076 /* ClassesCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		4047BFE9207FACA500A0C076 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		40A773C6209B05630030D1FE /* TKDownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKDownloadController.swift; sourceTree = "<group>"; };
+		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		40AAF68B20824E3E008A45A7 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 		40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
@@ -151,7 +158,7 @@
 		40AAF6972082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHeaderView.swift; sourceTree = "<group>"; };
-		40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundAddCell.swift; path = Teachify/Teacher/CustomViews/RoundAddCell.swift; sourceTree = SOURCE_ROOT; };
+		40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundAddCell.swift; path = Teachify/Teacher/TopBars/StartScreen/RoundAddCell.swift; sourceTree = SOURCE_ROOT; };
 		40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDataSource.swift; sourceTree = "<group>"; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D3EEC1AAD2A655A27D2F9 /* Pods-TeachifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,7 +179,6 @@
 		AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeachifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA12AF8F2076151A0090404A /* TeachifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachifyUITests.swift; sourceTree = "<group>"; };
 		AA12AF912076151A0090404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA486173207F545500C43588 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AA486175207F78C300C43588 /* StudentAwardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAwardViewController.swift; sourceTree = "<group>"; };
 		AA48617D207F801F00C43588 /* GameMenuObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuObject.swift; sourceTree = "<group>"; };
 		AA486183207F8C4200C43588 /* GameInformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationItem.swift; sourceTree = "<group>"; };
@@ -215,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */,
-				AA486174207F545500C43588 /* CloudKit.framework in Frameworks */,
+				40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,12 +331,71 @@
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA486173207F545500C43588 /* CloudKit.framework */,
+				40A773C8209B254D0030D1FE /* CloudKit.framework */,
 				42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */,
 				8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */,
 				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		402182FD2091DE3900DF772D /* TopBars */ = {
+			isa = PBXGroup;
+			children = (
+				402182FE2091DE5200DF772D /* StartScreen */,
+				402183022091E0ED00DF772D /* ExerciseInfoScreen */,
+			);
+			path = TopBars;
+			sourceTree = "<group>";
+		};
+		402182FE2091DE5200DF772D /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */,
+				40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */,
+				402182FF2091DE8E00DF772D /* Classes */,
+				402183002091DE9C00DF772D /* Subjects */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		402182FF2091DE8E00DF772D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFD9207FAC6E00A0C076 /* ClassesCollectionViewDelegate.swift */,
+				40AAF68B20824E3E008A45A7 /* ClassCell.swift */,
+				402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		402183002091DE9C00DF772D /* Subjects */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */,
+				40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */,
+				40AAF68D20824E3E008A45A7 /* SubjectCell.swift */,
+			);
+			path = Subjects;
+			sourceTree = "<group>";
+		};
+		402183012091E09B00DF772D /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */,
+				40AAF694208256EC008A45A7 /* ExcerciseCollectionView */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		402183022091E0ED00DF772D /* ExerciseInfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */,
+				402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */,
+				401422F520863A03009EF8D9 /* SegmentCell.swift */,
+			);
+			path = ExerciseInfoScreen;
 			sourceTree = "<group>";
 		};
 		4047BFEB207FACB300A0C076 /* Extensions */ = {
@@ -344,25 +409,18 @@
 		404CDA8B20862380001FEA15 /* ExcerciseInfoScreen */ = {
 			isa = PBXGroup;
 			children = (
-				404CDA8C208623B9001FEA15 /* ExerciseViewController.swift */,
-				404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */,
-				401422F520863A03009EF8D9 /* SegmentCell.swift */,
+				404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */,
 				40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */,
 			);
 			path = ExcerciseInfoScreen;
 			sourceTree = "<group>";
 		};
-		40AAF68920824E27008A45A7 /* CustomViews */ = {
+		40A773C5209B053D0030D1FE /* TKDownloader */ = {
 			isa = PBXGroup;
 			children = (
-				40AAF68A20824E3D008A45A7 /* CenteredCollectionViewDelegate.swift */,
-				40AAF68B20824E3E008A45A7 /* ClassCell.swift */,
-				40AAF68D20824E3E008A45A7 /* SubjectCell.swift */,
-				40AAF68C20824E3E008A45A7 /* SubjectCollectionView.swift */,
-				40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */,
+				40A773C6209B05630030D1FE /* TKDownloadController.swift */,
 			);
-			name = CustomViews;
-			path = "New Group";
+			path = TKDownloader;
 			sourceTree = "<group>";
 		};
 		40AAF694208256EC008A45A7 /* ExcerciseCollectionView */ = {
@@ -495,14 +553,12 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				40A773C5209B053D0030D1FE /* TKDownloader */,
+				402182FD2091DE3900DF772D /* TopBars */,
+				402183012091E09B00DF772D /* MainScreen */,
 				17FA67A22091F8BD009BC753 /* Profile */,
 				404CDA8B20862380001FEA15 /* ExcerciseInfoScreen */,
-				40AAF694208256EC008A45A7 /* ExcerciseCollectionView */,
-				40AAF68920824E27008A45A7 /* CustomViews */,
-				4047BFD9207FAC6E00A0C076 /* ClassesCollectionView.swift */,
 				4047BFEB207FACB300A0C076 /* Extensions */,
-				4047BFD6207FAC6E00A0C076 /* SubjectCollectionViewDataSource.swift */,
-				4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */,
 				4047BFD7207FAC6E00A0C076 /* TeacherStoryboardID.swift */,
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
@@ -773,7 +829,7 @@
 				0FBA793B2085F80400D20807 /* (null) in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
 				AA8229E620888C260018AB0E /* TKLeaderboardController.swift in Sources */,
-				404CDA8D208623B9001FEA15 /* ExerciseViewController.swift in Sources */,
+				404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */,
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
 				40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */,
@@ -795,9 +851,12 @@
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
 				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
+				40A773C7209B05630030D1FE /* TKDownloadController.swift in Sources */,
 				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
-				4047BFDF207FAC6F00A0C076 /* ClassesCollectionView.swift in Sources */,
+				402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */,
+				4047BFDF207FAC6F00A0C076 /* ClassesCollectionViewDelegate.swift in Sources */,
 				AA822A0320888D6B0018AB0E /* GameCardCell.swift in Sources */,
+				402183042091E18000DF772D /* CustomSegmentedControlDataSource.swift in Sources */,
 				AA12AF70207615170090404A /* AppDelegate.swift in Sources */,
 				AA8229E820888C260018AB0E /* TKDocumentController.swift in Sources */,
 				AA8229F620888C560018AB0E /* GameViewController.swift in Sources */,
