@@ -11,11 +11,10 @@ import CloudKit
 
 // ✅
 struct TKGenericCloudController<T: TKCloudObject> {
-<<<<<<< HEAD
+
     private var database: CKDatabase
-=======
+
     private let privateDatabase = CKContainer.default().privateCloudDatabase
->>>>>>> 7b83e382e20ddf9e8f1b1e16e20127a923f24425
     
     /**
      Für **create()** notwendig
