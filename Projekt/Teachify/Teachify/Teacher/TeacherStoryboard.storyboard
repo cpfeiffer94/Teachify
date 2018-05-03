@@ -419,10 +419,10 @@
                                                         <constraint firstAttribute="width" secondItem="aEN-BY-a4f" secondAttribute="height" multiplier="1:1" priority="500" id="STz-PM-kPz"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-QM-uAd">
@@ -705,6 +705,11 @@
                                             <constraint firstItem="vFr-Xx-7vI" firstAttribute="leading" secondItem="0sv-a4-xB9" secondAttribute="leading" constant="20" id="ukM-NK-iMU"/>
                                             <constraint firstAttribute="bottom" secondItem="vFr-Xx-7vI" secondAttribute="bottom" id="zlz-BC-GdZ"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="cellTitle" destination="ztm-Cj-MOW" id="Jvj-hp-rjc"/>
+                                            <outlet property="count" destination="vFr-Xx-7vI" id="Pcf-C6-E5T"/>
+                                            <outlet property="countLabel" destination="xKM-qq-uTG" id="BxG-Hl-JaA"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -901,7 +906,7 @@
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.25098039215686274" green="0.47058823529411764" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="tintColor" red="0.25098039220000001" green="0.47058823529999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.2156862745" green="0.41176470590000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="R6R-pA-usc" firstAttribute="leading" secondItem="ZV3-9U-o70" secondAttribute="leading" constant="8" id="1SF-sb-XA6"/>
                                                         <constraint firstAttribute="trailing" secondItem="lOs-im-bf1" secondAttribute="trailing" id="XMD-lh-cAk"/>
@@ -1078,5 +1083,5 @@
         <image name="Inder" width="73" height="67"/>
         <image name="calculator" width="74" height="96"/>
     </resources>
-    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
