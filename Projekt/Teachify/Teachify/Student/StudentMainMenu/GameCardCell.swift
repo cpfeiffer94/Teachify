@@ -24,12 +24,16 @@ class GameCardCell: UICollectionViewCell {
 extension GameCardCell: CardDelegate {
     
     func cardDidTapInside(card: Card) {
-        print("i got Tapped 1")
+        print("i got Tapped inside")
     }
     
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
-        print("i got Tapped 2")
+        print("My Button got Tapped")
         NotificationCenter.default.post(name: .startGame , object: nil)
     }
+    
+    func cardIsShowingDetail(card: Card) {
+    }
+
     
 }

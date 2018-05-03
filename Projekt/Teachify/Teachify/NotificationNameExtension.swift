@@ -14,6 +14,7 @@ extension Notification.Name {
     
     //TKDownloader finished Status
     static let showDebugModelPrint = Notification.Name("debugPrint")
+    static let reloadGameCards = Notification.Name("reloadGameCards")
     
     
 }

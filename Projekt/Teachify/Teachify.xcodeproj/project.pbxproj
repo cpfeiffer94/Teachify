@@ -70,6 +70,7 @@
 		AA486184207F8C4200C43588 /* GameInformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486183207F8C4200C43588 /* GameInformationItem.swift */; };
 		AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */; };
 		AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */; };
+		AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */; };
 		AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */; };
 		AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */; };
 		AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */; };
@@ -184,6 +185,7 @@
 		AA486183207F8C4200C43588 /* GameInformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationItem.swift; sourceTree = "<group>"; };
 		AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDelegate.swift; sourceTree = "<group>"; };
 		AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDataSource.swift; sourceTree = "<group>"; };
+		AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationViewController.swift; sourceTree = "<group>"; };
 		AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TeacherStoryboard.storyboard; sourceTree = "<group>"; };
 		AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
 		AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStoyboardID.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				AA48617D207F801F00C43588 /* GameMenuObject.swift */,
 				AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */,
 				AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */,
+				AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */,
 			);
 			path = StudentMainMenu;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
+				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
 				401422F620863A03009EF8D9 /* SegmentCell.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,

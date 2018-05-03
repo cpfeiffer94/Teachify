@@ -12,6 +12,9 @@ import UIKit
 class StudentMainMenuViewController: UIViewController {
     @IBOutlet weak var GameCollectionView: UICollectionView!
     @IBOutlet weak var welcomeMessageLabel: UILabel!
+    @IBOutlet weak var openExercisesLabel: UILabel!
+    @IBOutlet weak var solvedExercisesLabel: UILabel!
+    @IBOutlet weak var TeachifyProgressLabel: UILabel!
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
@@ -27,7 +30,7 @@ class StudentMainMenuViewController: UIViewController {
         GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
         
-//        gamedwnldctrl.addGame(name: "Mathekniffel", typ: "Mathe", deadline: Date.init(), subject: "Mathematik", description: "Test dich in dem spannenden Mathespiel", difficulty: "Mittel")
+        gamedwnldctrl.addGame(name: "Mathekniffel", typ: "Kristallmathe", deadline: Date.init(), subject: "Mathematik", tries: 3)
         
         gamedwnldctrl.fetchDatabase()
         
@@ -37,6 +40,8 @@ class StudentMainMenuViewController: UIViewController {
         titleView.textAlignment = .center
         titleView.font = UIFont.systemFont(ofSize: 33, weight: .black)
         navigationItem.titleView = titleView
+        
+        
         
         
         super.viewDidLoad()
@@ -51,8 +56,13 @@ class StudentMainMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(launchGame), name: .startGame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAvailableGames), name: .startGame, object: nil)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -61,9 +71,16 @@ class StudentMainMenuViewController: UIViewController {
     @IBAction func LogoutAction(_ sender: Any) {
     }
     
+    @IBAction func GameModeChangeAction(_ sender: Any) {
+    }
+    
     @objc func launchGame(){
         let gameVC = GameViewController()
         self.present(gameVC,animated: true)
+    }
+    
+    @objc func reloadAvailableGames(){
+        GameCollectionView.reloadData()
     }
     
     
