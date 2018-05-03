@@ -11,7 +11,25 @@ import CloudKit
 
 struct TKExerciseController {
     
-    var cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone)
+    var cloudCtrl: TKGenericCloudController<TKExercise>!
+    var rank: TKRank!
+    
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
+        self.rank = rank
+        
+        switch rank {
+        case .student:
+            if let recordZone = TKGenericCloudController<TKExercise>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
+                                                                           forDatabase: CKContainer.default().sharedCloudDatabase) {
+                self.cloudCtrl = TKGenericCloudController<TKExercise>(zone: recordZone, database: rank.database)
+            } else {
+                print("ERROR: Record Zone not found ")
+                cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
+            }
+        case .teacher:
+            cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
+        }
+    }
     
     // MARK: - Exercise Operations
     // ✅

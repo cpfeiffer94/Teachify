@@ -11,7 +11,26 @@ import CloudKit
 
 struct TKSubjectController {
     
-    var cloudCtrl = TKGenericCloudController<TKSubject>(zone: CKRecordZone.teachKitZone)
+    var cloudCtrl: TKGenericCloudController<TKSubject>!
+    var rank: TKRank!
+    
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
+        self.rank = rank
+        
+        switch rank {
+        case .student:
+            if let recordZone = TKGenericCloudController<TKSubject>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
+                                                                          forDatabase: CKContainer.default().sharedCloudDatabase) {
+                self.cloudCtrl = TKGenericCloudController<TKSubject>(zone: recordZone, database: rank.database)
+                completion(true)
+            } else {
+                completion(false)
+            }
+        case .teacher:
+            cloudCtrl = TKGenericCloudController<TKSubject>(zone: CKRecordZone.teachKitZone, database: rank.database)
+            completion(true)
+        }
+    }
     
     // MARK: - Subject Operations
     // ✅
@@ -60,6 +79,9 @@ struct TKSubjectController {
             completion(error)
         }
     }
+    
+    
+    // MARK: Hilfsmethoden
 }
 
 
