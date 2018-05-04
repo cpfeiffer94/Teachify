@@ -23,26 +23,54 @@ class TKModelSingleton {
 
 class TKFetchController: NSObject {
     fileprivate var gameCardModel = TKModelSingleton.sharedInstance
-    let TKExerciseCtrl : TKExerciseController = TKExerciseController()
-    let TKDocumentCtrl : TKDocumentController = TKDocumentController()
-    let TKSubjectCtrl : TKSubjectController = TKSubjectController()
-    let TKClassCtrl : TKClassController = TKClassController()
+    var TKExerciseCtrl : TKExerciseController = TKExerciseController()
+    var TKDocumentCtrl : TKDocumentController = TKDocumentController()
+    var TKSubjectCtrl : TKSubjectController = TKSubjectController()
+    var TKClassCtrl : TKClassController = TKClassController()
+    var TKTeacherCtrl : TKTeacherController = TKTeacherController()
+//    var TKShareCtrl : TKShareController = TKShareController(view: <#T##UIView#>)
     
     
-    func fetchDatabase() {
+    func fetchDatabase(aRank rank : TKRank) {
         gameCardModel.downloadedClasses = []
         gameCardModel.downloadedSubjects = []
         gameCardModel.downloadedDocuments = []
         gameCardModel.downloadedExercises = []
         
+        setupFetchController(aRank: rank)
+        
         fetchClassesFromTK()
+    }
+    
+    func setupFetchController(aRank rank : TKRank){
+        TKClassCtrl.initialize(withRank: rank) { (succeed) in
+            print("Class init --> \(succeed)")
+        }
+        
+        TKTeacherCtrl.initialize(withRank: rank) { (succeed) in
+            print("Teacher init --> \(succeed)")
+        }
+        
+        TKSubjectCtrl.initialize(withRank: rank) { (succeed) in
+            print("Subject init --> \(succeed)")
+        }
+        
+        TKDocumentCtrl.initialize(withRank: rank) { (succeed) in
+            print("Document init --> \(succeed)")
+        }
+        
+        TKExerciseCtrl.initialize(withRank: rank) { (succeed) in
+            print("Exercise init --> \(succeed)")
+        }
+        
+//        TKSharingCtrl = TKShareController(view: self.view)
     }
     
     func updateGamesList() {
         gameCardModel.data = []
         for mydocuments in gameCardModel.downloadedDocuments {
             for document in mydocuments {
-                gameCardModel.data.append(GameInformationItem(name: document.name, typ: "Kristallmathe", deadline: document.deadline, subject: "Mathematik", tries: 3))
+                addGame(name: document.name, typ: "FollowTheOrder", deadline: document.deadline, subject: "Mathe", tries: 3)
             }
         }
     }
@@ -68,7 +96,6 @@ class TKFetchController: NSObject {
             for exercies in myexercises {
                 print("Downloaded Exercise: " + exercies.name)
             }
-            
         }
         
     }
@@ -83,7 +110,7 @@ class TKFetchController: NSObject {
                 for myclass in fetchedClasses {
                     self.fetchSubjectsForClassFromTK(mytkclass: myclass)
                 }
-                print("Fetched Classes from TK sucessfully")
+                print("Fetched \(fetchedClasses.count) Classes from TK sucessfully")
             }
         }
     }
@@ -98,7 +125,7 @@ class TKFetchController: NSObject {
                 for mysubject in fetchedSubjects{
                     self.fetchDocumentsForSubjectFromTK(mytksubject: mysubject)
                     }
-                print("Fetched Subjects from TK sucessfully")
+                print("Fetched \(self.gameCardModel.downloadedSubjects.count) Subjects from TK sucessfully")
             }
         }
     }
@@ -113,7 +140,11 @@ class TKFetchController: NSObject {
                 for mydocument in fetchedDocuments{
                     self.fetchExercisesForDocumentFromTK(mytkdocument: mydocument)
                 }
-                print("Fetched Documents from TK sucessfully")
+                print("Fetched \(self.gameCardModel.downloadedDocuments.count) Documents from TK sucessfully")
+                
+                DispatchQueue.main.async { // very nice DispatchQueue
+                    self.updateGamesList()
+                }
             }
         }
     }
@@ -125,7 +156,7 @@ class TKFetchController: NSObject {
             }
             else {
                 self.gameCardModel.downloadedExercises.append(fetchedExercises)
-                print("Fetched Exercises from TK sucessfully")
+                print("Fetched \(self.gameCardModel.downloadedExercises.count) Exercises from TK sucessfully")
                 self.debugPrintAfterFetch()
             }
         }
@@ -143,7 +174,7 @@ class TKFetchController: NSObject {
         gameCardModel.data = []
     }
     
-    func getGamesLength() -> Int {
+    func getGamesCount() -> Int {
         return gameCardModel.data.count
     }
     

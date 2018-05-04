@@ -16,7 +16,7 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return GameCollectionController.getGamesLength()
+        return GameCollectionController.getGamesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
