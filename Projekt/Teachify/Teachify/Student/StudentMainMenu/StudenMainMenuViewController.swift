@@ -22,6 +22,7 @@ class StudentMainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        print(GameEnum.mathPiano)
         collectionDS = GameCollectionDataSource()
         collectionDel = GameCollectionDelegate()
         
@@ -68,7 +69,7 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func launchGame(){
-        let gameVC = GameViewController()
+        let gameVC = MathPianoGameViewController()
         self.present(gameVC,animated: true)
     }
     

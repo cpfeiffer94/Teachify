@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class MathPianoGameViewController: UIViewController {
     
     let skView: SKView = {
         let view = SKView()

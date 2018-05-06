@@ -23,7 +23,8 @@ class GameInformationViewController: UIViewController {
     }
     
     @objc func startGame(){
-        let gameVC = GameViewController()
-        self.present(gameVC,animated: true)
+        let gameVCtype  = GameEnum.mathPiano.gameViewControllerClass as! UIViewController.Type
+        let gameVC = gameVCtype.init(coder: NSCoder())
+        self.present(gameVC!,animated: true)
     }
 }
