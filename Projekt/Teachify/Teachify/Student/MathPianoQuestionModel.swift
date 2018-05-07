@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MathPianoQuestionModel : NSObject {
+class MathPianoQuestionModel : NSObject, Codable {
     
     var leftSide : [String] = []
     var rightSide : [String] = []
