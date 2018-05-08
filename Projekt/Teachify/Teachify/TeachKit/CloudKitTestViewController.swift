@@ -18,6 +18,7 @@ class CloudKitTestViewController: UIViewController {
     var exerciseCtrl: TKExerciseController!
     var sharingCtrl: TKShareController!
     var settingsCtrl = TKSettingsController()
+    var solutionsCtrl: TKSolutionController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,12 @@ class CloudKitTestViewController: UIViewController {
         exerciseCtrl.initialize(withRank: rank) { (succeed) in
             print("Exercise init --> \(succeed)")
         }
+        
+        solutionsCtrl = TKSolutionController()
+        solutionsCtrl.initialize(withRank: rank) { (succeed) in
+            print("Solution init --> \(succeed)")
+        }
+        
         
         sharingCtrl = TKShareController(view: self.view)
     }
@@ -127,6 +134,7 @@ class CloudKitTestViewController: UIViewController {
         }
     }
     
+    
     func create(className: String, subjectName: String, documentName: String, exerciseName: String) {
         let tkClass = TKClass(name: className)
         let tkSubject = TKSubject(name: subjectName, color: TKColor.red)
@@ -167,7 +175,7 @@ class CloudKitTestViewController: UIViewController {
                     self.subjectCtrl.fetchSubject(forClass: fetchedClass, withFetchSortOptions: [], completion: { (fetchedSubjects, error) in
                         for subject in fetchedSubjects {
                             
-                            if subject.name == "Deutsch" {
+                            if subject.name == "If-Sätze" {
                                 
                                 self.documentCtrl.fetchDocuments(forSubject: subject, completion: { (fetchedDocuments, error) in
                                     for document in fetchedDocuments {

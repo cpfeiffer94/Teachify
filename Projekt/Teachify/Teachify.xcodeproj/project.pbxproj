@@ -32,6 +32,8 @@
 		0FEFB4E82084A86B0065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FEFB4ED2084A8E50065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FEFB4EF2084A9000065A460 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56120A1589500486CAC /* TKSolution.swift */; };
+		0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */; };
 		17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */; };
 		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
 		402183042091E18000DF772D /* CustomSegmentedControlDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */; };
@@ -142,6 +144,8 @@
 		0F999DD8207B4D7900FF5542 /* TKSubject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKSubject.swift; sourceTree = "<group>"; };
 		0F999DD9207B4D7900FF5542 /* TKClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKClass.swift; sourceTree = "<group>"; };
 		0F999DED207B4DF300FF5542 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
+		0FF2A56120A1589500486CAC /* TKSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolution.swift; sourceTree = "<group>"; };
+		0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionStatus.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDelegate.swift; sourceTree = "<group>"; };
 		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -283,10 +287,10 @@
 				AA8229DC20888C260018AB0E /* TKLeaderboardController.swift */,
 				AA8229DD20888C260018AB0E /* TKSettingsController.swift */,
 				AA8229E020888C260018AB0E /* TKShareController.swift */,
+				0F4EE9CB2091CDE500AF165A /* TKSolutionController.swift */,
 				AA8229DA20888C260018AB0E /* TKSubjectController.swift */,
 				AA8229E120888C260018AB0E /* TKTeacherController.swift */,
 				AA8229DB20888C260018AB0E /* TKUserProfileController.swift */,
-				0F4EE9CB2091CDE500AF165A /* TKSolutionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +307,7 @@
 				0F999DD3207B4D7900FF5542 /* Enums */,
 				0F999DD8207B4D7900FF5542 /* TKSubject.swift */,
 				0F999DD9207B4D7900FF5542 /* TKClass.swift */,
+				0FF2A56120A1589500486CAC /* TKSolution.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				0F999DD5207B4D7900FF5542 /* TKRank.swift */,
 				0F999DD6207B4D7900FF5542 /* TKFetchSortOption.swift */,
 				0F999DD7207B4D7900FF5542 /* TKColor.swift */,
+				0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */,
 				AA8229F520888C560018AB0E /* ResultScene.swift in Sources */,
 				D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */,
+				0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */,
 				17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
 				40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */,
@@ -892,6 +899,7 @@
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
+				0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,

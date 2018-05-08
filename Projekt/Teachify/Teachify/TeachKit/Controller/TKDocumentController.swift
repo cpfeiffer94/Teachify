@@ -97,8 +97,8 @@ struct TKDocumentController {
                         completion: @escaping ([TKDocument], TKError?) -> ()) {
         
         var predicate = NSPredicate(format: "TRUEPREDICATE")
-        if let classRecord = subject?.record {
-            predicate = NSPredicate(format: "%K == %@", TKDocument.CloudKey.referenceToSubject, CKReference(record: classRecord, action: CKReferenceAction.none))
+        if let subjectRecord = subject?.record {
+            predicate = NSPredicate(format: "%K == %@", TKDocument.CloudKey.referenceToSubject, CKReference(record: subjectRecord, action: CKReferenceAction.none))
         }
         
         cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.documents, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
