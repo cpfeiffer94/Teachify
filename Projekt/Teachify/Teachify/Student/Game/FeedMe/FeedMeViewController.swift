@@ -8,15 +8,6 @@
 
 import Foundation
 import UIKit
-<<<<<<< Updated upstream
-
-class FeedMeViewController : UIViewController {
-    
-    override func viewDidLoad(){
-        super.viewDidLoad()
-    }
-    
-=======
 import GameplayKit
 import SpriteKit
 
@@ -87,5 +78,5 @@ class FeedMeViewController : UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
->>>>>>> Stashed changes
+
 }
