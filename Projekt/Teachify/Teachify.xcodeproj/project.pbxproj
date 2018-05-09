@@ -77,13 +77,10 @@
 		AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */; };
 		AA60B0EA20A3248600FF2AB4 /* EvilDragonImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DA20A3248500FF2AB4 /* EvilDragonImages.atlas */; };
 		AA60B0EB20A3248600FF2AB4 /* FeedMeParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA60B0DB20A3248500FF2AB4 /* FeedMeParams.swift */; };
-		AA60B0EC20A3248600FF2AB4 /* 124905__greencouch__beeps-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */; };
 		AA60B0ED20A3248600FF2AB4 /* beeps.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DE20A3248500FF2AB4 /* beeps.wav */; };
-		AA60B0EE20A3248600FF2AB4 /* gameOver.flac in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DF20A3248500FF2AB4 /* gameOver.flac */; };
 		AA60B0EF20A3248600FF2AB4 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E020A3248500FF2AB4 /* correct.wav */; };
 		AA60B0F020A3248600FF2AB4 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E120A3248500FF2AB4 /* wrong.wav */; };
 		AA60B0F120A3248600FF2AB4 /* newPower.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E220A3248500FF2AB4 /* newPower.wav */; };
-		AA60B0F220A3248600FF2AB4 /* 264295__foolboymedia__sky-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */; };
 		AA60B0F320A3248600FF2AB4 /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E420A3248500FF2AB4 /* gameOver.wav */; };
 		AA60B0F420A3248600FF2AB4 /* sky-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E520A3248500FF2AB4 /* sky-loop.wav */; };
 		AA60B0F520A3248600FF2AB4 /* GameFeedMeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E620A3248500FF2AB4 /* GameFeedMeScene.sks */; };
@@ -215,13 +212,10 @@
 		AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationViewController.swift; sourceTree = "<group>"; };
 		AA60B0DA20A3248500FF2AB4 /* EvilDragonImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EvilDragonImages.atlas; sourceTree = "<group>"; };
 		AA60B0DB20A3248500FF2AB4 /* FeedMeParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMeParams.swift; sourceTree = "<group>"; };
-		AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "124905__greencouch__beeps-5.wav"; sourceTree = "<group>"; };
 		AA60B0DE20A3248500FF2AB4 /* beeps.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beeps.wav; sourceTree = "<group>"; };
-		AA60B0DF20A3248500FF2AB4 /* gameOver.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.flac; sourceTree = "<group>"; };
 		AA60B0E020A3248500FF2AB4 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
 		AA60B0E120A3248500FF2AB4 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 		AA60B0E220A3248500FF2AB4 /* newPower.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newPower.wav; sourceTree = "<group>"; };
-		AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "264295__foolboymedia__sky-loop.wav"; sourceTree = "<group>"; };
 		AA60B0E420A3248500FF2AB4 /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
 		AA60B0E520A3248500FF2AB4 /* sky-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sky-loop.wav"; sourceTree = "<group>"; };
 		AA60B0E620A3248500FF2AB4 /* GameFeedMeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameFeedMeScene.sks; sourceTree = "<group>"; };
@@ -600,13 +594,10 @@
 		AA60B0DC20A3248500FF2AB4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */,
 				AA60B0DE20A3248500FF2AB4 /* beeps.wav */,
-				AA60B0DF20A3248500FF2AB4 /* gameOver.flac */,
 				AA60B0E020A3248500FF2AB4 /* correct.wav */,
 				AA60B0E120A3248500FF2AB4 /* wrong.wav */,
 				AA60B0E220A3248500FF2AB4 /* newPower.wav */,
-				AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */,
 				AA60B0E420A3248500FF2AB4 /* gameOver.wav */,
 				AA60B0E520A3248500FF2AB4 /* sky-loop.wav */,
 			);
@@ -789,12 +780,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA60B0F220A3248600FF2AB4 /* 264295__foolboymedia__sky-loop.wav in Resources */,
 				AA60B0ED20A3248600FF2AB4 /* beeps.wav in Resources */,
 				AA60B0F520A3248600FF2AB4 /* GameFeedMeScene.sks in Resources */,
-				AA60B0EC20A3248600FF2AB4 /* 124905__greencouch__beeps-5.wav in Resources */,
 				AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */,
-				AA60B0EE20A3248600FF2AB4 /* gameOver.flac in Resources */,
 				AA60B0EF20A3248600FF2AB4 /* correct.wav in Resources */,
 				AA60B0F420A3248600FF2AB4 /* sky-loop.wav in Resources */,
 				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
