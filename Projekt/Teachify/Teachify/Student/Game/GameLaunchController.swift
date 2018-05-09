@@ -16,10 +16,12 @@ class GameParamsSingleton {
 //    Instanzen der Spiel ViewController
     fileprivate var followTheOrderVC = FollowTheOrderGameViewController()
     fileprivate var mathpianoVC  = MathPianoGameViewController()
+    fileprivate var feedmeVC = FeedMeViewController()
     
 //    Paramter der Spiele
     fileprivate var followTheOrderParams : FollowTheOrderParams
     fileprivate var mathPianoParams : MathPianoParams
+    fileprivate var feedmeParams : FeedMeParams
     
     
     
@@ -27,6 +29,7 @@ class GameParamsSingleton {
     private init (){
         followTheOrderParams = FollowTheOrderParams.init(param1: "Testrunde")
         mathPianoParams = MathPianoParams.init(param1: "Testrunde")
+        feedmeParams = FeedMeParams.init(param1: "Testrunde")
     }
 }
 
@@ -34,21 +37,29 @@ class GameLaunchController {
     let model = GameParamsSingleton.sharedInstance
     
     
-    func getViewControllerForGame(game : GameEnum) -> UIViewController {
+    func getViewControllerForGame(game : TKExerciseType) -> UIViewController {
         switch game {
-        case .followTheOrder:
+        case .followtheorder:
             return model.followTheOrderVC
-        case .mathPiano:
+        case .mathpiano:
             return model.mathpianoVC
+        case .wordTranslation:
+            return model.mathpianoVC
+        case .feedme:
+            return model.feedmeVC
         }
     }
     
-    func resetInstanceForGame(game : GameEnum){
+    func resetInstanceForGame(game : TKExerciseType){
         switch game {
-        case .followTheOrder:
+        case .followtheorder:
             model.followTheOrderVC = FollowTheOrderGameViewController()
-        case .mathPiano:
+        case .mathpiano:
             model.mathpianoVC = MathPianoGameViewController()
+        case .feedme:
+            model.feedmeVC = FeedMeViewController()
+        case .wordTranslation:
+            print("wordTranslation not implemented!")
         }
     }
     
@@ -60,12 +71,20 @@ class GameLaunchController {
         return model.mathPianoParams
     }
     
+    func getFeedMeParams() -> FeedMeParams {
+        return model.feedmeParams
+    }
+    
     func setFTRParams(newParams : FollowTheOrderParams) {
         model.followTheOrderParams = newParams
     }
     
     func setMathPianoParams(newParams : MathPianoParams){
         model.mathPianoParams = newParams
+    }
+    
+    func setFeedMeParams(newParams : FeedMeParams){
+        model.feedmeParams = newParams
     }
     
 }

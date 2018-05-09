@@ -75,6 +75,21 @@
 		AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */; };
 		AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */; };
 		AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */; };
+		AA60B0EA20A3248600FF2AB4 /* EvilDragonImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DA20A3248500FF2AB4 /* EvilDragonImages.atlas */; };
+		AA60B0EB20A3248600FF2AB4 /* FeedMeParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA60B0DB20A3248500FF2AB4 /* FeedMeParams.swift */; };
+		AA60B0EC20A3248600FF2AB4 /* 124905__greencouch__beeps-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */; };
+		AA60B0ED20A3248600FF2AB4 /* beeps.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DE20A3248500FF2AB4 /* beeps.wav */; };
+		AA60B0EE20A3248600FF2AB4 /* gameOver.flac in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0DF20A3248500FF2AB4 /* gameOver.flac */; };
+		AA60B0EF20A3248600FF2AB4 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E020A3248500FF2AB4 /* correct.wav */; };
+		AA60B0F020A3248600FF2AB4 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E120A3248500FF2AB4 /* wrong.wav */; };
+		AA60B0F120A3248600FF2AB4 /* newPower.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E220A3248500FF2AB4 /* newPower.wav */; };
+		AA60B0F220A3248600FF2AB4 /* 264295__foolboymedia__sky-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */; };
+		AA60B0F320A3248600FF2AB4 /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E420A3248500FF2AB4 /* gameOver.wav */; };
+		AA60B0F420A3248600FF2AB4 /* sky-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E520A3248500FF2AB4 /* sky-loop.wav */; };
+		AA60B0F520A3248600FF2AB4 /* GameFeedMeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E620A3248500FF2AB4 /* GameFeedMeScene.sks */; };
+		AA60B0F620A3248600FF2AB4 /* FeedMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA60B0E720A3248500FF2AB4 /* FeedMeViewController.swift */; };
+		AA60B0F720A3248600FF2AB4 /* DragonImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AA60B0E820A3248500FF2AB4 /* DragonImages.atlas */; };
+		AA60B0F820A3248600FF2AB4 /* GameFeedMeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA60B0E920A3248500FF2AB4 /* GameFeedMeScene.swift */; };
 		AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */; };
 		AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */; };
 		AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */; };
@@ -106,7 +121,6 @@
 		AA822A0020888D3A0018AB0E /* MathPianoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */; };
 		AA822A0120888D3A0018AB0E /* MathPianoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */; };
 		AA822A0320888D6B0018AB0E /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA822A0220888D6B0018AB0E /* GameCardCell.swift */; };
-		AAEE7A0F209CB5FC007393BE /* GameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE7A0E209CB5FC007393BE /* GameEnum.swift */; };
 		AAEE7A11209CCCC0007393BE /* FollowTheOrderGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE7A10209CCCC0007393BE /* FollowTheOrderGameViewController.swift */; };
 		D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3CF6D20888FBF00D0692D /* PlayCard.swift */; };
 /* End PBXBuildFile section */
@@ -199,6 +213,21 @@
 		AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDelegate.swift; sourceTree = "<group>"; };
 		AA486187207F8FEA00C43588 /* GameCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionDataSource.swift; sourceTree = "<group>"; };
 		AA565FCE209A249E0045B3EA /* GameInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInformationViewController.swift; sourceTree = "<group>"; };
+		AA60B0DA20A3248500FF2AB4 /* EvilDragonImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EvilDragonImages.atlas; sourceTree = "<group>"; };
+		AA60B0DB20A3248500FF2AB4 /* FeedMeParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMeParams.swift; sourceTree = "<group>"; };
+		AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "124905__greencouch__beeps-5.wav"; sourceTree = "<group>"; };
+		AA60B0DE20A3248500FF2AB4 /* beeps.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beeps.wav; sourceTree = "<group>"; };
+		AA60B0DF20A3248500FF2AB4 /* gameOver.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.flac; sourceTree = "<group>"; };
+		AA60B0E020A3248500FF2AB4 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
+		AA60B0E120A3248500FF2AB4 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
+		AA60B0E220A3248500FF2AB4 /* newPower.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newPower.wav; sourceTree = "<group>"; };
+		AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "264295__foolboymedia__sky-loop.wav"; sourceTree = "<group>"; };
+		AA60B0E420A3248500FF2AB4 /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
+		AA60B0E520A3248500FF2AB4 /* sky-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sky-loop.wav"; sourceTree = "<group>"; };
+		AA60B0E620A3248500FF2AB4 /* GameFeedMeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameFeedMeScene.sks; sourceTree = "<group>"; };
+		AA60B0E720A3248500FF2AB4 /* FeedMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMeViewController.swift; sourceTree = "<group>"; };
+		AA60B0E820A3248500FF2AB4 /* DragonImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DragonImages.atlas; sourceTree = "<group>"; };
+		AA60B0E920A3248500FF2AB4 /* GameFeedMeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFeedMeScene.swift; sourceTree = "<group>"; };
 		AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TeacherStoryboard.storyboard; sourceTree = "<group>"; };
 		AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
 		AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStoyboardID.swift; sourceTree = "<group>"; };
@@ -230,7 +259,6 @@
 		AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoGame.swift; sourceTree = "<group>"; };
 		AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoQuestionModel.swift; sourceTree = "<group>"; };
 		AA822A0220888D6B0018AB0E /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
-		AAEE7A0E209CB5FC007393BE /* GameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnum.swift; sourceTree = "<group>"; };
 		AAEE7A10209CCCC0007393BE /* FollowTheOrderGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTheOrderGameViewController.swift; sourceTree = "<group>"; };
 		D4D3CF6D20888FBF00D0692D /* PlayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,9 +355,9 @@
 		0FBA79332085F80400D20807 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				AA60B0D920A3248500FF2AB4 /* FeedMe */,
 				D4DE8D052099EA6A005C2A33 /* PianoGame */,
 				D4D3CF6C20888EE900D0692D /* FollowTheOrder */,
-				AAEE7A0E209CB5FC007393BE /* GameEnum.swift */,
 				AA7415F3209F5D400092B664 /* GameLaunchController.swift */,
 			);
 			path = Game;
@@ -491,6 +519,7 @@
 		AA12AF6E207615170090404A /* Teachify */ = {
 			isa = PBXGroup;
 			children = (
+				AA7415F920A05AFF0092B664 /* Shared */,
 				0F22D33B207F4E44004C9024 /* Teachify.entitlements */,
 				0F999DC1207B4D4300FF5542 /* TeachKit */,
 				AA6A068820761BAD00C9420E /* Teacher */,
@@ -554,6 +583,36 @@
 			path = StudentGameModel;
 			sourceTree = "<group>";
 		};
+		AA60B0D920A3248500FF2AB4 /* FeedMe */ = {
+			isa = PBXGroup;
+			children = (
+				AA60B0DA20A3248500FF2AB4 /* EvilDragonImages.atlas */,
+				AA60B0DB20A3248500FF2AB4 /* FeedMeParams.swift */,
+				AA60B0DC20A3248500FF2AB4 /* Sounds */,
+				AA60B0E620A3248500FF2AB4 /* GameFeedMeScene.sks */,
+				AA60B0E720A3248500FF2AB4 /* FeedMeViewController.swift */,
+				AA60B0E820A3248500FF2AB4 /* DragonImages.atlas */,
+				AA60B0E920A3248500FF2AB4 /* GameFeedMeScene.swift */,
+			);
+			path = FeedMe;
+			sourceTree = "<group>";
+		};
+		AA60B0DC20A3248500FF2AB4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AA60B0DD20A3248500FF2AB4 /* 124905__greencouch__beeps-5.wav */,
+				AA60B0DE20A3248500FF2AB4 /* beeps.wav */,
+				AA60B0DF20A3248500FF2AB4 /* gameOver.flac */,
+				AA60B0E020A3248500FF2AB4 /* correct.wav */,
+				AA60B0E120A3248500FF2AB4 /* wrong.wav */,
+				AA60B0E220A3248500FF2AB4 /* newPower.wav */,
+				AA60B0E320A3248500FF2AB4 /* 264295__foolboymedia__sky-loop.wav */,
+				AA60B0E420A3248500FF2AB4 /* gameOver.wav */,
+				AA60B0E520A3248500FF2AB4 /* sky-loop.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		AA6A068720761B9400C9420E /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +641,13 @@
 				AA6A068A20761F5C00C9420E /* TeacherStoryboard.storyboard */,
 			);
 			path = Teacher;
+			sourceTree = "<group>";
+		};
+		AA7415F920A05AFF0092B664 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		D4D3CF6C20888EE900D0692D /* FollowTheOrder */ = {
@@ -723,12 +789,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA60B0F220A3248600FF2AB4 /* 264295__foolboymedia__sky-loop.wav in Resources */,
+				AA60B0ED20A3248600FF2AB4 /* beeps.wav in Resources */,
+				AA60B0F520A3248600FF2AB4 /* GameFeedMeScene.sks in Resources */,
+				AA60B0EC20A3248600FF2AB4 /* 124905__greencouch__beeps-5.wav in Resources */,
 				AA6A068B20761F5C00C9420E /* TeacherStoryboard.storyboard in Resources */,
+				AA60B0EE20A3248600FF2AB4 /* gameOver.flac in Resources */,
+				AA60B0EF20A3248600FF2AB4 /* correct.wav in Resources */,
+				AA60B0F420A3248600FF2AB4 /* sky-loop.wav in Resources */,
 				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
 				AA12AF75207615170090404A /* Main.storyboard in Resources */,
+				AA60B0F720A3248600FF2AB4 /* DragonImages.atlas in Resources */,
+				AA60B0EA20A3248600FF2AB4 /* EvilDragonImages.atlas in Resources */,
+				AA60B0F320A3248600FF2AB4 /* gameOver.wav in Resources */,
 				40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */,
 				AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */,
+				AA60B0F020A3248600FF2AB4 /* wrong.wav in Resources */,
 				40AAF693208255FA008A45A7 /* Assets.xcassets in Resources */,
+				AA60B0F120A3248600FF2AB4 /* newPower.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +934,7 @@
 				404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */,
 				AAEE7A11209CCCC0007393BE /* FollowTheOrderGameViewController.swift in Sources */,
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
+				AA60B0F820A3248600FF2AB4 /* GameFeedMeScene.swift in Sources */,
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
 				40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */,
 				AA8229F420888C560018AB0E /* BasicScene.swift in Sources */,
@@ -867,6 +946,7 @@
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
 				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
 				AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */,
+				AA60B0EB20A3248600FF2AB4 /* FeedMeParams.swift in Sources */,
 				AA8229F520888C560018AB0E /* ResultScene.swift in Sources */,
 				D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */,
 				0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */,
@@ -877,6 +957,7 @@
 				40A773CE209B3CF30030D1FE /* SegmentCell3.swift in Sources */,
 				4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
+				AA60B0F620A3248600FF2AB4 /* FeedMeViewController.swift in Sources */,
 				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
 				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
@@ -916,7 +997,6 @@
 				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
 				0FEFB4E6208499B60065A460 /* (null) in Sources */,
 				0FAB966F2085E38A00FE7F76 /* (null) in Sources */,
-				AAEE7A0F209CB5FC007393BE /* GameEnum.swift in Sources */,
 				AA8229EB20888C260018AB0E /* TKTeacherController.swift in Sources */,
 				AA8229E420888C260018AB0E /* TKSubjectController.swift in Sources */,
 				40A773D1209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift in Sources */,

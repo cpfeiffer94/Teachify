@@ -19,10 +19,9 @@ class StudentMainMenuViewController: UIViewController {
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
     let gamedwnldctrl = TKFetchController()
+    let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
-        
-        print(GameEnum.mathPiano)
         collectionDS = GameCollectionDataSource()
         collectionDel = GameCollectionDelegate()
         
@@ -69,7 +68,8 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func launchGame(){
-        let gameVC = MathPianoGameViewController()
+        gamecontroller.resetInstanceForGame(game: .mathpiano)
+        let gameVC = gamecontroller.getViewControllerForGame(game: .mathpiano)
         self.present(gameVC,animated: true)
     }
     
