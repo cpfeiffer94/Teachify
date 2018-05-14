@@ -571,7 +571,6 @@
 		AA48617A207F7BB000C43588 /* StudentGameModel */ = {
 			isa = PBXGroup;
 			children = (
-				AA8229D420888BC30018AB0E /* TKModelSingleton.swift */,
 				AA486183207F8C4200C43588 /* GameInformationItem.swift */,
 			);
 			path = StudentGameModel;
@@ -637,6 +636,7 @@
 		AA7415F920A05AFF0092B664 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AA8229D420888BC30018AB0E /* TKModelSingleton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
