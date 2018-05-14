@@ -159,7 +159,6 @@ class TKFetchController: NSObject {
         TKExerciseCtrl.fetchExercises(forDocument: mytkdocument, withFetchSortOptions: [.name]) { (fetchedExercises, error) in
             if error != nil {
                 print("Failed fetching Exercises from TK! Subjects:" + mytkdocument.name + "with Error Message: " + error.debugDescription)
-                return nil
             }
             else {
                 self.TKFetchedDataModel.downloadedExercises.append(fetchedExercises)
@@ -199,17 +198,16 @@ class TKFetchController: NSObject {
         for myclass in TKFetchedDataModel.downloadedClasses {
             if myclass.name == queryName{
                 resultTKClasses.append(myclass)
-                myclass.re
             }
         }
         return resultTKClasses
         }
     
-    func getSubjectsForClassRecord (queryRecord : CKRecord){
-        var postition : Int
-        
-        
-    }
+//    func getSubjectsForClassRecord (queryRecord : CKRecord){
+//        var postition : Int
+//        
+//        
+//    }
     
     
 }
