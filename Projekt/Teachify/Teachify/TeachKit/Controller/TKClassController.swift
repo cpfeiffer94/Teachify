@@ -41,6 +41,7 @@ struct TKClassController {
         
         let recordType = TKCloudKey.RecordType.classes
         let predicate = NSPredicate(format: "TRUEPREDICATE")
+        
         cloudCtrl.fetch(forRecordType: recordType, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedClasses, error) in
             completion(fetchedClasses, error)
         }
