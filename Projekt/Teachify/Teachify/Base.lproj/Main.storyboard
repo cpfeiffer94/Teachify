@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,45 +88,124 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VI-c7-8Rd">
-                                <rect key="frame" x="164" y="186" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="doSomethingAction:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="A8O-t9-jwF"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bitte diesen ViewController nicht wieder löschen.. wir brauchen den zum Testen (Schnittstelle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwj-WB-zvu">
-                                <rect key="frame" x="16" y="70" width="343" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte diesen ViewController nicht wieder löschen.. wir brauchen den zum Testen (Schnittstelle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwj-WB-zvu">
+                                <rect key="frame" x="16" y="20" width="343" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-uM-bX1">
-                                <rect key="frame" x="81" y="243" width="212" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-uM-bX1">
+                                <rect key="frame" x="8" y="89" width="359" height="30"/>
                                 <state key="normal" title="Set up Controller for STUDENT"/>
                                 <connections>
                                     <action selector="setUpForStudent:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="lQe-dd-hPo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-GS-hN7">
-                                <rect key="frame" x="82" y="281" width="210" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-GS-hN7">
+                                <rect key="frame" x="8" y="127" width="359" height="30"/>
                                 <state key="normal" title="Set up Controller for TEACHER"/>
                                 <connections>
                                     <action selector="setUpForTeacher:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="6MB-pc-n6s"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hya-9O-ekD">
+                                <rect key="frame" x="8" y="165" width="359" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-6m-Dia">
+                                        <rect key="frame" x="0.0" y="0.0" width="209" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnA-GE-26E">
+                                                <rect key="frame" x="0.0" y="0.0" width="209" height="120"/>
+                                                <state key="normal" title="Share Subject"/>
+                                                <connections>
+                                                    <action selector="shareSubjectAction:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="9wO-sr-arP"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lUf-mB-b06">
+                                                <rect key="frame" x="0.0" y="120" width="209" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="umA-WA-gfH">
+                                        <rect key="frame" x="209" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="umA-WA-gfH" secondAttribute="height" multiplier="1:1" id="Ox2-dr-tuA"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="08U-jE-qiE"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZu-Vy-Yn6">
+                                <rect key="frame" x="8" y="323" width="359" height="30"/>
+                                <state key="normal" title="Fetch all Subjects"/>
+                                <connections>
+                                    <action selector="fetchAllSubjects:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="Cax-bK-wIw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-4S-a08">
+                                <rect key="frame" x="8" y="361" width="359" height="30"/>
+                                <state key="normal" title="Fetch all Documents"/>
+                                <connections>
+                                    <action selector="fetchAllDocuments:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="Zkq-3X-vwB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aU-2Y-Gve">
+                                <rect key="frame" x="8" y="399" width="359" height="30"/>
+                                <state key="normal" title="Fetch all Exercises"/>
+                                <connections>
+                                    <action selector="fetchAllExercises:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="N0I-lE-DDe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WJ-Ju-RPf">
+                                <rect key="frame" x="8" y="437" width="359" height="30"/>
+                                <state key="normal" title="Delete All Shared Records (Student)"/>
+                                <connections>
+                                    <action selector="deleteAllSharedStudentRecords:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="Jg7-rD-Asf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="CZu-Vy-Yn6" secondAttribute="trailing" constant="8" id="6ms-uS-P5N"/>
+                            <constraint firstItem="rrl-GS-hN7" firstAttribute="top" secondItem="9Fk-uM-bX1" secondAttribute="bottom" constant="8" id="8ad-ku-BUQ"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="S3o-4S-a08" secondAttribute="trailing" constant="8" id="AYn-IJ-z3d"/>
+                            <constraint firstItem="CZu-Vy-Yn6" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="Av6-Nz-mQj"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="9Fk-uM-bX1" secondAttribute="trailing" constant="8" id="CPr-pv-tEw"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="Cwj-WB-zvu" secondAttribute="trailing" constant="16" id="Cgi-0c-dho"/>
+                            <constraint firstItem="9Fk-uM-bX1" firstAttribute="top" secondItem="Cwj-WB-zvu" secondAttribute="bottom" constant="8" id="DCW-jM-Sfj"/>
+                            <constraint firstItem="1WJ-Ju-RPf" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="K4Y-qj-wmf"/>
+                            <constraint firstItem="rrl-GS-hN7" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="KeR-bQ-7Iv"/>
+                            <constraint firstItem="1WJ-Ju-RPf" firstAttribute="top" secondItem="6aU-2Y-Gve" secondAttribute="bottom" constant="8" id="MeD-ti-zIY"/>
+                            <constraint firstItem="6aU-2Y-Gve" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="Mrl-6o-nlx"/>
+                            <constraint firstItem="9Fk-uM-bX1" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="RUl-nz-DJV"/>
+                            <constraint firstItem="hya-9O-ekD" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="RzB-aU-3Vt"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="rrl-GS-hN7" secondAttribute="trailing" constant="8" id="SH2-6T-Ab1"/>
+                            <constraint firstItem="S3o-4S-a08" firstAttribute="top" secondItem="CZu-Vy-Yn6" secondAttribute="bottom" constant="8" id="SKB-3n-0UR"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="hya-9O-ekD" secondAttribute="trailing" constant="8" id="VKd-kW-Lr7"/>
+                            <constraint firstItem="hya-9O-ekD" firstAttribute="top" secondItem="rrl-GS-hN7" secondAttribute="bottom" constant="8" id="lVA-Lr-bO0"/>
+                            <constraint firstItem="CZu-Vy-Yn6" firstAttribute="top" secondItem="hya-9O-ekD" secondAttribute="bottom" constant="8" id="pE7-F5-dVQ"/>
+                            <constraint firstItem="Cwj-WB-zvu" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="16" id="rgE-fP-qlU"/>
+                            <constraint firstItem="S3o-4S-a08" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="tuy-Ld-ebX"/>
+                            <constraint firstItem="Cwj-WB-zvu" firstAttribute="top" secondItem="sGF-G3-70A" secondAttribute="top" id="uum-h2-pJZ"/>
+                            <constraint firstItem="6aU-2Y-Gve" firstAttribute="top" secondItem="S3o-4S-a08" secondAttribute="bottom" constant="8" id="xI9-uz-rgh"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="6aU-2Y-Gve" secondAttribute="trailing" constant="8" id="xQT-Nf-sWD"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="1WJ-Ju-RPf" secondAttribute="trailing" constant="8" id="yDc-fw-Egm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sGF-G3-70A"/>
                     </view>
+                    <connections>
+                        <outlet property="linkToShareTextField" destination="lUf-mB-b06" id="Y69-8U-ZdV"/>
+                        <outlet property="sharingQRImageView" destination="umA-WA-gfH" id="qLt-p4-hpN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esK-8T-JD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="1654"/>
+            <point key="canvasLocation" x="352.80000000000001" y="1653.8230884557722"/>
         </scene>
     </scenes>
 </document>

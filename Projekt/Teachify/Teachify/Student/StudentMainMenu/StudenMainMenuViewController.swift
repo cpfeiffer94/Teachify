@@ -19,20 +19,16 @@ class StudentMainMenuViewController: UIViewController {
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
     let gamedwnldctrl = TKFetchController()
-
-    
+    let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
-        
         collectionDS = GameCollectionDataSource()
         collectionDel = GameCollectionDelegate()
         
         GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
         
-        gamedwnldctrl.addGame(name: "Mathekniffel", typ: "Kristallmathe", deadline: Date.init(), subject: "Mathematik", tries: 3)
-        
-        gamedwnldctrl.fetchDatabase()
+        gamedwnldctrl.fetchDatabase(aRank: TKRank.teacher)
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"
@@ -42,10 +38,7 @@ class StudentMainMenuViewController: UIViewController {
         navigationItem.titleView = titleView
         
         
-        
-        
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -62,7 +55,7 @@ class StudentMainMenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(launchGame), name: .startGame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadAvailableGames), name: .startGame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAvailableGames), name: .reloadGameCards, object: nil)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -75,7 +68,8 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func launchGame(){
-        let gameVC = GameViewController()
+        gamecontroller.resetInstanceForGame(game: .mathpiano)
+        let gameVC = gamecontroller.getViewControllerForGame(game: .mathpiano)
         self.present(gameVC,animated: true)
     }
     

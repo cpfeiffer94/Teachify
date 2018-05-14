@@ -11,40 +11,73 @@ import CloudKit
 
 struct TKSolutionController {
     
-    var cloudCtrl: TKGenericCloudController<TKSolution>
-    var rank: TKRank
+    var cloudCtrl: TKGenericCloudController<TKSolution>!
+    var rank: TKRank!
     
-    init(rank: TKRank) {
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
         self.rank = rank
         
         switch rank {
         case .student:
-            // Wichtig fürs Sharing: die sharedReczoneZone muss zuerst gefetched werden um darin arbeiten zu können.
             if let recordZone = TKGenericCloudController<TKSolution>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
-                                                                           forDatabase: CKContainer.default().sharedCloudDatabase) {
+                                                                          forDatabase: CKContainer.default().sharedCloudDatabase) {
                 self.cloudCtrl = TKGenericCloudController<TKSolution>(zone: recordZone, database: rank.database)
+                completion(true)
             } else {
-                print("ERROR: Record Zone not found ")
-                cloudCtrl = TKGenericCloudController<TKSolution>(zone: CKRecordZone.teachKitZone, database: rank.database)
+                completion(false)
             }
         case .teacher:
             cloudCtrl = TKGenericCloudController<TKSolution>(zone: CKRecordZone.teachKitZone, database: rank.database)
+            completion(true)
         }
     }
     
+    
     // MARK: - Solution Operations
-    func fetchExercises(forDocument document: TKDocument? = nil,
+    // ✅
+    func fetchSolutions(forExercise exercise: TKExercise? = nil,
                         withFetchSortOptions fetchSortOptions: [TKFetchSortOption] = [],
-                        completion: @escaping ([TKExercise], TKError?) -> ()) {
+                        completion: @escaping ([TKSolution], TKError?) -> ()) {
         
+        var predicate = NSPredicate(format: "TRUEPREDICATE")
+        if let exerciseRecord = exercise?.record {
+            predicate = NSPredicate(format: "%K == %@", TKSolution.CloudKey.referenceToExercise, CKReference(record: exerciseRecord, action: CKReferenceAction.none))
+        }
+        
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.solutions, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
+            completion(fetchedDocuments, error)
+        }
     }
     
-    func create(exercise: TKExercise, toDocument document: TKDocument, completion: @escaping (TKExercise?, TKError?) -> ()) {
+    // ✅
+    func create(solution: TKSolution, toExercise exercise: TKExercise, completion: @escaping (TKSolution?, TKError?) -> ()) {
+        cloudCtrl.create(object: solution) { (createdSolution, error) in
+            guard let createdSolution = createdSolution else {
+                completion(nil, TKError.dooooImplement)
+                return
+            }
+
+            self.cloudCtrl.add(object: createdSolution,
+                               parentObject: exercise,
+                               withReferenceKey: TKSolution.CloudKey.referenceToExercise,
+                               andAction: CKReferenceAction.deleteSelf,
+                               completion: { (addedSolution, error) in
+                                completion(addedSolution, error)
+            })
+        }
     }
     
-    func update(exercise: TKExercise, completion: @escaping (TKExercise?, TKError?) -> ()) {
+    // ✅
+    func update(solution: TKSolution, completion: @escaping (TKSolution?, TKError?) -> ()) {
+        cloudCtrl.update(object: solution) { (updatedSolution, error) in
+            completion(updatedSolution, error)
+        }
     }
     
-    func delete(exercise: TKExercise, completion: @escaping (TKError?) -> ()) {
+    // ✅
+    func delete(solution: TKSolution, completion: @escaping (TKError?) -> ()) {
+        cloudCtrl.delete(object: solution) { (error) in
+            completion(error)
+        }
     }
 }

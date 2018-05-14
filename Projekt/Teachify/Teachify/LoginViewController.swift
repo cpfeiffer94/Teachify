@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func ShowGame(_ sender: UIButton) {
-        let gameVC = GameViewController()
+        let gameVC = MathPianoGameViewController()
         self.present(gameVC,animated: true)
     }
     

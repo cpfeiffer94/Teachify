@@ -9,6 +9,8 @@
 import UIKit
 
 class GameInformationViewController: UIViewController {
+    let gameController : GameLaunchController = GameLaunchController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,8 @@ class GameInformationViewController: UIViewController {
     }
     
     @objc func startGame(){
-        let gameVC = GameViewController()
+        gameController.resetInstanceForGame(game: .mathpiano)
+        let gameVC = gameController.getViewControllerForGame(game: .mathpiano)
         self.present(gameVC,animated: true)
     }
 }

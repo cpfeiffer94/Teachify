@@ -10,6 +10,8 @@ import UIKit
 import CloudKit
 
 class CloudKitTestViewController: UIViewController {
+    @IBOutlet weak var sharingQRImageView: UIImageView!
+    @IBOutlet weak var linkToShareTextField: UITextField!
     
     var classCtrl: TKClassController!
     var teacherCtrl: TKTeacherController!
@@ -18,10 +20,12 @@ class CloudKitTestViewController: UIViewController {
     var exerciseCtrl: TKExerciseController!
     var sharingCtrl: TKShareController!
     var settingsCtrl = TKSettingsController()
+    var solutionsCtrl: TKSolutionController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        linkToShareTextField.addTarget(self, action: #selector(linkInputDidChange), for: .editingChanged)
     }
     
     @IBAction func setUpForStudent(_ sender: UIButton) {
@@ -59,74 +63,86 @@ class CloudKitTestViewController: UIViewController {
             print("Exercise init --> \(succeed)")
         }
         
+        solutionsCtrl = TKSolutionController()
+        solutionsCtrl.initialize(withRank: rank) { (succeed) in
+            print("Solution init --> \(succeed)")
+        }
+        
+        
         sharingCtrl = TKShareController(view: self.view)
     }
     
-    @IBAction func teacherAction(_ sender: UIButton) {
-        self.classCtrl.fetchClasses { (fetchedClasses, error) in
-            print("error: \(error) -- \(fetchedClasses.count)")
-        }
+    // MARK: - IBActions
+    
+    @IBAction func shareSubjectAction(_ sender: UIButton) {
+        let subjectNameToShare = "Test Subject Name"
+        shareASubject(subjectName: subjectNameToShare)
     }
     
-    @IBAction func studentAction(_ sender: UIButton) {
-        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
-            print("subject error: \(error) -- count: \(fetchedSubjects.count)")
-            for subject in fetchedSubjects {
-                print("sss \(subject.name)")
-                
-                if subject.name == "Test Subject Name" {
-                    print("in 1")
-                    
-                    self.sharingCtrl.createCloudSharingController(forSubject: subject, withShareOption: .addParticipant, completion: { (viewCtrl, error) in
-                        print("error: \(error)")
-                        if let viewCtrl = viewCtrl {
-                            self.present(viewCtrl, animated: true)
-                        }
-                    })
-                    
-                }
-                
+    @IBAction func fetchAllDocuments(_ sender: UIButton) {
+        self.documentCtrl.fetchDocuments { (fetchedDocuments, error) in
+            print("Number of Shared Documents: \(fetchedDocuments.count)")
+            for document in fetchedDocuments {
+                print("Shared Document Name: \(document.name)")
             }
         }
     }
     
-    @IBAction func doSomethingAction(_ sender: UIButton) {
-        let aClass = TKClass(name: "12MH")
-        let subject = TKSubject(name: "A Subject Name", color: TKColor.yellow)
-        let document = TKDocument(name: "My Document 4 uploaded before sharing", deadline: nil)
+    @IBAction func fetchAllSubjects(_ sender: UIButton) {
+        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
+            print("Number of Shared Subjects: \(fetchedSubjects.count)")
+            for subject in fetchedSubjects {
+                print("Shared Subject Name: \(subject.name)")
+            }
+        }
+    }
+    
+    @IBAction func fetchAllExercises(_ sender: UIButton) {
+        self.exerciseCtrl.fetchExercises { (fetchedExercises, error) in
+            print("Number of Shared Exercises: \(fetchedExercises.count)")
+            for exercise in fetchedExercises {
+                print("Shared Exercise Name: \(exercise.name)")
+            }
+        }
+    }
+    
+    @IBAction func deleteAllSharedStudentRecords(_ sender: UIButton) {
+//        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
+//            for subject in fetchedSubjects {
+//                self.subjectCtrl.delete(subject: subject, completion: { (deletionError) in
+//                    print("deleted-subject-name: \(subject.name) -- deltion-error: \(deletionError)")
+//                    let share = CKShare(rootRecord: CKRecord(recordType: "asd"))
+//                    share.removeParticipant(<#T##participant: CKShareParticipant##CKShareParticipant#>)
+//                    share.participants
+//                })
+//            }
+//        }
+    }
+    
+    @objc func linkInputDidChange() {
+        if let inputString = linkToShareTextField.text {
+            let qrCode = createQRCode(string: inputString)
+            sharingQRImageView.image = qrCode
+            print(":)")
+        }
+    }
+    
+    
+    // MARK: - Hilfsmethoden
+    func createQRCode(string: String) -> UIImage? {
+        let data = string.data(using: .ascii, allowLossyConversion: false)
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(data, forKey: "inputMessage")
         
-        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
-            print("subject error: \(error) -- count: \(fetchedSubjects.count)")
-            for subject in fetchedSubjects {
-                print("sss \(subject.name)")
-                
-//                if subject.name == "A Subject Name" {
-//                    print("in 1")
-//                    if let record = subject.record {
-//                        print("in 2")
-//                        let share = CKShare(rootRecord: record)
-//                        let doc = CKRecord(document: document, withRecordZoneID: CKRecordZone.teachKitZone.zoneID)
-//
-//                        print("in 3 - \(share.recordID.recordName)")
-//
-//                        let configuration = CKOperationConfiguration()
-//                        configuration.timeoutIntervalForRequest = 10
-//                        configuration.timeoutIntervalForResource = 10
-//
-//                        let test = CKModifyRecordsOperation(recordsToSave: [share, doc], recordIDsToDelete: nil)
-//                        test.configuration = configuration
-//
-//                        test.modifyRecordsCompletionBlock = { hello, world, error in
-//                            print("eeeeror: \(error) -- \(hello?.count)")
-//                        }
-//                        CKContainer.default().privateCloudDatabase.add(test)
-//                    }
-//                }
-                
-            }
+        if let ciImage = filter?.outputImage {
+            let highResolutionCIImageQR = ciImage.transformed(by: CGAffineTransform(scaleX: 20, y: 20))
+            return UIImage(ciImage: highResolutionCIImageQR)
         }
+        return nil
     }
     
+    
+    // MARK: - Hilfsmethoden zum schnelleren testen der CloudController
     func create(className: String, subjectName: String, documentName: String, exerciseName: String) {
         let tkClass = TKClass(name: className)
         let tkSubject = TKSubject(name: subjectName, color: TKColor.red)
@@ -157,21 +173,25 @@ class CloudKitTestViewController: UIViewController {
     }
     
     func createExercise() {
+        let className = "9a"
+        let subjectName = "If-Sätze"
+        let documentName = "If-Sätze"
+        
         let exercise = TKExercise(name: "Aufgabe 120", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
         
         classCtrl.fetchClasses { (fetchedClasses, error) in
             
             for fetchedClass in fetchedClasses {
-                if fetchedClass.name == "9a" {
+                if fetchedClass.name == className {
                     
                     self.subjectCtrl.fetchSubject(forClass: fetchedClass, withFetchSortOptions: [], completion: { (fetchedSubjects, error) in
                         for subject in fetchedSubjects {
                             
-                            if subject.name == "Deutsch" {
+                            if subject.name == subjectName {
                                 
                                 self.documentCtrl.fetchDocuments(forSubject: subject, completion: { (fetchedDocuments, error) in
                                     for document in fetchedDocuments {
-                                        if document.name == "If-Sätze" {
+                                        if document.name == documentName {
                                             
                                             self.exerciseCtrl.create(exercise: exercise, toDocument: document, completion: { (createdExercise, error) in
                                                 print("error: \(error) -- \(createdExercise?.name)")
@@ -191,8 +211,24 @@ class CloudKitTestViewController: UIViewController {
         }
     }
     
-    func shareASubject() {
+    func shareASubject(subjectName: String) {
         
+        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
+            print("subject error: \(error) -- count: \(fetchedSubjects.count)")
+            for subject in fetchedSubjects {
+                print("sss \(subject.name)")
+                
+                self.sharingCtrl.createCloudSharingController(forSubject: subject,
+                                                              withShareOption: TKShareOption.addParticipant,
+                                                              completion: { (sharingViewCtrl, error) in
+                                                                print("Sharing Errors: \(error)")
+                                                                if let sharingViewCtrl = sharingViewCtrl {
+                                                                    self.present(sharingViewCtrl, animated: true)
+                                                                }
+                })
+                
+            }
+        }
     }
     
 }

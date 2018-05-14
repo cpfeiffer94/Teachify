@@ -22,12 +22,14 @@ struct TKExerciseController {
             if let recordZone = TKGenericCloudController<TKExercise>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
                                                                            forDatabase: CKContainer.default().sharedCloudDatabase) {
                 self.cloudCtrl = TKGenericCloudController<TKExercise>(zone: recordZone, database: rank.database)
+                completion(true)
             } else {
-                print("ERROR: Record Zone not found ")
                 cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
+                completion(false)
             }
         case .teacher:
             cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
+            completion(true)
         }
     }
     
@@ -38,8 +40,8 @@ struct TKExerciseController {
                         completion: @escaping ([TKExercise], TKError?) -> ()) {
         
         var predicate = NSPredicate(format: "TRUEPREDICATE")
-        if let classRecord = document?.record {
-            predicate = NSPredicate(format: "%K == %@", TKExercise.CloudKey.referenceToDocument, CKReference(record: classRecord, action: CKReferenceAction.none))
+        if let documentRecord = document?.record {
+            predicate = NSPredicate(format: "%K == %@", TKExercise.CloudKey.referenceToDocument, CKReference(record: documentRecord, action: CKReferenceAction.none))
         }
         
         cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.exercises, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
