@@ -24,7 +24,7 @@ class AddExerciseViewController: UIViewController {
     }
     
     @IBAction func doSth(_ sender: UIButton) {
-        var exercise = TKExercise(name: "Johannes Exercise", deadline: Date(), type: .wordTranslation, data: <#T##String#>)
+        //var exercise = TKExercise(name: "Johannes Exercise", deadline: Date(), type: .wordTranslation, data: <#T##String#>)
     }
 
     /*

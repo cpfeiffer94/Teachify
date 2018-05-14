@@ -67,9 +67,10 @@ class StudentMainMenuViewController: UIViewController {
     @IBAction func GameModeChangeAction(_ sender: Any) {
     }
     
+    //TODO: hardcoded
     @objc func launchGame(){
-        gamecontroller.resetInstanceForGame(game: .mathpiano)
-        let gameVC = gamecontroller.getViewControllerForGame(game: .mathpiano)
+        gamecontroller.resetInstanceForGame(game: .feedme)
+        let gameVC = gamecontroller.getViewControllerForGame(game: .feedme)
         self.present(gameVC,animated: true)
     }
     
