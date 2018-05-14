@@ -53,7 +53,8 @@ class TeacherMainViewController: UIViewController {
     }
     
     func loadData(){
-        let classController = TKClassController()
+        var classController = TKClassController()
+        classController.initialize(withRank: .teacher) { (_) in}
         classController.fetchClasses(withFetchSortOptions: [.name]) { [unowned self, weak dataSource = dataSource] (classes, error) in
             if let error = error {
                 print("Error fetching classes \(error)")
@@ -64,20 +65,23 @@ class TeacherMainViewController: UIViewController {
                 self.classesCollectionView.reloadData()
                 self.classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
             }
-                let subjectController = TKSubjectController()
-
-                subjectController.fetchSubject(forClass: self.dataSource.classes[0], withFetchSortOptions: [.name]) { [unowned self] (subjects, error) in
-                    if let error = error {
-                        print("Error fetching Subjects \(error)")
-                    }
-  
-                    self.subjectCollectionView.dataSource.subjects = subjects
-                    DispatchQueue.main.async {
-                        self.subjectCollectionView.collectionView.reloadData()
-                        self.subjectCollectionView.layoutIfNeeded()
-                        self.subjectCollectionView.didSelectItem(at: 0)
-                        
-
+            var subjectController = TKSubjectController()
+            subjectController.initialize(withRank: .teacher, completion: { (sucess) in
+                print("Init \(sucess)")
+            })
+            
+            subjectController.fetchSubject(forClass: self.dataSource.classes[0], withFetchSortOptions: [.name]) { [unowned self] (subjects, error) in
+                if let error = error {
+                    print("Error fetching Subjects \(error)")
+                }
+                
+                self.subjectCollectionView.dataSource.subjects = subjects
+                DispatchQueue.main.async {
+                    self.subjectCollectionView.collectionView.reloadData()
+                    self.subjectCollectionView.layoutIfNeeded()
+                    self.subjectCollectionView.didSelectItem(at: 0)
+                    
+                    
                 }
             }
             

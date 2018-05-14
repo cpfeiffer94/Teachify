@@ -46,3 +46,4 @@ class ExerciseInfoViewController: UIViewController {
         }
     }
 }
+
