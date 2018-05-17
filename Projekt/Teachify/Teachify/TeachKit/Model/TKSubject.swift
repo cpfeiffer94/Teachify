@@ -24,6 +24,12 @@ struct TKSubject: TKCloudObject {
             record?[CloudKey.color] = color.tkCloudKey as CKRecordValue
         }
     }
+    
+    var classID: String?
+    
+    var subjectID : String? {
+        return record?.recordID.recordName
+    }
     // ✅ TODO: wird von Schnittstellenteam noch bearbeitet
 //    var participants: [TKUser] = []
 //    var documentIDs: [String] = []
@@ -38,14 +44,18 @@ struct TKSubject: TKCloudObject {
     }
     
     init?(record: CKRecord) {
+        
         guard let name = record[CloudKey.name] as? String,
             let colorKey = record[CloudKey.color] as? String,
-            let color = TKColor(tkCloudKey: colorKey) else {
+            let color = TKColor(tkCloudKey: colorKey),
+            let referenceToClass = record[CloudKey.referenceToClass] as? CKReference else {
             return nil
         }
         self.name = name
         self.color = color
         self.record = record
+        self.classID = referenceToClass.recordID.recordName
+        print(self)
     }
     
     

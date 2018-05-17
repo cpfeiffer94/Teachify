@@ -39,9 +39,9 @@ class ResultScene: SKScene, BasicButtonDelegate{
     
     func basicButtonPressed(_ button: BasicButton) {
         if button.label.text == text{
-            let basic = BasicScene(size: self.size)
+            //let basic = BasicScene(size: self.size)
             let transition = SKTransition.flipVertical(withDuration: 1.0)
-            self.scene!.view?.presentScene(basic, transition: transition)
+            //self.scene!.view?.presentScene(basic, transition: transition)
         }
     }
     

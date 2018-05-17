@@ -38,6 +38,12 @@ struct TKExercise: TKCloudObject {
         }
     }
     
+    var exerciseID: String? {
+        return record?.recordID.recordName
+    }
+    
+    var documentID: String?
+    
     var record: CKRecord?
     
     
@@ -53,13 +59,15 @@ struct TKExercise: TKCloudObject {
         guard let name = record[CloudKey.name] as? String,
                 let data = record[CloudKey.data] as? String,
                 let typeString = record[CloudKey.type] as? String,
-                let type = TKExerciseType(tkCloudKey: typeString) else {
+                let type = TKExerciseType(tkCloudKey: typeString),
+                let referenceToDocument = record[CloudKey.referenceToDocument] as? CKReference else {
             return nil
         }
         self.deadline = record[CloudKey.deadline] as? Date
         self.name = name
         self.data = data
         self.type = type
+        self.documentID = referenceToDocument.recordID.recordName
         self.record = record
     }
     

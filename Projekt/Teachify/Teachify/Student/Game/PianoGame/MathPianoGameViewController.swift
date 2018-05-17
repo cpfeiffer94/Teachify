@@ -17,7 +17,7 @@ class MathPianoGameViewController: UIViewController {
         return view
     }()
     
-    var currentGame: BasicScene!
+    //var currentGame: BasicScene!
     var scene: SKScene!
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class MathPianoGameViewController: UIViewController {
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scene = BasicScene(size: view.frame.size)
+        //scene = BasicScene(size: view.frame.size)
         skView.presentScene(scene)
         
     }

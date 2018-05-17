@@ -22,10 +22,10 @@ class StudentMainMenuViewController: UIViewController {
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
-        collectionDS = GameCollectionDataSource()
+        //collectionDS = GameCollectionDataSource()
         collectionDel = GameCollectionDelegate()
         
-        GameCollectionView.dataSource = collectionDS
+        //GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
         
         gamedwnldctrl.fetchDatabase(aRank: TKRank.teacher)

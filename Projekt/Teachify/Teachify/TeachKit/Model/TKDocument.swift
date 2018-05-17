@@ -30,6 +30,12 @@ struct TKDocument: TKCloudObject {
         }
     }
     
+    var documentID: String? {
+        return record?.recordID.recordName
+    }
+    
+    var subjectID: String?
+    
     var record: CKRecord?
     
     
@@ -40,11 +46,14 @@ struct TKDocument: TKCloudObject {
     }
     
     init?(record: CKRecord) {
-        guard let name = record[CloudKey.name] as? String else {
+        guard let name = record[CloudKey.name] as? String,
+        let referenceToSubject = record[CloudKey.referenceToSubject] as? CKReference
+        else {
             return nil
         }
         self.deadline = record[CloudKey.deadline] as? Date
         self.name = name
+        self.subjectID = referenceToSubject.recordID.recordName
         self.record = record
     }
     

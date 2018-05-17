@@ -13,10 +13,10 @@ class TKModelSingleton {
     static let sharedInstance = TKModelSingleton()
     fileprivate var data : [GameInformationItem] = []
     fileprivate var downloadedClasses : [TKClass] = []
-    fileprivate var downloadedSubjects : [[TKSubject]] = []
-    fileprivate var downloadedDocuments : [[TKDocument]] = []
-    fileprivate var downloadedExercises : [[TKExercise]] = []
-    
+//    fileprivate var downloadedSubjects : [[TKSubject]] = []
+//    fileprivate var downloadedDocuments : [[TKDocument]] = []
+//    fileprivate var downloadedExercises : [[TKExercise]] = []
+//
     private init (){}
 }
 
@@ -32,9 +32,6 @@ class TKFetchController: NSObject {
     
     func fetchDatabase(aRank rank : TKRank) {
         TKFetchedDataModel.downloadedClasses = []
-        TKFetchedDataModel.downloadedSubjects = []
-        TKFetchedDataModel.downloadedDocuments = []
-        TKFetchedDataModel.downloadedExercises = []
         
         setupFetchController(aRank: rank)
         
@@ -42,7 +39,7 @@ class TKFetchController: NSObject {
     }
     
 //    Initialisation for TKControllers
-    func setupFetchController(aRank rank : TKRank){
+    fileprivate func setupFetchController(aRank rank : TKRank){
         TKClassCtrl.initialize(withRank: rank) { (succeed) in
             print("Class init --> \(succeed)")
         }
@@ -67,108 +64,128 @@ class TKFetchController: NSObject {
     }
     
 //    Convert TKDocuments to GameCardModel Items
-    func updateGamesList() {
+    func updateGamesList(with documents: [TKDocument]) {
         TKFetchedDataModel.data = []
-        for mydocuments in TKFetchedDataModel.downloadedDocuments {
-            for document in mydocuments {
+            for document in documents {
                 addGame(name: document.name, typ: "FollowTheOrder", deadline: document.deadline, subject: "Mathe", tries: 3)
             }
-        }
+        
     }
     
-//    Debug Print all downloaded Data.
+///    Debug Print after Data is downloaded.
     func debugPrintAfterFetch () {
         for myclass in TKFetchedDataModel.downloadedClasses {
-            print("Downloaded Class:" + myclass.name)
+            print("Downloaded Class: \(myclass.name) DOwnload Subject: \(myclass.subjects.last!.name)" +
+                "Download Documents: \(myclass.subjects.last!.documents.last!.name)" +
+                "Downloaded Excercise: \(myclass.subjects.last!.documents.last!.exercises.last!.name)")
         }
-        
-        for mysubjects in TKFetchedDataModel.downloadedSubjects {
-            for subject in mysubjects{
-                print("Downloaded Subject:" + subject.name)
-            }
-        }
-        
-        for mydocuments in TKFetchedDataModel.downloadedDocuments {
-            for document in mydocuments {
-                print("Downloaded Document:" + document.name)
-            }
-        }
-        
-        for myexercises in TKFetchedDataModel.downloadedExercises {
-            for exercies in myexercises {
-                print("Downloaded Exercise: " + exercies.name)
-            }
-        }
+
         
     }
     
-//    Downloads all TKClasses from the Cloud and starts fetching all associated Subjects to the Singleton
+///    Downloads all TKClasses from the Cloud and starts fetching all associated Subjects to the Singleton
     func fetchClassesFromTK() {
         TKClassCtrl.fetchClasses(withFetchSortOptions: [.name]) { (fetchedClasses,error) in
-            if error != nil {
-                print("Failed fetching Classes from TK!" + error.debugDescription)
+            if let error = error{
+                print("Failed fetching Classes from TK! \(error)")
+                return
             }
             else {
                 self.TKFetchedDataModel.downloadedClasses = fetchedClasses
-                for myclass in fetchedClasses {
-                    self.fetchSubjectsForClassFromTK(mytkclass: myclass)
-                }
+                self.TKFetchedDataModel.downloadedClasses.forEach({ (aClass) in
+                    self.fetchSubjectsForClassFromTK(mytkclass: aClass)
+                })
+    
                 print("Fetched \(fetchedClasses.count) Classes from TK sucessfully")
             }
         }
     }
     
-//    Downloads all Subjects associated to the parameter TKClass and starts fetching all associated Documents to the Singleton
+///    Downloads all Subjects associated to the parameter TKClass and starts fetching all associated Documents to the Singleton
     func fetchSubjectsForClassFromTK(mytkclass : TKClass) {
         TKSubjectCtrl.fetchSubject(forClass: mytkclass, withFetchSortOptions: [.name]) { (fetchedSubjects, error) in
-            if error != nil {
-                print("Failed fetching Subject from TK! class:" + mytkclass.recordTypeID! + "with Error Message: " + error.debugDescription)
+            if let error = error {
+                print("Failed fetching Subject from TK! class:" + mytkclass.recordTypeID! + "with Error Message: \(error)")
+                return
             }
-            else {
-                self.TKFetchedDataModel.downloadedSubjects.append(fetchedSubjects)
-                for mysubject in fetchedSubjects{
-                    self.fetchDocumentsForSubjectFromTK(mytksubject: mysubject)
-                    }
-                print("Fetched \(self.TKFetchedDataModel.downloadedSubjects.count) Subjects from TK sucessfully")
+         
+            let myClassIndex = self.TKFetchedDataModel.downloadedClasses.index(where: { $0.record == mytkclass.record })
+            
+            if let myClassIndex = myClassIndex
+            {
+                self.TKFetchedDataModel.downloadedClasses[myClassIndex].append(subjects: fetchedSubjects)
+                self.TKFetchedDataModel.downloadedClasses[myClassIndex].subjects
+                    .forEach({ [unowned self] (aSubject) in
+                        self.fetchDocumentsForSubject(subject: aSubject, in: mytkclass)
+                    })
             }
+            
+            
         }
+
     }
     
-//    Downloads all Documents associated to the parameter Subject and starts fetching all associated Exercises to the Singleton
-    func fetchDocumentsForSubjectFromTK(mytksubject : TKSubject) {
-        TKDocumentCtrl.fetchDocuments(forSubject: mytksubject, withFetchSortOptions: [.name]) { (fetchedDocuments, error) in
-            if error != nil {
-                print("Failed fetching Documents from TK! Subjects:" + mytksubject.name + "with Error Message: " + error.debugDescription)
+///    Downloads all Documents associated to the parameter Subject and starts fetching all associated Exercises to the Singleton
+    func fetchDocumentsForSubject(subject : TKSubject, in tkClass: TKClass) {
+        TKDocumentCtrl.fetchDocuments(forSubject: subject, withFetchSortOptions: [.name]) { (fetchedDocuments, error) in
+            if let error = error {
+                print("Failed fetching Documents from TK! Subjects:" + subject.name + "with Error Message: \(error)")
+                return
             }
-            else {
-                self.TKFetchedDataModel.downloadedDocuments.append(fetchedDocuments)
-                for mydocument in fetchedDocuments{
-                    self.fetchExercisesForDocumentFromTK(mytkdocument: mydocument)
-                }
-                print("Fetched \(self.TKFetchedDataModel.downloadedDocuments.count) Documents from TK sucessfully")
-                
+           
+            let myClassIndex = self.TKFetchedDataModel.downloadedClasses.index(where: { $0.record == tkClass.record })
+            
+            guard let classIndex = myClassIndex else {return}
+            
+            let mySubjectIndex = self.TKFetchedDataModel.downloadedClasses[classIndex].subjects.index(where: {$0.record == subject.record})
+            
+            if let subjectIndex = mySubjectIndex
+            {
+                self.TKFetchedDataModel.downloadedClasses[classIndex].subjects[subjectIndex].documents.append(contentsOf: fetchedDocuments)
+                self.TKFetchedDataModel.downloadedClasses[classIndex].subjects[subjectIndex].documents
+                    .forEach({ [unowned self] (aDocument) in
+                        self.fetchExercises(for: aDocument, in: tkClass, with: subject)
+                    })
+            }
+            
                 DispatchQueue.main.async { // very nice DispatchQueue
-                    self.updateGamesList()
+                    self.updateGamesList(with: fetchedDocuments)
                 }
             }
         }
-    }
     
-// Downloads all Exercises associated to the parameter Document
-    func fetchExercisesForDocumentFromTK(mytkdocument : TKDocument) {
-        TKExerciseCtrl.fetchExercises(forDocument: mytkdocument, withFetchSortOptions: [.name]) { (fetchedExercises, error) in
-            if error != nil {
-                print("Failed fetching Exercises from TK! Subjects:" + mytkdocument.name + "with Error Message: " + error.debugDescription)
+    
+/// Downloads all Exercises associated to the parameter Document
+    func fetchExercises(for document : TKDocument, in tkClass: TKClass, with tkSubject: TKSubject) {
+        TKExerciseCtrl.fetchExercises(forDocument: document, withFetchSortOptions: [.name]) { (fetchedExercises, error) in
+            if let error = error {
+                print("Failed fetching Exercises from TK! Subjects:" + document.name + "with Error Message: \(error)")
+                return
             }
-            else {
-                self.TKFetchedDataModel.downloadedExercises.append(fetchedExercises)
-                print("Fetched \(self.TKFetchedDataModel.downloadedExercises.count) Exercises from TK sucessfully")
+           
+            let myClassIndex = self.TKFetchedDataModel.downloadedClasses.index(where: { $0.record == tkClass.record })
+            
+            guard let classIndex = myClassIndex else {return}
+            
+            let mySubjectIndex = self.TKFetchedDataModel.downloadedClasses[classIndex].subjects.index(where: {$0.record == tkSubject.record})
+            
+            guard let subjectIndex = mySubjectIndex else {return}
+            
+            let myDocumentIndex = self.TKFetchedDataModel.downloadedClasses[classIndex].subjects[subjectIndex].documents.index(where: {$0.record == document.record})
+            
+            if let documentIndex = myDocumentIndex
+            {
+                self.TKFetchedDataModel.downloadedClasses[classIndex].subjects[subjectIndex].documents[documentIndex].exercises.append(contentsOf: fetchedExercises)
+            }
+
                 self.debugPrintAfterFetch()
             }
         }
-    }
+}
+
+extension TKFetchController{
     
-//    adding a GameInformationItem to the gameCardModel for the StudentMainMenuCardView notifying the VC to reload the Collectionitems.
+///    adding a GameInformationItem to the gameCardModel for the StudentMainMenuCardView notifying the VC to reload the Collectionitems.
     func addGame(name : String, typ : String, deadline : Date?, subject : String, tries : Int) {
         let tempGameInformation = GameInformationItem(name: name, typ: typ, deadline: deadline, subject: subject, tries: tries)
         
@@ -177,13 +194,13 @@ class TKFetchController: NSObject {
         NotificationCenter.default.post(name: .reloadGameCards , object: nil)
     }
     
-//    Resetting the gameCardModel
+///    Resetting the gameCardModel
     func resetGames(){
         TKFetchedDataModel.data = []
         NotificationCenter.default.post(name: .reloadGameCards , object: nil)
     }
     
-//    returns the number of Items in the gameCardModel
+///    returns the number of Items in the gameCardModel
     func getGamesCount() -> Int {
         return TKFetchedDataModel.data.count
     }

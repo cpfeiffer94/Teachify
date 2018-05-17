@@ -21,6 +21,10 @@ struct TKClass: TKCloudObject {
         return record?.creationDate
     }
     
+    var classID: String? {
+        return record?.recordID.recordName
+    }
+    
     var record: CKRecord?
     
     var recordTypeID: String? {
@@ -42,10 +46,15 @@ struct TKClass: TKCloudObject {
         self.record = record
     }
     
+    mutating func append(subjects : [TKSubject]) {
+        self.subjects.append(contentsOf: subjects)
+    }
+    
     
     // MARK: Keys
     struct CloudKey {
         private init() {}
         static let name = "name"
     }
+    
 }
