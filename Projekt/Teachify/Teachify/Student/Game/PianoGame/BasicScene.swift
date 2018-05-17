@@ -17,12 +17,14 @@ class BasicScene: SKScene, BasicButtonDelegate{
     var gameBtn: BasicButton!
     var gameBtn1: BasicButton!
     var gameBtn2: BasicButton!
-    
+    let buttonImageName = "umbrella.png"
+    var lastUpdateTime: TimeInterval!
     let buttonSize = 150
     var question: [String] = []
     var correctAnswer: [Int] = []
-    var labels: [SKLabelNode] = []
+    var labels: [BasicNode] = []
     var answers: [[Int]] = []
+    var maxNumberOfWaves = 1
     var score: Int!{
         didSet{
             if scoreLabel != nil{
@@ -32,11 +34,26 @@ class BasicScene: SKScene, BasicButtonDelegate{
             }
         }
     }
+    enum Mode{
+        case endless
+        case task
+    }
+    var gameMode: Mode!
     var scoreLabel: SKLabelNode!
     
+   
+    
     override func didMove(to view: SKView) {
-        //setup
+        
+        //### setup ###
+        let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
+        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        backgroundNode.size = self.size
+        addChild(backgroundNode)
+        
         let memoryGames = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 9)
+        gameMode = Mode.task
+        
         
         // translate games
         for gameItem in memoryGames.gameQuestions {
@@ -51,21 +68,26 @@ class BasicScene: SKScene, BasicButtonDelegate{
             answers.append(questionsOfAGame)
         }
         
+        if gameMode == Mode.endless{
+            setupScore()
+            maxNumberOfWaves = question.count - 1
+        }
         
+        generateQuestion()
+        generateButtons(answers: answers[0])
+        
+        //timer setup
+        timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
+    }
+    
+    fileprivate func setupScore() {
         score = 3
         scoreLabel = SKLabelNode(text: String(score))
+        scoreLabel.zPosition = 1
         scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
         scoreLabel.fontSize = 60
         scoreLabel.fontName = "AvenirNext-Bold"
         addChild(scoreLabel)
-        
-        
-        
-        //timer
-        generateQuestion()
-        generateButtons(answers: answers[0])
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveLabel), userInfo: nil, repeats: true)
-        timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
     }
     
     func animateScoreLabel(){
@@ -88,56 +110,63 @@ class BasicScene: SKScene, BasicButtonDelegate{
         }
     }
     
-    @objc func moveLabel(){
+    @objc func moveLabel(deltaTime: TimeInterval){
         
         for item in labels{
-            if item.position.y < 150{
-                labels.removeFirst()
-                question.removeFirst()
+            if item.position.y < 475{
                 item.removeFromParent()
+                print("label.y=\(item.position.y)")
                 wrongAnswer()
             }
             else{
-                let moveDown = SKAction.moveBy(x: 0, y:-150, duration: 1.0)
+                let moveDown = SKAction.moveBy(x: 0, y:-120 * CGFloat(deltaTime), duration: 0)
                 item.run(moveDown)
             }
         }
     }
     
+    
     func rightAnswer(){
         
         if(labels.count > 0){
-            let number = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
             var action: SKAction
-            if number > 0.5{
-                action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! - self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
-            }else{
-                action = SKAction.move(to: CGPoint(x: (labels.first?.position.x)! + self.frame.width,y: (labels.first?.position.y)!), duration: 1.0)
-            }
+            action = SKAction.fadeOut(withDuration: 1)
             let destroyedLabel = labels.first
             labels.first?.run(action){
                 destroyedLabel?.removeFromParent()
             }
-            self.labels.removeFirst()
-            self.question.removeFirst()
-            self.answers.removeFirst()
-            self.correctAnswer.removeFirst()
-            
         }
-        if question.count == 0{
+        if question.count <= 0{
             win()
         }
         else{
-            generateButtons(answers: answers[0])
+            nextQuestion()
+            if answers.count > 0{
+                generateButtons(answers: answers[0])
+            }
         }
+        
     }
     
     func wrongAnswer(){
-        
-        score = score - 1
-        if score <= 0{
-            lose()
+        if gameMode == Mode.endless{
+            score = score - 1
+            if score <= 0{
+                lose()
+            }
+            else{
+                generateButtons(answers: answers[0])
+            }
         }
+        else{
+            let action = SKAction.fadeOut(withDuration: 1)
+            labels.first?.run(action)
+            nextQuestion()
+            if answers.count > 0{
+                generateButtons(answers: answers[0])
+            }
+        }
+       
     }
     
     func basicButtonPressed(_ button: BasicButton) {
@@ -149,19 +178,31 @@ class BasicScene: SKScene, BasicButtonDelegate{
         }
     }
     
+    fileprivate func nextQuestion(){
+        labels.removeFirst()
+        question.removeFirst()
+        answers.removeFirst()
+        correctAnswer.removeFirst()
+    }
+    
     @objc func generateQuestion(){
-        if labels.count < 5{
-            if question.count >= 1{
-                if labels.count < question.count{
-                    let label = SKLabelNode(text: question[labels.count])
-                    label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
-                    label.fontSize = 40
-                    label.fontName = "AvenirNext-Bold"
-                    addChild(label)
-                    labels.append(label)
-                }
+            if labels.count < maxNumberOfWaves{
+                if question.count >= 1{
+                    if labels.count < question.count{
+                        let label = BasicNode.init(texture: nil, color: UIColor.white, size: CGSize(width: self.frame.width, height: self.frame.height + 600), text: question[labels.count], fontColor: UIColor.black, image: "wave.png")
+                        label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * CGFloat(1.6))
+                        label.label.position.y = label.label.position.y - 450
+                        print("generateQuestion: \(label.position.y)")
+                        label.label.fontSize = 40
+                        label.label.fontName = "AvenirNext-Bold"
+                        label.alpha = 0.1
+                        addChild(label)
+                    
+                        labels.append(label)
+                    }
             }
         }
+        
         if question.count == 0{
             win()
         }
@@ -169,61 +210,76 @@ class BasicScene: SKScene, BasicButtonDelegate{
     
     func generateButtons(answers: [Int]){
         
-       
+        //TODO: implement the copy(from:) int basicButton
+        if question.count == 0{
+            win()
+        }
         
         if gameBtn != nil{
             gameBtn.removeFromParent()
         }
         //### 1 ###
-        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[0]), fontColor: UIColor.white)
+        gameBtn = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[0]), fontColor: UIColor.white,image: buttonImageName)
         gameBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 15)
         gameBtn.isUserInteractionEnabled = true
         gameBtn.delegate = self
+        gameBtn.zPosition = 10
         
         if gameBtn1 != nil{
             gameBtn1.removeFromParent()
         }
         //### 2 ###
-        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[1]), fontColor: UIColor.white)
+        gameBtn1 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[1]), fontColor: UIColor.white, image: buttonImageName)
         gameBtn1.position = CGPoint(x: self.frame.width / 2 + 250, y: self.frame.height / 15)
         gameBtn1.isUserInteractionEnabled = true
         gameBtn1.delegate = self
+        gameBtn1.zPosition = 10
         
         if gameBtn2 != nil{
             gameBtn2.removeFromParent()
         }
         //### 3 ###
-        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[2]), fontColor: UIColor.white)
+        gameBtn2 = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 200, height: 75),text: String(answers[2]), fontColor: UIColor.white,image: buttonImageName)
         gameBtn2.position = CGPoint(x: self.frame.width / 2 - 250, y: self.frame.height / 15)
         gameBtn2.isUserInteractionEnabled = true
         gameBtn2.delegate = self
+        gameBtn2.zPosition = 10
         
         addChild(gameBtn)
         addChild(gameBtn1)
         addChild(gameBtn2)
         
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesBegan")
+    func some(){
+        
     }
     
     func win(){
-        timer.invalidate()
         timer1.invalidate()
-        let result = ResultScene(size: self.size)
-        let transition = SKTransition.flipVertical(withDuration: 1.0)
-        result.winner = true
-        self.scene!.view?.presentScene(result, transition: transition)
+        let nc = NotificationCenter.default
+        nc.post(name: NSNotification.Name("exitGame"), object: nil)
     }
+    
     func lose(){
-        timer.invalidate()
         timer1.invalidate()
         let result = ResultScene(size: self.size)
         let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
         self.scene!.view?.presentScene(result, transition: transition)
     }
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+            labels.first?.alpha = 1
+            if lastUpdateTime == nil{
+                lastUpdateTime = currentTime
+            }
+            let deltaTime = currentTime - lastUpdateTime
+            lastUpdateTime = currentTime
+            print("deltaTime: \(deltaTime)")
+            moveLabel(deltaTime: deltaTime)
+    }
+    
     
     func BG(_ block: @escaping ()->Void) {
         DispatchQueue.global(qos: .default).async(execute: block)

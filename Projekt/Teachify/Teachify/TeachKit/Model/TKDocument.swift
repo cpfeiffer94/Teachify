@@ -10,6 +10,7 @@ import Foundation
 import CloudKit
 
 struct TKDocument: TKCloudObject {
+    var exercises: [TKExercise] = []
     var name: String {
         didSet {
             record?[CloudKey.name] = name as CKRecordValue

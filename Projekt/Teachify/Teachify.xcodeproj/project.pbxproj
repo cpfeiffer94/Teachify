@@ -36,6 +36,7 @@
 		0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */; };
 		17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */; };
 		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
+		261D2B9620A9A13D00D98222 /* AssetsGameFeedMe.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261D2B9520A9A13D00D98222 /* AssetsGameFeedMe.xcassets */; };
 		402183042091E18000DF772D /* CustomSegmentedControlDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */; };
 		402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */; };
 		4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFD4207FAC6D00A0C076 /* TeacherMainViewController.swift */; };
@@ -96,7 +97,6 @@
 		AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6A0692207A617C00C9420E /* StudenMainMenuViewController.swift */; };
 		AA7415F4209F5D400092B664 /* GameLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F3209F5D400092B664 /* GameLaunchController.swift */; };
 		AA7415F6209F67290092B664 /* MathPainoParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F5209F67290092B664 /* MathPainoParams.swift */; };
-		AA7415F8209F67390092B664 /* FollowTheOrderParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F7209F67390092B664 /* FollowTheOrderParams.swift */; };
 		AA7F31C1208DE6460012C383 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F31C0208DE6460012C383 /* NotificationNameExtension.swift */; };
 		AA8229D520888BC30018AB0E /* TKModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229D420888BC30018AB0E /* TKModelSingleton.swift */; };
 		AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229D820888C250018AB0E /* TKGenericCloudController.swift */; };
@@ -111,10 +111,8 @@
 		AA8229EB20888C260018AB0E /* TKTeacherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229E120888C260018AB0E /* TKTeacherController.swift */; };
 		AA8229EE20888C340018AB0E /* Extension+CKRecordZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229EC20888C340018AB0E /* Extension+CKRecordZone.swift */; };
 		AA8229EF20888C340018AB0E /* Extension+CKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229ED20888C340018AB0E /* Extension+CKRecord.swift */; };
-		AA8229F420888C560018AB0E /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F020888C550018AB0E /* BasicScene.swift */; };
 		AA8229F520888C560018AB0E /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F120888C560018AB0E /* ResultScene.swift */; };
 		AA8229F620888C560018AB0E /* MathPianoGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F220888C560018AB0E /* MathPianoGameViewController.swift */; };
-		AA8229F720888C560018AB0E /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F320888C560018AB0E /* GameButton.swift */; };
 		AA8229FA20888D170018AB0E /* CloudKitTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F820888D170018AB0E /* CloudKitTestViewController.swift */; };
 		AA8229FB20888D170018AB0E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229F920888D170018AB0E /* Keys.swift */; };
 		AA8229FF20888D3A0018AB0E /* RandomQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */; };
@@ -122,6 +120,9 @@
 		AA822A0120888D3A0018AB0E /* MathPianoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */; };
 		AA822A0320888D6B0018AB0E /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA822A0220888D6B0018AB0E /* GameCardCell.swift */; };
 		AAEE7A11209CCCC0007393BE /* FollowTheOrderGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE7A10209CCCC0007393BE /* FollowTheOrderGameViewController.swift */; };
+		D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C50D20A999FD00185CEF /* BasicNode.swift */; };
+		D443C51020A99A0900185CEF /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C50F20A99A0800185CEF /* BasicScene.swift */; };
+		D443C51220A99AE000185CEF /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C51120A99ADF00185CEF /* BasicButton.swift */; };
 		D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3CF6D20888FBF00D0692D /* PlayCard.swift */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +164,7 @@
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDelegate.swift; sourceTree = "<group>"; };
 		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		261D2B9520A9A13D00D98222 /* AssetsGameFeedMe.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetsGameFeedMe.xcassets; sourceTree = "<group>"; };
 		2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		402183032091E18000DF772D /* CustomSegmentedControlDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControlDataSource.swift; sourceTree = "<group>"; };
 		402183052091E4B000DF772D /* ClassesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -234,7 +236,6 @@
 		AA6A0692207A617C00C9420E /* StudenMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudenMainMenuViewController.swift; sourceTree = "<group>"; };
 		AA7415F3209F5D400092B664 /* GameLaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLaunchController.swift; sourceTree = "<group>"; };
 		AA7415F5209F67290092B664 /* MathPainoParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPainoParams.swift; sourceTree = "<group>"; };
-		AA7415F7209F67390092B664 /* FollowTheOrderParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTheOrderParams.swift; sourceTree = "<group>"; };
 		AA7F31C0208DE6460012C383 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		AA8229D420888BC30018AB0E /* TKModelSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKModelSingleton.swift; sourceTree = "<group>"; };
 		AA8229D820888C250018AB0E /* TKGenericCloudController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKGenericCloudController.swift; sourceTree = "<group>"; };
@@ -249,10 +250,8 @@
 		AA8229E120888C260018AB0E /* TKTeacherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKTeacherController.swift; sourceTree = "<group>"; };
 		AA8229EC20888C340018AB0E /* Extension+CKRecordZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecordZone.swift"; sourceTree = "<group>"; };
 		AA8229ED20888C340018AB0E /* Extension+CKRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+CKRecord.swift"; sourceTree = "<group>"; };
-		AA8229F020888C550018AB0E /* BasicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
 		AA8229F120888C560018AB0E /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 		AA8229F220888C560018AB0E /* MathPianoGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoGameViewController.swift; sourceTree = "<group>"; };
-		AA8229F320888C560018AB0E /* GameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		AA8229F820888D170018AB0E /* CloudKitTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitTestViewController.swift; sourceTree = "<group>"; };
 		AA8229F920888D170018AB0E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomQuestionGenerator.swift; sourceTree = "<group>"; };
@@ -260,6 +259,9 @@
 		AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoQuestionModel.swift; sourceTree = "<group>"; };
 		AA822A0220888D6B0018AB0E /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
 		AAEE7A10209CCCC0007393BE /* FollowTheOrderGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTheOrderGameViewController.swift; sourceTree = "<group>"; };
+		D443C50D20A999FD00185CEF /* BasicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNode.swift; sourceTree = "<group>"; };
+		D443C50F20A99A0800185CEF /* BasicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicScene.swift; path = ../../../../../../../../Desktop/BackUpPianoGame/BasicScene.swift; sourceTree = "<group>"; };
+		D443C51120A99ADF00185CEF /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		D4D3CF6D20888FBF00D0692D /* PlayCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,7 +359,6 @@
 			children = (
 				AA60B0D920A3248500FF2AB4 /* FeedMe */,
 				D4DE8D052099EA6A005C2A33 /* PianoGame */,
-				D4D3CF6C20888EE900D0692D /* FollowTheOrder */,
 				AA7415F3209F5D400092B664 /* GameLaunchController.swift */,
 			);
 			path = Game;
@@ -546,6 +547,7 @@
 				AA12AF73207615170090404A /* Main.storyboard */,
 				AA12AF78207615190090404A /* LaunchScreen.storyboard */,
 				AA12AF7B207615190090404A /* Info.plist */,
+				261D2B9520A9A13D00D98222 /* AssetsGameFeedMe.xcassets */,
 				40AAF692208255FA008A45A7 /* Assets.xcassets */,
 				AA7F31C0208DE6460012C383 /* NotificationNameExtension.swift */,
 			);
@@ -594,7 +596,6 @@
 		AA48617A207F7BB000C43588 /* StudentGameModel */ = {
 			isa = PBXGroup;
 			children = (
-				AA8229D420888BC30018AB0E /* TKModelSingleton.swift */,
 				AA486183207F8C4200C43588 /* GameInformationItem.swift */,
 			);
 			path = StudentGameModel;
@@ -662,19 +663,9 @@
 		AA7415F920A05AFF0092B664 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AA8229D420888BC30018AB0E /* TKModelSingleton.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		D4D3CF6C20888EE900D0692D /* FollowTheOrder */ = {
-			isa = PBXGroup;
-			children = (
-				D4D3CF6D20888FBF00D0692D /* PlayCard.swift */,
-				AAEE7A10209CCCC0007393BE /* FollowTheOrderGameViewController.swift */,
-				AA7415F7209F67390092B664 /* FollowTheOrderParams.swift */,
-			);
-			name = FollowTheOrder;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		D4DE8D052099EA6A005C2A33 /* PianoGame */ = {
@@ -682,8 +673,9 @@
 			children = (
 				AA8229F120888C560018AB0E /* ResultScene.swift */,
 				AA8229F220888C560018AB0E /* MathPianoGameViewController.swift */,
-				AA8229F320888C560018AB0E /* GameButton.swift */,
-				AA8229F020888C550018AB0E /* BasicScene.swift */,
+				D443C50F20A99A0800185CEF /* BasicScene.swift */,
+				D443C50D20A999FD00185CEF /* BasicNode.swift */,
+				D443C51120A99ADF00185CEF /* BasicButton.swift */,
 				AA7415F5209F67290092B664 /* MathPainoParams.swift */,
 			);
 			path = PianoGame;
@@ -813,6 +805,7 @@
 				AA12AF7A207615190090404A /* LaunchScreen.storyboard in Resources */,
 				AA12AF75207615170090404A /* Main.storyboard in Resources */,
 				AA60B0F720A3248600FF2AB4 /* DragonImages.atlas in Resources */,
+				261D2B9620A9A13D00D98222 /* AssetsGameFeedMe.xcassets in Resources */,
 				AA60B0EA20A3248600FF2AB4 /* EvilDragonImages.atlas in Resources */,
 				AA60B0F320A3248600FF2AB4 /* gameOver.wav in Resources */,
 				40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */,
@@ -936,7 +929,6 @@
 				AA7F31C1208DE6460012C383 /* NotificationNameExtension.swift in Sources */,
 				AA8229EA20888C260018AB0E /* TKShareController.swift in Sources */,
 				0FEFB4E82084A86B0065A460 /* (null) in Sources */,
-				AA8229F720888C560018AB0E /* GameButton.swift in Sources */,
 				AA8229FA20888D170018AB0E /* CloudKitTestViewController.swift in Sources */,
 				0F4EE9CC2091CDE500AF165A /* TKSolutionController.swift in Sources */,
 				AA8229D520888BC30018AB0E /* TKModelSingleton.swift in Sources */,
@@ -945,12 +937,10 @@
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
 				AA8229E620888C260018AB0E /* TKLeaderboardController.swift in Sources */,
 				404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */,
-				AAEE7A11209CCCC0007393BE /* FollowTheOrderGameViewController.swift in Sources */,
 				0F999DE1207B4D7900FF5542 /* TKScore.swift in Sources */,
 				AA60B0F820A3248600FF2AB4 /* GameFeedMeScene.swift in Sources */,
 				0F999DE2207B4D7900FF5542 /* TKDocument.swift in Sources */,
 				40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */,
-				AA8229F420888C560018AB0E /* BasicScene.swift in Sources */,
 				AA7415F6209F67290092B664 /* MathPainoParams.swift in Sources */,
 				40AAF69120824E3E008A45A7 /* SubjectCell.swift in Sources */,
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
@@ -961,7 +951,6 @@
 				AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */,
 				AA60B0EB20A3248600FF2AB4 /* FeedMeParams.swift in Sources */,
 				AA8229F520888C560018AB0E /* ResultScene.swift in Sources */,
-				D4D3CF6E20888FBF00D0692D /* PlayCard.swift in Sources */,
 				0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */,
 				17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
@@ -974,7 +963,6 @@
 				40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */,
 				0F999DE9207B4D7900FF5542 /* TKFetchSortOption.swift in Sources */,
 				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
-				AA7415F8209F67390092B664 /* FollowTheOrderParams.swift in Sources */,
 				17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */,
 				402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */,
 				4047BFDF207FAC6F00A0C076 /* ClassesCollectionViewDelegate.swift in Sources */,
@@ -991,10 +979,13 @@
 				AA8229E720888C260018AB0E /* TKSettingsController.swift in Sources */,
 				AA8229FB20888D170018AB0E /* Keys.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
+				D443C51020A99A0900185CEF /* BasicScene.swift in Sources */,
+				D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,
 				AA486188207F8FEA00C43588 /* GameCollectionDataSource.swift in Sources */,
 				0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */,
 				0F999DEE207B4DF300FF5542 /* Others.swift in Sources */,
+				D443C51220A99AE000185CEF /* BasicButton.swift in Sources */,
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				40DC205220A05D7D00555E9E /* AddExerciseViewController.swift in Sources */,
 				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,

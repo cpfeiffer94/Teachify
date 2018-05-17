@@ -19,7 +19,7 @@ class ResultScene: SKScene, BasicButtonDelegate{
     var score: SKLabelNode!
     
     override func didMove(to view: SKView) {
-        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),text: text, fontColor: UIColor.black)
+        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: text)
         playButton.delegate = self
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)

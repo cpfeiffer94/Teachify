@@ -14,12 +14,10 @@ class GameParamsSingleton {
     static let sharedInstance = GameParamsSingleton()
     
 //    Instanzen der Spiel ViewController
-    fileprivate var followTheOrderVC = FollowTheOrderGameViewController()
     fileprivate var mathpianoVC  = MathPianoGameViewController()
     fileprivate var feedmeVC = FeedMeViewController()
     
 //    Paramter der Spiele
-    fileprivate var followTheOrderParams : FollowTheOrderParams
     fileprivate var mathPianoParams : MathPianoParams
     fileprivate var feedmeParams : FeedMeParams
     
@@ -27,7 +25,6 @@ class GameParamsSingleton {
     
     
     private init (){
-        followTheOrderParams = FollowTheOrderParams.init(param1: "Testrunde")
         mathPianoParams = MathPianoParams.init(param1: "Testrunde")
         feedmeParams = FeedMeParams.init(param1: "Testrunde")
     }
@@ -39,8 +36,6 @@ class GameLaunchController {
     
     func getViewControllerForGame(game : TKExerciseType) -> UIViewController {
         switch game {
-        case .followtheorder:
-            return model.followTheOrderVC
         case .mathpiano:
             return model.mathpianoVC
         case .wordTranslation:
@@ -52,8 +47,6 @@ class GameLaunchController {
     
     func resetInstanceForGame(game : TKExerciseType){
         switch game {
-        case .followtheorder:
-            model.followTheOrderVC = FollowTheOrderGameViewController()
         case .mathpiano:
             model.mathpianoVC = MathPianoGameViewController()
         case .feedme:
@@ -63,20 +56,12 @@ class GameLaunchController {
         }
     }
     
-    func getFTRParams() -> FollowTheOrderParams{
-        return model.followTheOrderParams
-    }
-    
     func getMathPianoParams() -> MathPianoParams {
         return model.mathPianoParams
     }
     
     func getFeedMeParams() -> FeedMeParams {
         return model.feedmeParams
-    }
-    
-    func setFTRParams(newParams : FollowTheOrderParams) {
-        model.followTheOrderParams = newParams
     }
     
     func setMathPianoParams(newParams : MathPianoParams){

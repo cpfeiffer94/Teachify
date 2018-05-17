@@ -18,20 +18,21 @@ class MathPianoGameViewController: UIViewController {
     }()
     
     var currentGame: BasicScene!
+    var scene: SKScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Game")
         
-
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(exitGame), name: Notification.Name("exitGame"), object: nil)
+    
         // Do any additional setup after loading the view.
         view.addSubview(skView)
         skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        let scene = BasicScene(size: view.frame.size)
+        scene = BasicScene(size: view.frame.size)
         skView.presentScene(scene)
         
     }
@@ -39,6 +40,11 @@ class MathPianoGameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func exitGame(){
+        scene.removeFromParent()
+        //switch to view 
     }
     
 }
