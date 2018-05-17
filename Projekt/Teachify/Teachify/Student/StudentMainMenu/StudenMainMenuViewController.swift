@@ -18,7 +18,7 @@ class StudentMainMenuViewController: UIViewController {
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
-    let gamedwnldctrl = TKFetchController()
+    let gamedwnldctrl = TKFetchController(rank: .student)
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ class StudentMainMenuViewController: UIViewController {
         
         //GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
-        
-        gamedwnldctrl.fetchDatabase(aRank: TKRank.teacher)
+        //NIcht wundern wenn nichts passiert
+        gamedwnldctrl.fetchAll()
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"

@@ -54,8 +54,8 @@ class TeacherMainViewController: UIViewController {
     
     func loadData(){
         
-        let fetchCtrl = TKFetchController()
-        fetchCtrl.fetchDatabase(aRank: TKRank.teacher)
+        let fetchCtrl = TKFetchController(rank: .teacher)
+        fetchCtrl.fetchAll()
         
 //        var classController = TKClassController()
 //        classController.initialize(withRank: .teacher) { (_) in}
