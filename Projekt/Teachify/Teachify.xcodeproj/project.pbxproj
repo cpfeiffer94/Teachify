@@ -45,6 +45,8 @@
 		4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047BFE9207FACA500A0C076 /* Extensions.swift */; };
 		404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */; };
 		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
+		407E59E520A9A081007EFA8B /* AddExerciseFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */; };
+		407E59E720A9A116007EFA8B /* SubjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E59E620A9A116007EFA8B /* SubjectCollectionViewCell.swift */; };
 		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
 		40A773CE209B3CF30030D1FE /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773CC209B3CF30030D1FE /* SegmentCell.swift */; };
 		40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A773CD209B3CF30030D1FE /* SegmentCell.xib */; };
@@ -171,6 +173,8 @@
 		4047BFE9207FACA500A0C076 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseFirstScreenViewController.swift; sourceTree = "<group>"; };
+		407E59E620A9A116007EFA8B /* SubjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40A773CC209B3CF30030D1FE /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		40A773CD209B3CF30030D1FE /* SegmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentCell.xib; sourceTree = "<group>"; };
@@ -465,6 +469,23 @@
 			path = ExcerciseInfoScreen;
 			sourceTree = "<group>";
 		};
+		407E59E220A9A039007EFA8B /* AddExercise */ = {
+			isa = PBXGroup;
+			children = (
+				407E59E320A9A04B007EFA8B /* Screen1 */,
+			);
+			path = AddExercise;
+			sourceTree = "<group>";
+		};
+		407E59E320A9A04B007EFA8B /* Screen1 */ = {
+			isa = PBXGroup;
+			children = (
+				407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */,
+				407E59E620A9A116007EFA8B /* SubjectCollectionViewCell.swift */,
+			);
+			path = Screen1;
+			sourceTree = "<group>";
+		};
 		40AAF694208256EC008A45A7 /* ExcerciseCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +646,7 @@
 		AA6A068820761BAD00C9420E /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				407E59E220A9A039007EFA8B /* AddExercise */,
 				402182FD2091DE3900DF772D /* TopBars */,
 				402183012091E09B00DF772D /* MainScreen */,
 				17FA67A22091F8BD009BC753 /* Profile */,
@@ -976,8 +998,10 @@
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				40DC205220A05D7D00555E9E /* AddExerciseViewController.swift in Sources */,
 				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,
+				407E59E720A9A116007EFA8B /* SubjectCollectionViewCell.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
+				407E59E520A9A081007EFA8B /* AddExerciseFirstScreenViewController.swift in Sources */,
 				40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */,
 				4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */,
 				4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */,

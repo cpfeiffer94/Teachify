@@ -1,16 +1,14 @@
 //
-//  AddExerciseViewController.swift
+//  AddExerciseFirstScreenViewController.swift
 //  Teachify
 //
-//  Created by Bastian Kusserow on 07.05.18.
+//  Created by Bastian Kusserow on 14.05.18.
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
 
 import UIKit
 
-class AddExerciseViewController: UIViewController {
-    
- 
+class AddExerciseFirstScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
