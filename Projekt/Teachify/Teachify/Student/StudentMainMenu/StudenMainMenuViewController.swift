@@ -18,7 +18,7 @@ class StudentMainMenuViewController: UIViewController {
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
-    let gamedwnldctrl = TKFetchController(rank: .student)
+    let gamedwnldctrl = TKFetchController(rank: .teacher)
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {

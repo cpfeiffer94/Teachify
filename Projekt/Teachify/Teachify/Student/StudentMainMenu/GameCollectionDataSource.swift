@@ -9,7 +9,7 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
-    let GameCollectionController : TKFetchController = TKFetchController()
+    let GameCollectionController : TKFetchController = TKFetchController(rank: .teacher)
 
     override init(){
 
@@ -62,7 +62,7 @@ extension UIWindow {
         if vc.isKind(of: UINavigationController.self) {
 
             let navigationController = vc as! UINavigationController
-            return UIWindow.getVisibleViewControllerFrom( vc: navigationController.visibleViewController!)
+            return UIWindow.getVisibleViewControllerFrom(vc: navigationController.visibleViewController!)
 
         } else if vc.isKind(of: UITabBarController.self) {
 

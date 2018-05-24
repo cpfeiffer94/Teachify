@@ -14,6 +14,7 @@ class TKModelSingleton {
     static let sharedInstance = TKModelSingleton()
     fileprivate var data : [GameInformationItem] = []
     var downloadedClasses : [TKClass] = []
+    
     private init (){}
 }
 
@@ -122,7 +123,6 @@ extension TKFetchController{
             exerciseOperation.documents = subjects.flatMap({$0.documents})
         }
         exerciseOperation.completionBlock = {
-            
             if let notificationName = notificationName {
                 print("Completion Block")
                 NotificationCenter.default.post(Notification(name: notificationName))
@@ -173,28 +173,3 @@ extension TKFetchController{
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
