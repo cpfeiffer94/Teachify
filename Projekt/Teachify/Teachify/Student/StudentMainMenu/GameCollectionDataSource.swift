@@ -9,7 +9,7 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
-    let GameCollectionController : TKFetchController = TKFetchController()
+    let GameCollectionController : TKFetchController = TKFetchController(rank: TKRank.teacher)
 
     override init(){
 
