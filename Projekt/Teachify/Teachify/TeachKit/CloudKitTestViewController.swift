@@ -75,8 +75,22 @@ class CloudKitTestViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func shareSubjectAction(_ sender: UIButton) {
-        let subjectNameToShare = "Test Subject Name"
-        shareASubject(subjectName: subjectNameToShare)
+        let subjectNameToShare = "SubjectName17_123"
+//        shareASubject(subjectName: subjectNameToShare)
+        
+        self.subjectCtrl.fetchSubject { (allSubjects, error) in
+            for subject in allSubjects {
+                if subject.name == subjectNameToShare {
+                    let test = TKShareController(view: self.view)
+                    test.createCloudSharingController(forSubject: subject, withShareOption: .removeParticipant, completion: { (removeCtrl, error) in
+                        if let removeCtrl = removeCtrl {
+                            self.present(removeCtrl, animated: true)
+                        }
+                    })
+                }
+            }
+        }
+        
     }
     
     @IBAction func fetchAllDocuments(_ sender: UIButton) {
@@ -89,12 +103,13 @@ class CloudKitTestViewController: UIViewController {
     }
     
     @IBAction func fetchAllSubjects(_ sender: UIButton) {
-        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
-            print("Number of Shared Subjects: \(fetchedSubjects.count)")
-            for subject in fetchedSubjects {
-                print("Shared Subject Name: \(subject.name)")
-            }
-        }
+//        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
+//            print("Number of Shared Subjects: \(fetchedSubjects.count)")
+//            for subject in fetchedSubjects {
+//                print("Shared Subject Name: \(subject.name)")
+//            }
+//        }
+        create(className: "ClassName17_123", subjectName: "SubjectName17_123", documentName: "DocumentNr17_123", exerciseName: "ExerciseNr17_123")
     }
     
     @IBAction func fetchAllExercises(_ sender: UIButton) {
@@ -173,11 +188,11 @@ class CloudKitTestViewController: UIViewController {
     }
     
     func createExercise() {
-        let className = "9a"
-        let subjectName = "If-Sätze"
-        let documentName = "If-Sätze"
+        let className = "17a"
+        let subjectName = "Subject17"
+        let documentName = "Document17"
         
-        let exercise = TKExercise(name: "Aufgabe 120", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
+        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
         
         classCtrl.fetchClasses { (fetchedClasses, error) in
             
@@ -218,14 +233,16 @@ class CloudKitTestViewController: UIViewController {
             for subject in fetchedSubjects {
                 print("sss \(subject.name)")
                 
-                self.sharingCtrl.createCloudSharingController(forSubject: subject,
-                                                              withShareOption: TKShareOption.addParticipant,
-                                                              completion: { (sharingViewCtrl, error) in
-                                                                print("Sharing Errors: \(error)")
-                                                                if let sharingViewCtrl = sharingViewCtrl {
-                                                                    self.present(sharingViewCtrl, animated: true)
-                                                                }
-                })
+                if subject.name == subjectName {
+                    self.sharingCtrl.createCloudSharingController(forSubject: subject,
+                                                                  withShareOption: TKShareOption.addParticipant,
+                                                                  completion: { (sharingViewCtrl, error) in
+                                                                    print("Sharing Errors: \(error)")
+                                                                    if let sharingViewCtrl = sharingViewCtrl {
+                                                                        self.present(sharingViewCtrl, animated: true)
+                                                                    }
+                    })
+                }
                 
             }
         }
