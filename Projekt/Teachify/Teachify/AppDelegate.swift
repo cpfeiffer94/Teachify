@@ -69,6 +69,10 @@ extension AppDelegate {
                 return
             } else {
                 print("Fetched successfully - \(record)")
+                if let subject = TKSubject(record: record!) {
+                    // TODO: ✅ sollen wir das neue geteilte Subject an das Model/Singleton schicken,
+                    // damit dort der Rest nachgeladen werden kann???
+                }
             }
         }
         CKContainer.default().sharedCloudDatabase.add(operation)
