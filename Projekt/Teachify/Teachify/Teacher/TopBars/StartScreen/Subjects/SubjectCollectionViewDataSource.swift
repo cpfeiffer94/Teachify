@@ -10,10 +10,14 @@ import UIKit
 
 class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    var subjects : [TKSubject] = []
+    var selectedClass = 0
+   // private lazy var subjects : [TKSubject] = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return subjects.count + 2
+        if TKModelSingleton.sharedInstance.downloadedClasses.count > 0 {
+            return TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.count + 2
+        }
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -30,7 +34,7 @@ class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath) as! SubjectCell
-        cell.setup(with: subjects[indexPath.item-1])
+        cell.setup(with: TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects[indexPath.item-1])
         
         return cell
     }

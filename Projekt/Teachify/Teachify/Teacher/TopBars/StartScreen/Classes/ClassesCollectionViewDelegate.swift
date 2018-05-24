@@ -9,6 +9,11 @@
 import UIKit
 
 class ClassesCollectionViewDelegate: CenteredCollectionViewDelegate {
+    
+    @objc dynamic var selectedIndex = 0
 
-   
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        super.collectionView(collectionView, didSelectItemAt: indexPath)
+        selectedIndex = indexPath.item
+    }
 }

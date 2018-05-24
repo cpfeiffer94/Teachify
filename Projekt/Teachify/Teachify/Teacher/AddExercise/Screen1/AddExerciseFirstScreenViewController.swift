@@ -10,8 +10,11 @@ import UIKit
 
 class AddExerciseFirstScreenViewController: UIViewController {
 
+    @IBOutlet weak var addExerciseFirstScreenCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addExerciseFirstScreenCollectionView.register(UINib(nibName: "SubjectCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubjectCollectionViewCell")
 
         // Do any additional setup after loading the view.
     }

@@ -12,7 +12,7 @@ class TeacherMainViewController: UIViewController {
 
     @IBOutlet var classesCollectionView: UICollectionView!
     let dataSource = ClassesCollectionViewDataSource()
-    let delegate = ClassesCollectionViewDelegate()
+    @objc let delegate = ClassesCollectionViewDelegate()
     var titleView : UILabel!
     
     
@@ -43,7 +43,10 @@ class TeacherMainViewController: UIViewController {
        //classesCollectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
         classesCollectionView.dataSource = dataSource
         classesCollectionView.delegate = delegate
+        addObserver(self, forKeyPath: #keyPath(delegate.selectedIndex), options: [], context: nil)
+        
         setupExcerciseCollectionView()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
         loadData()
         
         if let headerView = classesCollectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
@@ -52,44 +55,27 @@ class TeacherMainViewController: UIViewController {
     
     }
     
+    @objc func reloadTable(){
+        print("Notified")
+        DispatchQueue.main.async {[weak self] in
+            self?.classesCollectionView.reloadData()
+            self?.subjectCollectionView.collectionView.reloadData()
+            self?.excerciseCollectionView.reloadData()
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == #keyPath(delegate.selectedIndex) {
+            print("Changed Index")
+            subjectCollectionView.dataSource.selectedClass = delegate.selectedIndex
+            subjectCollectionView.collectionView.reloadData()
+        }
+    }
+    
     func loadData(){
         
         let fetchCtrl = TKFetchController(rank: .teacher)
-        fetchCtrl.fetchAll()
-        
-//        var classController = TKClassController()
-//        classController.initialize(withRank: .teacher) { (_) in}
-//        classController.fetchClasses(withFetchSortOptions: [.name]) { [unowned self, weak dataSource = dataSource] (classes, error) in
-//            if let error = error {
-//                print("Error fetching classes \(error)")
-//            }
-//            dataSource?.classes = classes
-//
-//            DispatchQueue.main.async {
-//                self.classesCollectionView.reloadData()
-//                self.classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
-//            }
-//            var subjectController = TKSubjectController()
-//            subjectController.initialize(withRank: .teacher, completion: { (sucess) in
-//                print("Init \(sucess)")
-//            })
-//
-//            subjectController.fetchSubject(forClass: self.dataSource.classes[1], withFetchSortOptions: [.name]) { [unowned self] (subjects, error) in
-//                if let error = error {
-//                    print("Error fetching Subjects \(error)")
-//                }
-//
-//                self.subjectCollectionView.dataSource.subjects = subjects
-//                DispatchQueue.main.async {
-//                    self.subjectCollectionView.collectionView.reloadData()
-//                    self.subjectCollectionView.layoutIfNeeded()
-//                    self.subjectCollectionView.didSelectItem(at: 0)
-//
-//
-//                }
-//            }
-
- //       }
+        fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
         
         
         
@@ -123,6 +109,7 @@ class TeacherMainViewController: UIViewController {
             self.titleView.transform = CGAffineTransform(scaleX: 2, y: 2)
         }
     }
+    
    
 
    

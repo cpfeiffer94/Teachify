@@ -18,14 +18,14 @@ class StudentMainMenuViewController: UIViewController {
     
     var collectionDS: UICollectionViewDataSource!
     var collectionDel: UICollectionViewDelegate!
-    let gamedwnldctrl = TKFetchController(rank: .student)
+    let gamedwnldctrl = TKFetchController(rank: .teacher)
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
-        //collectionDS = GameCollectionDataSource()
+        collectionDS = GameCollectionDataSource()
         collectionDel = GameCollectionDelegate()
         
-        //GameCollectionView.dataSource = collectionDS
+        GameCollectionView.dataSource = collectionDS
         GameCollectionView.delegate = collectionDel
         //NIcht wundern wenn nichts passiert
         gamedwnldctrl.fetchAll()
