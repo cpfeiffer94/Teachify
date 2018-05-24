@@ -10,9 +10,13 @@ import UIKit
 
 class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
+    var selectedClass = 0
+    var selectedSubject = 0
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        guard TKModelSingleton.sharedInstance.downloadedClasses.count > selectedClass, TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.count > selectedSubject else {return 0}
+        
+        return TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects[selectedSubject].documents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
