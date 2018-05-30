@@ -9,29 +9,42 @@
 import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
-    let GameCollectionController : TKFetchController = TKFetchController(rank: .teacher)
+    let studentController : StudentModelController = StudentModelController()
 
     override init(){
 
     }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if studentController.isMyClassSet() {
+            return studentController.getMyClass().subjects.count
+        }
+        else {
+            return 0
+        }
+            
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return GameCollectionController.getGamesCount()
+        if studentController.isMyClassSet() {
+            return studentController.getMyClass().subjects[section].documents.count
+        }
+        else {
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! GameCardCell
         var tlc = collectionView.window?.rootViewController as! UIViewController
         tlc = UIWindow.getVisibleViewControllerFrom(vc: tlc)
-
-        let game : GameInformationItem = GameCollectionController.getGame(forIndex: indexPath.item)
-
-
-        cell.card.backgroundColor = UIColor(red: 48/255, green: 98/255, blue: 165/255, alpha: 1)
+        
+        if studentController.isMyClassSet() {
+        let tempclass = studentController.getMyClass()
+        cell.card.backgroundColor = tempclass.subjects[indexPath.item].color.color
         cell.card.icon = UIImage(named: "calculator")
-        cell.card.title = game.name
-        cell.card.itemTitle = game.subject
-        cell.card.itemSubtitle = game.type
+        cell.card.title = tempclass.subjects[indexPath.item].documents[indexPath.row].name
+        cell.card.itemTitle = tempclass.subjects[indexPath.item].name
+        cell.card.itemSubtitle = "Anzahl Übungen: \(tempclass.subjects[indexPath.item].documents[indexPath.row].exercises.count)"
         cell.card.buttonText = "Spielen"
         cell.card.textColor = UIColor.white
 
@@ -41,8 +54,21 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         let cardContentVC = tlc.storyboard!.instantiateViewController(withIdentifier: "CardContent")
         cell.card.shouldPresent(cardContentVC, from: tlc, fullscreen: false)
 
-        cell.view.addSubview(cell.card)
+            cell.view.addSubview(cell.card)
+            
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GameCardCellHeader", for: indexPath) as? SectionHeader{
+            
+            if studentController.isMyClassSet() {
+                sectionHeader.SectionTitleLabel.text = studentController.getMyClass().subjects[indexPath.item].name
+            }
+        }
+        return UICollectionReusableView()
     }
 }
 

@@ -8,17 +8,15 @@
 
 import UIKit
 
-struct GameInformationItem {
+struct GameCardInformationItem {
     
     let name : String
-    let type : String
     let deadline : Date?
     let subject : String
     let tries : Int
     
-    init(name:String, typ:String, deadline:Date?, subject:String, tries:Int) {
+    init(name:String, deadline:Date?, subject:String, tries:Int) {
         self.name = name
-        self.type = typ
         self.deadline = deadline
         self.subject = subject
         self.tries = tries

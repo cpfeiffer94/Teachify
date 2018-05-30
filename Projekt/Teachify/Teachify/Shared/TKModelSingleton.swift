@@ -12,7 +12,6 @@ import UIKit
 class TKModelSingleton {
     //TODO Zugriffsschicht
     static let sharedInstance = TKModelSingleton()
-    fileprivate var data : [GameInformationItem] = []
     var downloadedClasses : [TKClass] = []
     
     private init (){}
@@ -36,16 +35,6 @@ class TKFetchController: NSObject {
         
     }
     
-    
-    //    Convert TKDocuments to GameCardModel Items
-    private func updateGamesList(with documents: [TKDocument]) {
-        model.data = []
-        for document in documents {
-            addGame(name: document.name, typ: "FollowTheOrder", deadline: document.deadline, subject: "Mathe", tries: 3)
-        }
-        
-    }
-    
     ///    Debug Print after Data is downloaded.
     private func debugPrintAfterFetch () {
         for myclass in model.downloadedClasses {
@@ -63,39 +52,28 @@ class TKFetchController: NSObject {
 //MARK: Zugriffsschicht
 extension TKFetchController{
     
-    ///    adding a GameInformationItem to the gameCardModel for the StudentMainMenuCardView notifying the VC to reload the Collectionitems.
-    func addGame(name : String, typ : String, deadline : Date?, subject : String, tries : Int) {
-        let tempGameInformation = GameInformationItem(name: name, typ: typ, deadline: deadline, subject: subject, tries: tries)
-        
-        model.data.append(tempGameInformation)
-        
-        NotificationCenter.default.post(name: .reloadGameCards , object: nil)
-    }
-    
-    ///    Resetting the gameCardModel
-    func resetGames(){
-        model.data = []
-        NotificationCenter.default.post(name: .reloadGameCards , object: nil)
-    }
-    
-    ///    returns the number of Items in the gameCardModel
-    func getGamesCount() -> Int {
-        return model.data.count
-    }
-    
-    func getGame(forIndex : Int) -> GameInformationItem {
-        return model.data[forIndex]
-    }
-    
     /* For Queries in the already fetched Model */
-    func getClassForName(queryName : String) -> [TKClass]{
-        var resultTKClasses : [TKClass] = []
-        for myclass in model.downloadedClasses {
-            if myclass.name == queryName{
-                resultTKClasses.append(myclass)
+    func getClassIndexForName(queryName : String) -> Int{
+        
+        let index = model.downloadedClasses.index { (myclass) -> Bool in
+            if (myclass.name == queryName){
+                return true
             }
+                return false
         }
-        return resultTKClasses
+        
+        if let returnIndex = index {
+            return returnIndex
+        }
+        return -1
+    }
+    
+    func getClasses() -> [TKClass] {
+        return model.downloadedClasses
+    }
+    
+    func getClassForIndex(myIndex: Int) -> TKClass{
+        return model.downloadedClasses[myIndex]
     }
     
     //    func getSubjectsForClassRecord (queryRecord : CKRecord){
@@ -125,7 +103,9 @@ extension TKFetchController{
         exerciseOperation.completionBlock = {
             if let notificationName = notificationName {
                 print("Completion Block")
-                NotificationCenter.default.post(Notification(name: notificationName))
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(Notification(name: notificationName))
+                }
             }
         }
         //Setting Dependencies
@@ -163,10 +143,6 @@ extension TKFetchController{
     func fetchExercise(for documents: [TKDocument], notificationName: Notification.Name){
         let exerciseOperation = ExerciseOperation()
         exerciseOperation.documents = documents
-        exerciseOperation.completionBlock = {
-            
-            NotificationCenter.default.post(Notification(name: notificationName))
-        }
         let queue = OperationQueue()
         queue.addOperation(exerciseOperation)
     }
