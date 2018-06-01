@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="620" height="420"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ" customClass="CardHighlight" customModule="Cards">
                                                     <rect key="frame" x="0.0" y="0.0" width="620" height="420"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -188,7 +188,7 @@
                                     <segment title="Continious play"/>
                                 </segments>
                                 <connections>
-                                    <action selector="GameModeChangeAction:" destination="Pgv-eR-7Ag" eventType="valueChanged" id="d6N-fG-wlJ"/>
+                                    <action selector="GameModeChangeToggled:forEvent:" destination="Pgv-eR-7Ag" eventType="valueChanged" id="Nky-mK-Ttv"/>
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41o-I1-npy" userLabel="SpacerView">
@@ -238,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdK-8f-BZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116.40625" y="-1396.2890625"/>
+            <point key="canvasLocation" x="3082" y="-1397"/>
         </scene>
         <!--Game Information View Controller-->
         <scene sceneID="a2e-Ad-tNA">

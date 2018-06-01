@@ -7,11 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class StudentModelSingleton {
-    //TODO Zugriffsschicht
     static let sharedInstance = StudentModelSingleton()
-    fileprivate var data : [GameCardInformationItem] = []
+    fileprivate var continousGames : [ContinousGameInformationItem] = []
     fileprivate var myClass : TKClass?
     
     private init (){}
@@ -22,7 +22,10 @@ class StudentModelController : NSObject {
     fileprivate var model = StudentModelSingleton.sharedInstance
     fileprivate var tkModelController = TKFetchController(rank: .teacher)
     
-    override init(){}
+    override init(){
+        super.init()
+        self.setContinousGameList()
+    }
     
     func setMyClass(myClassName : String){
         let modelIndex = tkModelController.getClassIndexForName(queryName: myClassName)
@@ -49,39 +52,29 @@ class StudentModelController : NSObject {
         return model.myClass!
     }
     
+//############################################
+//MARK: Methods for continous Mode
     
-    
-    //    Convert TKDocuments to GameCardModel Items
-    private func updateGamesList(with documents: [TKDocument]) {
-        model.data = []
-        for document in documents {
-            addExercise(name: document.name, deadline: document.deadline, subject: document.subjectID!, tries: 3)
-        }
+    private func setContinousGameList() {
+        model.continousGames = []
         
-    }
-    
-    ///    adding a GameInformationItem to the gameCardModel for the StudentMainMenuCardView notifying the VC to reload the Collectionitems.
-    func addExercise(name : String, deadline : Date?, subject : String, tries : Int) {
-        let tempGameInformation = GameCardInformationItem(name: name, deadline: deadline, subject: subject, tries: tries)
-        
-        model.data.append(tempGameInformation)
+//        Follow The Order
+        model.continousGames.append(ContinousGameInformationItem(name: "Word Translation", type: .wordTranslation, subject: "Englisch", color: .blue, image: UIImage(named: "calculator")!))
+//        Feed Me
+        model.continousGames.append(ContinousGameInformationItem(name: "Feed Me", type: .feedme, subject: "Mathe", color: .yellow, image: UIImage(named: "calculator")!))
+//        Math Piano
+        model.continousGames.append(ContinousGameInformationItem(name: "Math Piano", type: .mathpiano, subject: "Math", color: .red, image: UIImage(named: "calculator")!))
         
         NotificationCenter.default.post(name: .reloadGameCards , object: nil)
+        
     }
     
-    ///    Resetting the gameCardModel
-    func resetGames(){
-        model.data = []
-        NotificationCenter.default.post(name: .reloadGameCards , object: nil)
+    func getContinousGame(index : Int) -> ContinousGameInformationItem {
+        return model.continousGames[index]
     }
     
-    ///    returns the number of Items in the gameCardModel
-    func getGamesCount() -> Int {
-        return model.data.count
-    }
-    
-    func getGame(forIndex : Int) -> GameCardInformationItem {
-        return model.data[forIndex]
+    func getContinousGameCount() -> Int {
+        return model.continousGames.count
     }
     
     

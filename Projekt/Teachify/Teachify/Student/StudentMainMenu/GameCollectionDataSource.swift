@@ -10,21 +10,35 @@ import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
     let studentController : StudentModelController = StudentModelController()
+    
+    var ContiniousMode = false
 
     override init(){
 
     }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if studentController.isMyClassSet() {
-            return studentController.getMyClass().subjects.count
-        }
-        else {
-            return 0
-        }
-            
+    
+    func setContinousMode(isContinous : Bool){
+        ContiniousMode = isContinous
     }
+    
+    // TODO: SectionHeader not working
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        if (ContiniousMode){
+//            return 1
+//        }
+//        else {
+//            if studentController.isMyClassSet(){
+//                return studentController.getMyClass().subjects.count
+//                }
+//            }
+//
+//        return 0
+//    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (ContiniousMode){
+            return studentController.getContinousGameCount()
+        }
         if studentController.isMyClassSet() {
             return studentController.getMyClass().subjects[section].documents.count
         }
@@ -38,38 +52,61 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         var tlc = collectionView.window?.rootViewController as! UIViewController
         tlc = UIWindow.getVisibleViewControllerFrom(vc: tlc)
         
-        if studentController.isMyClassSet() {
-        let tempclass = studentController.getMyClass()
-        cell.card.backgroundColor = tempclass.subjects[indexPath.item].color.color
-        cell.card.icon = UIImage(named: "calculator")
-        cell.card.title = tempclass.subjects[indexPath.item].documents[indexPath.row].name
-        cell.card.itemTitle = tempclass.subjects[indexPath.item].name
-        cell.card.itemSubtitle = "Anzahl Übungen: \(tempclass.subjects[indexPath.item].documents[indexPath.row].exercises.count)"
-        cell.card.buttonText = "Spielen"
-        cell.card.textColor = UIColor.white
-
+        if ContiniousMode {
+            let myGame = studentController.getContinousGame(index: indexPath.row)
+            cell.card.backgroundColor = myGame.color
+            cell.card.icon = myGame.backgroundImage
+            cell.card.title = myGame.name
+            cell.card.itemTitle = "Endlosspiel"
+            cell.card.itemSubtitle = "Subtitle?"
+            cell.card.buttonText = "Spielen"
+            cell.card.textColor = UIColor.white
+            
+            cell.setContiniousGame(game: myGame.type)
+        }
+        else{
+            if studentController.isMyClassSet() {
+                let tempclass = studentController.getMyClass()
+                cell.card.backgroundColor = tempclass.subjects[indexPath.item].color.color
+                cell.card.icon = UIImage(named: "calculator")
+                cell.card.title = tempclass.subjects[indexPath.item].documents[indexPath.row].name
+                cell.card.itemTitle = tempclass.subjects[indexPath.item].name
+                cell.card.itemSubtitle = "Anzahl Übungen: \(tempclass.subjects[indexPath.item].documents[indexPath.row].exercises.count)"
+                cell.card.buttonText = "Spielen"
+                cell.card.textColor = UIColor.white
+                
+                cell.setExercises(newExercises: tempclass.subjects[indexPath.item].documents[indexPath.row].exercises)
+            }
+        }
+        
+        
         cell.card.hasParallax = true
         cell.card.action
-
+        
         let cardContentVC = tlc.storyboard!.instantiateViewController(withIdentifier: "CardContent")
         cell.card.shouldPresent(cardContentVC, from: tlc, fullscreen: false)
-
-            cell.view.addSubview(cell.card)
-            
-        }
+        
+        cell.view.addSubview(cell.card)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GameCardCellHeader", for: indexPath) as? SectionHeader{
-            
-            if studentController.isMyClassSet() {
-                sectionHeader.SectionTitleLabel.text = studentController.getMyClass().subjects[indexPath.item].name
-            }
-        }
-        return UICollectionReusableView()
-    }
+    // TODO: SectionHeader not working
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GameCardCellHeader", for: indexPath) as? SectionHeader{
+//
+//            if (ContiniousMode){
+//                sectionHeader.SectionTitleLabel.text = ""
+//            }
+//            else {
+//                if studentController.isMyClassSet() {
+//                    sectionHeader.SectionTitleLabel.text = studentController.getMyClass().subjects[indexPath.item].name
+//                }
+//            }
+//
+//        }
+//        return UICollectionReusableView()
+//    }
 }
 
 extension UIWindow {
