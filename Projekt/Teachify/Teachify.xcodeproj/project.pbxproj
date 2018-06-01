@@ -35,10 +35,14 @@
 		0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56120A1589500486CAC /* TKSolution.swift */; };
 		0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */; };
 		17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */; };
-		17508F1420B6B5C700E3C0EA /* SubjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1220B6B5C700E3C0EA /* SubjectCollectionViewCell.swift */; };
-		17508F1520B6B5C700E3C0EA /* SubjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17508F1320B6B5C700E3C0EA /* SubjectCollectionViewCell.xib */; };
+		17508F1420B6B5C700E3C0EA /* AddSubjectReuseableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */; };
+		17508F1520B6B5C700E3C0EA /* AddSubjectReuseableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */; };
 		17508F1720B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */; };
 		17508F1920B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */; };
+		17F7342C20C1C6E300F93E5A /* OperationPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342B20C1C6E300F93E5A /* OperationPickerViewDelegate.swift */; };
+		17F7342E20C1C72800F93E5A /* OperationPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342D20C1C72800F93E5A /* OperationPickerViewDataSource.swift */; };
+		17F7343020C1CAC100F93E5A /* GameCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342F20C1CAC100F93E5A /* GameCollectionViewDataSource.swift */; };
+		17F7343220C1CADE00F93E5A /* GameCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7343120C1CADE00F93E5A /* GameCollectionViewDelegate.swift */; };
 		17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FA67A32091F90D009BC753 /* ProfileViewController.swift */; };
 		261D2B9620A9A13D00D98222 /* AssetsGameFeedMe.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261D2B9520A9A13D00D98222 /* AssetsGameFeedMe.xcassets */; };
 		2676A31E20AD767B0039C599 /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676A31D20AD767B0039C599 /* BasicScene.swift */; };
@@ -173,10 +177,14 @@
 		0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionStatus.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDelegate.swift; sourceTree = "<group>"; };
-		17508F1220B6B5C700E3C0EA /* SubjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewCell.swift; sourceTree = "<group>"; };
-		17508F1320B6B5C700E3C0EA /* SubjectCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectCollectionViewCell.xib; sourceTree = "<group>"; };
+		17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectReuseableCell.swift; sourceTree = "<group>"; };
+		17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectReuseableCell.xib; sourceTree = "<group>"; };
 		17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		17F7342B20C1C6E300F93E5A /* OperationPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationPickerViewDelegate.swift; sourceTree = "<group>"; };
+		17F7342D20C1C72800F93E5A /* OperationPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationPickerViewDataSource.swift; sourceTree = "<group>"; };
+		17F7342F20C1CAC100F93E5A /* GameCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		17F7343120C1CADE00F93E5A /* GameCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		17FA67A32091F90D009BC753 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		261D2B9520A9A13D00D98222 /* AssetsGameFeedMe.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetsGameFeedMe.xcassets; sourceTree = "<group>"; };
 		2676A31D20AD767B0039C599 /* BasicScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
@@ -392,6 +400,35 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		17F7342820C1C5C700F93E5A /* SubjectCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */,
+				17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */,
+				17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */,
+				17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */,
+			);
+			path = SubjectCollectionView;
+			sourceTree = "<group>";
+		};
+		17F7342920C1C5D900F93E5A /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				17F7342B20C1C6E300F93E5A /* OperationPickerViewDelegate.swift */,
+				17F7342D20C1C72800F93E5A /* OperationPickerViewDataSource.swift */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		17F7342A20C1C61700F93E5A /* GameCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				17F7342F20C1CAC100F93E5A /* GameCollectionViewDataSource.swift */,
+				17F7343120C1CADE00F93E5A /* GameCollectionViewDelegate.swift */,
+			);
+			path = GameCollectionView;
+			sourceTree = "<group>";
+		};
 		17FA67A22091F8BD009BC753 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,11 +537,10 @@
 		407E59E320A9A04B007EFA8B /* Screen1 */ = {
 			isa = PBXGroup;
 			children = (
+				17F7342A20C1C61700F93E5A /* GameCollectionView */,
+				17F7342920C1C5D900F93E5A /* PickerView */,
+				17F7342820C1C5C700F93E5A /* SubjectCollectionView */,
 				407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */,
-				17508F1220B6B5C700E3C0EA /* SubjectCollectionViewCell.swift */,
-				17508F1320B6B5C700E3C0EA /* SubjectCollectionViewCell.xib */,
-				17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */,
-				17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */,
 			);
 			path = Screen1;
 			sourceTree = "<group>";
@@ -849,7 +885,7 @@
 				40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */,
 				AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */,
 				AA60B0F020A3248600FF2AB4 /* wrong.wav in Resources */,
-				17508F1520B6B5C700E3C0EA /* SubjectCollectionViewCell.xib in Resources */,
+				17508F1520B6B5C700E3C0EA /* AddSubjectReuseableCell.xib in Resources */,
 				40AAF693208255FA008A45A7 /* Assets.xcassets in Resources */,
 				AA60B0F120A3248600FF2AB4 /* newPower.wav in Resources */,
 			);
@@ -965,6 +1001,7 @@
 				AA7415F4209F5D400092B664 /* GameLaunchController.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
 				AA486184207F8C4200C43588 /* GaeCardInformationItem.swift in Sources */,
+				17F7342C20C1C6E300F93E5A /* OperationPickerViewDelegate.swift in Sources */,
 				0FEFB4EF2084A9000065A460 /* (null) in Sources */,
 				AA7F31C1208DE6460012C383 /* NotificationNameExtension.swift in Sources */,
 				AA8229EA20888C260018AB0E /* TKShareController.swift in Sources */,
@@ -1033,6 +1070,7 @@
 				D443C51220A99AE000185CEF /* BasicButton.swift in Sources */,
 				40AAF6982082592F008A45A7 /* ExcerciseCollectionViewDataSource.swift in Sources */,
 				40DC205220A05D7D00555E9E /* AddExerciseViewController.swift in Sources */,
+				17F7343020C1CAC100F93E5A /* GameCollectionViewDataSource.swift in Sources */,
 				AA565FCF209A249E0045B3EA /* GameInformationViewController.swift in Sources */,
 				0F999DE7207B4D7900FF5542 /* TKError.swift in Sources */,
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
@@ -1049,12 +1087,14 @@
 				40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */,
 				0F999DEB207B4D7900FF5542 /* TKSubject.swift in Sources */,
 				4089CE4C20B5ACC500161A4C /* Notification.Name+TKNotificationNames.swift in Sources */,
+				17F7343220C1CADE00F93E5A /* GameCollectionViewDelegate.swift in Sources */,
+				17F7342E20C1C72800F93E5A /* OperationPickerViewDataSource.swift in Sources */,
 				4089CE4720B5ABFD00161A4C /* DocumentOperation.swift in Sources */,
 				AAE0744420BF069000E98332 /* SectionHeader.swift in Sources */,
 				0FEFB4E6208499B60065A460 /* (null) in Sources */,
 				0FAB966F2085E38A00FE7F76 /* (null) in Sources */,
 				AA8229EB20888C260018AB0E /* TKTeacherController.swift in Sources */,
-				17508F1420B6B5C700E3C0EA /* SubjectCollectionViewCell.swift in Sources */,
+				17508F1420B6B5C700E3C0EA /* AddSubjectReuseableCell.swift in Sources */,
 				AA8229E420888C260018AB0E /* TKSubjectController.swift in Sources */,
 				40A773D1209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift in Sources */,
 			);
