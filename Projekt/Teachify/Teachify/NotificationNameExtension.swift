@@ -10,7 +10,7 @@ import Foundation
 
 extension Notification.Name {
     
-    static let startGame =  Notification.Name("startGame")
+    static let launchGame =  Notification.Name("startGame")
     
     //TKDownloader finished Status
     static let showDebugModelPrint = Notification.Name("debugPrint")
