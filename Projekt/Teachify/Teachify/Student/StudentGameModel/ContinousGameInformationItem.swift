@@ -8,21 +8,20 @@
 
 import UIKit
 
-struct GameInformationItem {
+struct ContinousGameInformationItem {
     
     let name : String
-    let type : String
-    let deadline : Date?
+    let type : TKExerciseType
     let subject : String
-    let tries : Int
+    let color : UIColor
+    let backgroundImage : UIImage
     
-    init(name:String, typ:String, deadline:Date?, subject:String, tries:Int) {
+    init(name:String, type : TKExerciseType, subject:String, color : UIColor, image : UIImage) {
         self.name = name
-        self.type = typ
-        self.deadline = deadline
+        self.type = type
         self.subject = subject
-        self.tries = tries
-        
+        self.color = color
+        self.backgroundImage = image
     }
     
     

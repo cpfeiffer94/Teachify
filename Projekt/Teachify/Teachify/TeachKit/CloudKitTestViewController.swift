@@ -75,8 +75,24 @@ class CloudKitTestViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func shareSubjectAction(_ sender: UIButton) {
-        let subjectNameToShare = "Test Subject Name"
+        let subjectNameToShare = "SubjectName17_123"
         shareASubject(subjectName: subjectNameToShare)
+    }
+    
+    @IBAction func stopSharing(_ sender: UIButton) {
+        let subjectNameToShare = "SubjectName17_123"
+        self.subjectCtrl.fetchSubject { (allSubjects, error) in
+            for subject in allSubjects {
+                if subject.name == subjectNameToShare {
+                    let test = TKShareController(view: self.view)
+                    test.createCloudSharingController(forSubject: subject, withShareOption: .removeParticipant, completion: { (removeCtrl, error) in
+                        if let removeCtrl = removeCtrl {
+                            self.present(removeCtrl, animated: true)
+                        }
+                    })
+                }
+            }
+        }
     }
     
     @IBAction func fetchAllDocuments(_ sender: UIButton) {
@@ -106,24 +122,23 @@ class CloudKitTestViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteAllSharedStudentRecords(_ sender: UIButton) {
-//        self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
-//            for subject in fetchedSubjects {
-//                self.subjectCtrl.delete(subject: subject, completion: { (deletionError) in
-//                    print("deleted-subject-name: \(subject.name) -- deltion-error: \(deletionError)")
-//                    let share = CKShare(rootRecord: CKRecord(recordType: "asd"))
-//                    share.removeParticipant(<#T##participant: CKShareParticipant##CKShareParticipant#>)
-//                    share.participants
-//                })
-//            }
-//        }
+    @IBAction func createNewDummyContent(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Create",
+                                     message: "Hier wird automatisch ein Class, Subject, Document und Exercise Objekt erstellt und in die Cloud geladen.", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (_) in
+            let text = alert.textFields![0].text!
+            self.create(className: "\(text)_class", subjectName: "\(text)_subject",
+                documentName: "\(text)_document", exerciseName: "\(text)_exercise")
+        }))
+        present(alert, animated: true)
     }
     
     @objc func linkInputDidChange() {
         if let inputString = linkToShareTextField.text {
             let qrCode = createQRCode(string: inputString)
             sharingQRImageView.image = qrCode
-            print(":)")
         }
     }
     
@@ -173,11 +188,11 @@ class CloudKitTestViewController: UIViewController {
     }
     
     func createExercise() {
-        let className = "9a"
-        let subjectName = "If-Sätze"
-        let documentName = "If-Sätze"
+        let className = "17a"
+        let subjectName = "Subject17"
+        let documentName = "Document17"
         
-        let exercise = TKExercise(name: "Aufgabe 120", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
+        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
         
         classCtrl.fetchClasses { (fetchedClasses, error) in
             
@@ -218,14 +233,16 @@ class CloudKitTestViewController: UIViewController {
             for subject in fetchedSubjects {
                 print("sss \(subject.name)")
                 
-                self.sharingCtrl.createCloudSharingController(forSubject: subject,
-                                                              withShareOption: TKShareOption.addParticipant,
-                                                              completion: { (sharingViewCtrl, error) in
-                                                                print("Sharing Errors: \(error)")
-                                                                if let sharingViewCtrl = sharingViewCtrl {
-                                                                    self.present(sharingViewCtrl, animated: true)
-                                                                }
-                })
+                if subject.name == subjectName {
+                    self.sharingCtrl.createCloudSharingController(forSubject: subject,
+                                                                  withShareOption: TKShareOption.addParticipant,
+                                                                  completion: { (sharingViewCtrl, error) in
+                                                                    print("Sharing Errors: \(error)")
+                                                                    if let sharingViewCtrl = sharingViewCtrl {
+                                                                        self.present(sharingViewCtrl, animated: true)
+                                                                    }
+                    })
+                }
                 
             }
         }

@@ -123,6 +123,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         }
         
         objectRecord[referenceKey] = CKReference(record: parentRecord, action: action)
+        objectRecord.setParent(parentRecord)
         
         database.save(objectRecord) { (savedRecord, error) in
             if error == nil {
@@ -144,6 +145,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         var object = object
         
         database.save(zone) { (savedZone, error) in
+            print("Zone-Error: \(error) -- \(savedZone)")
             if let record = CKRecord(cloudObject: object, withRecordZoneID: self.zone.zoneID) {
                 self.database.save(record) { (createdRecord, error) in
                     if error == nil {

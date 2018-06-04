@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="620" height="420"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ" customClass="CardHighlight" customModule="Cards">
                                                     <rect key="frame" x="0.0" y="0.0" width="620" height="420"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -57,9 +58,28 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GameCardCellHeader" id="mdb-zZ-r9N">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GameCardCellHeader" id="mdb-zZ-r9N" customClass="SectionHeader" customModule="Teachify" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="angewandte Wissenschaften" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icj-vJ-Wov">
+                                            <rect key="frame" x="74" y="13" width="620" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="cir-XX-D7w"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Icj-vJ-Wov" firstAttribute="leading" secondItem="mdb-zZ-r9N" secondAttribute="leadingMargin" constant="66" id="aZa-Xi-xr5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Icj-vJ-Wov" secondAttribute="trailing" constant="66" id="s0X-Q2-vmM"/>
+                                        <constraint firstItem="Icj-vJ-Wov" firstAttribute="centerY" secondItem="mdb-zZ-r9N" secondAttribute="centerY" id="wp3-bE-ffN"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="SectionTitleLabel" destination="Icj-vJ-Wov" id="eFj-Op-P8m"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-S8-vws">
@@ -168,7 +188,7 @@
                                     <segment title="Continious play"/>
                                 </segments>
                                 <connections>
-                                    <action selector="GameModeChangeAction:" destination="Pgv-eR-7Ag" eventType="valueChanged" id="d6N-fG-wlJ"/>
+                                    <action selector="GameModeChangeToggled:forEvent:" destination="Pgv-eR-7Ag" eventType="valueChanged" id="Nky-mK-Ttv"/>
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41o-I1-npy" userLabel="SpacerView">
@@ -218,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdK-8f-BZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116.40625" y="-1396.2890625"/>
+            <point key="canvasLocation" x="3082" y="-1397"/>
         </scene>
         <!--Game Information View Controller-->
         <scene sceneID="a2e-Ad-tNA">
