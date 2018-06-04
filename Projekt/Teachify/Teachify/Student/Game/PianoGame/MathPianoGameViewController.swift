@@ -17,12 +17,15 @@ class MathPianoGameViewController: UIViewController {
         return view
     }()
     
-    //var currentGame: BasicScene!
-    var scene: SKScene!
+    var scene: BasicScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Game")
+        
+        let mathPianoGameModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+        
+      
         
         NotificationCenter.default.addObserver(self, selector: #selector(exitGame), name: Notification.Name("exitGame"), object: nil)
     
@@ -32,7 +35,8 @@ class MathPianoGameViewController: UIViewController {
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        //scene = BasicScene(size: view.frame.size)
+        scene = BasicScene(size: view.frame.size)
+        scene.pianoModel = mathPianoGameModel
         skView.presentScene(scene)
         
     }
@@ -43,7 +47,11 @@ class MathPianoGameViewController: UIViewController {
     }
     
     @objc func exitGame(){
-        scene.removeFromParent()
+        //TODO: let viewcontroller disappear 
+        
+        self.dismiss(animated: true) {
+            self.scene.removeFromParent()
+        }
         //switch to view 
     }
     
