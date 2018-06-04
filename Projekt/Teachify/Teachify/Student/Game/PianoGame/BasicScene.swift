@@ -61,7 +61,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         setupBackground()
         
         //debug
-        gameMode = Mode.endless
+        gameMode = Mode.task
         
         if gameMode == Mode.endless{
             
@@ -154,7 +154,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
             prepareNextQuestion()
         }
         if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count - 1{
-            if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count{
+            if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count - 1{
                 if gameMode == Mode.task{
                     win()
                 }
@@ -185,8 +185,11 @@ class BasicScene: SKScene, BasicButtonDelegate{
             let action = SKAction.fadeOut(withDuration: 1)
             labelsArray.first?.run(action)
             prepareNextQuestion()
-            if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count{
+            if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count - 1{
                 generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
+            }
+            else{
+                win()
             }
         }
        
@@ -220,7 +223,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
     @objc func generateQuestion(){
             if labelsArray.count < maxNumberOfWaves{
                 if gameMode == Mode.task{
-                    if pianoModel!.currentQuestionPointer < pianoModel!.gameQuestions.count {
+                    if pianoModel!.currentQuestionPointer < pianoModel!.gameQuestions.count - 1 {
                         createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
                     }
                 }
@@ -296,7 +299,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         let result = ResultScene(size: self.size)
         let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
-        self.scene!.view?.presentScene(result, transition: transition)
+        self.scene!.view!.presentScene(result, transition: transition)
     }
     
     func BG(_ block: @escaping ()->Void) {
