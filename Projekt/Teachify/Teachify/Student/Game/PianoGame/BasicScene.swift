@@ -11,20 +11,25 @@ import SpriteKit
 
 class BasicScene: SKScene, BasicButtonDelegate{
   
-    var timer : Timer!
+    //### Timer
     var timer1: Timer!
     
+    //### Models ###
     var pianoModel: MathPianoGame?
     var questionModel: [MathPianoQuestionModel]?
     var currentQuestion: MathPianoQuestionModel!
     
+    //### SKNodes ###
     var gameBtn: BasicButton!
     var gameBtn1: BasicButton!
     var gameBtn2: BasicButton!
+    
+    //### game specific variables ###
+    var highscore: Int!
     let buttonImageName = "umbrella.png"
     var lastUpdateTime: TimeInterval!
     let buttonSize = 150
-
+    var tempOfLabels = -120
     var labelsArray: [BasicNode] = []
     var maxNumberOfWaves = 1
     var score: Int!{
@@ -43,9 +48,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
     var gameMode: Mode!
     var scoreLabel: SKLabelNode!
     
-   
-    
-  
     
     override func didMove(to view: SKView) {
         
@@ -61,7 +63,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         setupBackground()
         
         //debug
-        gameMode = Mode.task
+        gameMode = Mode.endless
         
         if gameMode == Mode.endless{
             
@@ -73,8 +75,13 @@ class BasicScene: SKScene, BasicButtonDelegate{
         generateQuestion()
         generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
         
-        //timer setup
-        timer1 = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
+        if gameMode == Mode.task{
+            timer1 = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
+        }
+        else{
+            timer1 = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
+        }
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -85,25 +92,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
         let deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
         moveLabel(deltaTime: deltaTime)
-    }
-    
-    
-    fileprivate func setupBackground() {
-        //### setup ###
-        let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
-        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
-        backgroundNode.size = self.size
-        addChild(backgroundNode)
-    }
-    
-    fileprivate func setupScore() {
-        score = 3
-        scoreLabel = SKLabelNode(text: String(score))
-        scoreLabel.zPosition = 1
-        scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
-        scoreLabel.fontSize = 60
-        scoreLabel.fontName = "AvenirNext-Bold"
-        addChild(scoreLabel)
     }
     
     func animateScoreLabel(){
@@ -134,7 +122,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
                 wrongAnswer()
             }
             else{
-                let moveDown = SKAction.moveBy(x: 0, y:-120 * CGFloat(deltaTime), duration: 0)
+                let moveDown = SKAction.moveBy(x: 0, y: CGFloat(tempOfLabels) * CGFloat(deltaTime), duration: 0)
                 item.run(moveDown)
             }
         }
@@ -143,7 +131,11 @@ class BasicScene: SKScene, BasicButtonDelegate{
     
     func rightAnswer(){
         
-        labelsArray.first?.label.fontColor = UIColor.green
+        highscore = highscore + 1
+
+        labelsArray.first!.label.fontColor = UIColor.green
+        labelsArray.first!.label.text = addedAnswerToQuestion()
+        
         if(labelsArray.count > 0){
             var action: SKAction
             action = SKAction.fadeOut(withDuration: 1)
@@ -166,32 +158,35 @@ class BasicScene: SKScene, BasicButtonDelegate{
         else{
             generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
         }
+        if gameMode == Mode.endless{
+            tempOfLabels = tempOfLabels - 5
+            print(tempOfLabels)
+        }
         
     }
     
+    
+    
     func wrongAnswer(){
         labelsArray.first?.label.fontColor = UIColor.red
+        labelsArray.first?.label.text = addedAnswerToQuestion()
         if gameMode == Mode.endless{
             score = score - 1
             if score <= 0{
                 lose()
             }
-            else{
-                prepareNextQuestion()
-                generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
-            }
+        }
+        
+        let action = SKAction.fadeOut(withDuration: 1)
+        labelsArray.first?.run(action)
+        prepareNextQuestion()
+        if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count - 1{
+            generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
         }
         else{
-            let action = SKAction.fadeOut(withDuration: 1)
-            labelsArray.first?.run(action)
-            prepareNextQuestion()
-            if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count - 1{
-                generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
-            }
-            else{
-                win()
-            }
+            win()
         }
+        
        
     }
     
@@ -202,22 +197,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
         else{
             wrongAnswer()
         }
-    }
-    
-    fileprivate func prepareNextQuestion(){
-        labelsArray.removeFirst()
-        pianoModel!.currentQuestionPointer = pianoModel!.currentQuestionPointer + 1
-    }
-    
-    fileprivate func createQuestion(text: String) {
-        let label = BasicNode.init(texture: nil, color: UIColor.white, size: CGSize(width: self.frame.width, height: self.frame.height + 600), text: text, fontColor: UIColor.black, imageName: "wave.png")
-        label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * CGFloat(1.6))
-        label.label.position.y = label.label.position.y - 450
-        label.label.fontSize = 40
-        label.label.fontName = "AvenirNext-Bold"
-        label.alpha = 0.1
-        addChild(label)
-        labelsArray.append(label)
     }
     
     @objc func generateQuestion(){
@@ -241,12 +220,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
                 }
             }
         
-    }
-    //maybe async?
-    func appendQuestions(model: MathPianoGame){
-        for i in 0..<model.gameQuestions.count{
-            pianoModel?.gameQuestions.append(model.gameQuestions[i])
-        }
     }
     
     func generateButtons(answers: [Int]){
@@ -297,12 +270,62 @@ class BasicScene: SKScene, BasicButtonDelegate{
     func lose(){
         timer1.invalidate()
         let result = ResultScene(size: self.size)
-        let transition = SKTransition.flipVertical(withDuration: 1.0)
+        //let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
-        self.scene!.view!.presentScene(result, transition: transition)
+        result.highscore = highscore
+        scene?.view?.presentScene(result)
     }
     
-    func BG(_ block: @escaping ()->Void) {
+    //### Fileprivate Helper Methode ###
+    
+    fileprivate func prepareNextQuestion(){
+        labelsArray.removeFirst()
+        pianoModel!.currentQuestionPointer = pianoModel!.currentQuestionPointer + 1
+    }
+    
+    fileprivate func createQuestion(text: String) {
+        let label = BasicNode.init(texture: nil, color: UIColor.white, size: CGSize(width: self.frame.width, height: self.frame.height + 600), text: text, fontColor: UIColor.black, imageName: "wave.png")
+        label.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * CGFloat(1.6))
+        label.label.position.y = label.label.position.y - 450
+        label.label.fontSize = 40
+        label.label.fontName = "AvenirNext-Bold"
+        label.alpha = 0.1
+        addChild(label)
+        labelsArray.append(label)
+    }
+    
+    func addedAnswerToQuestion() -> String{
+        var text = String(pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString().dropLast(2))
+        text.append(String(pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].correctAnswer!))
+        return text
+    }
+    //maybe async?
+    fileprivate func appendQuestions(model: MathPianoGame){
+        for i in 0..<model.gameQuestions.count{
+            pianoModel?.gameQuestions.append(model.gameQuestions[i])
+        }
+    }
+    
+    fileprivate func BG(_ block: @escaping ()->Void) {
         DispatchQueue.global(qos: .default).async(execute: block)
+    }
+    
+    fileprivate func setupBackground() {
+        //### setup ###
+        let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
+        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        backgroundNode.size = self.size
+        addChild(backgroundNode)
+    }
+    
+    fileprivate func setupScore() {
+        highscore = 0
+        score = 3
+        scoreLabel = SKLabelNode(text: String(score))
+        scoreLabel.zPosition = 1
+        scoreLabel.position = CGPoint(x: self.frame.width - 100, y: self.frame.height - 100)
+        scoreLabel.fontSize = 60
+        scoreLabel.fontName = "AvenirNext-Bold"
+        addChild(scoreLabel)
     }
 }

@@ -11,39 +11,56 @@ import SpriteKit
 
 class ResultScene: SKScene, BasicButtonDelegate{
     
-    
-    
     var playButton: BasicButton!
-    var text = "Play again"
+    var returnButton: BasicButton!
+    let playButtonText = "Play again"
+    let returnButtonText = "Return"
     var winner: Bool!
+    var highscore: Int?
+    var highscoreLabel: SKLabelNode!
     var score: SKLabelNode!
     
+    
     override func didMove(to view: SKView) {
-        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: text)
+        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: playButtonText)
         playButton.delegate = self
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
-        if winner{
-            score = SKLabelNode(text: "Winner Winner Chicken Dinner")
-        }
-        else{
-            score = SKLabelNode(text: "Game over")
-
-        }
+        
+        returnButton = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 250, height: 75), fontColor: UIColor.black, text: returnButtonText)
+        setupScore()
+        returnButton.delegate = self
+        returnButton.isUserInteractionEnabled = true
+        returnButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 150 - playButton.size.height)
+        
+        addChild(returnButton)
+        addChild(playButton)
+    }
+    
+    fileprivate func setupScore() {
+        score = SKLabelNode(text:"Highscore: \(String(highscore!))")
         score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 2)
         score.fontName = "AvenirNext-Bold"
         score.fontSize = 45
         addChild(score)
-        addChild(playButton)
     }
     
     func basicButtonPressed(_ button: BasicButton) {
-        if button.label.text == text{
+        switch button.label.text {
+        case playButtonText:
             let basic = BasicScene(size: self.size)
             let transition = SKTransition.flipVertical(withDuration: 1.0)
             self.scene!.view?.presentScene(basic, transition: transition)
+        case returnButtonText:
+            let nc = NotificationCenter.default
+            nc.post(name: NSNotification.Name("exitGame"), object: nil)
+        default:
+            return
         }
+       
+        
     }
+    
     
     
 }
