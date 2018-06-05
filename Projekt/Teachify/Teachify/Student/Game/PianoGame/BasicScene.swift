@@ -51,15 +51,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
     
     override func didMove(to view: SKView) {
         
-        if let questions = pianoModel?.gameQuestions{
-            questionModel = questions
-            currentQuestion = questions.first
-        }
-        else{
-            let nc = NotificationCenter.default
-            nc.post(name: NSNotification.Name("exitGame"), object: nil)
-            return
-        }
+        
         setupBackground()
         
         //debug
@@ -70,6 +62,16 @@ class BasicScene: SKScene, BasicButtonDelegate{
             pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
             setupScore()
             maxNumberOfWaves = pianoModel!.gameQuestions.count
+        }else{
+            if let questions = pianoModel?.gameQuestions{
+                questionModel = questions
+                currentQuestion = questions.first
+            }
+            else{
+                let nc = NotificationCenter.default
+                nc.post(name: NSNotification.Name("exitGame"), object: nil)
+                return
+            }
         }
         
         generateQuestion()

@@ -22,13 +22,15 @@ class ResultScene: SKScene, BasicButtonDelegate{
     
     
     override func didMove(to view: SKView) {
+        
+        setupScore()
+        
         playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: playButtonText)
         playButton.delegate = self
         playButton.isUserInteractionEnabled = true
         playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
         
         returnButton = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 250, height: 75), fontColor: UIColor.black, text: returnButtonText)
-        setupScore()
         returnButton.delegate = self
         returnButton.isUserInteractionEnabled = true
         returnButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 150 - playButton.size.height)
@@ -46,19 +48,18 @@ class ResultScene: SKScene, BasicButtonDelegate{
     }
     
     func basicButtonPressed(_ button: BasicButton) {
-        switch button.label.text {
+        switch button.label.text! {
         case playButtonText:
             let basic = BasicScene(size: self.size)
-            let transition = SKTransition.flipVertical(withDuration: 1.0)
-            self.scene!.view?.presentScene(basic, transition: transition)
+            self.scene!.view!.presentScene(basic)
+            break
         case returnButtonText:
             let nc = NotificationCenter.default
             nc.post(name: NSNotification.Name("exitGame"), object: nil)
+            break
         default:
             return
         }
-       
-        
     }
     
     
