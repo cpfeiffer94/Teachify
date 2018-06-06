@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameInformationViewController: UIViewController {
+class GameDetailViewController: UIViewController {
     let gameController : GameLaunchController = GameLaunchController()
     
     

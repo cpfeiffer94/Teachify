@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 class StudentMainMenuViewController: UIViewController {
-    @IBOutlet weak var GameCollectionView: UICollectionView!
+    @IBOutlet weak var gameCollectionView: UICollectionView!
     @IBOutlet weak var welcomeMessageLabel: UILabel!
     @IBOutlet weak var openExercisesLabel: UILabel!
     @IBOutlet weak var solvedExercisesLabel: UILabel!
-    @IBOutlet weak var TeachifyProgressLabel: UILabel!
+    @IBOutlet weak var teachifyProgressLabel: UILabel!
+    @IBOutlet weak var studentProfileImage: UIImageView!
+    
     
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
@@ -22,8 +24,8 @@ class StudentMainMenuViewController: UIViewController {
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
-        GameCollectionView.dataSource = collectionDS
-        GameCollectionView.delegate = collectionDel
+        gameCollectionView.dataSource = collectionDS
+        gameCollectionView.delegate = collectionDel
         gamedwnldctrl.fetchAll(notificationName: Notification.Name.reloadGameCards)
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
@@ -33,12 +35,19 @@ class StudentMainMenuViewController: UIViewController {
         titleView.font = UIFont.systemFont(ofSize: 33, weight: .black)
         navigationItem.titleView = titleView
         
+        setupUI()
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    
+    func setupUI(){
+        studentProfileImage.layer.masksToBounds=true
+        studentProfileImage.layer.borderWidth = 3.0
+        studentProfileImage.layer.borderColor = UIColor.white.cgColor
+        studentProfileImage.layer.cornerRadius = studentProfileImage.bounds.width/2
+        studentProfileImage.clipsToBounds = true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,9 +66,6 @@ class StudentMainMenuViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    @IBAction func LogoutAction(_ sender: Any) {
-    }
-    
     @IBAction func GameModeChangeToggled(_ sender: UISegmentedControl, forEvent event: UIEvent) {
         if (sender.selectedSegmentIndex == 0) {
             collectionDS.setContinousMode(isContinous: false)
@@ -72,6 +78,10 @@ class StudentMainMenuViewController: UIViewController {
             reloadAvailableGames()
         }
         
+    }
+    
+    @IBAction func SignoutAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 //    Only launches the first Exercise in the Notification contained Dictionary
@@ -88,7 +98,7 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func reloadAvailableGames(){
-        GameCollectionView.reloadData()
+        gameCollectionView.reloadData()
     }
     
     
