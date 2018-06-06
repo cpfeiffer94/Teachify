@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         askForUserPushNotifications(application: application)
         
+        UINavigationBar.appearance().barStyle = .blackOpaque
+
+        
         return true
     }
 

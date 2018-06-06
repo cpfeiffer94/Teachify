@@ -133,6 +133,9 @@
 		AA822A0120888D3A0018AB0E /* MathPianoQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */; };
 		AA822A0320888D6B0018AB0E /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA822A0220888D6B0018AB0E /* GameCardCell.swift */; };
 		AAA446ED20C6D45600481CDD /* CloudKitTestVC_ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA446EC20C6D45600481CDD /* CloudKitTestVC_ID.swift */; };
+		AAA446F020C8307F00481CDD /* QR_scanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAA446EF20C8307F00481CDD /* QR_scanner.storyboard */; };
+		AAA446F220C8309B00481CDD /* QR_ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA446F120C8309B00481CDD /* QR_ScannerViewController.swift */; };
+		AAA446F420C854B700481CDD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA446F320C854B700481CDD /* WebViewController.swift */; };
 		AAA9090920BECF350009A738 /* StudentModelSingelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9090820BECF350009A738 /* StudentModelSingelton.swift */; };
 		AAB7C73B20C3F637008C9706 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7C73A20C3F637008C9706 /* AppColor.swift */; };
 		AAE0744420BF069000E98332 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE0744320BF069000E98332 /* SectionHeader.swift */; };
@@ -287,6 +290,9 @@
 		AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathPianoQuestionModel.swift; sourceTree = "<group>"; };
 		AA822A0220888D6B0018AB0E /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
 		AAA446EC20C6D45600481CDD /* CloudKitTestVC_ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTestVC_ID.swift; sourceTree = "<group>"; };
+		AAA446EF20C8307F00481CDD /* QR_scanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QR_scanner.storyboard; sourceTree = "<group>"; };
+		AAA446F120C8309B00481CDD /* QR_ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR_ScannerViewController.swift; sourceTree = "<group>"; };
+		AAA446F320C854B700481CDD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AAA9090820BECF350009A738 /* StudentModelSingelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModelSingelton.swift; sourceTree = "<group>"; };
 		AAB7C73A20C3F637008C9706 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		AAE0744320BF069000E98332 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
@@ -704,6 +710,7 @@
 		AA6A068720761B9400C9420E /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				AAA446EE20C8306500481CDD /* QR Scanner */,
 				AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */,
 				AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */,
 				AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */,
@@ -743,6 +750,16 @@
 				AAB7C73A20C3F637008C9706 /* AppColor.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		AAA446EE20C8306500481CDD /* QR Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				AAA446EF20C8307F00481CDD /* QR_scanner.storyboard */,
+				AAA446F120C8309B00481CDD /* QR_ScannerViewController.swift */,
+				AAA446F320C854B700481CDD /* WebViewController.swift */,
+			);
+			path = "QR Scanner";
 			sourceTree = "<group>";
 		};
 		D4DE8D052099EA6A005C2A33 /* PianoGame */ = {
@@ -884,6 +901,7 @@
 				AA60B0F720A3248600FF2AB4 /* DragonImages.atlas in Resources */,
 				261D2B9620A9A13D00D98222 /* AssetsGameFeedMe.xcassets in Resources */,
 				AA60B0EA20A3248600FF2AB4 /* EvilDragonImages.atlas in Resources */,
+				AAA446F020C8307F00481CDD /* QR_scanner.storyboard in Resources */,
 				AA60B0F320A3248600FF2AB4 /* gameOver.wav in Resources */,
 				40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */,
 				AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */,
@@ -1002,6 +1020,7 @@
 				0FBA793A2085F80400D20807 /* (null) in Sources */,
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AA7415F4209F5D400092B664 /* GameLaunchController.swift in Sources */,
+				AAA446F220C8309B00481CDD /* QR_ScannerViewController.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,
 				17F7342C20C1C6E300F93E5A /* OperationPickerViewDelegate.swift in Sources */,
 				0FEFB4EF2084A9000065A460 /* (null) in Sources */,
@@ -1028,6 +1047,7 @@
 				0FBA793D2085F84600D20807 /* (null) in Sources */,
 				AA822A0020888D3A0018AB0E /* MathPianoGame.swift in Sources */,
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
+				AAA446F420C854B700481CDD /* WebViewController.swift in Sources */,
 				0F999DE3207B4D7900FF5542 /* TKExercise.swift in Sources */,
 				AA8229E220888C260018AB0E /* TKGenericCloudController.swift in Sources */,
 				AA60B0EB20A3248600FF2AB4 /* FeedMeParams.swift in Sources */,

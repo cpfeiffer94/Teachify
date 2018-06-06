@@ -25,9 +25,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var debugIcon: UIImageView!
     @IBOutlet weak var debugLabel: UILabel!
     
+//   Other View Elements
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var loginBackgroundView: UIView!
     @IBOutlet weak var teachifyTitleLabel: UILabel!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
     
     
     
@@ -40,14 +42,18 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func setupUI(){
-        studentView.layer.borderColor = UIColor.rgb(red: 234, green: 184, blue: 26).cgColor
+        studentView.layer.borderColor = UIColor.rgb(red: 6, green: 124, blue: 77).cgColor
         studentView.layer.borderWidth = 3.0
         
-        teacherView.layer.borderColor = UIColor.rgb(red: 0, green: 94, blue: 112).cgColor
+        teacherView.layer.borderColor = UIColor.rgb(red: 0, green: 94, blue: 111).cgColor
         teacherView.layer.borderWidth = 3.0
         
-        debugView.layer.borderColor = UIColor.rgb(red: 170, green: 170, blue: 170).cgColor
+        debugView.layer.borderColor = UIColor.rgb(red: 124, green: 25, blue: 6).cgColor
         debugView.layer.borderWidth = 3.0
     
         //        setup Teacher View
@@ -56,7 +62,7 @@ class LoginViewController: UIViewController {
         teacherLabel.textColor = UIColor.black
         
         //        setup StudentView (selected)
-        studentView.backgroundColor = UIColor.rgb(red: 234, green: 184, blue: 26)
+        studentView.backgroundColor = UIColor.rgb(red: 6, green: 124, blue: 77)
         studentIcon.image = UIImage(named: "icons8-students_filled")
         studentLabel.textColor = UIColor.white
         
@@ -68,13 +74,16 @@ class LoginViewController: UIViewController {
         loginBackgroundView.layer.cornerRadius = 30
         loginBackgroundView.layer.masksToBounds = true
         
+        backgroundView.backgroundColor = UIColor.rgb(red: 5, green: 98, blue: 61)
+        loginButtonOutlet.backgroundColor = UIColor.rgb(red: 200, green: 33, blue: 0)
+        
         
         
         
     }
     @IBAction func teacherSelection(_ sender: Any) {
 //        setup Teacher View (selected)
-        teacherView.backgroundColor = UIColor.rgb(red: 0, green: 94, blue: 112)
+        teacherView.backgroundColor = UIColor.rgb(red: 0, green: 94, blue: 111)
         teacherIcon.image = UIImage(named: "icons8-floating_guru_filled")
         teacherLabel.textColor = UIColor.white
         
@@ -88,6 +97,9 @@ class LoginViewController: UIViewController {
         debugIcon.image = UIImage(named: "icons8-bug")
         debugLabel.textColor = UIColor.black
         
+        backgroundView.backgroundColor = UIColor.rgb(red: 0, green: 72, blue: 85)
+        loginButtonOutlet.backgroundColor = UIColor.rgb(red: 187, green: 85, blue: 0)
+        
         selectedRole = "teacher"
         
     }
@@ -98,7 +110,7 @@ class LoginViewController: UIViewController {
         teacherLabel.textColor = UIColor.black
         
         //        setup StudentView (selected)
-        studentView.backgroundColor = UIColor.rgb(red: 234, green: 184, blue: 26)
+        studentView.backgroundColor = UIColor.rgb(red: 6, green: 124, blue: 77)
         studentIcon.image = UIImage(named: "icons8-students_filled")
         studentLabel.textColor = UIColor.white
         
@@ -106,6 +118,9 @@ class LoginViewController: UIViewController {
         debugView.backgroundColor = UIColor.white
         debugIcon.image = UIImage(named: "icons8-bug")
         debugLabel.textColor = UIColor.black
+        
+        backgroundView.backgroundColor = UIColor.rgb(red: 5, green: 98, blue: 61)
+        loginButtonOutlet.backgroundColor = UIColor.rgb(red: 200, green: 33, blue: 0)
         
         selectedRole = "student"
         
@@ -122,9 +137,12 @@ class LoginViewController: UIViewController {
         studentLabel.textColor = UIColor.black
         
         //      setupDebugView
-        debugView.backgroundColor = UIColor.rgb(red: 170, green: 170, blue: 170)
+        debugView.backgroundColor = UIColor.rgb(red: 124, green: 25, blue: 6)
         debugIcon.image = UIImage(named: "icons8-bug_filled")
         debugLabel.textColor = UIColor.white
+        
+        backgroundView.backgroundColor = UIColor.rgb(red: 98, green: 20, blue: 5)
+        loginButtonOutlet.backgroundColor = UIColor.rgb(red: 0, green: 200, blue: 119)
         
         selectedRole = "debug"
     }

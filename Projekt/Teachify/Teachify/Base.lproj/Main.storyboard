@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bE-vZ-qVY">
-                                <rect key="frame" x="80" y="152" width="608" height="354"/>
+                                <rect key="frame" x="80" y="345" width="608" height="354"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your Role" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rki-cU-GPE">
                                         <rect key="frame" x="20" y="16" width="299" height="50"/>
@@ -56,7 +56,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="0.36862745099999999" blue="0.43997174500000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.36862745098039218" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="TvV-YA-Zlk" firstAttribute="centerX" secondItem="UCQ-ob-fas" secondAttribute="centerX" id="1cd-wi-2Ck"/>
                                                     <constraint firstItem="aSi-4W-5CC" firstAttribute="top" secondItem="UCQ-ob-fas" secondAttribute="top" constant="24" id="5Pc-P2-UqX"/>
@@ -91,7 +91,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.91764705879999997" green="0.72156862749999995" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.023529411764705882" green="0.48627450980392156" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="aqv-5P-SrT" firstAttribute="top" secondItem="l6o-MX-ufC" secondAttribute="bottom" constant="12" id="0fm-aE-8bE"/>
                                                     <constraint firstAttribute="bottom" secondItem="re2-Sd-e0u" secondAttribute="bottom" id="4gX-Yg-S3Y"/>
@@ -126,7 +126,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.48627450980392156" green="0.098039215686274508" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ZJu-ZZ-PPs" firstAttribute="leading" secondItem="Rfm-J0-mye" secondAttribute="leading" id="5X2-HQ-GYx"/>
                                                     <constraint firstItem="42N-FR-Tcl" firstAttribute="centerX" secondItem="Rfm-J0-mye" secondAttribute="centerX" id="7jH-O9-5IH"/>
@@ -144,10 +144,10 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx6-x3-ICc">
-                                        <rect key="frame" x="20" y="296" width="568" height="30"/>
-                                        <color key="backgroundColor" red="0.18433862919999999" green="0.45366096500000003" blue="0.70282477139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="20" y="296" width="568" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.78431372549019607" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Tu2-Zg-yiE"/>
+                                            <constraint firstAttribute="height" constant="40" id="Tu2-Zg-yiE"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Login"/>
@@ -156,7 +156,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="2cf-zv-qK1" firstAttribute="leading" secondItem="0bE-vZ-qVY" secondAttribute="leading" constant="20" id="0xV-Lr-Cm9"/>
                                     <constraint firstItem="rki-cU-GPE" firstAttribute="top" secondItem="0bE-vZ-qVY" secondAttribute="top" constant="16" id="LzM-Iv-8Gc"/>
@@ -176,10 +176,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.18788010584016177" green="0.33265858072476095" blue="0.50900603732481819" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.38431372549019605" green="0.078431372549019607" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0bE-vZ-qVY" firstAttribute="centerY" secondItem="o76-K1-Gop" secondAttribute="centerY" id="0HQ-uy-Vta"/>
                             <constraint firstItem="xpb-mP-pKH" firstAttribute="top" secondItem="o76-K1-Gop" secondAttribute="top" constant="20" id="4Rb-c5-lMd"/>
-                            <constraint firstItem="0bE-vZ-qVY" firstAttribute="top" secondItem="xpb-mP-pKH" secondAttribute="bottom" constant="40" id="E5g-xv-hfO"/>
                             <constraint firstItem="o76-K1-Gop" firstAttribute="trailing" secondItem="0bE-vZ-qVY" secondAttribute="trailing" constant="80" id="HjE-Ge-WyQ"/>
                             <constraint firstItem="0bE-vZ-qVY" firstAttribute="leading" secondItem="o76-K1-Gop" secondAttribute="leading" constant="80" id="PA1-Tb-SQE"/>
                             <constraint firstItem="xpb-mP-pKH" firstAttribute="centerX" secondItem="o76-K1-Gop" secondAttribute="centerX" id="e3E-ou-GPD"/>
@@ -192,6 +192,7 @@
                         <outlet property="debugLabel" destination="42N-FR-Tcl" id="8rb-9I-XKo"/>
                         <outlet property="debugView" destination="Rfm-J0-mye" id="J9h-jh-KY7"/>
                         <outlet property="loginBackgroundView" destination="0bE-vZ-qVY" id="Zqw-Z5-aZu"/>
+                        <outlet property="loginButtonOutlet" destination="gx6-x3-ICc" id="9hY-WH-p6l"/>
                         <outlet property="studentIcon" destination="l6o-MX-ufC" id="nbx-Ur-ucg"/>
                         <outlet property="studentLabel" destination="aqv-5P-SrT" id="dXt-eX-bBH"/>
                         <outlet property="studentView" destination="tRS-bf-lAd" id="I0W-D7-QwR"/>

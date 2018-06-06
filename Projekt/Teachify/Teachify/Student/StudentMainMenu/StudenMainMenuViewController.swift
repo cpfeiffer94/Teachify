@@ -41,6 +41,10 @@ class StudentMainMenuViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func setupUI(){
         studentProfileImage.layer.masksToBounds=true
         studentProfileImage.layer.borderWidth = 3.0

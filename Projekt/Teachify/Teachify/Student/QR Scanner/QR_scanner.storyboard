@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Cp-UX-hGy">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scanner View Controller-->
+        <scene sceneID="eFh-ye-fb1">
+            <objects>
+                <viewController storyboardIdentifier="qr_scanner" id="4Cp-UX-hGy" customClass="QR_ScannerViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9No-Me-9ml">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iP-Ma-Qz6">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zqw-T5-pBT" firstAttribute="trailing" secondItem="4iP-Ma-Qz6" secondAttribute="trailing" id="68d-tz-0Sz"/>
+                            <constraint firstItem="Zqw-T5-pBT" firstAttribute="bottom" secondItem="4iP-Ma-Qz6" secondAttribute="bottom" id="NGY-zX-dqo"/>
+                            <constraint firstItem="4iP-Ma-Qz6" firstAttribute="top" secondItem="Zqw-T5-pBT" secondAttribute="top" id="feQ-24-kKv"/>
+                            <constraint firstItem="4iP-Ma-Qz6" firstAttribute="leading" secondItem="Zqw-T5-pBT" secondAttribute="leading" id="xaV-Rq-Whu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zqw-T5-pBT"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraPreview" destination="9No-Me-9ml" id="RNl-Ns-SVV"/>
+                        <segue destination="Ncs-cd-htu" kind="show" identifier="openLink" id="QsS-xb-B2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0z-hW-ABI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3935" y="-3100"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="1wX-eh-Pm2">
+            <objects>
+                <viewController id="Ncs-cd-htu" customClass="WebViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OYC-8F-q3e">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s58-1K-kYP">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s58-1K-kYP" firstAttribute="top" secondItem="FXE-86-F9l" secondAttribute="top" id="0W6-lz-ju1"/>
+                            <constraint firstItem="s58-1K-kYP" firstAttribute="leading" secondItem="FXE-86-F9l" secondAttribute="leading" id="Jl4-CV-4Oh"/>
+                            <constraint firstItem="FXE-86-F9l" firstAttribute="trailing" secondItem="s58-1K-kYP" secondAttribute="trailing" id="Uao-ZH-9Le"/>
+                            <constraint firstItem="FXE-86-F9l" firstAttribute="bottom" secondItem="s58-1K-kYP" secondAttribute="bottom" id="Uxx-RQ-CO3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FXE-86-F9l"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="s58-1K-kYP" id="Zkh-IL-izi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EiJ-0Q-aIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3261" y="-3100"/>
+        </scene>
+    </scenes>
+</document>

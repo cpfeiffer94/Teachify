@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Games-->
+        <!--My Exercises-->
         <scene sceneID="UMT-jw-Tlj">
             <objects>
                 <viewController id="Pgv-eR-7Ag" customClass="StudentMainMenuViewController" customModule="Teachify" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,6 +82,25 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-ZY-XAI">
+                                <rect key="frame" x="292" y="582" width="185" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4u7-ad-fDO">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-Aq-bfp">
+                                        <rect key="frame" x="0.0" y="30" width="185" height="30"/>
+                                        <color key="tintColor" red="0.78431372549019607" green="0.12941176470588234" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Scan Invitation"/>
+                                        <connections>
+                                            <segue destination="W3Z-YV-SXX" kind="show" id="hHf-iN-bqR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-S8-vws">
                                 <rect key="frame" x="0.0" y="64" width="768" height="125"/>
                                 <subviews>
@@ -170,7 +189,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21568627450980393" green="0.41176470588235292" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.023529411764705882" green="0.48627450980392156" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Hjh-zq-Zwn" firstAttribute="centerY" secondItem="yxs-S8-vws" secondAttribute="centerY" id="2JW-rT-gic"/>
                                     <constraint firstItem="Hjh-zq-Zwn" firstAttribute="centerX" secondItem="yxs-S8-vws" secondAttribute="centerX" id="XQ0-9q-BcH"/>
@@ -187,6 +206,7 @@
                                     <segment title="Exercises"/>
                                     <segment title="Continious play"/>
                                 </segments>
+                                <color key="tintColor" red="0.78431372549019607" green="0.12941176470588234" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="GameModeChangeToggled:forEvent:" destination="Pgv-eR-7Ag" eventType="valueChanged" id="Nky-mK-Ttv"/>
                                 </connections>
@@ -204,6 +224,7 @@
                             <constraint firstItem="yxs-S8-vws" firstAttribute="top" secondItem="RKW-Dn-BKa" secondAttribute="top" id="04u-1y-bVp"/>
                             <constraint firstItem="bMM-fN-gtB" firstAttribute="trailing" secondItem="RKW-Dn-BKa" secondAttribute="trailing" id="0wS-bY-y5Z"/>
                             <constraint firstItem="WXe-dV-Yye" firstAttribute="centerX" secondItem="RKW-Dn-BKa" secondAttribute="centerX" id="Eu6-oY-N9A"/>
+                            <constraint firstItem="YO1-ZY-XAI" firstAttribute="centerY" secondItem="bMM-fN-gtB" secondAttribute="centerY" id="I46-3L-8BH"/>
                             <constraint firstItem="bMM-fN-gtB" firstAttribute="bottom" secondItem="RKW-Dn-BKa" secondAttribute="bottom" id="X9A-q9-7sg"/>
                             <constraint firstItem="bMM-fN-gtB" firstAttribute="leading" secondItem="RKW-Dn-BKa" secondAttribute="leading" id="ZDY-us-Dlw"/>
                             <constraint firstItem="yxs-S8-vws" firstAttribute="leading" secondItem="RKW-Dn-BKa" secondAttribute="leading" id="d6y-ua-pib"/>
@@ -211,6 +232,7 @@
                             <constraint firstItem="yxs-S8-vws" firstAttribute="trailing" secondItem="RKW-Dn-BKa" secondAttribute="trailing" id="iT3-uK-U8u"/>
                             <constraint firstItem="WXe-dV-Yye" firstAttribute="top" secondItem="yxs-S8-vws" secondAttribute="bottom" constant="16" id="jed-33-tga"/>
                             <constraint firstItem="41o-I1-npy" firstAttribute="trailing" secondItem="RKW-Dn-BKa" secondAttribute="trailing" id="mtW-9D-xHd"/>
+                            <constraint firstItem="YO1-ZY-XAI" firstAttribute="centerX" secondItem="bMM-fN-gtB" secondAttribute="centerX" id="uhy-1B-5Qs"/>
                             <constraint firstItem="41o-I1-npy" firstAttribute="leading" secondItem="RKW-Dn-BKa" secondAttribute="leading" id="unX-B8-ySo"/>
                             <constraint firstItem="41o-I1-npy" firstAttribute="top" secondItem="RKW-Dn-BKa" secondAttribute="top" id="zPY-HE-ktg"/>
                         </constraints>
@@ -221,16 +243,22 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Games" leftItemsSupplementBackButton="YES" id="gEn-Uu-aRQ">
+                    <navigationItem key="navigationItem" title="My Exercises" leftItemsSupplementBackButton="YES" id="gEn-Uu-aRQ">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="zaT-YQ-1rW">
                             <connections>
                                 <action selector="SignoutAction:" destination="Pgv-eR-7Ag" id="dT3-xi-4R6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-exit" id="0eg-EN-ftK">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-exit" id="0eg-EN-ftK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="SignoutAction:" destination="Pgv-eR-7Ag" id="ifY-mu-HyC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Scan" image="icons8-barcode_scanner_2" id="z2H-49-yGL">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="W3Z-YV-SXX" kind="show" id="OD1-ON-6hg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -246,6 +274,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdK-8f-BZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3082" y="-1397"/>
+        </scene>
+        <!--qr_scanner-->
+        <scene sceneID="adA-6P-lOx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QR_scanner" referencedIdentifier="qr_scanner" id="W3Z-YV-SXX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mio-Lg-lab" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3664" y="-1396"/>
         </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="a2e-Ad-tNA">
@@ -466,16 +502,16 @@ Who put the first Beta on their primary devices"</string>
             </objects>
             <point key="canvasLocation" x="223" y="-648"/>
         </scene>
-        <!--Games-->
+        <!--My Exercises-->
         <scene sceneID="icH-ML-4dF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ApS-J8-HyO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Games" image="icons8-mushroom" selectedImage="icons8-mushroom_filled" id="vyx-bI-WGc"/>
+                    <tabBarItem key="tabBarItem" title="My Exercises" image="icons8-mushroom" selectedImage="icons8-mushroom_filled" id="vyx-bI-WGc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Sh-KV-Isv">
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.21568627450980393" green="0.41176470588235292" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.019607843137254902" green="0.38431372549019605" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -493,6 +529,7 @@ Who put the first Beta on their primary devices"</string>
     <resources>
         <image name="FeedMe-Drache" width="76" height="76"/>
         <image name="Inder" width="73" height="67"/>
+        <image name="icons8-barcode_scanner_2" width="25" height="25"/>
         <image name="icons8-circled_play_filled" width="100" height="100"/>
         <image name="icons8-exit" width="25" height="25"/>
         <image name="icons8-mushroom" width="50" height="50"/>
@@ -502,4 +539,8 @@ Who put the first Beta on their primary devices"</string>
         <image name="icons8-star_filled" width="50" height="50"/>
         <image name="icons8-unchecked_checkbox" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hHf-iN-bqR"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
