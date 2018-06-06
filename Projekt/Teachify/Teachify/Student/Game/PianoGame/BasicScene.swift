@@ -10,9 +10,6 @@ import SpriteKit
 
 
 class BasicScene: SKScene, BasicButtonDelegate{
-  
-    //### Timer
-    var timer1: Timer!
     
     //### Models ###
     var pianoModel: MathPianoGame?
@@ -31,7 +28,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
     let buttonSize = 150
     var tempOfLabels = -120
     var labelsArray: [BasicNode] = []
-    var maxNumberOfWaves = 1
     var score: Int!{
         didSet{
             if scoreLabel != nil{
@@ -61,7 +57,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
             
             pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
             setupScore()
-            maxNumberOfWaves = pianoModel!.gameQuestions.count
         }else{
             if let questions = pianoModel?.gameQuestions{
                 questionModel = questions
@@ -75,15 +70,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         }
         
         generateQuestion()
-        generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
-        
-        if gameMode == Mode.task{
-            timer1 = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
-        }
-        else{
-            timer1 = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.generateQuestion), userInfo: nil, repeats: true)
-        }
-        
+        generateButtons()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -94,6 +81,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         let deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
         moveLabel(deltaTime: deltaTime)
+        generateQuestion()
     }
     
     func animateScoreLabel(){
@@ -147,22 +135,19 @@ class BasicScene: SKScene, BasicButtonDelegate{
             }
             prepareNextQuestion()
         }
-        if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count - 1{
-            if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count - 1{
+        if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count{
                 if gameMode == Mode.task{
                     win()
                 }
                 else{
-                    pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+                    generateButtons()
                 }
-            }
         }
         else{
-            generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
+            generateButtons()
         }
         if gameMode == Mode.endless{
             tempOfLabels = tempOfLabels - 5
-            print(tempOfLabels)
         }
         
     }
@@ -183,7 +168,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         labelsArray.first?.run(action)
         prepareNextQuestion()
         if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count - 1{
-            generateButtons(answers: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!)
+            generateButtons()
         }
         else{
             win()
@@ -202,30 +187,24 @@ class BasicScene: SKScene, BasicButtonDelegate{
     }
     
     @objc func generateQuestion(){
-            if labelsArray.count < maxNumberOfWaves{
-                if gameMode == Mode.task{
-                    if pianoModel!.currentQuestionPointer < pianoModel!.gameQuestions.count - 1 {
-                        createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
-                    }
+        if labelsArray.count == 0{
+                if !checkForNewQuestions(){
+                    createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
                 }
                 else{
-                    if pianoModel!.endPointer < pianoModel!.gameQuestions.count{
-                        createQuestion(text: pianoModel!.gameQuestions[pianoModel!.endPointer].getQuestionAsString())
-                        pianoModel!.endPointer = pianoModel!.endPointer + 1
-                    }
-                    else{
-                        let tmpModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
-                        appendQuestions(model: tmpModel)
-                        createQuestion(text: pianoModel!.gameQuestions[pianoModel!.endPointer].getQuestionAsString())
-                        pianoModel!.endPointer = pianoModel!.endPointer + 1
-                    }
+                    pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+                    createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
                 }
-            }
+        }
         
     }
     
-    func generateButtons(answers: [Int]){
+    func generateButtons(){
         
+        if checkForNewQuestions(){
+            pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+        }
+        var answers = pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!
         //TODO: implement the copy(from:) int basicButton
         if gameBtn != nil{
             gameBtn.removeFromParent()
@@ -264,13 +243,11 @@ class BasicScene: SKScene, BasicButtonDelegate{
     }
   
     func win(){
-        timer1.invalidate()
         let nc = NotificationCenter.default
         nc.post(name: NSNotification.Name("exitGame"), object: nil)
     }
     
     func lose(){
-        timer1.invalidate()
         let result = ResultScene(size: self.size)
         //let transition = SKTransition.flipVertical(withDuration: 1.0)
         result.winner = false
@@ -301,12 +278,6 @@ class BasicScene: SKScene, BasicButtonDelegate{
         text.append(String(pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].correctAnswer!))
         return text
     }
-    //maybe async?
-    fileprivate func appendQuestions(model: MathPianoGame){
-        for i in 0..<model.gameQuestions.count{
-            pianoModel?.gameQuestions.append(model.gameQuestions[i])
-        }
-    }
     
     fileprivate func BG(_ block: @escaping ()->Void) {
         DispatchQueue.global(qos: .default).async(execute: block)
@@ -318,6 +289,9 @@ class BasicScene: SKScene, BasicButtonDelegate{
         backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
         backgroundNode.size = self.size
         addChild(backgroundNode)
+    }
+    fileprivate func checkForNewQuestions() -> Bool{
+        return pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count
     }
     
     fileprivate func setupScore() {
