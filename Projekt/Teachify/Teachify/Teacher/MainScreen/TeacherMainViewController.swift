@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import CloudKit
 
-class TeacherMainViewController: UIViewController {
+class TeacherMainViewController: UIViewController, CVIndexChanged {
 
-    @IBOutlet var classesCollectionView: UICollectionView!
-    let dataSource = ClassesCollectionViewDataSource()
-    @objc let delegate = ClassesCollectionViewDelegate()
-    var titleView : UILabel!
+    @IBOutlet var   classesCollectionView: UICollectionView!
+    let             dataSource = ClassesCollectionViewDataSource()
+    @objc var       delegate : ClassesCollectionViewDelegate!
+    var             titleView : UILabel!
     
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
+    var subjectDelegate : SubjectCollectionViewDelegate!
     
     @IBOutlet var excerciseCollectionView: UICollectionView!
     let excerciseDataSource = ExerciseCollectionViewDataSource()
@@ -29,21 +31,32 @@ class TeacherMainViewController: UIViewController {
         titleView.text = "Excercises"
         titleView.textColor = UIColor.white
         titleView.textAlignment = .center
-        //titleView.font = UIFont.systemFont(ofSize: 48)
         navigationItem.titleView = titleView
-        //navigationItem.prompt = " "
         navigationController?.navigationBar.barTintColor = .barBlue
-
-    
         
+//        CKContainer.default().fetchUserRecordID { (recordId, error) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//            print(recordId)
+//            CKContainer.default().discoverUserIdentity(withUserRecordID: recordId!, completionHandler: { (identity, error) in
+//                if let error = error {
+//                    print(error)
+//                }
+//                print(identity?.lookupInfo?.emailAddress)
+//                self.navigationItem.prompt = identity?.lookupInfo?.emailAddress
+//            })
+//        }
         //get Rid of Background Shaodw Image in iOS 10
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-       //classesCollectionView.register(RoundAddCell2.self, forCellWithReuseIdentifier: "addCell2")
         classesCollectionView.dataSource = dataSource
+        delegate = ClassesCollectionViewDelegate(delegate: self)
         classesCollectionView.delegate = delegate
-        addObserver(self, forKeyPath: #keyPath(delegate.selectedIndex), options: [], context: nil)
+        
+        subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
+        subjectCollectionView.delegate = subjectDelegate
         
         setupExcerciseCollectionView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
@@ -65,11 +78,32 @@ class TeacherMainViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(delegate.selectedIndex) {
+       // if keyPath == #keyPath(delegate.selectedIndex) {
             print("Changed Index")
-            subjectCollectionView.dataSource.selectedClass = delegate.selectedIndex
-            subjectCollectionView.collectionView.reloadData()
-        }
+       //     subjectCollectionView.dataSource.selectedClass = delegate.selectedIndex
+            TKModelSingleton.sharedInstance.downloadedClasses[0].subjects.append(TKSubject(name: "A Test name", color: TKColor.yellow))
+            //subjectCollectionView.collectionView.reloadData()
+            subjectCollectionView.collectionView.insertItems(at: [IndexPath(row: 1, section: 0)])
+            subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
+            subjectCollectionView.collectionView.layoutIfNeeded()
+            subjectCollectionView.didSelectItem(at: 0)
+      //  }
+    }
+    
+    func didChangeClassIndex(to: Int) {
+        print("changed Index")
+        subjectCollectionView.dataSource.selectedClass = to
+        excerciseDataSource.selectedClass              = to
+        subjectCollectionView.collectionView.reloadData()
+        subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
+        subjectCollectionView.collectionView.layoutIfNeeded()
+        subjectCollectionView.didSelectItem(at: 0)
+    }
+    
+    func didChangeSubjectIndex(to: Int) {
+        print("Changed subject Index")
+        excerciseDataSource.selectedSubject = to
+        excerciseCollectionView.reloadData()
     }
     
     func loadData(){
@@ -116,4 +150,9 @@ class TeacherMainViewController: UIViewController {
 
 }
 
+
+protocol CVIndexChanged {
+    func didChangeClassIndex(to: Int)
+    func didChangeSubjectIndex(to: Int)
+}
 

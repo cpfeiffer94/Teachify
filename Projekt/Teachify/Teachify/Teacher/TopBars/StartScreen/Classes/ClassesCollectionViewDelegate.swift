@@ -10,10 +10,14 @@ import UIKit
 
 class ClassesCollectionViewDelegate: CenteredCollectionViewDelegate {
     
-    @objc dynamic var selectedIndex = 0
+    private let delegate: CVIndexChanged
+    
+    init(delegate: CVIndexChanged){
+        self.delegate = delegate
+    }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        super.collectionView(collectionView, didSelectItemAt: indexPath)
-        selectedIndex = indexPath.item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //super.collectionView(collectionView, didSelectItemAt: indexPath)
+        delegate.didChangeClassIndex(to: indexPath.item)
     }
 }

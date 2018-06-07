@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         askForUserPushNotifications(application: application)
+        CKContainer.default()
+            .requestApplicationPermission(CKApplicationPermissions.userDiscoverability,
+                                                                    completionHandler:
+                {
+                    applicationPermissionStatus, error in
+                    if applicationPermissionStatus == .granted {
+                        print("granted discoverability permission")
+                    }
+                    
+        })
         
         return true
     }

@@ -11,8 +11,14 @@ import UIKit
 class SubjectCollectionView: UIView, ItemSelectedCallback {
    
     
-    let dataSource = SubjectCollectionViewDataSource()
-    private let delegate = CenteredCollectionViewDelegate()
+    var dataSource = SubjectCollectionViewDataSource()
+    var delegate : SubjectCollectionViewDelegate?{
+        didSet{
+            print("did set delegate")
+            collectionView.delegate = delegate
+            delegate!.callback = self
+        }
+    }
     //private
     var leftConstraint : NSLayoutConstraint!
     //private
@@ -27,7 +33,7 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
         cv.backgroundColor = UIColor.clear
         return cv
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -39,7 +45,7 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
     }
     
     func setup() {
-        delegate.callback = self
+        delegate?.callback = self
         self.addSubview(collectionView)
         addConstraints(withFormat: "H:|[v0]|", forViews: collectionView)
         addConstraints(withFormat: "V:|[v0]|", forViews: collectionView)
@@ -61,6 +67,7 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
     }
     
     func didSelectItem(at position: Int) {
+        print("Did select item at postion")
         let indexPath = IndexPath(row: position, section: 0)
         let aClickedCell = collectionView.cellForItem(at: indexPath)
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
