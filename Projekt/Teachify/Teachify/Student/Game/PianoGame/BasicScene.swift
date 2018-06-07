@@ -127,12 +127,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         labelsArray.first!.label.text = addedAnswerToQuestion()
         
         if(labelsArray.count > 0){
-            var action: SKAction
-            action = SKAction.fadeOut(withDuration: 1)
-            let destroyedLabel = labelsArray.first
-            labelsArray.first?.run(action){
-                destroyedLabel?.removeFromParent()
-            }
+            animateWeaves()
             prepareNextQuestion()
         }
         if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count{
@@ -157,15 +152,13 @@ class BasicScene: SKScene, BasicButtonDelegate{
     func wrongAnswer(){
         labelsArray.first?.label.fontColor = UIColor.red
         labelsArray.first?.label.text = addedAnswerToQuestion()
+        animateWeaves()
         if gameMode == Mode.endless{
             score = score - 1
             if score <= 0{
                 lose()
             }
         }
-        
-        let action = SKAction.fadeOut(withDuration: 1)
-        labelsArray.first?.run(action)
         prepareNextQuestion()
         if pianoModel!.currentQuestionPointer != pianoModel!.gameQuestions.count - 1{
             generateButtons()
@@ -304,4 +297,21 @@ class BasicScene: SKScene, BasicButtonDelegate{
         scoreLabel.fontName = "AvenirNext-Bold"
         addChild(scoreLabel)
     }
+    fileprivate func animateWeaves(){
+        
+        let destroyedLabel = labelsArray.first
+
+        var group1 = Array<SKAction>()
+        let actionFadeOut = SKAction.fadeOut(withDuration: 1)
+        let actionMoveBack = SKAction.moveBy(x: 0, y: CGFloat(200), duration: 1)
+
+        group1.append(actionFadeOut)
+        group1.append(actionMoveBack)
+        
+        let action = SKAction.group(group1)
+        labelsArray.first?.run(action){
+            destroyedLabel?.removeFromParent()
+        }
+    }
 }
+
