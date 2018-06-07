@@ -16,12 +16,17 @@ protocol BasicButtonDelegate: class {
 class BasicButton: BasicNode{
     
     weak var delegate: BasicButtonDelegate?
+    var moved: Bool!
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("moved")
+        let bigTouches = touches.filter{abs($0.location(in: self).x) > 20 && abs($0.location(in: self).y) > 20 }
+        if bigTouches.count != 0{
+            moved = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        moved = false
         super.touchesBegan(touches, with: event)
         let scale = SKAction.scale(to: 0.7, duration: 0.2)
         self.run(scale)
@@ -30,6 +35,8 @@ class BasicButton: BasicNode{
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let scale = SKAction.scale(to: 1, duration: 0.2)
         self.run(scale)
-        delegate?.basicButtonPressed(self)
+        if !moved{
+            delegate?.basicButtonPressed(self)
+        }
     }
 }

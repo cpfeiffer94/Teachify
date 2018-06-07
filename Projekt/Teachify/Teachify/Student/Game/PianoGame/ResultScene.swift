@@ -23,27 +23,37 @@ class ResultScene: SKScene, BasicButtonDelegate{
     
     override func didMove(to view: SKView) {
         
+        setupBackground()
         setupScore()
+
         
         playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: playButtonText)
         playButton.delegate = self
         playButton.isUserInteractionEnabled = true
-        playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
+        playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 1.5)
         
         returnButton = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 250, height: 75), fontColor: UIColor.black, text: returnButtonText)
         returnButton.delegate = self
         returnButton.isUserInteractionEnabled = true
-        returnButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 150 - playButton.size.height)
+        returnButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 1.5 - 75 - playButton.size.height)
         
         addChild(returnButton)
         addChild(playButton)
     }
     
+    fileprivate func setupBackground(){
+        let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
+        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        backgroundNode.size = self.size
+        addChild(backgroundNode)
+    }
+    
     fileprivate func setupScore() {
         score = SKLabelNode(text:"Highscore: \(String(highscore!))")
-        score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 2)
+        score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 1.3)
         score.fontName = "AvenirNext-Bold"
         score.fontSize = 45
+        score.fontColor = UIColor.black
         addChild(score)
     }
     
