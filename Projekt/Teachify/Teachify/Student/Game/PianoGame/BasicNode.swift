@@ -12,19 +12,30 @@ import SpriteKit
 class BasicNode: SKSpriteNode{
     
     var label: SKLabelNode!
-    var leftConstraint: SKConstraint!
-    var middleConstraint: SKConstraint!
-    var rightConstraint: SKConstraint!
-    
-    init(texture: SKTexture?, color: UIColor, size: CGSize, text: String, fontColor: UIColor, image: String) {
+    var nodeTexture: SKTexture!
+    var nodeColor: UIColor!
+    var nodeSize: CGSize!
+    var nodeText: String!
+    var nodeFontColor: UIColor!
+    var nodeImageName: String!
+
+    init(texture: SKTexture?, color: UIColor, size: CGSize, text: String, fontColor: UIColor, imageName: String) {
         super.init(texture: texture, color: color, size: size)
-        self.texture = SKTexture(imageNamed: image)
+        nodeTexture = texture
+        nodeColor = color
+        nodeSize = size
+        nodeText = text
+        nodeFontColor = fontColor
+        nodeImageName = imageName
+        
+        self.texture = SKTexture(imageNamed: imageName)
         
         label = SKLabelNode(text: text)
         label.fontSize = 40
         label.fontColor = fontColor
         label.fontName = "AvenirNext-Bold"
         label.position = CGPoint(x: self.position.x, y: self.position.y - 13)
+        
         self.addChild(label)
         
        

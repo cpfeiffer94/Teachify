@@ -11,39 +11,67 @@ import SpriteKit
 
 class ResultScene: SKScene, BasicButtonDelegate{
     
-    
-    
     var playButton: BasicButton!
-    var text = "Play again"
+    var returnButton: BasicButton!
+    let playButtonText = "Play again"
+    let returnButtonText = "Return"
     var winner: Bool!
+    var highscore: Int?
+    var highscoreLabel: SKLabelNode!
     var score: SKLabelNode!
     
+    
     override func didMove(to view: SKView) {
-        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: text)
+        
+        setupBackground()
+        setupScore()
+
+        
+        playButton = BasicButton(texture: nil, color: UIColor.green, size: CGSize(width: 250, height: 75),fontColor: UIColor.black, text: playButtonText)
         playButton.delegate = self
         playButton.isUserInteractionEnabled = true
-        playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 100)
-        if winner{
-            score = SKLabelNode(text: "Winner Winner Chicken Dinner")
-        }
-        else{
-            score = SKLabelNode(text: "Game over")
-
-        }
-        score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 2)
-        score.fontName = "AvenirNext-Bold"
-        score.fontSize = 45
-        addChild(score)
+        playButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 1.5)
+        
+        returnButton = BasicButton(texture: nil, color: UIColor.red, size: CGSize(width: 250, height: 75), fontColor: UIColor.black, text: returnButtonText)
+        returnButton.delegate = self
+        returnButton.isUserInteractionEnabled = true
+        returnButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 1.5 - 75 - playButton.size.height)
+        
+        addChild(returnButton)
         addChild(playButton)
     }
     
+    fileprivate func setupBackground(){
+        let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
+        backgroundNode.position = CGPoint(x: size.width/2, y: size.height/2)
+        backgroundNode.size = self.size
+        addChild(backgroundNode)
+    }
+    
+    fileprivate func setupScore() {
+        score = SKLabelNode(text:"Highscore: \(String(highscore!))")
+        score.position = CGPoint(x: self.frame.width / 2,y: self.frame.height / 1.3)
+        score.fontName = "AvenirNext-Bold"
+        score.fontSize = 45
+        score.fontColor = UIColor.black
+        addChild(score)
+    }
+    
     func basicButtonPressed(_ button: BasicButton) {
-        if button.label.text == text{
-            //let basic = BasicScene(size: self.size)
-            let transition = SKTransition.flipVertical(withDuration: 1.0)
-            //self.scene!.view?.presentScene(basic, transition: transition)
+        switch button.label.text! {
+        case playButtonText:
+            let basic = BasicScene(size: self.size)
+            self.scene!.view!.presentScene(basic)
+            break
+        case returnButtonText:
+            let nc = NotificationCenter.default
+            nc.post(name: NSNotification.Name("exitGame"), object: nil)
+            break
+        default:
+            return
         }
     }
+    
     
     
 }

@@ -8,7 +8,8 @@
 
 import Foundation
 
-class TeacherStoryboardID {
+struct TeacherStoryboardID {
+    private init() {}
     static let ´class´ = "TeacherStoryboard"
     static let TeacherMainMenuID = "TeacherMainMenuViewController"
 }

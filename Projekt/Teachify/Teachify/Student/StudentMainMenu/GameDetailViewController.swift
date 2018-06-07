@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameInformationViewController: UIViewController {
+class GameDetailViewController: UIViewController {
     let gameController : GameLaunchController = GameLaunchController()
     
     
@@ -17,14 +17,14 @@ class GameInformationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(startGame), name: .startGame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(launchGame), name: .launchGame, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func startGame(){
+    @objc func launchGame(){
         gameController.resetInstanceForGame(game: .mathpiano)
         let gameVC = gameController.getViewControllerForGame(game: .mathpiano)
         self.present(gameVC,animated: true)

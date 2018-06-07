@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
         })
         
+        UINavigationBar.appearance().barStyle = .blackOpaque
+
+        
         return true
     }
 

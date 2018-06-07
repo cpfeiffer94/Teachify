@@ -12,11 +12,13 @@ class MathPianoGame : NSObject, Codable {
     
     var gameQuestions : [MathPianoQuestionModel]
     var lifes : Int
+    var currentQuestionPointer: Int
+        
     
     init(gameQuestions : [MathPianoQuestionModel], lifes : Int) {
         self.gameQuestions = gameQuestions
         self.lifes = lifes
-        
+        self.currentQuestionPointer = 0
     }
     
     func toJSON() -> String {
