@@ -143,6 +143,7 @@
 		D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C50D20A999FD00185CEF /* BasicNode.swift */; };
 		D443C51020A99A0900185CEF /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D443C51220A99AE000185CEF /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C51120A99ADF00185CEF /* BasicButton.swift */; };
+		D49D3FD720CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,7 @@
 		AAE0744320BF069000E98332 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		D443C50D20A999FD00185CEF /* BasicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNode.swift; sourceTree = "<group>"; };
 		D443C51120A99ADF00185CEF /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathPianoGameFeedbackModel.swift; path = Teachify/Student/MathPianoGameFeedbackModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -715,6 +717,7 @@
 			children = (
 				AAA446EE20C8306500481CDD /* QR Scanner */,
 				AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */,
+				D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */,
 				AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */,
 				AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */,
 				0FBA79332085F80400D20807 /* Game */,
@@ -1102,6 +1105,7 @@
 				0F999DEC207B4D7900FF5542 /* TKClass.swift in Sources */,
 				407E59E520A9A081007EFA8B /* AddExerciseFirstScreenViewController.swift in Sources */,
 				40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */,
+				D49D3FD720CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift in Sources */,
 				17508F1920B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift in Sources */,
 				4047BFEA207FACA500A0C076 /* Extensions.swift in Sources */,
 				4047BFDA207FAC6F00A0C076 /* TeacherMainViewController.swift in Sources */,
