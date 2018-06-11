@@ -12,8 +12,7 @@ import UIKit
 class CenteredCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout{
 
     private var cellSize : CGFloat!
-    private var currentSelectedCell = 0
-    var callback : ItemSelectedCallback?
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout, let cellSize=cellSize{
@@ -36,17 +35,6 @@ class CenteredCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayo
     
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentSelectedCell = indexPath.item
-        callback?.didSelectItem(at: currentSelectedCell)
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        callback?.didSelectItem(at: currentSelectedCell)
-    }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        callback?.didSelectItem(at: currentSelectedCell)
-    }
     
 }

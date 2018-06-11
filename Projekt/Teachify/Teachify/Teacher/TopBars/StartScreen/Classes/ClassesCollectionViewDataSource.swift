@@ -9,7 +9,6 @@
 import UIKit
 
 class ClassesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
-
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

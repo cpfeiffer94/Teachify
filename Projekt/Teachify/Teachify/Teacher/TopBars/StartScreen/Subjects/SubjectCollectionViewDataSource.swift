@@ -11,10 +11,10 @@ import UIKit
 class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     var selectedClass = 0
-   // private lazy var subjects : [TKSubject] = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects
+   
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if TKModelSingleton.sharedInstance.downloadedClasses.count > 0 {
+        if TKModelSingleton.sharedInstance.downloadedClasses.count > 0 && TKModelSingleton.sharedInstance.downloadedClasses.count != selectedClass {
             return TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.count + 2
         }
         return 2
