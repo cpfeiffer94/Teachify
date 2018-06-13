@@ -12,6 +12,7 @@ import AVFoundation
 class QR_ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var cameraPreview: UIView!
     var url : String = ""
+    var segueWasCalled: Bool = false
     
     enum error : Error {
         case noCameraAvailable
@@ -21,17 +22,24 @@ class QR_ScannerViewController: UIViewController, AVCaptureMetadataOutputObjects
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {}
+        do {
+            try scanQRCode()
+        }
         catch {
             print("Failed to read the QR Code")
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        segueWasCalled = false
+    }
+    
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             let machineReadableCode = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-            if machineReadableCode.type == AVMetadataObject.ObjectType.qr{
+            if machineReadableCode.type == AVMetadataObject.ObjectType.qr && !segueWasCalled{
                 url = machineReadableCode.stringValue!
+                segueWasCalled = true
                 performSegue(withIdentifier: "openLink", sender: self)
             }
         }
@@ -71,7 +79,7 @@ class QR_ScannerViewController: UIViewController, AVCaptureMetadataOutputObjects
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openLink" {
             let destination = segue.destination as! WebViewController
-            destination.myURL = URL(string: url)
+            destination.myURL = url
         }
     }
 
