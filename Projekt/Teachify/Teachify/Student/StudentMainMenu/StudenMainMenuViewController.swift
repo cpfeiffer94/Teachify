@@ -16,7 +16,7 @@ class StudentMainMenuViewController: UIViewController {
     @IBOutlet weak var solvedExercisesLabel: UILabel!
     @IBOutlet weak var teachifyProgressLabel: UILabel!
     @IBOutlet weak var studentProfileImage: UIImageView!
-    
+    @IBOutlet weak var noExerciseStackView: UIStackView!
     
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
@@ -75,11 +75,19 @@ class StudentMainMenuViewController: UIViewController {
             collectionDS.setContinousMode(isContinous: false)
             print("deactivated ContinousMode")
             reloadAvailableGames()
+            //TODO: ask Singelton exercises count
+            noExerciseStackView.isHidden = false
         }
         else {
             collectionDS.setContinousMode(isContinous: true)
             print("activated ContinousMode")
             reloadAvailableGames()
+            if collectionDS.studentController.getContinousGameCount() == 0{
+                noExerciseStackView.isHidden = false
+            }
+            else{
+                noExerciseStackView.isHidden = true
+            }
         }
         
     }
@@ -102,6 +110,7 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func reloadAvailableGames(){
+       
         gameCollectionView.reloadData()
     }
     
