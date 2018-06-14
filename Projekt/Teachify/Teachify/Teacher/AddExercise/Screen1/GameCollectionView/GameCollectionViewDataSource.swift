@@ -9,13 +9,19 @@
 import UIKit
 
 class GameCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    
+    let games = ["FeedMe", "Piano", "Flappy"]
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return TKExerciseType.allExerciseTypes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSubjectReuseableCell", for: indexPath) as! AddSubjectReuseableCell
         cell.alpha = 0.5
+        
+        cell.subjectName.text = TKExerciseType.allExerciseTypes[indexPath.item].name
         return cell
     }
     

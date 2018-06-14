@@ -12,6 +12,7 @@ class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     var selectedClass = 0
    
+    
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if TKModelSingleton.sharedInstance.downloadedClasses.count > 0 && TKModelSingleton.sharedInstance.downloadedClasses.count != selectedClass {

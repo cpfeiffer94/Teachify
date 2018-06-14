@@ -18,6 +18,7 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
             collectionView.delegate = delegate
             delegate!.callback = self
         }
+        
     }
     //private
     var leftConstraint : NSLayoutConstraint!

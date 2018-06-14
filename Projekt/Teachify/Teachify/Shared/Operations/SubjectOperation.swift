@@ -22,6 +22,7 @@ class SubjectOperation : BaseOperation {
     
     override func execute() {
         print("Fetch Subjects started")
+        
         for (index,aClass) in classes.enumerated() {
             
             subjectCtrl.fetchSubject(forClass: aClass, withFetchSortOptions: [.name]) { (fetchedSubjects, error) in

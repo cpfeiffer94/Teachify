@@ -11,6 +11,42 @@ import UIKit
 class ExcerciseCollectionViewDelegate: NSObject,UICollectionViewDelegateFlowLayout {
 
     
+    override init() {
+       
+        UIMenuController.shared.menuItems = [UIMenuItem(title: "Share", action: #selector(test))]
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        print("######################## \(action)")
+        
+        if(action==#selector(test)){
+            print("#################### HALLO")
+            UIMenuController.shared.update()
+            return true
+        }
+        
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        print("Perform")
+    }
+    
+    
+    
+    @objc func test(){
+        print("################")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         let restWidth = calculateRestWidth(for: collectionView, layout: collectionViewLayout)

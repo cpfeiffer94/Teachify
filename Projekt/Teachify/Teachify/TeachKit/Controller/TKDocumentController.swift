@@ -113,7 +113,7 @@ struct TKDocumentController {
                 completion(nil, TKError.dooooImplement)
                 return
             }
-            
+            print("Add @CloudCtrl")
             self.cloudCtrl.add(object: createdDocument,
                                parentObject: subject,
                                withReferenceKey: TKDocument.CloudKey.referenceToSubject,

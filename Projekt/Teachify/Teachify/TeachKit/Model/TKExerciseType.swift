@@ -37,5 +37,5 @@ enum TKExerciseType {
         }
     }
     
-    static var allExerciseTypes = [TKExerciseType.wordTranslation]
+    static var allExerciseTypes = [wordTranslation, mathpiano, feedme]
 }

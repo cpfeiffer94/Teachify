@@ -9,7 +9,6 @@
 import UIKit
 
 class AddExerciseViewController: UIViewController {
-    
  
 
     override func viewDidLoad() {

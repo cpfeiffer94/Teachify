@@ -9,8 +9,14 @@
 import UIKit
 
 class AddExerciseSubjectCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    
+    var delegate : CVChangedSubject!
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let dataSource = collectionView.dataSource as! AddExerciseSubjectCollectionViewDataSource
+        let selectedSubject = dataSource.subjects[indexPath.row]
+        delegate.didChangeSubject(to: selectedSubject)
     }
 }
 

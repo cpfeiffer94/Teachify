@@ -15,6 +15,10 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let             dataSource = ClassesCollectionViewDataSource()
     @objc var       delegate : ClassesCollectionViewDelegate!
     var             titleView : UILabel!
+    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    
+    
+    private var selectedClassIndex : Int = 0
     
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
@@ -60,20 +64,38 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         
         setupExcerciseCollectionView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+        
+        view.addSubview(loadingIndicator)
+        
         loadData()
         
         if let headerView = classesCollectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
             //do Stuff
         }
     
+        
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    
+    
+    @IBAction func reloadAllData(_ sender: Any) {
+       
+        loadData()
     }
     
     @objc func reloadTable(){
         print("Notified")
         DispatchQueue.main.async {[weak self] in
+            
             self?.classesCollectionView.reloadData()
             self?.subjectCollectionView.collectionView.reloadData()
             self?.excerciseCollectionView.reloadData()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self?.loadingIndicator.hide()
         }
     }
     
@@ -98,6 +120,9 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.layoutIfNeeded()
         subjectCollectionView.didSelectItem(at: 0)
+        selectedClassIndex = to
+        excerciseCollectionView.reloadData()
+        
     }
     
     func didChangeSubjectIndex(to: Int) {
@@ -107,7 +132,8 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     }
     
     func loadData(){
-        
+        loadingIndicator.show()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         let fetchCtrl = TKFetchController(rank: .teacher)
         fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
         
@@ -119,6 +145,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         
         excerciseCollectionView.dataSource = excerciseDataSource
         excerciseCollectionView.delegate = excerciseDelegate
+        
 
     }
     
@@ -145,8 +172,19 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     }
     
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Add2AddExercise"{
+            let destVC = segue.destination as! AddExerciseFirstScreenViewController
+            let selectedClass = TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex]
+            destVC.selectedClass = selectedClass
+        }
+    }
 
-   
+
+    @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {
+        let sourceViewController = sender.source
+        // Use data from the view controller which initiated the unwind segue
+    }
 
 }
 

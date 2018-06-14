@@ -67,6 +67,26 @@ struct TKExerciseController {
         }
     }
     
+    func create(exercises: [TKExercise], toDocument: TKDocument, completion: @escaping ([TKExercise?], TKError?) -> ()){
+        var allExercises = [TKExercise?]()
+        var aError: TKError?
+        let group = DispatchGroup()
+        exercises.forEach { (exercise) in
+            group.enter()
+            self.create(exercise: exercise, toDocument: toDocument, completion: {
+                (addedExercise, error) in
+                allExercises.append(addedExercise)
+                aError = error
+                group.leave()
+            })
+        }
+        
+        group.notify(queue: DispatchQueue.main){
+            completion(allExercises, aError)
+        }
+        
+    }
+    
     // ✅
     func update(exercise: TKExercise, completion: @escaping (TKExercise?, TKError?) -> ()) {
         cloudCtrl.update(object: exercise) { (updatedDocument, error) in

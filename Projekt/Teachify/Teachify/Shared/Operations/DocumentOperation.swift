@@ -22,6 +22,7 @@ class DocumentOperation : BaseOperation {
     
     override func execute() {
 
+        print("Fetch Documents started")
         for (index,subject) in subjects.enumerated() {
             documentCtrl.fetchDocuments(forSubject: subject, withFetchSortOptions: [.name]) {(fetchedDocuments, error) in
                 if let error = error {
@@ -33,6 +34,7 @@ class DocumentOperation : BaseOperation {
                 let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index(where: { $0.classID == subject.classID })
                 
                 guard let classIndex = myClassIndex else {
+                    print("Failed to retrieve class Index")
                     self.finish()
                     return
                     
@@ -42,7 +44,9 @@ class DocumentOperation : BaseOperation {
                 
                 if let subjectIndex = mySubjectIndex
                 {
-                    TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents.append(contentsOf: fetchedDocuments)
+                   let documents = TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents
+                    TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents=documents+fetchedDocuments
+                    dump(TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents)
                     if self.subjects.count-1 == index {
                          print("Fetch documents finished")
                         self.finish()

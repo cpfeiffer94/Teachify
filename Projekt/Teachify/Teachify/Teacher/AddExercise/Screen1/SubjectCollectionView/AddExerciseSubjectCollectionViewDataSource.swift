@@ -9,13 +9,18 @@
 import UIKit
 
 class AddExerciseSubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    
+    var subjects = [TKSubject]()
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return subjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSubjectReuseableCell", for: indexPath) as! AddSubjectReuseableCell
         cell.alpha = 0.5
+        cell.subjectName.text = subjects[indexPath.row].name
+        cell.backgroundColor = subjects[indexPath.row].color.color
         return cell
     }
     
