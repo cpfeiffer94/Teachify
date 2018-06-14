@@ -9,15 +9,29 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, WKUIDelegate {
     @IBOutlet weak var webView: WKWebView!
-    var myURL = URL(string: "")
+    var myURL: String!
     
     override func viewDidLoad() {
-        let urlreq = URLRequest(url: myURL!)
-        webView.load(urlreq)
-        
         super.viewDidLoad()
+        let url = createURL(with: myURL)
+        let urlreq = URLRequest(url: url)
+        webView.load(urlreq)
+    }
+    
+    override func loadView() {
+        let webConf = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConf)
+        webView.uiDelegate = self
+        view = webView
+    }
+    
+    fileprivate func createURL(with string: String) -> URL{
+        if myURL!.contains("https://"){
+            return URL(string: string)!
+        }
+        return URL(string: "https://\(string)")!
     }
     
     

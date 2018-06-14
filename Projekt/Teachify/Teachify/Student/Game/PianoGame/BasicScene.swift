@@ -15,6 +15,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
     var pianoModel: MathPianoGame?
     var questionModel: [MathPianoQuestionModel]?
     var currentQuestion: MathPianoQuestionModel!
+    var feedbackModel: MathPianoGameFeedbackModel!
     
     //### SKNodes ###
     var gameBtn: BasicButton!
@@ -22,6 +23,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
     var gameBtn2: BasicButton!
     
     //### game specific variables ###
+    var userAnswer: [String] = []
     var highscore: Int!
     let buttonImageName = "umbrella.png"
     var lastUpdateTime: TimeInterval!
@@ -73,6 +75,8 @@ class BasicScene: SKScene, BasicButtonDelegate{
         generateButtons()
     }
     
+    
+    
     override func update(_ currentTime: TimeInterval) {
         labelsArray.first?.alpha = 1
         if lastUpdateTime == nil{
@@ -83,6 +87,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         moveLabel(deltaTime: deltaTime)
         generateQuestion()
     }
+    
     
     func animateScoreLabel(){
         var group1 = Array<SKAction>()
@@ -118,21 +123,32 @@ class BasicScene: SKScene, BasicButtonDelegate{
         }
     }
     
+    func basicButtonPressed(_ button: BasicButton) {
+        userAnswer.append(button.label.text!)
+        if button.label.text == String(pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].correctAnswer!){
+            rightAnswer()
+        }
+        else{
+            wrongAnswer()
+        }
+    }
     
     func rightAnswer(){
         
-        highscore = highscore + 1
+        if gameMode == Mode.endless{
+            highscore = highscore + 1
+        }
 
         labelsArray.first!.label.fontColor = UIColor.green
         labelsArray.first!.label.text = addedAnswerToQuestion()
         
         if(labelsArray.count > 0){
-            animateWeaves()
+            animateWaves()
             prepareNextQuestion()
         }
-        if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count{
+        if pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count - 1{
                 if gameMode == Mode.task{
-                    win()
+                    endGame()
                 }
                 else{
                     generateButtons()
@@ -152,11 +168,11 @@ class BasicScene: SKScene, BasicButtonDelegate{
     func wrongAnswer(){
         labelsArray.first?.label.fontColor = UIColor.red
         labelsArray.first?.label.text = addedAnswerToQuestion()
-        animateWeaves()
+        animateWaves()
         if gameMode == Mode.endless{
             score = score - 1
             if score <= 0{
-                lose()
+                endGame()
             }
         }
         prepareNextQuestion()
@@ -164,23 +180,15 @@ class BasicScene: SKScene, BasicButtonDelegate{
             generateButtons()
         }
         else{
-            win()
+            endGame()
         }
         
        
     }
     
-    func basicButtonPressed(_ button: BasicButton) {
-        if button.label.text == String(pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].correctAnswer!){
-            rightAnswer()
-        }
-        else{
-            wrongAnswer()
-        }
-    }
-    
     @objc func generateQuestion(){
         if labelsArray.count == 0{
+            if gameMode == Mode.endless{
                 if !checkForNewQuestions(){
                     createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
                 }
@@ -188,13 +196,16 @@ class BasicScene: SKScene, BasicButtonDelegate{
                     pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
                     createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
                 }
+            }else{
+                createQuestion(text: pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].getQuestionAsString())
+            }
         }
         
     }
     
     func generateButtons(){
         
-        if checkForNewQuestions(){
+        if checkForNewQuestions() && gameMode == Mode.endless{
             pianoModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
         }
         var answers = pianoModel!.gameQuestions[pianoModel!.currentQuestionPointer].allAnswers!
@@ -235,21 +246,22 @@ class BasicScene: SKScene, BasicButtonDelegate{
         
     }
   
-    func win(){
-        let nc = NotificationCenter.default
-        nc.post(name: NSNotification.Name("exitGame"), object: nil)
-    }
+//    func win(){
+//        let nc = NotificationCenter.default
+//        nc.post(name: NSNotification.Name("exitGame"), object: nil)
+//    }
     
-    func lose(){
+    func endGame(){
         let result = ResultScene(size: self.size)
         //let transition = SKTransition.flipVertical(withDuration: 1.0)
-        result.winner = false
+        result.isEndless = gameMode == Mode.endless
         result.highscore = highscore
+        feedbackModel = MathPianoGameFeedbackModel(gameModel: pianoModel!, userAnswer: userAnswer)
+        result.feedback = feedbackModel
         scene?.view?.presentScene(result)
     }
     
     //### Fileprivate Helper Methode ###
-    
     fileprivate func prepareNextQuestion(){
         labelsArray.removeFirst()
         pianoModel!.currentQuestionPointer = pianoModel!.currentQuestionPointer + 1
@@ -276,6 +288,7 @@ class BasicScene: SKScene, BasicButtonDelegate{
         DispatchQueue.global(qos: .default).async(execute: block)
     }
     
+    @inline(__always)
     fileprivate func setupBackground() {
         //### setup ###
         let backgroundNode = SKSpriteNode(imageNamed: "background.pngs")
@@ -283,10 +296,12 @@ class BasicScene: SKScene, BasicButtonDelegate{
         backgroundNode.size = self.size
         addChild(backgroundNode)
     }
+    
     fileprivate func checkForNewQuestions() -> Bool{
         return pianoModel!.currentQuestionPointer == pianoModel!.gameQuestions.count
     }
     
+    @inline(__always)
     fileprivate func setupScore() {
         highscore = 0
         score = 3
@@ -297,13 +312,13 @@ class BasicScene: SKScene, BasicButtonDelegate{
         scoreLabel.fontName = "AvenirNext-Bold"
         addChild(scoreLabel)
     }
-    fileprivate func animateWeaves(){
+    fileprivate func animateWaves(){
         
         let destroyedLabel = labelsArray.first
 
         var group1 = Array<SKAction>()
-        let actionFadeOut = SKAction.fadeOut(withDuration: 1)
-        let actionMoveBack = SKAction.moveBy(x: 0, y: CGFloat(200), duration: 1)
+        let actionFadeOut = SKAction.fadeOut(withDuration: 2)
+        let actionMoveBack = SKAction.moveBy(x: 0, y: CGFloat(200), duration: 2)
 
         group1.append(actionFadeOut)
         group1.append(actionMoveBack)
