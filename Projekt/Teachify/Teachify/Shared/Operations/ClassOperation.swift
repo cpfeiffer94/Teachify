@@ -36,6 +36,7 @@ class ClassOperation : BaseOperation {
                 TKModelSingleton.sharedInstance.downloadedClasses = fetchedClasses
                 print("Fetch classes finished")
                 self.finish()
+                return
             }
         }
 

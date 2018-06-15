@@ -150,8 +150,8 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     func loadData(){
         loadingIndicator.show()
         UIApplication.shared.beginIgnoringInteractionEvents()
-        let fetchCtrl = TKFetchController(rank: .teacher)
-//        fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
+        let fetchCtrl = TKFetchController()
+        fetchCtrl.fetchAll(notificationName: .excerciseLoaded, rank: .teacher)
         
         
         

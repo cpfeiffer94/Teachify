@@ -61,6 +61,7 @@ class ExerciseOperation : BaseOperation {
                     if index == self.documents.count-1{
                         print("Fetch exercises finished")
                         self.finish()
+                        return
                     }
                 }
                 
@@ -95,6 +96,7 @@ class ExerciseOperation : BaseOperation {
                         if index == self.documents.count-1{
                             print("Fetch exercises finished")
                             self.finish()
+                            return
                         }
                     }
                 }

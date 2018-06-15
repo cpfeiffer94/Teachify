@@ -31,21 +31,44 @@ class TKFetchController: NSObject {
         super.init()
     }
     
-    init(rank: TKRank){
-        super.init()
-        model.downloadedClasses = []
-        
-    }
-    
     ///    Debug Print after Data is downloaded.
     private func debugPrintAfterFetch () {
-        for myclass in model.downloadedClasses {
-            print("Downloaded Class: \(myclass.name) DOwnload Subject: \(myclass.subjects.last?.name)" +
-                "Download Documents: \(myclass.subjects.last?.documents.last?.name)" +
-                "Downloaded Excercise: \(myclass.subjects.last?.documents.last?.exercises.last?.name)")
+        if model.myTKRank == TKRank.student {
+            print("Downloaded Subjects:")
+            for (index, elementSub) in model.downloadedSubjects.enumerated() {
+                print("Subject: at \(index) Name: \(elementSub.name)")
+                
+                print("Downloaded Documents:")
+                for (index, elementDoc) in elementSub.documents.enumerated() {
+                    print("Document: at \(index) Name: \(elementDoc.name)")
+                    
+                    print("Downloaded Exercises:")
+                    for (index, elementEx) in elementDoc.exercises.enumerated() {
+                        print("Exercise: at \(index) Name: \(elementEx.name)")
+                }
+            }
         }
-        
-        
+    }
+        else if model.myTKRank == TKRank.teacher {
+            print("Downloaded Classes:")
+            for (index, elementClass) in model.downloadedSubjects.enumerated() {
+                print("Class: at \(index) Name: \(elementClass.name)")
+                
+                for (index, elementSub) in model.downloadedSubjects.enumerated() {
+                    print("Subject: at \(index) Name: \(elementSub.name)")
+                    
+                    print("Downloaded Documents:")
+                    for (index, elementDoc) in elementSub.documents.enumerated() {
+                        print("Document: at \(index) Name: \(elementDoc.name)")
+                        
+                        print("Downloaded Exercises:")
+                        for (index, elementEx) in elementDoc.exercises.enumerated() {
+                            print("Exercise: at \(index) Name: \(elementEx.name)")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

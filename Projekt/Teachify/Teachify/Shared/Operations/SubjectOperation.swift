@@ -41,6 +41,7 @@ class SubjectOperation : BaseOperation {
                         if index == self.classes.count-1{
                             print("Fetch subjects finished")
                             self.finish()
+                            return
                         }
                     }
                 
@@ -61,6 +62,7 @@ class SubjectOperation : BaseOperation {
                     TKModelSingleton.sharedInstance.downloadedSubjects = fetchedSubjects
                     print("Fetch subjects finished (count=\(fetchedSubjects.count))")
                     self.finish()
+                    return
                 }
             }
         }

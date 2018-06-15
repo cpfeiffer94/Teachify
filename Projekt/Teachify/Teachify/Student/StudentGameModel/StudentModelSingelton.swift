@@ -20,7 +20,7 @@ class StudentModelSingleton {
 
 class StudentModelController : NSObject {
     fileprivate var model = StudentModelSingleton.sharedInstance
-    fileprivate var tkModelController = TKFetchController(rank: .teacher)
+    fileprivate var tkModelController = TKFetchController()
     
     override init(){
         super.init()

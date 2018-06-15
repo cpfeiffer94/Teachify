@@ -15,7 +15,7 @@ class DocumentOperation : BaseOperation {
     
     override init(opRank : TKRank) {
         super.init(opRank: opRank)
-//        force Unwrap
+//        force Unwrap!
         documentCtrl.initialize(withRank: operationRank!) {_ in
             print("Document init --> true")
         }
@@ -47,6 +47,7 @@ class DocumentOperation : BaseOperation {
                         if self.subjects.count-1 == index {
                             print("Fetch documents finished")
                             self.finish()
+                            return
                         }
                     
                     }
@@ -72,6 +73,7 @@ class DocumentOperation : BaseOperation {
                             if index == self.subjects.count-1{
                                 print("Fetch subjects finished")
                                 self.finish()
+                                return
                             }
                         }
                     }

@@ -10,7 +10,7 @@ import Foundation
 
 class BaseOperation : Operation {
     var operationRank : TKRank?
-    var modelCtrl : TKFetchController = TKFetchController()
+    let modelCtrl : TKFetchController = TKFetchController()
     
     override var isAsynchronous: Bool {
         return true
