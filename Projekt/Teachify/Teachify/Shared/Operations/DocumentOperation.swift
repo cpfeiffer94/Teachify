@@ -65,7 +65,7 @@ class DocumentOperation : BaseOperation {
                             self.finish()
                             return
                         }
-                        let mySubjectIndex = TKModelSingleton.sharedInstance.downloadedSubjects.index { $0.classID == aSubject.classID }
+                        let mySubjectIndex = TKModelSingleton.sharedInstance.downloadedSubjects.index { $0.subjectID == aSubject.subjectID }
                         if let mySubjectIndex = mySubjectIndex
                         {
                             print("mySubjectIndex: \(mySubjectIndex)")

@@ -137,16 +137,32 @@ extension TKFetchController{
         
         subjectOperation.completionBlock = {
             if self.getRank() == TKRank.teacher {
-                subjects = TKModelSingleton.sharedInstance.downloadedClasses.flatMap({$0.subjects})
-                
+                for element in TKModelSingleton.sharedInstance.downloadedClasses {
+                    subjects.append(contentsOf: element.subjects)
+                }
             }
             else if self.getRank() == TKRank.student{
                 subjects = TKModelSingleton.sharedInstance.downloadedSubjects
             }
             documentOperation.subjects = subjects
+            
+            self.debugPrintAfterFetch()
         }
+        
         documentOperation.completionBlock = {
-            exerciseOperation.documents = subjects.flatMap({$0.documents})
+            if self.model.myTKRank == TKRank.teacher {
+                subjects = []
+                for element in TKModelSingleton.sharedInstance.downloadedClasses {
+                    subjects.append(contentsOf: element.subjects)
+                }
+            }
+            else if self.model.myTKRank == TKRank.student {
+                subjects = self.model.downloadedSubjects
+            }
+            
+            for element in subjects {
+                exerciseOperation.documents.append(contentsOf: element.documents)
+            }
         }
         exerciseOperation.completionBlock = {
             if let notificationName = notificationName {

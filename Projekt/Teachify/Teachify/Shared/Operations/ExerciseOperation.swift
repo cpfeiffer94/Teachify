@@ -24,7 +24,7 @@ class ExerciseOperation : BaseOperation {
     override func execute() {
         print("Fetch exercises started")
         if documents.count == 0 {
-            print("Fetch excercises finished documents=0")
+            print("Fetch excercises finished documents is empty!")
             finish()
             return
         }
@@ -92,7 +92,7 @@ class ExerciseOperation : BaseOperation {
                     if let documentIndex = myDocumentIndex
                     {
                         print("ExerciseOperation exercise set")
-                        TKModelSingleton.sharedInstance.downloadedSubjects[subjectIndex].documents[documentIndex].exercises.append(contentsOf: fetchedExercises)
+                        TKModelSingleton.sharedInstance.downloadedSubjects[subjectIndex].documents[documentIndex].exercises = fetchedExercises
                         if index == self.documents.count-1{
                             print("Fetch exercises finished")
                             self.finish()
