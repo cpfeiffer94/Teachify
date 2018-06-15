@@ -26,7 +26,7 @@ class StudentMainMenuViewController: UIViewController {
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
-        gamedwnldctrl.fetchAll(notificationName: Notification.Name.reloadGameCards)
+        gamedwnldctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"

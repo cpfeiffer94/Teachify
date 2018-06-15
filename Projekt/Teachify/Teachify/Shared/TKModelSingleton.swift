@@ -13,6 +13,8 @@ class TKModelSingleton {
     //TODO Zugriffsschicht
     static let sharedInstance = TKModelSingleton()
     var downloadedClasses : [TKClass] = []
+    var downloadedSubjects : [TKSubject] = []
+    var myTKRank : TKRank?
     
     private init (){}
 }
@@ -25,7 +27,7 @@ class TKFetchController: NSObject {
     private var teacherCtrl : TKTeacherController = TKTeacherController()
     
     
-    private override init() {
+    override init() {
         super.init()
     }
     
@@ -72,6 +74,10 @@ extension TKFetchController{
         return model.downloadedClasses
     }
     
+    func getSubjects() -> [TKSubject] {
+        return model.downloadedSubjects
+    }
+    
     func getClassForIndex(myIndex: Int) -> TKClass{
         return model.downloadedClasses[myIndex]
     }
@@ -82,11 +88,24 @@ extension TKFetchController{
     //
     //    }
     
-    func fetchAll(notificationName : Notification.Name? = nil) {
-        let classesOperation    = ClassOperation()
-        let subjectOperation    = SubjectOperation()
-        let documentOperation   = DocumentOperation()
-        let exerciseOperation   = ExerciseOperation()
+    func resetWithRank (newRank : TKRank){
+        model.myTKRank = newRank
+        model.downloadedClasses = []
+        model.downloadedSubjects = []
+    }
+    
+    func getRank() -> TKRank {
+        return model.myTKRank!
+    }
+    
+    func fetchAll(notificationName : Notification.Name? = nil, rank : TKRank) {
+        resetWithRank(newRank: rank)
+        
+        
+        let classesOperation    = ClassOperation(opRank: self.getRank())
+        let subjectOperation    = SubjectOperation(opRank: self.getRank())
+        let documentOperation   = DocumentOperation(opRank: self.getRank())
+        let exerciseOperation   = ExerciseOperation(opRank: self.getRank())
         var subjects            = [TKSubject]()
         
         classesOperation.completionBlock = {
@@ -94,7 +113,13 @@ extension TKFetchController{
         }
         
         subjectOperation.completionBlock = {
-            subjects = TKModelSingleton.sharedInstance.downloadedClasses.flatMap({$0.subjects})
+            if self.getRank() == TKRank.teacher {
+                subjects = TKModelSingleton.sharedInstance.downloadedClasses.flatMap({$0.subjects})
+                
+            }
+            else if self.getRank() == TKRank.student{
+                subjects = TKModelSingleton.sharedInstance.downloadedSubjects
+            }
             documentOperation.subjects = subjects
         }
         documentOperation.completionBlock = {
@@ -103,6 +128,7 @@ extension TKFetchController{
         exerciseOperation.completionBlock = {
             if let notificationName = notificationName {
                 print("Completion Block")
+                self.debugPrintAfterFetch()
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(Notification(name: notificationName))
                 }
@@ -120,13 +146,13 @@ extension TKFetchController{
     }
     
     func fetchClasses(){
-        let classesOperation = ClassOperation()
+        let classesOperation = ClassOperation(opRank: self.getRank())
         let queue = OperationQueue()
         queue.addOperation(classesOperation)
     }
     
     func fetchSubjects(for classes : [TKClass]){
-        let subjectOperation = SubjectOperation()
+        let subjectOperation = SubjectOperation(opRank: self.getRank())
         subjectOperation.classes = classes
         let queue = OperationQueue()
         queue.addOperation(subjectOperation)
@@ -134,14 +160,14 @@ extension TKFetchController{
     }
     
     func fetchDocuments(for subjects: [TKSubject]){
-        let documentOperation = DocumentOperation()
+        let documentOperation = DocumentOperation(opRank: self.getRank())
         documentOperation.subjects = subjects
         let queue = OperationQueue()
         queue.addOperation(documentOperation)
     }
     
     func fetchExercise(for documents: [TKDocument], notificationName: Notification.Name){
-        let exerciseOperation = ExerciseOperation()
+        let exerciseOperation = ExerciseOperation(opRank: self.getRank())
         exerciseOperation.documents = documents
         let queue = OperationQueue()
         queue.addOperation(exerciseOperation)

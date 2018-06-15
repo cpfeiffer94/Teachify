@@ -11,16 +11,21 @@ import Foundation
 class ClassOperation : BaseOperation {
     
     private var classCtrl : TKClassController = TKClassController()
-    override init() {
-        super.init()
-        classCtrl.initialize(withRank: .teacher) { (succeed) in
+    
+    override init(opRank : TKRank) {
+        super.init(opRank: opRank)
+//        Force Unwrap
+        classCtrl.initialize(withRank: operationRank!) { (succeed) in
             print("Class init --> \(succeed)")
         }
     }
     
     
     override func execute() {
-        
+        if operationRank == .student {
+            self.finish()
+            return
+        } 
         classCtrl.fetchClasses(withFetchSortOptions: [.name]) { (fetchedClasses,error) in
             if let error = error{
                 print("Failed fetching Classes from TK! \(error)")

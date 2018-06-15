@@ -9,8 +9,19 @@
 import Foundation
 
 class BaseOperation : Operation {
+    var operationRank : TKRank?
+    var modelCtrl : TKFetchController = TKFetchController()
+    
     override var isAsynchronous: Bool {
         return true
+    }
+    
+    private override init () {
+//       Our Operations need to be initialized with a Rank
+    }
+    
+    init(opRank : TKRank) {
+        operationRank = opRank
     }
     
     private var _executing = false {

@@ -151,7 +151,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         loadingIndicator.show()
         UIApplication.shared.beginIgnoringInteractionEvents()
         let fetchCtrl = TKFetchController(rank: .teacher)
-        fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
+//        fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
         
         
         
