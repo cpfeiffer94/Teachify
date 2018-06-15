@@ -45,6 +45,7 @@ class TKFetchController: NSObject {
                     print("Downloaded Exercises:")
                     for (index, elementEx) in elementDoc.exercises.enumerated() {
                         print("Exercise: at \(index) Name: \(elementEx.name)")
+                        print("It works, bitches 🔥")
                 }
             }
         }
@@ -64,6 +65,8 @@ class TKFetchController: NSObject {
                         print("Downloaded Exercises:")
                         for (index, elementEx) in elementDoc.exercises.enumerated() {
                             print("Exercise: at \(index) Name: \(elementEx.name)")
+                            print("It works, bitches 🔥")
+                            
                         }
                     }
                 }
