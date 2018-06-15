@@ -10,6 +10,7 @@ import UIKit
 
 class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
     let studentController : StudentModelController = StudentModelController()
+    let tkFetchController : TKFetchController = TKFetchController()
     
     var ContiniousMode = false
 
@@ -39,11 +40,8 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         if (ContiniousMode){
             return studentController.getContinousGameCount()
         }
-        if studentController.isMyClassSet() {
-            return studentController.getMyClass().subjects[section].documents.count
-        }
         else {
-            return 0
+            return tkFetchController.getSubjectCount()
         }
     }
 
@@ -65,18 +63,18 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
             cell.setContiniousGame(game: myGame.type)
         }
         else{
-            if studentController.isMyClassSet() {
-                let tempclass = studentController.getMyClass()
-                cell.card.backgroundColor = tempclass.subjects[indexPath.item].color.color
+                let tempSubject : TKSubject = tkFetchController.getSubjects()[indexPath.item]
+                let tempDoc = tempSubject.documents[indexPath.row]
+            
+                cell.card.backgroundColor = tempSubject.color.color
                 cell.card.icon = UIImage(named: "calculator")
-                cell.card.title = tempclass.subjects[indexPath.item].documents[indexPath.row].name
-                cell.card.itemTitle = tempclass.subjects[indexPath.item].name
-                cell.card.itemSubtitle = "Anzahl Übungen: \(tempclass.subjects[indexPath.item].documents[indexPath.row].exercises.count)"
+                cell.card.title = tempDoc.name
+                cell.card.itemTitle = tempSubject.name
+                cell.card.itemSubtitle = "Anzahl Übungen: \(tempDoc.exercises.count)"
                 cell.card.buttonText = "Spielen"
                 cell.card.textColor = UIColor.white
                 
-                cell.setExercises(newExercises: tempclass.subjects[indexPath.item].documents[indexPath.row].exercises)
-            }
+//                cell.setExercises(newExercises: tempDoc.subjects[indexPath.item].documents[indexPath.row].exercises)
         }
         
         

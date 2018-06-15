@@ -104,6 +104,14 @@ extension TKFetchController{
         return model.downloadedSubjects
     }
     
+    func getClassCount() -> Int {
+        return model.downloadedClasses.count
+    }
+    
+    func getSubjectCount() -> Int {
+        return model.downloadedSubjects.count
+    }
+    
     func getClassForIndex(myIndex: Int) -> TKClass{
         return model.downloadedClasses[myIndex]
     }

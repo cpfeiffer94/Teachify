@@ -20,13 +20,13 @@ class StudentMainMenuViewController: UIViewController {
     
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
-    let gamedwnldctrl = TKFetchController()
+    let tkfetchctrl = TKFetchController()
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
-        gamedwnldctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
+        tkfetchctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"
@@ -75,8 +75,6 @@ class StudentMainMenuViewController: UIViewController {
             collectionDS.setContinousMode(isContinous: false)
             print("deactivated ContinousMode")
             reloadAvailableGames()
-            //TODO: ask Singelton exercises count
-            noExerciseStackView.isHidden = false
         }
         else {
             collectionDS.setContinousMode(isContinous: true)
@@ -110,8 +108,15 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func reloadAvailableGames(){
-       
         gameCollectionView.reloadData()
+        
+        if (tkfetchctrl.getSubjectCount() > 0) {
+            noExerciseStackView.isHidden = true
+        }
+            
+        else {
+            noExerciseStackView.isHidden = false
+        }
     }
     
     

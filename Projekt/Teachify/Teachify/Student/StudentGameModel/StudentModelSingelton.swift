@@ -12,7 +12,7 @@ import UIKit
 class StudentModelSingleton {
     static let sharedInstance = StudentModelSingleton()
     fileprivate var continousGames : [ContinousGameInformationItem] = []
-    fileprivate var myClass : TKClass?
+    fileprivate var mySubjects : [TKSubject]?
     
     private init (){}
 }
@@ -20,27 +20,19 @@ class StudentModelSingleton {
 
 class StudentModelController : NSObject {
     fileprivate var model = StudentModelSingleton.sharedInstance
-    fileprivate var tkModelController = TKFetchController()
+    fileprivate var tkFetchCtrl = TKFetchController()
     
     override init(){
         super.init()
         self.setContinousGameList()
     }
     
-    func setMyClass(myClassName : String){
-        let modelIndex = tkModelController.getClassIndexForName(queryName: myClassName)
-        
-        if (modelIndex > -1){
-            model.myClass = tkModelController.getClassForIndex(myIndex: modelIndex)
-        }
-        
-        else {
-            print("Unable to fetch Students Class from tkModelController!")
-        }
+    func getMySubjects(){
+        model.mySubjects = tkFetchCtrl.getSubjects()
     }
     
-    func isMyClassSet() -> Bool {
-        if model.myClass != nil{
+    func isMySubjectSet() -> Bool {
+        if model.mySubjects != nil{
             return true
         }
         else {
@@ -48,8 +40,12 @@ class StudentModelController : NSObject {
         }
     }
     
-    func getMyClass() ->TKClass {
-        return model.myClass!
+    func getMySubjects() -> [TKSubject] {
+        return model.mySubjects!
+    }
+    
+    func getMySubjectsCount() -> Int {
+        return (model.mySubjects?.count)!
     }
     
 //############################################
