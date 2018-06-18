@@ -11,45 +11,60 @@ import Foundation
 class SubjectOperation : BaseOperation {
     
     private var subjectCtrl : TKSubjectController = TKSubjectController()
+    private var fetchCtrl : TKFetchController = TKFetchController()
+    
     var classes = [TKClass]()
     
-    override init() {
-        super.init()
-        subjectCtrl.initialize(withRank: .teacher) { (succeed) in
+    override init(opRank : TKRank) {
+        super.init(opRank: opRank)
+//        forced Unwrap
+        subjectCtrl.initialize(withRank: operationRank!) { (succeed) in
             print("Subject init --> \(succeed)")
         }
     }
     
     override func execute() {
-        print("Fetch Subjects started")
-        
-        for (index,aClass) in classes.enumerated() {
-            
-            subjectCtrl.fetchSubject(forClass: aClass, withFetchSortOptions: [.name]) { (fetchedSubjects, error) in
-                if let error = error {
-                    print("Failed fetching Subject from TK! class:" + aClass.recordTypeID! + "with Error Message: \(error)")
+        print("Fetch Subjects started with Rank: \(operationRank)")
+        if (operationRank == .teacher){
+            for (index,aClass) in classes.enumerated() {
+                subjectCtrl.fetchSubject(forClass: aClass, withFetchSortOptions: [.name]) { (fetchedSubjects, error) in
+                    if let error = error {
+                        print("Failed fetching Subject from TK! class:" + aClass.recordTypeID! + "with Error Message: \(error)")
+                        self.finish()
+                        return
+                    }
+                    let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index { $0.classID == aClass.classID }
+                    if let myClassIndex = myClassIndex
+                    {
+                        print("myClassIndex: \(myClassIndex)")
+                        TKModelSingleton.sharedInstance.downloadedClasses[myClassIndex].append(subjects: fetchedSubjects)
+                        if index == self.classes.count-1{
+                            print("Fetch subjects finished")
+                            self.finish()
+                            return
+                        }
+                    }
+                
+                }
+                }
+        if classes.count == 0 {
+            finish()
+        }
+    }
+        if (operationRank == .student){
+            subjectCtrl.fetchSubject(withFetchSortOptions: [.name]) { (fetchedSubjects,error) in
+                if let error = error{
+                    print("Failed fetching Subjects \(self.operationRank) from TK! \(error)")
                     self.finish()
                     return
                 }
-                
-                let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index { $0.classID == aClass.classID }
-                
-                if let myClassIndex = myClassIndex
-                {
-                    print("myClassIndex: \(myClassIndex)")
-                    TKModelSingleton.sharedInstance.downloadedClasses[myClassIndex].append(subjects: fetchedSubjects)
-                    
-                    if index == self.classes.count-1{
-                        print("Fetch subjects finished")
-                        
-                        self.finish()
-                    }
+                else {
+                    TKModelSingleton.sharedInstance.downloadedSubjects = fetchedSubjects
+                    print("Fetch subjects finished (count=\(fetchedSubjects.count))")
+                    self.finish()
+                    return
                 }
-                
             }
-        }
-        if classes.count == 0 {
-            finish()
         }
     }
     

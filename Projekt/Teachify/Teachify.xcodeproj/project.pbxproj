@@ -39,6 +39,8 @@
 		17508F1520B6B5C700E3C0EA /* AddSubjectReuseableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */; };
 		17508F1720B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */; };
 		17508F1920B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */; };
+		175A7DE920D2A09A00383EFA /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A7DE820D2A09A00383EFA /* CustomAlertViewController.swift */; };
+		175A7DEB20D2A41A00383EFA /* CustomAlertViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A7DEA20D2A41A00383EFA /* CustomAlertViewDelegate.swift */; };
 		17F7342C20C1C6E300F93E5A /* OperationPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342B20C1C6E300F93E5A /* OperationPickerViewDelegate.swift */; };
 		17F7342E20C1C72800F93E5A /* OperationPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342D20C1C72800F93E5A /* OperationPickerViewDataSource.swift */; };
 		17F7343020C1CAC100F93E5A /* GameCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7342F20C1CAC100F93E5A /* GameCollectionViewDataSource.swift */; };
@@ -90,6 +92,7 @@
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
+		9AD639AF20D26251005CA24F /* TKSolutionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639AE20D26251005CA24F /* TKSolutionList.swift */; };
 		AA12AF70207615170090404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF6F207615170090404A /* AppDelegate.swift */; };
 		AA12AF72207615170090404A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF71207615170090404A /* LoginViewController.swift */; };
 		AA12AF75207615170090404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF73207615170090404A /* Main.storyboard */; };
@@ -215,6 +218,8 @@
 		17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectReuseableCell.xib; sourceTree = "<group>"; };
 		17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		17508F1820B6B75100E3C0EA /* AddExerciseSubjectCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		175A7DE820D2A09A00383EFA /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		175A7DEA20D2A41A00383EFA /* CustomAlertViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewDelegate.swift; sourceTree = "<group>"; };
 		17F7342B20C1C6E300F93E5A /* OperationPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationPickerViewDelegate.swift; sourceTree = "<group>"; };
 		17F7342D20C1C72800F93E5A /* OperationPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationPickerViewDataSource.swift; sourceTree = "<group>"; };
 		17F7342F20C1CAC100F93E5A /* GameCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -270,6 +275,7 @@
 		51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		589BDF22BCCBC2694D4213FE /* Pods-TeachifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD639AE20D26251005CA24F /* TKSolutionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionList.swift; sourceTree = "<group>"; };
 		A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.debug.xcconfig"; sourceTree = "<group>"; };
 		A64284DD3AC14D1AE5910B2D /* Pods-TeachifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA12AF6C207615170090404A /* Teachify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teachify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,10 +423,11 @@
 				0F999DD0207B4D7900FF5542 /* TKUser.swift */,
 				0F999DD1207B4D7900FF5542 /* TKLeaderboardEntry.swift */,
 				0F999DD2207B4D7900FF5542 /* TKExerciseType.swift */,
-				0F999DD3207B4D7900FF5542 /* Enums */,
 				0F999DD8207B4D7900FF5542 /* TKSubject.swift */,
 				0F999DD9207B4D7900FF5542 /* TKClass.swift */,
 				0FF2A56120A1589500486CAC /* TKSolution.swift */,
+				9AD639AE20D26251005CA24F /* TKSolutionList.swift */,
+				0F999DD3207B4D7900FF5542 /* Enums */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,6 +600,8 @@
 			isa = PBXGroup;
 			children = (
 				4035E3F720D287D300237DDD /* ProgressIndicatorView.swift */,
+				175A7DE820D2A09A00383EFA /* CustomAlertViewController.swift */,
+				175A7DEA20D2A41A00383EFA /* CustomAlertViewDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1164,10 +1173,12 @@
 				AA8229EA20888C260018AB0E /* TKShareController.swift in Sources */,
 				0FEFB4E82084A86B0065A460 /* (null) in Sources */,
 				4089CE4920B5AC1600161A4C /* ExerciseOperation.swift in Sources */,
+				175A7DEB20D2A41A00383EFA /* CustomAlertViewDelegate.swift in Sources */,
 				AA8229FA20888D170018AB0E /* CloudKitTestViewController.swift in Sources */,
 				0F4EE9CC2091CDE500AF165A /* TKSolutionController.swift in Sources */,
 				AA8229D520888BC30018AB0E /* TKModelSingleton.swift in Sources */,
 				AA8229FF20888D3A0018AB0E /* RandomQuestionGenerator.swift in Sources */,
+				175A7DE920D2A09A00383EFA /* CustomAlertViewController.swift in Sources */,
 				0FBA793B2085F80400D20807 /* (null) in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
 				AA8229E620888C260018AB0E /* TKLeaderboardController.swift in Sources */,
@@ -1220,6 +1231,7 @@
 				AA8229EE20888C340018AB0E /* Extension+CKRecordZone.swift in Sources */,
 				AA8229E720888C260018AB0E /* TKSettingsController.swift in Sources */,
 				AA8229FB20888D170018AB0E /* Keys.swift in Sources */,
+				9AD639AF20D26251005CA24F /* TKSolutionList.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				4035E3F820D287D300237DDD /* ProgressIndicatorView.swift in Sources */,
 				D443C51020A99A0900185CEF /* (null) in Sources */,
