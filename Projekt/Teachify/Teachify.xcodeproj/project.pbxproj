@@ -83,6 +83,7 @@
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
 		7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */; };
 		83D5DF805E9E942FD007785C /* Pods_TeachifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */; };
+		9AD639AF20D26251005CA24F /* TKSolutionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD639AE20D26251005CA24F /* TKSolutionList.swift */; };
 		AA12AF70207615170090404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF6F207615170090404A /* AppDelegate.swift */; };
 		AA12AF72207615170090404A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12AF71207615170090404A /* LoginViewController.swift */; };
 		AA12AF75207615170090404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA12AF73207615170090404A /* Main.storyboard */; };
@@ -234,6 +235,7 @@
 		51B0D80D9BCACEEC9F90AF8F /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		589BDF22BCCBC2694D4213FE /* Pods-TeachifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyUITests/Pods-TeachifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD639AE20D26251005CA24F /* TKSolutionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionList.swift; sourceTree = "<group>"; };
 		A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.debug.xcconfig"; sourceTree = "<group>"; };
 		A64284DD3AC14D1AE5910B2D /* Pods-TeachifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachifyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachifyTests/Pods-TeachifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA12AF6C207615170090404A /* Teachify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teachify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,10 +376,11 @@
 				0F999DD0207B4D7900FF5542 /* TKUser.swift */,
 				0F999DD1207B4D7900FF5542 /* TKLeaderboardEntry.swift */,
 				0F999DD2207B4D7900FF5542 /* TKExerciseType.swift */,
-				0F999DD3207B4D7900FF5542 /* Enums */,
 				0F999DD8207B4D7900FF5542 /* TKSubject.swift */,
 				0F999DD9207B4D7900FF5542 /* TKClass.swift */,
 				0FF2A56120A1589500486CAC /* TKSolution.swift */,
+				9AD639AE20D26251005CA24F /* TKSolutionList.swift */,
+				0F999DD3207B4D7900FF5542 /* Enums */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				AA8229EE20888C340018AB0E /* Extension+CKRecordZone.swift in Sources */,
 				AA8229E720888C260018AB0E /* TKSettingsController.swift in Sources */,
 				AA8229FB20888D170018AB0E /* Keys.swift in Sources */,
+				9AD639AF20D26251005CA24F /* TKSolutionList.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				D443C51020A99A0900185CEF /* (null) in Sources */,
 				D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */,

@@ -52,10 +52,15 @@ extension CKRecord {
         self[TKExercise.CloudKey.deadline] = deadline as CKRecordValue
     }
     
-    convenience init(solution: TKSolution, withRecordZoneID recordZoneID: CKRecordZoneID) {
-        self.init(recordType: TKCloudKey.RecordType.solutions, zoneID: recordZoneID)
-        self[TKSolution.CloudKey.userSolution] = solution.userSolution as CKRecordValue
-        self[TKSolution.CloudKey.status] = solution.status.tkCloudKey as CKRecordValue
+//    convenience init(solution: TKSolution, withRecordZoneID recordZoneID: CKRecordZoneID) {
+//        self.init(recordType: TKCloudKey.RecordType.solutions, zoneID: recordZoneID)
+//        self[TKSolution.CloudKey.userSolution] = solution.userSolution as CKRecordValue
+//        self[TKSolution.CloudKey.status] = solution.status.tkCloudKey as CKRecordValue
+//    }
+    
+    convenience init(solutionList: TKSolutionList, withRecordZoneID recordZoneID: CKRecordZoneID) {
+        self.init(recordType: TKCloudKey.RecordType.solutionList, zoneID: recordZoneID)
+        self[TKSolutionList.CloudKey.solutions] = solutionList.solutions as CKRecordValue
     }
     
     convenience init?(cloudObject: TKCloudObject, withRecordZoneID recordZoneID: CKRecordZoneID) {
@@ -69,8 +74,8 @@ extension CKRecord {
             self.init(exercise: exercise, withRecordZoneID: recordZoneID)
         } else if let student = cloudObject as? TKStudent {
             self.init(student: student, withRecordZoneID: recordZoneID)
-        } else if let solution = cloudObject as? TKSolution {
-            self.init(solution: solution, withRecordZoneID: recordZoneID)
+        } else if let solutionList = cloudObject as? TKSolutionList {
+            self.init(solutionList: solutionList, withRecordZoneID: recordZoneID)
         } else {
             return nil
         }
