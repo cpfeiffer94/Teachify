@@ -55,6 +55,8 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
+        
+        
         classesCollectionView.dataSource = dataSource
         delegate = ClassesCollectionViewDelegate(delegate: self)
         classesCollectionView.delegate = delegate
@@ -192,5 +194,10 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
 protocol CVIndexChanged {
     func didChangeClassIndex(to: Int)
     func didChangeSubjectIndex(to: Int)
+}
+
+
+extension UICollectionView {
+    open override var canBecomeFirstResponder: Bool { return true}
 }
 

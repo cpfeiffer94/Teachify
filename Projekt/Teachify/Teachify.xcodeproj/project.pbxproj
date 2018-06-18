@@ -82,6 +82,9 @@
 		40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */; };
 		40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */; };
 		40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */; };
+		40D02C8A20D7B7B900AC8AD5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D02C8920D7B7B900AC8AD5 /* ShareViewController.swift */; };
+		40D02C8D20D7B7B900AC8AD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D02C8B20D7B7B900AC8AD5 /* MainInterface.storyboard */; };
+		40D02C9120D7B7B900AC8AD5 /* Sharing.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 40D02C8720D7B7B900AC8AD5 /* Sharing.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		40DC205220A05D7D00555E9E /* AddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DC205120A05D7D00555E9E /* AddExerciseViewController.swift */; };
 		40F7F25F208654D200127A88 /* PupilStatisticsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */; };
 		47ABC329EB183166C9D98AFB /* Pods_TeachifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */; };
@@ -151,6 +154,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		40D02C8F20D7B7B900AC8AD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA12AF64207615170090404A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40D02C8620D7B7B900AC8AD5;
+			remoteInfo = Sharing;
+		};
 		AA12AF81207615190090404A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA12AF64207615170090404A /* Project object */;
@@ -166,6 +176,20 @@
 			remoteInfo = Teachify;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4035E40B20D2A5FE00237DDD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				40D02C9120D7B7B900AC8AD5 /* Sharing.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F22D33B207F4E44004C9024 /* Teachify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teachify.entitlements; sourceTree = "<group>"; };
@@ -235,6 +259,10 @@
 		40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHeaderView.swift; sourceTree = "<group>"; };
 		40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundAddCell.swift; path = Teachify/Teacher/TopBars/StartScreen/RoundAddCell.swift; sourceTree = SOURCE_ROOT; };
+		40D02C8720D7B7B900AC8AD5 /* Sharing.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sharing.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40D02C8920D7B7B900AC8AD5 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		40D02C8C20D7B7B900AC8AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		40D02C8E20D7B7B900AC8AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40DC205120A05D7D00555E9E /* AddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewController.swift; sourceTree = "<group>"; };
 		40F7F25E208654D200127A88 /* PupilStatisticsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDataSource.swift; sourceTree = "<group>"; };
 		42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +341,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		40D02C8420D7B7B900AC8AD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA12AF69207615170090404A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,6 +659,16 @@
 			path = ExcerciseCollectionView;
 			sourceTree = "<group>";
 		};
+		40D02C8820D7B7B900AC8AD5 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				40D02C8920D7B7B900AC8AD5 /* ShareViewController.swift */,
+				40D02C8B20D7B7B900AC8AD5 /* MainInterface.storyboard */,
+				40D02C8E20D7B7B900AC8AD5 /* Info.plist */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
 		744AAC0A28FFD35EC1152180 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +688,7 @@
 				AA12AF6E207615170090404A /* Teachify */,
 				AA12AF83207615190090404A /* TeachifyTests */,
 				AA12AF8E2076151A0090404A /* TeachifyUITests */,
+				40D02C8820D7B7B900AC8AD5 /* Sharing */,
 				AA12AF6D207615170090404A /* Products */,
 				744AAC0A28FFD35EC1152180 /* Pods */,
 				33FA51978547303283D73F64 /* Frameworks */,
@@ -655,6 +701,7 @@
 				AA12AF6C207615170090404A /* Teachify.app */,
 				AA12AF80207615190090404A /* TeachifyTests.xctest */,
 				AA12AF8B2076151A0090404A /* TeachifyUITests.xctest */,
+				40D02C8720D7B7B900AC8AD5 /* Sharing.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -828,6 +875,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		40D02C8620D7B7B900AC8AD5 /* Sharing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40D02C9220D7B7B900AC8AD5 /* Build configuration list for PBXNativeTarget "Sharing" */;
+			buildPhases = (
+				40D02C8320D7B7B900AC8AD5 /* Sources */,
+				40D02C8420D7B7B900AC8AD5 /* Frameworks */,
+				40D02C8520D7B7B900AC8AD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sharing;
+			productName = Sharing;
+			productReference = 40D02C8720D7B7B900AC8AD5 /* Sharing.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AA12AF6B207615170090404A /* Teachify */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA12AF942076151A0090404A /* Build configuration list for PBXNativeTarget "Teachify" */;
@@ -837,10 +901,12 @@
 				AA12AF69207615170090404A /* Frameworks */,
 				AA12AF6A207615170090404A /* Resources */,
 				DD1350B167DAFE80002D4145 /* [CP] Embed Pods Frameworks */,
+				4035E40B20D2A5FE00237DDD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				40D02C9020D7B7B900AC8AD5 /* PBXTargetDependency */,
 			);
 			name = Teachify;
 			productName = Teachify;
@@ -891,10 +957,13 @@
 		AA12AF64207615170090404A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Christian Pfeiffer";
 				TargetAttributes = {
+					40D02C8620D7B7B900AC8AD5 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					AA12AF6B207615170090404A = {
 						CreatedOnToolsVersion = 9.3;
 						SystemCapabilities = {
@@ -932,11 +1001,20 @@
 				AA12AF6B207615170090404A /* Teachify */,
 				AA12AF7F207615190090404A /* TeachifyTests */,
 				AA12AF8A2076151A0090404A /* TeachifyUITests */,
+				40D02C8620D7B7B900AC8AD5 /* Sharing */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		40D02C8520D7B7B900AC8AD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40D02C8D20D7B7B900AC8AD5 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA12AF6A207615170090404A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1056,6 +1134,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		40D02C8320D7B7B900AC8AD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40D02C8A20D7B7B900AC8AD5 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA12AF68207615170090404A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1199,6 +1285,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		40D02C9020D7B7B900AC8AD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40D02C8620D7B7B900AC8AD5 /* Sharing */;
+			targetProxy = 40D02C8F20D7B7B900AC8AD5 /* PBXContainerItemProxy */;
+		};
 		AA12AF82207615190090404A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA12AF6B207615170090404A /* Teachify */;
@@ -1212,6 +1303,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		40D02C8B20D7B7B900AC8AD5 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40D02C8C20D7B7B900AC8AD5 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		AA12AF73207615170090404A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1231,6 +1330,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		40D02C9320D7B7B900AC8AD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FM446M8BR4;
+				INFOPLIST_FILE = Sharing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify.Sharing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		40D02C9420D7B7B900AC8AD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FM446M8BR4;
+				INFOPLIST_FILE = Sharing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify.Sharing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		AA12AF922076151A0090404A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1349,6 +1488,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A175285ACFD6D651B3D37807 /* Pods-Teachify.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1370,6 +1510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1476,6 +1617,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		40D02C9220D7B7B900AC8AD5 /* Build configuration list for PBXNativeTarget "Sharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40D02C9320D7B7B900AC8AD5 /* Debug */,
+				40D02C9420D7B7B900AC8AD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AA12AF67207615170090404A /* Build configuration list for PBXProject "Teachify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

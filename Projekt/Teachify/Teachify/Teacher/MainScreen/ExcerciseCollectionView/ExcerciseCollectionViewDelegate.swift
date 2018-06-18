@@ -13,7 +13,7 @@ class ExcerciseCollectionViewDelegate: NSObject,UICollectionViewDelegateFlowLayo
     
     override init() {
        
-        UIMenuController.shared.menuItems = [UIMenuItem(title: "Share", action: #selector(test))]
+        //UIMenuController.shared.menuItems = [UIMenuItem(title: "Share", action: #selector(test))]
         
     }
     
@@ -26,35 +26,20 @@ class ExcerciseCollectionViewDelegate: NSObject,UICollectionViewDelegateFlowLayo
     
     
     func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        print("######################## \(action)")
-        
-        if(action==#selector(test)){
-            print("#################### HALLO")
-            UIMenuController.shared.update()
-            return true
-        }
-        
+
         return true
     }
     
     func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        print("Perform")
+        //Method is never called explicit, ios only checks for existance
     }
     
     
-    
-    @objc func test(){
-        print("################")
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         let restWidth = calculateRestWidth(for: collectionView, layout: collectionViewLayout)
         return UIEdgeInsets(top: 20, left: restWidth/2, bottom: 0, right: restWidth/2)
-        // }
-        
-        
-        //return UIEdgeInsets.zero
     }
     
     

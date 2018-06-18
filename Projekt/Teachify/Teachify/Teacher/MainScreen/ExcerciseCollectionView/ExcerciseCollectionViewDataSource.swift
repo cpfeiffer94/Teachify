@@ -79,6 +79,7 @@ class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         let subject = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.first(where:{$0.subjectID == documents[indexPath.item].subjectID})
         cell.subjectTitle.text = subject?.name
             cell.backgroundColor = subject?.color.color
+        cell.subject = subject
         
         
        

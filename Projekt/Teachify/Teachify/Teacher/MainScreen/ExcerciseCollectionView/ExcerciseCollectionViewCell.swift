@@ -9,6 +9,7 @@
 import UIKit
 
 class ExcerciseCollectionViewCell: UICollectionViewCell {
+    //MARK: IBOutlets
     @IBOutlet var subjectTitle: UILabel!
     @IBOutlet var excerciseTitle: UILabel!
     @IBOutlet var dueDate: UILabel!
@@ -18,6 +19,9 @@ class ExcerciseCollectionViewCell: UICollectionViewCell {
             subjectImage.transform = CGAffineTransform(rotationAngle: rotateBy)
         }
     }
+    
+    //MARK: Variables
+    var subject: TKSubject!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,5 +36,28 @@ class ExcerciseCollectionViewCell: UICollectionViewCell {
     
     func setup(){
         layer.cornerRadius = 20
+        UIMenuController.shared.menuItems = [UIMenuItem(title: "Share", action: #selector(test))]
+    }
+    
+    override var canBecomeFirstResponder: Bool {return true}
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(test) {
+            return true
+        }
+        return false
+    }
+    
+
+    
+    @objc func test(){
+        let shareCtrl = TKShareController(view: UIApplication.shared.keyWindow!.visibleViewController()!.view)
+        shareCtrl.createCloudSharingController(forSubject: subject, withShareOption: .addParticipant) { (shareVC, error) in
+            if let error = error {
+                print("Error creating Share VC")
+                return
+            }
+            UIApplication.shared.keyWindow!.visibleViewController()!.present(shareVC!, animated: true)
+        }
     }
 }
