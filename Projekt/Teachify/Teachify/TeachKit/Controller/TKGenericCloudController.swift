@@ -150,6 +150,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 self.database.save(record) { (createdRecord, error) in
                     if error == nil {
                         object.record = createdRecord
+                        print("Object: \(object)")
                         completion(object, nil)
                     } else {
                         print("CloudKit-Error: \(error)")

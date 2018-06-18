@@ -11,7 +11,7 @@ import UIKit
 class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     var selectedClass = 0
-    var selectedSubject : Int = 0 {
+    var selectedSubject : Int = -1 {
         didSet{
             selectedSubject = selectedSubject - 1
         }
@@ -21,10 +21,11 @@ class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         guard TKModelSingleton.sharedInstance.downloadedClasses.count > selectedClass, TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.count > selectedSubject else {print("Guard")
             return 0}
-        print("Selected subject index = \(selectedSubject)")
+
+
         //case All
         if selectedSubject == -1 {
-            return TKModelSingleton.sharedInstance.downloadedClasses.flatMap {$0.subjects}.count + 1
+            return TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.flatMap {$0.documents}.count + 1
         }
         //case classes
         print("case Classes")
@@ -33,15 +34,19 @@ class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : UICollectionViewCell!
-        //Item is last Item in VC
+        //Item is last Item in CV
+        print("\(collectionView.numberOfItems(inSection: 0)-1) -- \(indexPath.item)")
         if indexPath.item == collectionView.numberOfItems(inSection: 0)-1{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCell", for: indexPath)
+            print("Last Item in CV")
         }else{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "excerciseCell", for: indexPath)
+            sampleSetup(for: cell as! ExcerciseCollectionViewCell, at: indexPath)
         }
         if let cell = cell as? ExcerciseCollectionViewCell {
             // do Setup Stuff
-            sampleSetup(for: cell, at: indexPath)
+            print("IndexPath.Item = \(indexPath.item)")
+            
         }
         
         
@@ -62,7 +67,8 @@ class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         var documents : [TKDocument] = [TKDocument]()
         //case All set
         if selectedSubject == -1{
-            documents = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.flatMap({$0.documents})
+            
+            documents = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.flatMap{$0.documents}
         }else{
             documents = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects[selectedSubject].documents
         }

@@ -18,8 +18,7 @@ class SubjectCollectionViewDelegate : CenteredCollectionViewDelegate {
     init(delegate: CVIndexChanged){
         self.delegate = delegate
     }
-    
-    
+ 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentSelectedCell = indexPath.item

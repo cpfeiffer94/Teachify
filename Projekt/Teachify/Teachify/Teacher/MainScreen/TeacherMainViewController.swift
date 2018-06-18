@@ -15,6 +15,10 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let             dataSource = ClassesCollectionViewDataSource()
     @objc var       delegate : ClassesCollectionViewDelegate!
     var             titleView : UILabel!
+    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    
+    
+    private var selectedClassIndex : Int = 0
     
     
     @IBOutlet var subjectCollectionView: SubjectCollectionView!
@@ -60,20 +64,38 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         
         setupExcerciseCollectionView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+        
+        view.addSubview(loadingIndicator)
+        
         loadData()
         
         if let headerView = classesCollectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader).first as? SegmentedControlHeaderView, let filterSegmentedControl = headerView.filterSegmentedControl {
             //do Stuff
         }
     
+        
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    
+    
+    @IBAction func reloadAllData(_ sender: Any) {
+       
+        loadData()
     }
     
     @objc func reloadTable(){
         print("Notified")
         DispatchQueue.main.async {[weak self] in
+            
             self?.classesCollectionView.reloadData()
             self?.subjectCollectionView.collectionView.reloadData()
             self?.excerciseCollectionView.reloadData()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self?.loadingIndicator.hide()
         }
     }
     
@@ -98,18 +120,38 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.layoutIfNeeded()
         subjectCollectionView.didSelectItem(at: 0)
+        selectedClassIndex = to
+        excerciseCollectionView.reloadData()
+        if to == TKModelSingleton.sharedInstance.downloadedClasses.count {
+            openCustomAlertView(for: .tkClass)
+        }
+    }
+    
+    private func openCustomAlertView(for caller : CustomAlertViewCallers){
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController
+        customAlert.caller = caller
+        customAlert.providesPresentationContextTransitionStyle = true
+        customAlert.definesPresentationContext = true
+        customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        customAlert.delegate = self
+        self.present(customAlert, animated: true, completion: nil)
     }
     
     func didChangeSubjectIndex(to: Int) {
         print("Changed subject Index")
         excerciseDataSource.selectedSubject = to
         excerciseCollectionView.reloadData()
+        if to == TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex].subjects.count + 1{
+            openCustomAlertView(for: .tkSubject)
+        }
     }
     
     func loadData(){
-        
-        let fetchCtrl = TKFetchController(rank: .teacher)
-        fetchCtrl.fetchAll(notificationName: .excerciseLoaded)
+        loadingIndicator.show()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        let fetchCtrl = TKFetchController()
+        fetchCtrl.fetchAll(notificationName: .excerciseLoaded, rank: .teacher)
         
         
         
@@ -119,6 +161,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         
         excerciseCollectionView.dataSource = excerciseDataSource
         excerciseCollectionView.delegate = excerciseDelegate
+        
 
     }
     
@@ -145,9 +188,67 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     }
     
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Add2AddExercise"{
+            let destVC = segue.destination as! AddExerciseFirstScreenViewController
+            let selectedClass = TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex]
+            destVC.selectedClass = selectedClass
+        }
+    }
 
-   
 
+    @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {
+        let sourceViewController = sender.source
+        // Use data from the view controller which initiated the unwind segue
+    }
+
+}
+
+extension TeacherMainViewController : CustomAlertViewDelegate{
+    
+    func cancelButtonTapped() {
+        return
+    }
+    
+    func okButtonTapped(textFieldValue: String, with caller: CustomAlertViewCallers) {
+        switch caller {
+        case .tkClass:
+            uploadClass(with: textFieldValue)
+        case .tkSubject:
+            uploadSubject(with: textFieldValue)
+        }
+    }
+    
+    private func uploadClass(with className : String){
+        let newClass = TKClass(name: className)
+        var classCtrl = TKClassController()
+        classCtrl.initialize(withRank: .teacher) { (succes) in
+            return
+        }
+        classCtrl.cloudCtrl.create(object: newClass) { (uploadedClass, error) in
+            if let error = error{
+                print(error)
+            }else{
+                print("okButtonPressed: \(uploadedClass!)")
+            }
+        }
+    }
+    
+    private func uploadSubject(with subjectName : String){
+        let newSubject = TKSubject(name: subjectName, color: .red)
+        var subjectCtrl = TKSubjectController()
+        subjectCtrl.initialize(withRank: .teacher) { (success) in
+            return
+        }
+        subjectCtrl.add(subject: newSubject, toTKClass: TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex]) { (uploadedSubject, error) in
+            if let error = error{
+                print(error)
+            }else{
+                print("okButtonPressed: \(uploadedSubject)")
+            }
+        }
+    }
+    
 }
 
 

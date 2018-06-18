@@ -265,6 +265,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="bMM-fN-gtB" id="oIp-Xb-9qX"/>
+                        <outlet property="noExerciseStackView" destination="YO1-ZY-XAI" id="0Kz-sD-laa"/>
                         <outlet property="openExercisesLabel" destination="b8A-h4-Yrn" id="qTT-RL-ZEJ"/>
                         <outlet property="solvedExercisesLabel" destination="qhv-Gl-q8F" id="ASx-qx-a7I"/>
                         <outlet property="studentProfileImage" destination="PkP-33-nap" id="5Iw-oZ-J9H"/>

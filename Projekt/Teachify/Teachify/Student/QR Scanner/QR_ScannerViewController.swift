@@ -40,7 +40,7 @@ class QR_ScannerViewController: UIViewController, AVCaptureMetadataOutputObjects
             if machineReadableCode.type == AVMetadataObject.ObjectType.qr && !segueWasCalled{
                 url = machineReadableCode.stringValue!
                 segueWasCalled = true
-                performSegue(withIdentifier: "openLink", sender: self)
+                UIApplication.shared.open(URL(string : url)!, options: [:], completionHandler: { (status) in })
             }
         }
     }
@@ -76,12 +76,12 @@ class QR_ScannerViewController: UIViewController, AVCaptureMetadataOutputObjects
         avCaptureSession.startRunning()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openLink" {
-            let destination = segue.destination as! WebViewController
-            destination.myURL = url
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "openLink" {
+//            let destination = segue.destination as! WebViewController
+//            destination.myURL = url
+//        }
+//    }
 
     
 }

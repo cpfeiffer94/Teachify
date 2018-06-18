@@ -16,17 +16,17 @@ class StudentMainMenuViewController: UIViewController {
     @IBOutlet weak var solvedExercisesLabel: UILabel!
     @IBOutlet weak var teachifyProgressLabel: UILabel!
     @IBOutlet weak var studentProfileImage: UIImageView!
-    
+    @IBOutlet weak var noExerciseStackView: UIStackView!
     
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
-    let gamedwnldctrl = TKFetchController(rank: .teacher)
+    let tkfetchctrl = TKFetchController()
     let gamecontroller = GameLaunchController()
     
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
-        gamedwnldctrl.fetchAll(notificationName: Notification.Name.reloadGameCards)
+        tkfetchctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
         
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"
@@ -80,6 +80,12 @@ class StudentMainMenuViewController: UIViewController {
             collectionDS.setContinousMode(isContinous: true)
             print("activated ContinousMode")
             reloadAvailableGames()
+            if collectionDS.studentController.getContinousGameCount() == 0{
+                noExerciseStackView.isHidden = false
+            }
+            else{
+                noExerciseStackView.isHidden = true
+            }
         }
         
     }
@@ -103,6 +109,14 @@ class StudentMainMenuViewController: UIViewController {
     
     @objc func reloadAvailableGames(){
         gameCollectionView.reloadData()
+        
+        if (tkfetchctrl.getSubjectCount() > 0) {
+            noExerciseStackView.isHidden = true
+        }
+            
+        else {
+            noExerciseStackView.isHidden = false
+        }
     }
     
     

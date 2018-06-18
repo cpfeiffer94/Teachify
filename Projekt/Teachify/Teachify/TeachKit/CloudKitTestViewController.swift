@@ -75,7 +75,7 @@ class CloudKitTestViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func shareSubjectAction(_ sender: UIButton) {
-        let subjectNameToShare = "SubjectName17_123"
+        let subjectNameToShare = "test_cpfeiffer_subject"
         shareASubject(subjectName: subjectNameToShare)
     }
     

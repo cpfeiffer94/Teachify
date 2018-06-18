@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddExerciseFirstScreenViewController: UIViewController {
+class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
     
     //MARK: IBOutlets
     @IBOutlet weak var gameCollectionView: UICollectionView!
@@ -25,6 +25,18 @@ class AddExerciseFirstScreenViewController: UIViewController {
     var gameCollectionViewDelegate: GameCollectionViewDelegate!
     var gameCollectionViewDataSource: GameCollectionViewDataSource!
     
+    var selectedClass : TKClass!
+    
+    @IBAction func goToDetailsScreen(_ sender: Any) {
+        let selectedSubject = operationPickerViewDataSource.selectedSubject
+        switch selectedSubject.name {
+        case "English":
+            performSegue(withIdentifier: "AddExercise2ExerciseDetails", sender: self)
+        default:
+            print("Mathe ist noch nicht verfügbar, siehe AddExerciseFirstScreenViewController")
+            return
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +48,6 @@ class AddExerciseFirstScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func setupData(){
         
         //NiBs
@@ -48,30 +55,56 @@ class AddExerciseFirstScreenViewController: UIViewController {
         gameCollectionView.register(UINib(nibName: "AddSubjectReuseableCell", bundle: nil), forCellWithReuseIdentifier: "AddSubjectReuseableCell")
         
         //DataSource/Delegates
-        subjectCollectionViewDelegate = AddExerciseSubjectCollectionViewDelegate()
-        subjectCollectionViewDataSource = AddExerciseSubjectCollectionViewDataSource()
-        addExerciseFirstScreenCollectionView.delegate = subjectCollectionViewDelegate
+        subjectCollectionViewDelegate                   = AddExerciseSubjectCollectionViewDelegate()
+        subjectCollectionViewDataSource                 = AddExerciseSubjectCollectionViewDataSource()
+        subjectCollectionViewDataSource.subjects        = selectedClass.subjects
+        addExerciseFirstScreenCollectionView.delegate   = subjectCollectionViewDelegate
         addExerciseFirstScreenCollectionView.dataSource = subjectCollectionViewDataSource
         
-        operationPickerViewDelegate = OperationPickerViewDelegate()
-        operationPickerViewDataSource = OperationPickerViewDataSource()
-        pickerView.delegate = operationPickerViewDelegate
-        pickerView.dataSource = operationPickerViewDataSource
+        operationPickerViewDelegate     = OperationPickerViewDelegate()
+        operationPickerViewDataSource   = OperationPickerViewDataSource()
+        pickerView.delegate             = operationPickerViewDelegate
+        pickerView.dataSource           = operationPickerViewDataSource
         
-        gameCollectionViewDelegate = GameCollectionViewDelegate()
-        gameCollectionViewDataSource = GameCollectionViewDataSource()
-        gameCollectionView.delegate = gameCollectionViewDelegate
-        gameCollectionView.dataSource = gameCollectionViewDataSource
+        gameCollectionViewDelegate      = GameCollectionViewDelegate()
+        gameCollectionViewDataSource    = GameCollectionViewDataSource()
+        gameCollectionView.delegate     = gameCollectionViewDelegate
+        gameCollectionView.dataSource   = gameCollectionViewDataSource
+        
+        subjectCollectionViewDelegate.delegate = self
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func didChangeSubject(to subject: TKSubject) {
+        operationPickerViewDataSource.selectedSubject = subject
+        pickerView.setNeedsLayout()
+    }
     
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "AddExercise2ExerciseDetails":
+            let destVC = segue.destination as! EnglishVocabularyViewController
+           
+           
+            if let indexPaths = addExerciseFirstScreenCollectionView.indexPathsForSelectedItems,
+                let indexPath = indexPaths.first{
+                destVC.selectedClass        = selectedClass
+                destVC.selectedSubject      = selectedClass.subjects[indexPath.item]
+                destVC.selectedGame         = TKExerciseType.allExerciseTypes[(gameCollectionView.indexPathsForSelectedItems?.first?.row)!]
+                
+                destVC.selectedOperation    = operationPickerViewDataSource.getSelectedOperations()[pickerView.selectedRow(inComponent: 0)]
+            }
+            
+        default:
+            return
+        }
+    }
+    
+    
+    
+    
+}
+
+protocol CVChangedSubject{
+    func didChangeSubject(to subject:TKSubject)
 }

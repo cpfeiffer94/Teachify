@@ -8,15 +8,36 @@
 
 import UIKit
 
-class OperationPickerViewDataSource: NSObject, UIPickerViewDataSource {
+class OperationPickerViewDataSource: NSObject, UIPickerViewDataSource{
+  
+    var selectedSubject : TKSubject = TKSubject(name: "Math",color: TKColor.yellow)
+    var subjectTypes = ["Math", "English"]
     
-    var operations = ["Add", "Subtract", "Multiply", "Divide"]
+    let operationsMath = ["Add", "Subtract", "Multiply", "Divide"]
+    let operationsEnglish = ["Vocabulary", "Grammar", "Synonyms"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return operations.count
+        if component == 0 {
+            return subjectTypes.count
+        }else{
+            return getSelectedOperations().count
+        }
     }
+    
+    func getSelectedOperations() -> [String]{
+        switch selectedSubject.name {
+        case "Math":
+            return operationsMath
+        case "English":
+            return operationsEnglish
+        default:
+            return []
+        }
+    }
+    
+    
 }
