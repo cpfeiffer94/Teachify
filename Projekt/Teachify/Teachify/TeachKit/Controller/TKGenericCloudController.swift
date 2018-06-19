@@ -145,16 +145,14 @@ struct TKGenericCloudController<T: TKCloudObject> {
         var object = object
         
         database.save(zone) { (savedZone, error) in
-            print("Zone-Error: \(error) -- \(savedZone)")
+            print("Zone-Error: \(error)")
             if let record = CKRecord(cloudObject: object, withRecordZoneID: self.zone.zoneID) {
                 self.database.save(record) { (createdRecord, error) in
                     if error == nil {
                         object.record = createdRecord
-                        print("Object: \(object)")
                         completion(object, nil)
                     } else {
-                        print("CloudKit-Error: \(error)")
-                        print("error: \(error)")
+                        print("CloudKit-Error-generic: \(error)")
                         completion(nil, TKError.dooooImplement)
                     }
                     

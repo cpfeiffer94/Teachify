@@ -248,4 +248,74 @@ class CloudKitTestViewController: UIViewController {
         }
     }
     
+    @IBAction func solutionTestAction(_ sender: UIButton) {
+        updateSoltution()
+    }
+    
+    func fetchAllSolutions() {
+        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+            for solution in allSolutions {
+                print(solution.userSolution)
+            }
+        }
+    }
+    
+    func deleteAllSolutions() {
+        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+            for solution in allSolutions {
+                self.solutionsCtrl.delete(solution: solution, completion: { (error) in
+                    print("solution-delete-error: \(error)")
+                })
+            }
+        }
+    }
+    
+    func updateSoltution() {
+        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+            for var solution in allSolutions {
+                solution.userSolution = "Muhahahahahahahaha :)))))))"
+                self.solutionsCtrl.update(solution: solution, completion: { (updatedSolution, error) in
+                    print("error: \(error)")
+                })
+            }
+        }
+    }
+    
+    func addSolution() {
+        CKContainer.default().fetchUserRecordID { (userRecordID, error) in
+            if let userRecordID = userRecordID {
+                let userID = userRecordID.recordName
+                let solution = TKSolution(userSolution: "This is my solution :)", status: .correct, owner: userID)
+                
+                self.exerciseCtrl.fetchExercises(completion: { (allExercises, error) in
+                    for exercise in allExercises {
+                        if exercise.name == "mhTEST_exercise" {
+                            self.solutionsCtrl.create(solution: solution, toExercise: exercise, completion: { (uploadedSolution, error) in
+                                print("solution upload error: \(error)")
+                            })
+                        }
+                    }
+                })
+                
+            } else {
+                print("Solution upload error - id fetching failed: \(error)")
+            }
+        }
+        
+        
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,9 +22,9 @@ struct TKSolution: TKCloudObject {
             record?[CloudKey.userSolution] = userSolution as CKRecordValue
         }
     }
-    var owner: String{
+    var ownerID: String{
         didSet{
-            record?[CloudKey.owner] = owner as CKRecordValue
+            record?[CloudKey.ownerID] = ownerID as CKRecordValue
         }
     }
     
@@ -35,14 +35,14 @@ struct TKSolution: TKCloudObject {
     init(userSolution: String, status: TKSolutionStatus, owner: String) {
         self.userSolution = userSolution
         self.status = status
-        self.owner = owner
+        self.ownerID = owner
     }
     
     init?(record: CKRecord) {
         guard let userSolution = record[CloudKey.userSolution] as? String,
             let statusCloudKey = record[CloudKey.status] as? String,
             let status = TKSolutionStatus(tkCloudKey: statusCloudKey),
-            let owner = record[CloudKey.owner] as? String
+            let owner = record[CloudKey.ownerID] as? String
         else {
                 return nil
         }
@@ -50,7 +50,7 @@ struct TKSolution: TKCloudObject {
         self.userSolution = userSolution
         self.status = status
         self.record = record
-        self.owner = owner
+        self.ownerID = owner
     }
     
     
@@ -59,7 +59,7 @@ struct TKSolution: TKCloudObject {
         private init() {}
         static let status = "status"
         static let userSolution = "userSolution"
-        static let owner = "owner"
+        static let ownerID = "ownerID"
         
         static let referenceToExercise = "exercise"
     }

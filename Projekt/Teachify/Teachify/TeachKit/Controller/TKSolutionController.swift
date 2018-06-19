@@ -44,7 +44,7 @@ struct TKSolutionController {
             predicate = NSPredicate(format: "%K == %@", TKSolution.CloudKey.referenceToExercise, CKReference(record: exerciseRecord, action: CKReferenceAction.none))
         }
         
-        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.solutions, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
+        cloudCtrl.fetch(forRecordType: TKCloudKey.RecordType.solution, withFetchSortOptions: fetchSortOptions, predicate: predicate) { (fetchedDocuments, error) in
             completion(fetchedDocuments, error)
         }
     }
