@@ -25,7 +25,7 @@ class TKShareController: NSObject {
                                       completion: @escaping (UIViewController?, TKError?) -> ()) {
         
         guard let recordToShare = subject.record else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.objectIsFaulty)
             return
         }
         
@@ -73,7 +73,7 @@ class TKShareController: NSObject {
                 print("Sharing completion")
                 
                 if error != nil {
-                    completion(nil, TKError.dooooImplement)
+                    completion(nil, TKError.failedSharing)
                 }
                 
                 preparationCompletionHandler(share, CKContainer.default(), error)
@@ -96,13 +96,13 @@ class TKShareController: NSObject {
     
     private func createAppleDefaultRemoveParticipantsViewController(withSubject subject: TKSubject, completion: @escaping (UIViewController?, TKError?) -> ()) {
         guard let sharedReference = subject.record?.share else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.failedSharing)
             return
         }
         
         privateDatabase.fetch(withRecordID: sharedReference.recordID) { (sharedRecord, error) in
             if let error = error {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
             }
             
             if let sharedRecord = sharedRecord as? CKShare  {

@@ -53,7 +53,7 @@ struct TKExerciseController {
     func create(exercise: TKExercise, toDocument document: TKDocument, completion: @escaping (TKExercise?, TKError?) -> ()) {
         cloudCtrl.create(object: exercise) { (createdExercise, error) in
             guard let createdExercise = createdExercise else {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
                 return
             }
             

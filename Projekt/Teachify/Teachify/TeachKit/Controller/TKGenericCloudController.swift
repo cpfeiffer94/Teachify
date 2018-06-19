@@ -40,7 +40,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         
         TKGenericCloudController.fetch(recordZone: recordZoneName, forDatabase: database) { (recordZone, error) in
             guard let recordZone = recordZone else {
-                completion([], TKError.dooooImplement)
+                completion([], TKError.wrongRecordZone)
                 return
             }
             
@@ -58,7 +58,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
     // ✅
     func update(object: T, completion: @escaping (T?, TKError?) -> ()) {
         guard let record = object.record else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.objectIsFaulty)
             return
         }
         
@@ -66,8 +66,12 @@ struct TKGenericCloudController<T: TKCloudObject> {
             if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                 completion(cloudObject, nil)
             } else {
-                print("CloudKit-Error: \(error)")
-                completion(nil, TKError.dooooImplement)
+                print("TKGenericCloudController-remove-Error: \(String(describing: error))")
+                if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                    completion(nil, tkError)
+                } else {
+                    completion(nil, TKError.updateOperationFailed)
+                }
             }
         }
     }
@@ -75,7 +79,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
     // ✅
     func delete(object: T, completion: @escaping (TKError?) -> ()) {
         guard let record = object.record else {
-            completion(nil)
+            completion(TKError.objectIsFaulty)
             return
         }
         
@@ -83,8 +87,12 @@ struct TKGenericCloudController<T: TKCloudObject> {
             if error == nil {
                 completion(nil)
             } else {
-                print("CloudKit-Error: \(error)")
-                completion(TKError.dooooImplement)
+                print("TKGenericCloudController-delete-Error: \(String(describing: error))")
+                if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                    completion(tkError)
+                } else {
+                    completion(TKError.deleteOperationFailed)
+                }
             }
         }
     }
@@ -92,7 +100,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
     // ✅
     func remove(object: T, referenceKey: String, completion: @escaping (T?, TKError?) -> ()) {
         guard let record = object.record else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.objectIsFaulty)
             return
         }
         
@@ -103,12 +111,20 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 if let updatedRecord = updatedRecord, let cloudObject = T(record: updatedRecord) {
                     completion(cloudObject, nil)
                 } else {
-                    print("CloudKit-Error: \(error)")
-                    completion(nil, TKError.dooooImplement)
+                    print("TKGenericCloudController-remove-Error: \(String(describing: error))")
+                    if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                        completion(nil, tkError)
+                    } else {
+                        completion(nil, TKError.deleteOperationFailed)
+                    }
                 }
             } else {
-                print("CloudKit-Error: \(error)")
-                completion(nil, TKError.dooooImplement)
+                print("TKGenericCloudController-remove-Error: \(String(describing: error))")
+                if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                    completion(nil, tkError)
+                } else {
+                    completion(nil, TKError.deleteOperationFailed)
+                }
             }
         }
     }
@@ -118,7 +134,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
         withReferenceKey referenceKey: String, andAction action: CKReferenceAction, completion: @escaping (T?, TKError?) -> ()) {
         
         guard let parentRecord = parent.record, let objectRecord = object.record else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.parentObjectIsFaulty)
             return
         }
         
@@ -130,12 +146,20 @@ struct TKGenericCloudController<T: TKCloudObject> {
                 if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                     completion(cloudObject, nil)
                 } else {
-                    print("CloudKit-Error: \(error)")
-                    completion(nil, TKError.dooooImplement)
+                    print("TKGenericCloudController-add-Error: \(String(describing: error))")
+                    if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                        completion(nil, tkError)
+                    } else {
+                        completion(nil, TKError.addOperationFailed)
+                    }
                 }
             } else {
-                print("CloudKit-Error: \(error)")
-                completion(nil, TKError.dooooImplement)
+                print("TKGenericCloudController-add-Error: \(String(describing: error))")
+                if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                    completion(nil, tkError)
+                } else {
+                    completion(nil, TKError.addOperationFailed)
+                }
             }
         }
     }
@@ -145,18 +169,24 @@ struct TKGenericCloudController<T: TKCloudObject> {
         var object = object
         
         database.save(zone) { (savedZone, error) in
-            print("Zone-Error: \(error)")
             if let record = CKRecord(cloudObject: object, withRecordZoneID: self.zone.zoneID) {
                 self.database.save(record) { (createdRecord, error) in
                     if error == nil {
                         object.record = createdRecord
                         completion(object, nil)
                     } else {
-                        print("CloudKit-Error-generic: \(error)")
-                        completion(nil, TKError.dooooImplement)
+                        print("TKGenericCloudController-create-Error: \(String(describing: error))")
+                        if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
+                            completion(nil, tkError)
+                        } else {
+                            completion(nil, TKError.createOperationFailed)
+                        }
                     }
                     
                 }
+            } else {
+                print("TKGenericCloudController-create-Error: \(String(describing: error))")
+                completion(nil, TKError.wrongRecordZone)
             }
         }
     }
@@ -168,14 +198,15 @@ struct TKGenericCloudController<T: TKCloudObject> {
         
         database.fetchAllRecordZones { (recordZones, error) in
             guard let recordZones = recordZones else {
-                completion(nil, TKError.dooooImplement)
+                print("TKGenericCloudController-fetchRecordZone-Error: \(String(describing: error))")
+                completion(nil, TKError.wrongRecordZone)
                 return
             }
             
             let classRecordZones = recordZones.compactMap { $0.zoneID.zoneName == recordZoneName ? $0 : nil }
             guard let classRecordZone = classRecordZones.first else {
-                print("CloudKit-Error: \(error)")
-                completion(nil, TKError.dooooImplement)
+                print("TKGenericCloudController-fetchRecordZone-Error: \(String(describing: error))")
+                completion(nil, TKError.wrongRecordZone)
                 return
             }
             

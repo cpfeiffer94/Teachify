@@ -15,14 +15,20 @@ enum TKError {
     case notAuthenticated
     
     case fetchSortTypeNotAvailable
-    case classGroupDoesNotExist
-    case rangeOutOfBounds
-//    case foundNothingToDelete
-    
     case noWritePermission
+    case wrongRecordZone
     
-    case unknownError
-    case dooooImplement
+    case noSharedData
+    case objectIsFaulty
+    case objectIsFaultyAfterCloudUpload
+    case parentObjectIsFaulty
+    
+    case updateOperationFailed
+    case deleteOperationFailed
+    case createOperationFailed
+    case addOperationFailed
+    
+    case failedSharing
     
     init?(ckError: CKError) {
         switch ckError.errorCode {

@@ -53,7 +53,7 @@ struct TKSolutionController {
     func create(solution: TKSolution, toExercise exercise: TKExercise, completion: @escaping (TKSolution?, TKError?) -> ()) {
         cloudCtrl.create(object: solution) { (createdSolution, error) in
             guard let createdSolution = createdSolution else {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
                 return
             }
 

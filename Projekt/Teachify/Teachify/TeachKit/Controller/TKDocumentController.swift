@@ -110,7 +110,7 @@ struct TKDocumentController {
     func add(document: TKDocument, toSubject subject: TKSubject, completion: @escaping (TKDocument?, TKError?) -> ()) {
         cloudCtrl.create(object: document) { (createdDocument, error) in
             guard let createdDocument = createdDocument else {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
                 return
             }
             print("Add @CloudCtrl")

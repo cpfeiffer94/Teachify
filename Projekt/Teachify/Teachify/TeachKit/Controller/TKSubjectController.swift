@@ -52,7 +52,7 @@ struct TKSubjectController {
     func add(subject: TKSubject, toTKClass tkClass: TKClass, completion: @escaping (TKSubject?, TKError?) -> ()) {
         cloudCtrl.create(object: subject) { (createdSubject, error) in
             guard let createdSubject = createdSubject else {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
                 return
             }
             

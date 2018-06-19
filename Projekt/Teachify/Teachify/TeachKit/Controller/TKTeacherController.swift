@@ -72,7 +72,7 @@ struct TKTeacherController {
     //             --> "Server Record Changed"
     func add(student: TKStudent, toTKClass tkClass: TKClass, completion: @escaping (TKStudent?, TKError?) -> ()) {
         guard let recordTypeID = tkClass.recordTypeID else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.parentObjectIsFaulty)
             return
         }
         
@@ -92,7 +92,7 @@ struct TKTeacherController {
     // ✅
     func remove(student: TKStudent, fromClass tkClass: TKClass, completion: @escaping (TKStudent?, TKError?) -> ()) {
         guard let recordTypeID = tkClass.recordTypeID else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.parentObjectIsFaulty)
             return
         }
         
