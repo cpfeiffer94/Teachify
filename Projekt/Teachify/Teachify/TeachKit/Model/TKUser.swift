@@ -10,7 +10,11 @@ import UIKit
 import CloudKit
 
 
-struct TKUser {
+struct TKUser: TKCloudObject {
+    var creationDate: Date? {
+        return record?.creationDate
+    }
+    
     var firstname: String? {
         didSet {
             record?[CloudKey.firstname] = firstname as CKRecordValue?
@@ -40,20 +44,31 @@ struct TKUser {
     
     
     // MARK: - Initializer
+    private init() { }
+    
     init?(record: CKRecord) {
         self.firstname = record[CloudKey.firstname] as? String
         self.lastname = record[CloudKey.lastname] as? String
         self.email = record[CloudKey.email] as? String
+        if let imageAsset = record[CloudKey.image] as? CKAsset {
+            let image = UIImage(contentsOfFile: imageAsset.fileURL.path)
+            self.image = image
+        }
+        
         
         self.record = record
     }
     
+    
+    // MARK: Keys
     struct CloudKey {
+        private init() {}
         static let firstname = "firstname"
         static let lastname = "lastname"
         static let image = "image"
         static let email = "email"
     }
+    
     
     private func saveImageToFile(_ image: UIImage, withFileName fileName: String) -> URL {
         let fileManager = FileManager.default
@@ -65,25 +80,4 @@ struct TKUser {
         return fileURL
     }
 }
-//
-//extension TKUser {
-//    init?(ofRecord record: CKRecord?) {
-//        guard let record = record else { return nil }
-//        
-//        var user = TKUser(record: record)
-//        
-//        user.firstname = record[CloudKey.firstname] as? String
-//        user.lastname = record[CloudKey.lastname] as? String
-//        user.image = record[CloudKey.image] as? UIImage
-//        if let imageAsset = record[CloudKey.image] as? CKAsset {
-//            let imageAssetPath = imageAsset.fileURL.path
-//            let image = UIImage(contentsOfFile: imageAssetPath)
-//            user.image = image
-//        }
-//        user.email = record[CloudKey.email] as? String
-//        user.recordID = record.recordID
-//        user.record = record
-//        
-//        self = user
-//    }
-//}
+

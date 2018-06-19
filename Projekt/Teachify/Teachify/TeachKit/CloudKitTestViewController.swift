@@ -21,6 +21,7 @@ class CloudKitTestViewController: UIViewController {
     var sharingCtrl: TKShareController!
     var settingsCtrl = TKSettingsController()
     var solutionsCtrl: TKSolutionController!
+    var userCtrl: TKUserProfileController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,7 @@ class CloudKitTestViewController: UIViewController {
             print("Solution init --> \(succeed)")
         }
         
+        userCtrl = TKUserProfileController()
         
         sharingCtrl = TKShareController(view: self.view)
     }
@@ -305,6 +307,26 @@ class CloudKitTestViewController: UIViewController {
         
     }
     
+    @IBAction func userProfileAction(_ sender: UIButton) {
+//        userCtrl.fetchUserProfile { (user, error) in
+//            guard var user = user else { return }
+//            user.firstname = "Vorname"
+//            user.lastname = "Nachname"
+//            user.image = UIImage(named: "Inder")
+//
+//            self.userCtrl.update(user: user, completion: { (updatedUser, error) in
+//                print("----> \(updatedUser)")
+//            })
+//
+//        }
+        userCtrl.fetchUserProfile { (user, error) in
+            guard let user = user else { return }
+            DispatchQueue.main.async {
+                self.sharingQRImageView.image = user.image
+                print("image: \(user.image)")
+            }
+        }
+    }
 }
 
 

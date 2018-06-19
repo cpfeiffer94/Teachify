@@ -27,6 +27,7 @@ enum TKError {
     case deleteOperationFailed
     case createOperationFailed
     case addOperationFailed
+    case userCouldNotLoad
     
     case failedSharing
     
