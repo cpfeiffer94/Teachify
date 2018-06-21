@@ -35,6 +35,7 @@
 		0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56120A1589500486CAC /* TKSolution.swift */; };
 		0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */; };
 		17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */; };
+		173F27F320DBBA8B00F3671B /* MathExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */; };
 		17508F1420B6B5C700E3C0EA /* AddSubjectReuseableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */; };
 		17508F1520B6B5C700E3C0EA /* AddSubjectReuseableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */; };
 		17508F1720B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */; };
@@ -214,6 +215,7 @@
 		0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKSolutionStatus.swift; sourceTree = "<group>"; };
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDelegate.swift; sourceTree = "<group>"; };
+		173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExerciseViewController.swift; sourceTree = "<group>"; };
 		17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectReuseableCell.swift; sourceTree = "<group>"; };
 		17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectReuseableCell.xib; sourceTree = "<group>"; };
 		17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -463,6 +465,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		173F27F120DBB8D300F3671B /* MathExercises */ = {
+			isa = PBXGroup;
+			children = (
+				173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */,
+			);
+			path = MathExercises;
+			sourceTree = "<group>";
+		};
 		17F7342820C1C5C700F93E5A /* SubjectCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +524,7 @@
 		4008235520C967F600B5A39A /* Screen2 */ = {
 			isa = PBXGroup;
 			children = (
+				173F27F120DBB8D300F3671B /* MathExercises */,
 				4008235620C9680200B5A39A /* EnglishVocabulary */,
 			);
 			path = Screen2;
@@ -1230,6 +1241,7 @@
 				0FEFB4ED2084A8E50065A460 /* (null) in Sources */,
 				AA8229EE20888C340018AB0E /* Extension+CKRecordZone.swift in Sources */,
 				AA8229E720888C260018AB0E /* TKSettingsController.swift in Sources */,
+				173F27F320DBBA8B00F3671B /* MathExerciseViewController.swift in Sources */,
 				AA8229FB20888D170018AB0E /* Keys.swift in Sources */,
 				9AD639AF20D26251005CA24F /* TKSolutionList.swift in Sources */,
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
