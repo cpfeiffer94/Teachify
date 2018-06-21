@@ -38,6 +38,14 @@ struct TKExercise: TKCloudObject {
         }
     }
     
+    var solutions = [TKSolution]() {
+        didSet {
+            if let solutionData = try? JSONEncoder().encode(solutions) {
+                record?[CloudKey.solutions] = solutionData as CKRecordValue
+            }
+        }
+    }
+    
     var exerciseID: String? {
         return record?.recordID.recordName
     }
@@ -53,6 +61,7 @@ struct TKExercise: TKCloudObject {
         self.deadline = deadline
         self.type = type
         self.data = data
+        self.solutions = []
     }
     
     init?(record: CKRecord) {
@@ -63,6 +72,12 @@ struct TKExercise: TKCloudObject {
                 let referenceToDocument = record[CloudKey.referenceToDocument] as? CKReference else {
             return nil
         }
+        
+        if let solutionsData = record[CloudKey.solutions] as? Data {
+            let solutions = try! JSONDecoder().decode([TKSolution].self, from: solutionsData)
+            self.solutions = solutions
+        }
+        
         self.deadline = record[CloudKey.deadline] as? Date
         self.name = name
         self.data = data
@@ -79,6 +94,7 @@ struct TKExercise: TKCloudObject {
         static let type = "type"
         static let deadline = "deadline"
         static let data = "data"
+        static let solutions = "solutions2"
         
         static let referenceToDocument = "document"
     }

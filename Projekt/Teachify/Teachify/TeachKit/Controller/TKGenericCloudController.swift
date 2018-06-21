@@ -66,7 +66,7 @@ struct TKGenericCloudController<T: TKCloudObject> {
             if let savedRecord = savedRecord, let cloudObject = T(record: savedRecord) {
                 completion(cloudObject, nil)
             } else {
-                print("TKGenericCloudController-remove-Error: \(String(describing: error))")
+                print("TKGenericCloudController-update-Error: \(String(describing: error))")
                 if let cloudError = error as? CKError, let tkError = TKError(ckError: cloudError) {
                     completion(nil, tkError)
                 } else {

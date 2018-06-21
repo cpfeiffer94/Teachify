@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TKSolutionStatus {
+enum TKSolutionStatus: Int, Codable {
     case correct
     case wrong
     case unreviewed
