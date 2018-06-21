@@ -33,6 +33,7 @@ class DocumentOperation : BaseOperation {
                 
                     let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index(where: { $0.classID == subject.classID })
                 
+                    print("Current subject: \(subject.name) Class index: \(myClassIndex)")
                     guard let classIndex = myClassIndex else {
                         self.finish()
                         return
@@ -40,9 +41,11 @@ class DocumentOperation : BaseOperation {
                     }
                 
                     let mySubjectIndex = TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects.index {$0.subjectID == subject.subjectID}
-                
+                    
+                    
                     if let subjectIndex = mySubjectIndex
                     {
+                        
                         TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents.append(contentsOf: fetchedDocuments)
                         if self.subjects.count-1 == index {
                             print("Fetch documents finished")
