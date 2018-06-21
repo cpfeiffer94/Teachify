@@ -22,20 +22,23 @@ class StudentMainMenuViewController: UIViewController {
     let collectionDel = GameCollectionDelegate()
     let tkfetchctrl = TKFetchController()
     let gamecontroller = GameLaunchController()
-    
+    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
         tkfetchctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
-        
+        loadingIndicator.show()
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         titleView.text = "Games"
         titleView.textColor = UIColor.white
         titleView.textAlignment = .center
         titleView.font = UIFont.systemFont(ofSize: 33, weight: .black)
         navigationItem.titleView = titleView
-        
+        noExerciseStackView.isHidden = true
         setupUI()
+        view.addSubview(loadingIndicator)
+
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -108,8 +111,8 @@ class StudentMainMenuViewController: UIViewController {
     }
     
     @objc func reloadAvailableGames(){
+        loadingIndicator.hide()
         gameCollectionView.reloadData()
-        
         if (tkfetchctrl.getSubjectCount() > 0) {
             noExerciseStackView.isHidden = true
         }
