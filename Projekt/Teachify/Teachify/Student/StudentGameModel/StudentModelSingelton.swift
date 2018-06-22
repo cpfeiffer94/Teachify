@@ -55,7 +55,7 @@ class StudentModelController : NSObject {
         model.continousGames = []
         
 //        Follow The Order
-        model.continousGames.append(ContinousGameInformationItem(name: "Word Translation", type: .wordTranslation, subject: "Englisch", color: .blue, image: UIImage(named: "calculator")!))
+        model.continousGames.append(ContinousGameInformationItem(name: "TeachBird", type: .teachBird, subject: "Englisch", color: .blue, image: UIImage(named: "calculator")!))
 //        Feed Me
         model.continousGames.append(ContinousGameInformationItem(name: "Feed Me", type: .feedme, subject: "Mathe", color: .yellow, image: UIImage(named: "calculator")!))
 //        Math Piano

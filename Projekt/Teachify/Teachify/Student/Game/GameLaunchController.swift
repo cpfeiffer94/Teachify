@@ -16,6 +16,7 @@ class GameParamsSingleton {
 //    Instanzen der Spiel ViewController
     fileprivate var mathpianoVC  = MathPianoGameViewController()
     fileprivate var feedmeVC = FeedMeViewController()
+    fileprivate var teachBirdVC = TeachBirdViewController()
     
 //    Paramter der Spiele
     fileprivate var mathPianoParams : MathPianoParams
@@ -42,6 +43,8 @@ class GameLaunchController {
             return model.mathpianoVC
         case .feedme:
             return model.feedmeVC
+        case .teachBird:
+            return model.teachBirdVC
         }
     }
     
@@ -53,6 +56,8 @@ class GameLaunchController {
             model.feedmeVC = FeedMeViewController()
         case .wordTranslation:
             print("wordTranslation not implemented!")
+        case .teachBird:
+            model.teachBirdVC = TeachBirdViewController()
         }
     }
     

@@ -12,12 +12,14 @@ enum TKExerciseType {
     case wordTranslation
     case mathpiano
     case feedme
+    case teachBird
     
     var name: String {
         switch self {
         case .wordTranslation: return "Word Translation"
         case .mathpiano: return "MathPiano"
         case .feedme: return "FeedMe"
+        case .teachBird: return "TeachBird"
         }
     }
     
@@ -26,6 +28,7 @@ enum TKExerciseType {
         case .wordTranslation: return "wordTranslation"
         case .mathpiano: return "MathPiano"
         case .feedme: return "FeedMe"
+        case .teachBird: return "TeachBird"
         }
     }
     
