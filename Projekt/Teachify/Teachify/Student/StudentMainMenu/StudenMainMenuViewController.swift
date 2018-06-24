@@ -23,6 +23,7 @@ class StudentMainMenuViewController: UIViewController {
     let tkfetchctrl = TKFetchController()
     let gamecontroller = GameLaunchController()
     let tkusrctrlr = TKUserProfileController()
+    let loadingIndicator = ProgressIndicatorView(msg: "Downloading...")
     
     
     override func viewDidLoad() {
