@@ -270,6 +270,7 @@
                         <outlet property="solvedExercisesLabel" destination="qhv-Gl-q8F" id="ASx-qx-a7I"/>
                         <outlet property="studentProfileImage" destination="PkP-33-nap" id="5Iw-oZ-J9H"/>
                         <outlet property="teachifyProgressLabel" destination="VkD-Ha-aki" id="opo-AY-M5v"/>
+                        <outlet property="userNameLabel" destination="Sva-D2-uF2" id="Kfd-j0-51V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdK-8f-BZy" userLabel="First Responder" sceneMemberID="firstResponder"/>

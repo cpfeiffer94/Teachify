@@ -11,19 +11,20 @@ import UIKit
 
 class StudentMainMenuViewController: UIViewController {
     @IBOutlet weak var gameCollectionView: UICollectionView!
-    @IBOutlet weak var welcomeMessageLabel: UILabel!
     @IBOutlet weak var openExercisesLabel: UILabel!
     @IBOutlet weak var solvedExercisesLabel: UILabel!
     @IBOutlet weak var teachifyProgressLabel: UILabel!
     @IBOutlet weak var studentProfileImage: UIImageView!
     @IBOutlet weak var noExerciseStackView: UIStackView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
     let tkfetchctrl = TKFetchController()
     let gamecontroller = GameLaunchController()
-    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
-
+    let tkusrctrlr = TKUserProfileController()
+    
+    
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
@@ -54,6 +55,16 @@ class StudentMainMenuViewController: UIViewController {
         studentProfileImage.layer.borderColor = UIColor.white.cgColor
         studentProfileImage.layer.cornerRadius = studentProfileImage.bounds.width/2
         studentProfileImage.clipsToBounds = true
+        
+        tkusrctrlr.fetchUserProfile { (fetcheduser, error) in
+            if let error = error {
+                print("Unable to retrieve iCloud User Information \(error)")
+            }
+            else {
+                self.userNameLabel.text = "\(fetcheduser?.firstname!) \(fetcheduser?.lastname!)"
+                self.studentProfileImage.image = fetcheduser?.image!
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
