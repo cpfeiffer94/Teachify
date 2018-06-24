@@ -25,6 +25,9 @@ class StudentMainMenuViewController: UIViewController {
     let tkusrctrlr = TKUserProfileController()
     let loadingIndicator = ProgressIndicatorView(msg: "Downloading...")
     
+    var userProvider: ICloudUserIDProvider!
+
+    
     
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
@@ -41,6 +44,8 @@ class StudentMainMenuViewController: UIViewController {
         setupUI()
         view.addSubview(loadingIndicator)
 
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(updateTitle), name: Notification.Name("userName"), object: nil)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,8 +67,9 @@ class StudentMainMenuViewController: UIViewController {
                 print("Unable to retrieve iCloud User Information \(error)")
             }
             else {
-                self.userNameLabel.text = "\(fetcheduser?.firstname!) \(fetcheduser?.lastname!)"
-                self.studentProfileImage.image = fetcheduser?.image!
+                self.userProvider = ICloudUserIDProvider()
+                self.userProvider.request()
+                //self.studentProfileImage.image = fetcheduser?.image!
             }
         }
     }
@@ -101,6 +107,12 @@ class StudentMainMenuViewController: UIViewController {
             else{
                 noExerciseStackView.isHidden = true
             }
+        }
+        
+    }
+    @objc func updateTitle(){
+        DispatchQueue.main.async {
+            self.userNameLabel.text = self.userProvider.username
         }
         
     }

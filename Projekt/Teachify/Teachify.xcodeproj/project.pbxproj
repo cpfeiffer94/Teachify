@@ -164,6 +164,7 @@
 		D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C50D20A999FD00185CEF /* BasicNode.swift */; };
 		D443C51020A99A0900185CEF /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D443C51220A99AE000185CEF /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C51120A99ADF00185CEF /* BasicButton.swift */; };
+		D499F07D20DFDB6000F34B7E /* ICloudUserIDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499F07C20DFDB6000F34B7E /* ICloudUserIDProvider.swift */; };
 		D49D3FD720CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -365,6 +366,7 @@
 		AAE0744320BF069000E98332 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		D443C50D20A999FD00185CEF /* BasicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNode.swift; sourceTree = "<group>"; };
 		D443C51120A99ADF00185CEF /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		D499F07C20DFDB6000F34B7E /* ICloudUserIDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudUserIDProvider.swift; sourceTree = "<group>"; };
 		D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathPianoGameFeedbackModel.swift; path = Teachify/Student/MathPianoGameFeedbackModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -805,6 +807,7 @@
 		AA486178207F7B8B00C43588 /* StudentMainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				D499F07C20DFDB6000F34B7E /* ICloudUserIDProvider.swift */,
 				AA822A0220888D6B0018AB0E /* GameCardCell.swift */,
 				AA6A0692207A617C00C9420E /* StudenMainMenuViewController.swift */,
 				AA486185207F8FC900C43588 /* GameCollectionDelegate.swift */,
@@ -1248,6 +1251,7 @@
 				0F999DE6207B4D7900FF5542 /* TKExerciseType.swift in Sources */,
 				0FBA793D2085F84600D20807 /* (null) in Sources */,
 				4089CE5020B84A9200161A4C /* SubjectCollectionViewDelegate.swift in Sources */,
+				D499F07D20DFDB6000F34B7E /* ICloudUserIDProvider.swift in Sources */,
 				AA822A0020888D3A0018AB0E /* MathPianoGame.swift in Sources */,
 				AA486176207F78C300C43588 /* StudentAwardViewController.swift in Sources */,
 				AAA446F420C854B700481CDD /* WebViewController.swift in Sources */,
