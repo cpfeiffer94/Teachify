@@ -9,36 +9,34 @@
 import Foundation
 
 enum TKExerciseType {
-    case wordTranslation
     case mathpiano
     case feedme
-    case teachBird
+    case teachbird
     
     var name: String {
         switch self {
-        case .wordTranslation: return "Word Translation"
         case .mathpiano: return "MathPiano"
         case .feedme: return "FeedMe"
-        case .teachBird: return "TeachBird"
+        case .teachbird: return "TeachBird"
         }
     }
     
     var tkCloudKey: String {
         switch self {
-        case .wordTranslation: return "wordTranslation"
         case .mathpiano: return "MathPiano"
         case .feedme: return "FeedMe"
-        case .teachBird: return "TeachBird"
+        case .teachbird: return "TeachBird"
         }
     }
     
     init?(tkCloudKey: String) {
         switch tkCloudKey {
-        case "wordTranslation": self = .wordTranslation
         case "MathPiano": self = .mathpiano
+        case "FeedMe": self = .feedme
+        case "TeachBird": self = .teachbird
         default: return nil
         }
     }
     
-    static var allExerciseTypes = [wordTranslation, mathpiano, feedme]
+    static var allExerciseTypes = [mathpiano, feedme, teachbird]
 }

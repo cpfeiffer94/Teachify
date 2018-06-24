@@ -37,7 +37,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ms1-kU-dZQ" customClass="CardHighlight" customModule="Cards">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="GG"/>
@@ -346,12 +346,24 @@
                                                         <constraint firstAttribute="height" constant="30" id="ziz-wa-JoI"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-fk-L4C">
+                                                    <rect key="frame" x="607" y="11" width="103" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="2C0-7U-g3a"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="hho-Vp-MJa" secondAttribute="trailing" constant="20" id="2e8-4R-MFd"/>
+                                                <constraint firstItem="hho-Vp-MJa" firstAttribute="leading" secondItem="iad-fk-L4C" secondAttribute="trailing" constant="8" id="AuZ-7Y-hG6"/>
                                                 <constraint firstItem="KjR-fp-Wt5" firstAttribute="centerY" secondItem="bog-BJ-97i" secondAttribute="centerY" id="aGK-rJ-lUn"/>
                                                 <constraint firstItem="hho-Vp-MJa" firstAttribute="centerY" secondItem="bog-BJ-97i" secondAttribute="centerY" id="g9u-53-hPA"/>
+                                                <constraint firstItem="iad-fk-L4C" firstAttribute="top" secondItem="bog-BJ-97i" secondAttribute="topMargin" id="gHk-O8-VP4"/>
                                                 <constraint firstItem="KjR-fp-Wt5" firstAttribute="leading" secondItem="bog-BJ-97i" secondAttribute="leadingMargin" id="ihW-k7-Aog"/>
+                                                <constraint firstItem="iad-fk-L4C" firstAttribute="bottom" secondItem="bog-BJ-97i" secondAttribute="bottomMargin" id="qya-9e-yq3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -370,6 +382,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4MW-WR-wL1"/>
                     </view>
+                    <connections>
+                        <outlet property="GamelistTableView" destination="RjC-pJ-gmr" id="mgh-qz-zr2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caK-tx-DI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,7 +498,6 @@ Who put the first Beta on their primary devices"</string>
         <!--Navigation Controller-->
         <scene sceneID="icH-ML-4dF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="72X-k9-5z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="StudentMainMenuViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ApS-J8-HyO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Sh-KV-Isv">
@@ -499,6 +513,7 @@ Who put the first Beta on their primary devices"</string>
                         <segue destination="Pgv-eR-7Ag" kind="relationship" relationship="rootViewController" id="Fcx-0k-mkn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72X-k9-5z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1350.78125" y="-1396.2890625"/>
         </scene>

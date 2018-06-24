@@ -16,5 +16,8 @@ extension Notification.Name {
     static let showDebugModelPrint = Notification.Name("debugPrint")
     static let reloadGameCards = Notification.Name("reloadGameCards")
     
+    static let excerciseLoaded = Notification.Name("exerciseLoaded")
+    
     
 }
+

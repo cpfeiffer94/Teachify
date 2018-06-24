@@ -12,7 +12,6 @@ import UIKit
 class StudentModelSingleton {
     static let sharedInstance = StudentModelSingleton()
     fileprivate var continousGames : [ContinousGameInformationItem] = []
-    fileprivate var mySubjects : [TKSubject]?
     
     private init (){}
 }
@@ -41,7 +40,7 @@ class StudentModelController : NSObject {
         model.continousGames.append(ContinousGameInformationItem(name: "Feed Me", type: .feedme, subject: "Mathe", color: UIColor.rgb(red: 6, green: 43, blue: 123), image: UIImage(named: "icons8-the_dragon_team")!))
 
 //        TeachBird
-        model.continousGames.append(ContinousGameInformationItem(name: "TeachBird", type: .teachBird, subject: "Englisch", color: UIColor.rgb(red: 123, green: 31, blue: 12), image: UIImage(named: "icons8-bird")!))
+        model.continousGames.append(ContinousGameInformationItem(name: "TeachBird", type: .teachbird, subject: "Englisch", color: UIColor.rgb(red: 123, green: 31, blue: 12), image: UIImage(named: "icons8-bird")!))
         
         NotificationCenter.default.post(name: .reloadGameCards , object: nil)
         

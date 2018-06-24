@@ -11,6 +11,9 @@ import UIKit
 class GameDetailViewController: UIViewController {
     let gameController : GameLaunchController = GameLaunchController()
     
+    @IBOutlet weak var GamelistTableView: UITableView!
+    
+    let 
     
     override func viewDidLoad() {
         super.viewDidLoad()

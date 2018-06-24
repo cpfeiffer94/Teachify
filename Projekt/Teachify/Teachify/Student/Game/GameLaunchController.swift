@@ -9,72 +9,41 @@
 import Foundation
 import UIKit
 
-class GameParamsSingleton {
+class GameLaunchController : NSObject {
     
-    static let sharedInstance = GameParamsSingleton()
+    //    Instanzen der Spiel ViewController
+    var mathpianoVC  = MathPianoGameViewController()
+    var feedmeVC = FeedMeViewController()
+    var teachBirdVC = TeachBirdViewController()
     
-//    Instanzen der Spiel ViewController
-    fileprivate var mathpianoVC  = MathPianoGameViewController()
-    fileprivate var feedmeVC = FeedMeViewController()
-    fileprivate var teachBirdVC = TeachBirdViewController()
-    
-//    Paramter der Spiele
-    fileprivate var mathPianoParams : MathPianoParams
-    fileprivate var feedmeParams : FeedMeParams
-    
-    
-    
-    
-    private init (){
-        mathPianoParams = MathPianoParams.init(param1: "Testrunde")
-        feedmeParams = FeedMeParams.init(param1: "Testrunde")
-    }
-}
-
-class GameLaunchController {
-    let model = GameParamsSingleton.sharedInstance
+    //    Singleton Klassen in der die Exercises der Spiele gehalten werden
+    var mathPianoCtrl = MathPianoExerciseController()
+    var feedmeCtrl = FeedMeExerciseController()
+    var teachbirdCtrl = TeachBirdExerciseController()
     
     
     func getViewControllerForGame(game : TKExerciseType) -> UIViewController {
         switch game {
         case .mathpiano:
-            return model.mathpianoVC
-        case .wordTranslation:
-            return model.mathpianoVC
+            return mathpianoVC
         case .feedme:
-            return model.feedmeVC
-        case .teachBird:
-            return model.teachBirdVC
+            return feedmeVC
+        case .teachbird:
+            return teachBirdVC
         }
     }
     
     func resetInstanceForGame(game : TKExerciseType){
         switch game {
         case .mathpiano:
-            model.mathpianoVC = MathPianoGameViewController()
+            mathpianoVC = MathPianoGameViewController()
         case .feedme:
-            model.feedmeVC = FeedMeViewController()
-        case .wordTranslation:
-            print("wordTranslation not implemented!")
-        case .teachBird:
-            model.teachBirdVC = TeachBirdViewController()
+            feedmeVC = FeedMeViewController()
+        case .teachbird:
+            teachBirdVC = TeachBirdViewController()
         }
     }
     
-    func getMathPianoParams() -> MathPianoParams {
-        return model.mathPianoParams
-    }
     
-    func getFeedMeParams() -> FeedMeParams {
-        return model.feedmeParams
-    }
-    
-    func setMathPianoParams(newParams : MathPianoParams){
-        model.mathPianoParams = newParams
-    }
-    
-    func setFeedMeParams(newParams : FeedMeParams){
-        model.feedmeParams = newParams
-    }
     
 }

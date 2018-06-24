@@ -164,7 +164,7 @@ class CloudKitTestViewController: UIViewController {
         let tkClass = TKClass(name: className)
         let tkSubject = TKSubject(name: subjectName, color: TKColor.red)
         let tkDocument = TKDocument(name: documentName, deadline: nil)
-        let tkExercise = TKExercise(name: exerciseName, deadline: nil, type: .wordTranslation, data: "Daaaata")
+        let tkExercise = TKExercise(name: exerciseName, deadline: nil, type: .mathpiano, data: "Daaaata")
         
         self.classCtrl.create(tkClass: tkClass) { (createdClass, error) in
             print("Class Error: \(String(describing: error))")
@@ -194,7 +194,7 @@ class CloudKitTestViewController: UIViewController {
         let subjectName = "Subject17"
         let documentName = "Document17"
         
-        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
+        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .mathpiano, data: "Hello das ist die Dataaaaaa!")
         
         classCtrl.fetchClasses { (fetchedClasses, error) in
             
