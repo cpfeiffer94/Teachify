@@ -1,10 +1,14 @@
-\chapter{Schülerteil}
+\chapter{Schüler UI, Anbindung an die Schnittstelle und entwicklung Mathe Piano Spiel}
 Christian Pfeiffer, Normen Krug \& \href{mailto:jofranz90@gmail.com?subject=Swift-Studienarbeit}{Johannes Franz}
 
 
 
 \section{Einleitung}
 In diesem Abschnitt werden die Ziele und die Motivation des Projektes definiert. Dabei werden unter anderem die Erwartungen an das Projekt genannt.
+
+\subsection{Motivation}
+Die Hauptmotitvation des Projektes war das Lernen und Einarbeiten in neue Apple Frameworks und Erfahrungen sammeln in der Zusammenarbeit mit anderen Teams. Durch den Aufbau der  Studienarbeit war es zwingend notwendig, sich mit anderen Teams zu verständigen und auszutauschen.  
+
 \subsection{Ziele}
 Als Ziele der Studienarbeit wurden folgende Punkte definiert: 
 \begin{itemize}
@@ -16,33 +20,42 @@ Als Ziele der Studienarbeit wurden folgende Punkte definiert:
 \item Lernen eines neuen Apple Frameworks (\textbf{SpriteKit})
 \item Erfahrung sammeln in Zusammenarbeit mit anderen Teams
 \end{itemize}
-\subsection{Motivation}
-Die Hauptmotitvation des Projektes war das Lernen und Einarbeiten in neue Apple Frameworks und Erfahrungen sammeln in der Zusammenarbeit mit anderen Teams. Durch den Aufbau der  Studienarbeit war es zwingend notwendig, sich mit anderen Teams zu verständigen und auszutauschen.  
 \section{Spezifikation}
-% Herausfoderungen im SpriteKit
-% Verbindung von SK und der restlichen App
-% Refactoring und performance
 Als Strategie für die Umsetzung des Projektes wurde das Prinzip "Funktionalität vor UI-Design" gewählt.
 \subsection{Mathe Piano Spiel}
 Beim Spiel war es wichtig, möglichst schnell einen funktionsfähigen Prototypen zu entwickeln. Dieser wurde im Verlauf des Projektes nach und nach immer weiter verbessert.
+\subsubsection{Game Engine}
+Als Game Engine wurde die von Apple entwickelte Engine namens SpriteKit verwenden. Diese Engine hat einige Vorteile gegenüber anderen Spielengines:
+\begin{itemize}
+\item Gute Dokumentation
+\item Wiederverwendungen bereits gelernter Paradigmen    
+\item Einfache Integration Möglichkeit in die App
+\item Einfache Anbindung an andere iOS API‘s
+\item Swift als Programmiersprache 
+\item Schnelles Entwickeln und Testen von Funktionen durch Swift Playgrounds
+\end{itemize}
 
-% Anbindung des Spiels an einen Zahlen/Aufgabengenerator
-
-% Anbindung des Spiels an die Schnittstelle, die im weiteren Projekt
-
+\subsubsection{Herausforderungen}
+Nach der ausgiebigen Einarbeitungen in das \textit{SpriteKit} \textit{Framework} haben sich einige Hürden ergeben. Das verwenden von dynamischen Buttons ist nicht trivial, weil es keine Buttons per Default gibt. Deshalb muss eine eigene Button Klasse implementiert und mit der gewünschten Funktionalität erweitert werden. Des weiteren war es schwierig den Code sinnvoll zu strukturieren, aufgrund der durch Spiel vorgegebenen Skript artigen Programmierung. 
+\subsubsection{Testen des Spieles}
+Um das Spiel sinnvoll und schon währendes Entwicklungsprozesses testen zu können, musste ein Generator entwickelt werden der zufällige Aufgaben generiert. 
+\subsubsection{Anbindungen an interne Schnittstellen}
+Von Anfang an musste darauf geachtet werden das, dass Spiel an die interne Schnittstelle angebunden werden muss. Da die Schnittstelle nicht von Beginn an verfügbar ist, muss eine temporäre Datenstruktur implementiert werden. Diese muss einfach austauschbar und erweiterbar sein.
+\subsubsection{User Interface}
+Bei der Gestaltung des User Interface muss explizit darauf geachtete werden, dass die Software primär von Kinder bedient werden wird. Das bedeute das die Größe der Bedienelemente deutlich größer ausfallen muss als bei herkömmlichen Applikationen.   
 
 \subsection{User Interface}
 
-\section{Umsetzung}
-Die Umsetzung 
+\section{Implementierung Phase}
+An dieser Stelle wird die Implementierung der Aufgaben beschrieben. Dabei wird auf die Schnittstellenanbindung, das Mathe Piano Spiel sowie das User Interface eingegangen.
 \subsection{Mathe Piano Spiel}
 
 
 \subsection{User Interface}
-
+%please use/replace
+%\lstinputlisting[language=swift]{content/test.swift}%please use/replace
 
 \section{Fazit}
-Erstes großes Projekt mit vielen Contributern und damit verbundenen Herausforderungen.\\
-Umgang mit Git im großen Team.
-In Konflikt getretene Herangehensweisen Design vs. Funktion und umgekehrt.
-Erfahrung sammeln in der Zusammenarbeit mit anderen Teams %Verweis zu oben
+Dieses Projekt war das erste große neu begonnene Projekt der Studiengruppe Mobile Computing 6. Semester mit entsprechend vielen Contributern. Dies stellte das ganze Team immer wieder vor Herausforderungen. Der Umgang mit Git (\href{https://github.com/cpfeiffer3008/Teachify}{Teachify Projekt Link}) brachte zugleich viele Vorteile aber auch Herausforderungen.\\
+Durch die unterschiedlichen Herangehensweisen (Design vs. Funktion) und den damit weitgehend einhergehenden Verzicht auf einen Prototypen lenkte das Projekt gegen Ende des Projektzeitraums auf einen ``Big-Bang`` Ansatz.
+Positiv zu erwähnen war das Zusammenwachsen des Teams und die Zusammenarbeit untereinander. So hatten die meisten Teams eine Domäne in die sie sich eingearbeitet hatten und mussten für die Schnittpunkte ihrer Gebiete zusammenarbeiten.
