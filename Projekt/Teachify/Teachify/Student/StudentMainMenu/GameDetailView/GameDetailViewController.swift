@@ -13,7 +13,6 @@ class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var GamelistTableView: UITableView!
     
-    let 
     
     override func viewDidLoad() {
         super.viewDidLoad()
