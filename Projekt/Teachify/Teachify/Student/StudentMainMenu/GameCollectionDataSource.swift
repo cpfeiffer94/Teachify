@@ -59,6 +59,7 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
             cell.card.itemSubtitle = "Subtitle?"
             cell.card.buttonText = "Spielen"
             cell.card.textColor = UIColor.white
+        
             
             cell.setContiniousGame(game: myGame.type)
         }
