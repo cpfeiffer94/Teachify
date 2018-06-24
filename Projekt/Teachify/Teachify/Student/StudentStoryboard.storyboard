@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ApS-J8-HyO">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -83,7 +83,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-ZY-XAI">
-                                <rect key="frame" x="292" y="582" width="185" height="60"/>
+                                <rect key="frame" x="291.5" y="582" width="185" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Exercises Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4u7-ad-fDO">
                                         <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
@@ -188,10 +188,25 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvZ-FC-60G">
+                                        <rect key="frame" x="668" y="37.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="W4n-PF-TwM"/>
+                                            <constraint firstAttribute="width" constant="50" id="fm8-a3-5Bl"/>
+                                        </constraints>
+                                        <state key="normal" image="icons8-synchronize"/>
+                                        <state key="selected" image="icons8-synchronize_filled"/>
+                                        <state key="highlighted" image="icons8-synchronize_filled"/>
+                                        <connections>
+                                            <action selector="reloadButtonAction:" destination="Pgv-eR-7Ag" eventType="touchUpInside" id="KWU-uK-cM5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.023529411764705882" green="0.48627450980392156" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Hjh-zq-Zwn" firstAttribute="centerY" secondItem="yxs-S8-vws" secondAttribute="centerY" id="2JW-rT-gic"/>
+                                    <constraint firstItem="OvZ-FC-60G" firstAttribute="centerY" secondItem="yxs-S8-vws" secondAttribute="centerY" id="3M5-vr-VAE"/>
+                                    <constraint firstAttribute="trailing" secondItem="OvZ-FC-60G" secondAttribute="trailing" constant="50" id="4lp-hh-OUi"/>
                                     <constraint firstItem="Hjh-zq-Zwn" firstAttribute="centerX" secondItem="yxs-S8-vws" secondAttribute="centerX" id="XQ0-9q-BcH"/>
                                     <constraint firstAttribute="height" constant="125" id="ga4-Gi-Sqq"/>
                                 </constraints>
@@ -255,7 +270,7 @@
                                 <action selector="SignoutAction:" destination="Pgv-eR-7Ag" id="ifY-mu-HyC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Scan" image="icons8-barcode_scanner_2" id="z2H-49-yGL">
+                        <barButtonItem key="rightBarButtonItem" title="Scan" image="icons8-qr_code" id="z2H-49-yGL">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="W3Z-YV-SXX" kind="show" id="OD1-ON-6hg"/>
@@ -275,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdK-8f-BZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082" y="-1397"/>
+            <point key="canvasLocation" x="2399" y="-1396"/>
         </scene>
         <!--qr_scanner-->
         <scene sceneID="adA-6P-lOx">
@@ -460,55 +475,11 @@ Who put the first Beta on their primary devices"</string>
             </objects>
             <point key="canvasLocation" x="2844.53125" y="-423.046875"/>
         </scene>
-        <!--Awards-->
-        <scene sceneID="6t6-R1-p9J">
-            <objects>
-                <viewController id="yU0-lI-BYF" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WW7-lk-lzG">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Student Award Scene" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-Qb-HJ8">
-                                <rect key="frame" x="67" y="32" width="634" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="IhU-3F-FxT"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Awards" image="icons8-star" selectedImage="icons8-star_filled" id="4Mm-8n-jNn"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V8C-LW-YoT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1350" y="-423"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="lnk-uJ-iL8">
-            <objects>
-                <tabBarController storyboardIdentifier="StudentMainMenuViewController" automaticallyAdjustsScrollViewInsets="NO" id="HLt-zf-sZ9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QS0-MD-E9C">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="ApS-J8-HyO" kind="relationship" relationship="viewControllers" id="J82-em-Vhh"/>
-                        <segue destination="yU0-lI-BYF" kind="relationship" relationship="viewControllers" id="3Cw-tq-xzp"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f2b-bY-sBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="223" y="-648"/>
-        </scene>
-        <!--My Exercises-->
+        <!--Navigation Controller-->
         <scene sceneID="icH-ML-4dF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ApS-J8-HyO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Exercises" image="icons8-mushroom" selectedImage="icons8-mushroom_filled" id="vyx-bI-WGc"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72X-k9-5z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="StudentMainMenuViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ApS-J8-HyO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Sh-KV-Isv">
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>
@@ -523,7 +494,6 @@ Who put the first Beta on their primary devices"</string>
                         <segue destination="Pgv-eR-7Ag" kind="relationship" relationship="rootViewController" id="Fcx-0k-mkn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="72X-k9-5z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1350.78125" y="-1396.2890625"/>
         </scene>
@@ -531,14 +501,12 @@ Who put the first Beta on their primary devices"</string>
     <resources>
         <image name="FeedMe-Drache" width="76" height="76"/>
         <image name="Inder" width="73" height="67"/>
-        <image name="icons8-barcode_scanner_2" width="25" height="25"/>
         <image name="icons8-circled_play_filled" width="100" height="100"/>
         <image name="icons8-exit" width="25" height="25"/>
-        <image name="icons8-mushroom" width="50" height="50"/>
-        <image name="icons8-mushroom_filled" width="50" height="50"/>
         <image name="icons8-play_button_circled" width="100" height="100"/>
-        <image name="icons8-star" width="50" height="50"/>
-        <image name="icons8-star_filled" width="50" height="50"/>
+        <image name="icons8-qr_code" width="32" height="32"/>
+        <image name="icons8-synchronize" width="100" height="100"/>
+        <image name="icons8-synchronize_filled" width="100" height="100"/>
         <image name="icons8-unchecked_checkbox" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>

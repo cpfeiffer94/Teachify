@@ -32,17 +32,8 @@ class StudentMainMenuViewController: UIViewController {
     override func viewDidLoad() {
         gameCollectionView.dataSource = collectionDS
         gameCollectionView.delegate = collectionDel
-        tkfetchctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
-        loadingIndicator.show()
-        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        titleView.text = "Games"
-        titleView.textColor = UIColor.white
-        titleView.textAlignment = .center
-        titleView.font = UIFont.systemFont(ofSize: 33, weight: .black)
-        navigationItem.titleView = titleView
-        noExerciseStackView.isHidden = true
+        reloadTKContent()
         setupUI()
-        view.addSubview(loadingIndicator)
 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(updateTitle), name: Notification.Name("userName"), object: nil)
@@ -55,12 +46,26 @@ class StudentMainMenuViewController: UIViewController {
         return .lightContent
     }
     
+    func reloadTKContent(){
+        tkfetchctrl.fetchAll(notificationName: Notification.Name.reloadGameCards, rank: .student)
+        loadingIndicator.show()
+        view.addSubview(loadingIndicator)
+        noExerciseStackView.isHidden = true
+    }
+    
     func setupUI(){
         studentProfileImage.layer.masksToBounds=true
         studentProfileImage.layer.borderWidth = 3.0
         studentProfileImage.layer.borderColor = UIColor.white.cgColor
         studentProfileImage.layer.cornerRadius = studentProfileImage.bounds.width/2
         studentProfileImage.clipsToBounds = true
+        
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        titleView.text = "Games"
+        titleView.textColor = UIColor.white
+        titleView.textAlignment = .center
+        titleView.font = UIFont.systemFont(ofSize: 33, weight: .black)
+        navigationItem.titleView = titleView
         
         tkusrctrlr.fetchUserProfile { (fetcheduser, error) in
             if let error = error {
@@ -132,6 +137,9 @@ class StudentMainMenuViewController: UIViewController {
         }
             
         
+    }
+    @IBAction func reloadButtonAction(_ sender: Any) {
+        reloadTKContent()
     }
     
     @objc func reloadAvailableGames(){
