@@ -10,9 +10,27 @@ import UIKit
 
 class MathExerciseViewController: UIViewController {
 
+    //MARK: IBOutlets
+    @IBOutlet weak var rangePickerView: UIPickerView!
+    @IBOutlet weak var countExercisePickerView: UIPickerView!
+    @IBOutlet weak var negativeResultsSwitch: UISwitch!
+    
+    //MARK: Private Properties
+    
+    private var rangeDataSourceDelegate : RangePickerViewDataSourceDelegate!
+    private var countExerciseDataSourceDelegate : CountExercisePickerViewDataSourceDelegate!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        rangeDataSourceDelegate = RangePickerViewDataSourceDelegate()
+        rangePickerView.dataSource = rangeDataSourceDelegate
+        rangePickerView.delegate = rangeDataSourceDelegate
+        
+        countExerciseDataSourceDelegate = CountExercisePickerViewDataSourceDelegate()
+        countExercisePickerView.dataSource = countExerciseDataSourceDelegate
+        countExercisePickerView.delegate = countExerciseDataSourceDelegate
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +39,16 @@ class MathExerciseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func createMathExercise(_ sender: Any) {
+        createRandomExercises()
+    }
+    
+    private func createRandomExercises(){
+        let from = rangeDataSourceDelegate.from
+        let to = rangeDataSourceDelegate.to
+        let count = countExerciseDataSourceDelegate.count   
+    }
+    
     /*
     // MARK: - Navigation
 

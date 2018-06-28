@@ -36,6 +36,8 @@
 		0FF2A56420A158B200486CAC /* TKSolutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2A56320A158B200486CAC /* TKSolutionStatus.swift */; };
 		17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */; };
 		173F27F320DBBA8B00F3671B /* MathExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */; };
+		173F27F520DC06A300F3671B /* RangePickerViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F27F420DC06A300F3671B /* RangePickerViewDataSourceDelegate.swift */; };
+		173F27F720DC0BAF00F3671B /* CountExercisePickerViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F27F620DC0BAF00F3671B /* CountExercisePickerViewDataSourceDelegate.swift */; };
 		17508F1420B6B5C700E3C0EA /* AddSubjectReuseableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */; };
 		17508F1520B6B5C700E3C0EA /* AddSubjectReuseableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */; };
 		17508F1720B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */; };
@@ -216,6 +218,8 @@
 		1245F710FA6AC7C5254E2206 /* Pods-Teachify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teachify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teachify/Pods-Teachify.release.xcconfig"; sourceTree = "<group>"; };
 		17228956209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilStatisticsTableViewDelegate.swift; sourceTree = "<group>"; };
 		173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExerciseViewController.swift; sourceTree = "<group>"; };
+		173F27F420DC06A300F3671B /* RangePickerViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangePickerViewDataSourceDelegate.swift; sourceTree = "<group>"; };
+		173F27F620DC0BAF00F3671B /* CountExercisePickerViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountExercisePickerViewDataSourceDelegate.swift; sourceTree = "<group>"; };
 		17508F1220B6B5C700E3C0EA /* AddSubjectReuseableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectReuseableCell.swift; sourceTree = "<group>"; };
 		17508F1320B6B5C700E3C0EA /* AddSubjectReuseableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubjectReuseableCell.xib; sourceTree = "<group>"; };
 		17508F1620B6B73500E3C0EA /* AddExerciseSubjectCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSubjectCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 			isa = PBXGroup;
 			children = (
 				173F27F220DBBA8B00F3671B /* MathExerciseViewController.swift */,
+				173F27F420DC06A300F3671B /* RangePickerViewDataSourceDelegate.swift */,
+				173F27F620DC0BAF00F3671B /* CountExercisePickerViewDataSourceDelegate.swift */,
 			);
 			path = MathExercises;
 			sourceTree = "<group>";
@@ -1218,6 +1224,7 @@
 				404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */,
 				40A773CE209B3CF30030D1FE /* SegmentCell.swift in Sources */,
 				4008235B20CE7F3200B5A39A /* VocabularyModel.swift in Sources */,
+				173F27F520DC06A300F3671B /* RangePickerViewDataSourceDelegate.swift in Sources */,
 				4047BFDD207FAC6F00A0C076 /* TeacherStoryboardID.swift in Sources */,
 				AA12AF72207615170090404A /* LoginViewController.swift in Sources */,
 				AA60B0F620A3248600FF2AB4 /* FeedMeViewController.swift in Sources */,
@@ -1272,6 +1279,7 @@
 				AA8229E920888C260018AB0E /* TKClassController.swift in Sources */,
 				4089CE4320B5AB7600161A4C /* ClassOperation.swift in Sources */,
 				40AAF68E20824E3E008A45A7 /* CenteredCollectionViewDelegate.swift in Sources */,
+				173F27F720DC0BAF00F3671B /* CountExercisePickerViewDataSourceDelegate.swift in Sources */,
 				AA822A0120888D3A0018AB0E /* MathPianoQuestionModel.swift in Sources */,
 				40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */,
 				AAA446ED20C6D45600481CDD /* CloudKitTestVC_ID.swift in Sources */,
