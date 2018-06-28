@@ -241,6 +241,8 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
             background.name = "background"
             background.size = (self.view?.bounds.size)!
             self.addChild(background)
+            print("------>BKSCENE\(self.view!.bounds.size)")
+            print("------>BKSCE\(self.frame.width)")
         }
         for i in 0..<2
         {
