@@ -12,7 +12,6 @@ import UIKit
 class StudentModelSingleton {
     static let sharedInstance = StudentModelSingleton()
     fileprivate var continousGames : [ContinousGameInformationItem] = []
-    fileprivate var mySubjects : [TKSubject]?
     
     private init (){}
 }
@@ -27,26 +26,6 @@ class StudentModelController : NSObject {
         self.setContinousGameList()
     }
     
-    func getMySubjects(){
-        model.mySubjects = tkFetchCtrl.getSubjects()
-    }
-    
-    func isMySubjectSet() -> Bool {
-        if model.mySubjects != nil{
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    func getMySubjects() -> [TKSubject] {
-        return model.mySubjects!
-    }
-    
-    func getMySubjectsCount() -> Int {
-        return (model.mySubjects?.count)!
-    }
     
 //############################################
 //MARK: Methods for continous Mode
@@ -54,12 +33,14 @@ class StudentModelController : NSObject {
     private func setContinousGameList() {
         model.continousGames = []
         
-//        Follow The Order
-        model.continousGames.append(ContinousGameInformationItem(name: "Word Translation", type: .wordTranslation, subject: "Englisch", color: .blue, image: UIImage(named: "calculator")!))
-//        Feed Me
-        model.continousGames.append(ContinousGameInformationItem(name: "Feed Me", type: .feedme, subject: "Mathe", color: .yellow, image: UIImage(named: "calculator")!))
 //        Math Piano
-        model.continousGames.append(ContinousGameInformationItem(name: "Math Piano", type: .mathpiano, subject: "Math", color: .red, image: UIImage(named: "calculator")!))
+        model.continousGames.append(ContinousGameInformationItem(name: "Math Piano", type: .mathpiano, subject: "Math", color: UIColor.rgb(red: 144, green: 209, blue: 21), image: UIImage(named: "icons8-classic_music")!))
+        
+//        Feed Me
+        model.continousGames.append(ContinousGameInformationItem(name: "Feed Me", type: .feedme, subject: "Mathe", color: UIColor.rgb(red: 6, green: 43, blue: 123), image: UIImage(named: "icons8-the_dragon_team")!))
+
+//        TeachBird
+        model.continousGames.append(ContinousGameInformationItem(name: "TeachBird", type: .teachbird, subject: "Englisch", color: UIColor.rgb(red: 123, green: 31, blue: 12), image: UIImage(named: "icons8-bird")!))
         
         NotificationCenter.default.post(name: .reloadGameCards , object: nil)
         

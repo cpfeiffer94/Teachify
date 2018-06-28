@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -77,10 +77,10 @@
 /* Begin PBXFileReference section */
 		0277D68086E8F3EA5D5E7C88E78B0457 /* CardPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPlayer.swift; path = Cards/Sources/CardPlayer.swift; sourceTree = "<group>"; };
 		0319A17F4EC5874B23D2A80E9B8E9890 /* Cards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cards-dummy.m"; sourceTree = "<group>"; };
-		084C7B107680CB6A8E127F5F6402CC83 /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Teachify.framework; path = "Pods-Teachify.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		084C7B107680CB6A8E127F5F6402CC83 /* Pods_Teachify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teachify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D0135027C079A38079E9E6A3F431F0 /* CardGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroup.swift; path = Cards/Sources/CardGroup.swift; sourceTree = "<group>"; };
-		0AACC3A4147B85C5505E67D6B7C40628 /* Pods_TeachifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TeachifyTests.framework; path = "Pods-TeachifyTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AF92229122181FB1B378A5250E2FF56 /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cards.framework; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AACC3A4147B85C5505E67D6B7C40628 /* Pods_TeachifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AF92229122181FB1B378A5250E2FF56 /* Cards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D0F7D944A081F1C86C0A349BE8BF6FD /* DetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Cards/Sources/DetailViewController.swift; sourceTree = "<group>"; };
 		0EA51135B593DE380D85BCB2F460A08A /* Pods-TeachifyUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TeachifyUITests.modulemap"; sourceTree = "<group>"; };
 		131C4C5BC0B79626D0A5026AC0C238F9 /* Pods-TeachifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TeachifyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		8D758F3A9FEEBFE8D6F76E774F427C8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8F8D9574C94E70D348684AD66791C0F0 /* Pods-Teachify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Teachify.debug.xcconfig"; sourceTree = "<group>"; };
 		92290C907C4750A9828B9A02481820A6 /* Pods-TeachifyUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TeachifyUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9C7C5638162A9C67821CCA4F8651BF81 /* Pods-Teachify-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Teachify-umbrella.h"; sourceTree = "<group>"; };
 		9E008D3121BC6548734EF84A8669ACCE /* Pods-TeachifyUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TeachifyUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9EBA245D559D778FFAAED213616D13EE /* Pods-TeachifyTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TeachifyTests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		ACA3F5D59D3A8459ED148C25BA389C4A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B239FFCDDA01F96AA95CD155F781EAA1 /* Pods-TeachifyTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TeachifyTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B6C6E6E54D9C753A138CCF7BA393DB85 /* Pods-Teachify-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Teachify-acknowledgements.plist"; sourceTree = "<group>"; };
-		B99A6C3E4E6950FF127F5A0581E2F6B5 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Player.framework; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99A6C3E4E6950FF127F5A0581E2F6B5 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0C6346E5AA86E2A6F55CC968A1707A /* Pods-Teachify-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Teachify-frameworks.sh"; sourceTree = "<group>"; };
 		C3A8A5B6601CF1E79CD9444B4F5BD6E2 /* Player.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Player.xcconfig; sourceTree = "<group>"; };
 		CA8E4E984DF76E6B5B9FF91D23FC14D6 /* Cards.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cards.xcconfig; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		D49EE902A4E09539A1DD6FFA283D70A4 /* Player-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Player-dummy.m"; sourceTree = "<group>"; };
 		DD2C6B45139F90793CD4121E76FCD193 /* CardGroupSliding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardGroupSliding.swift; path = Cards/Sources/CardGroupSliding.swift; sourceTree = "<group>"; };
 		EBA589B7BD7EF146ADE10B7505E240E0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0545B19CF4E0EFBF8C06A4ED15A9069 /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TeachifyUITests.framework; path = "Pods-TeachifyUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0545B19CF4E0EFBF8C06A4ED15A9069 /* Pods_TeachifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09B1759121D16CEC34BD72E67CE8F57 /* Pods-TeachifyTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TeachifyTests-resources.sh"; sourceTree = "<group>"; };
 		F646A2F531E8B1BD9753E240B483CA0B /* Pods-TeachifyUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TeachifyUITests-dummy.m"; sourceTree = "<group>"; };
 		FA76653FEA0D941FCE16731C20DAFA4E /* Pods-TeachifyTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TeachifyTests.modulemap"; sourceTree = "<group>"; };
@@ -198,7 +198,6 @@
 				88F63CCCEAA41D5920978DA462FC5081 /* LayoutHelper.swift */,
 				8DD87F398B5C02A223957466B01863EA /* Support Files */,
 			);
-			name = Cards;
 			path = Cards;
 			sourceTree = "<group>";
 		};
@@ -263,7 +262,6 @@
 				3144E03037F2B166EA7E05BCC430AC4E /* Player.swift */,
 				CA7DA1CC9EE2277633FBDEDE4A107A83 /* Support Files */,
 			);
-			name = Player;
 			path = Player;
 			sourceTree = "<group>";
 		};
@@ -497,7 +495,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -934,6 +932,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
