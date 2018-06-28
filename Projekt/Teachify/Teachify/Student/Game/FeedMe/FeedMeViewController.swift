@@ -28,6 +28,8 @@ class FeedMeViewController : UIViewController {
         
         view.addSubview(skView)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(exitGame), name: Notification.Name("exitGame"), object: nil)
+        
         skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -52,10 +54,19 @@ class FeedMeViewController : UIViewController {
         
         //        }
         
-        
-           
             
         }
+    
+    @objc func exitGame(){
+        //TODO: let viewcontroller disappear
+        
+        self.dismiss(animated: true) {
+            if let scene = SKScene(fileNamed: "GameFeedMeScene"){
+                scene.removeFromParent()
+            }
+        }
+        //switch to view
+    }
     
     
     override var shouldAutorotate: Bool {

@@ -32,6 +32,7 @@ class GameScene: SKScene {
     var currentAnswer : String?
     var lifes : Int!
     var gameoverBoard : SKSpriteNode?
+    var backBoard : SKSpriteNode?
     
     var dragonFrames : [SKTexture] = []
     var dragonEvilFrames : [SKTexture]  = []
@@ -68,7 +69,7 @@ class GameScene: SKScene {
         self.antwort3 = board3?.childNode(withName: "antwort3") as? SKLabelNode
         self.antwort4 = board4?.childNode(withName: "antwort4") as? SKLabelNode
         self.gameoverBoard = self.childNode(withName: "gameoverBoard") as? SKSpriteNode
-        
+        self.backBoard = self.childNode(withName: "backBoard") as? SKSpriteNode
         lifes = 3
         
         buildDragon()
@@ -99,11 +100,17 @@ class GameScene: SKScene {
             
             if(lifes == -1){
                 gameoverBoard?.isHidden = false
+                backBoard?.isHidden = false
                 if(gameoverBoard?.contains(location))!{
                     newGame()
                 }
+                if(backBoard?.contains(location))!{
+                    removeFeedMeView()
+                }
+                
             }else{
                 gameoverBoard?.isHidden = true
+                backBoard?.isHidden = true
                 
                 if  (board1?.contains(location))!{
                     movableNode = board1
@@ -183,6 +190,7 @@ class GameScene: SKScene {
     
     func makeQuiz(){
         gameoverBoard?.isHidden = true
+        backBoard?.isHidden = true
         
         //        if lifes == -1{
         //
@@ -252,6 +260,7 @@ class GameScene: SKScene {
                 antwort4?.text = ""
                 frage?.text = "Game Over"
                 gameoverBoard?.isHidden = false
+                backBoard?.isHidden = false
                 break
                 
                 
@@ -271,6 +280,7 @@ class GameScene: SKScene {
         
         makeQuiz()
         gameoverBoard?.isHidden = true
+        backBoard?.isHidden = true
         var actions = Array<SKAction>();
         actions.append(SKAction.wait(forDuration: TimeInterval(0.5)))
         actions.append(SKAction.playSoundFileNamed("newPower.wav", waitForCompletion: false))
@@ -286,6 +296,11 @@ class GameScene: SKScene {
         
         
         
+    }
+    
+    func removeFeedMeView(){
+        let nc = NotificationCenter.default
+        nc.post(name: NSNotification.Name("exitGame"), object: nil)
     }
     
     func buildDragon(){
