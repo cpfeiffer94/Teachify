@@ -10,8 +10,8 @@ import SpriteKit
 import GameplayKit
 
 class TeachGameScene: SKScene, SKPhysicsContactDelegate {
-    var isGameStarted = Bool(false)
-    var isDied = Bool(false)
+    var isGameStarted = false
+    var isDied = false
     let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
     let diedSound = SKAction.playSoundFileNamed("DiedSound.mp3", waitForCompletion: false)
     
@@ -162,7 +162,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
                         self.scoreLbl.text = "\(self.score)"
                     } else {
                         //TODO to fix
-                        //                        self.diedBird()
+                        self.diedBird()
                         print("----------->RemoveLEBEN Aufgabe wurde nicht gelöst")
                     }
                     self.aGestellteAufgabe = self.data.corectAnsware
@@ -239,10 +239,8 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
             background.anchorPoint = CGPoint.init(x: 0, y: 0)
             background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
             background.name = "background"
-            background.size = (self.view?.bounds.size)!
+            background.size = (self.frame.size)
             self.addChild(background)
-            print("------>BKSCENE\(self.view!.bounds.size)")
-            print("------>BKSCE\(self.frame.width)")
         }
         for i in 0..<2
         {
@@ -280,7 +278,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
         let birdAtlas = SKTextureAtlas(named:"Bird")
         var birdFrames: [SKTexture] = []
         let numImages = birdAtlas.textureNames.count
-        print(numImages)
+        //print(numImages)
         for i in 1...numImages{
             let birdTextureName = "bird\(i)"
             birdFrames.append(birdAtlas.textureNamed(birdTextureName))

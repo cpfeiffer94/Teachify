@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
+//import GameplayKit
 
 class TeachBirdViewController: UIViewController {
     
@@ -20,32 +20,20 @@ class TeachBirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let scene = GameScene(size: view.bounds.size)
-        //let sensor = Sensoring(game: scene as! NSObject)
-        
-//        let skView = view as! SKView
-        
+
         view.addSubview(skView)
 
-        
         skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        
-
-        let scene = TeachGameScene(size: view.bounds.size)
-        scene.scaleMode = .resizeFill
-        
-        skView.presentScene(scene)
+        let scene = TeachGameScene(size: view.frame.size)
         
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = false
 
-        
-        //        if let view = self.view as! SKView? {
-        // Load the SKScene from 'GameScene.sks'
+        skView.presentScene(scene)
     }
     override var shouldAutorotate: Bool {
         return false

@@ -130,7 +130,7 @@ extension TeachGameScene{
         lableBK.size=CGSize(width: 360, height: 70)
         lableBK.zPosition = -1
         lable.addChild(lableBK)
-        print(lable.position)
+        //print(lable.position)
         return lable
     }
     func createWalls() -> SKNode  {
@@ -150,13 +150,13 @@ extension TeachGameScene{
         let position=CGPoint(x: 200 , y: 45 - randomPosition)
         let vok=createLabl(name: self.data.getTask(number: aTask)[0], position: position,tamplate: true)
         wallPair.addChild(vok)
-        print(vok)
+        //print(vok)
         vok.run(andRemove)
         
         let elem=createRandom(to: 4)
         var index=1
         for i in elem {
-            print("Elemt\(i)")
+            //print("Elemt\(i)")
             let move:Int = 150 * index
             let randP = random(min: 350, max: 750)
             index += 1

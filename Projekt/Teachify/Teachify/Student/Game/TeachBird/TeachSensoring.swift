@@ -61,7 +61,7 @@ class TeachSensoring: NSObject {
     func createFlight(x:Double, y:Double){
         let mGame = self.aGame as! TeachGameScene
         let my = (aNullposition - y) * 100 - 0
-        print("x\(x) aN \(aNullposition) y\(y): MY\(my)")
+        //print("x\(x) aN \(aNullposition) y\(y): MY\(my)")
         let mx = x * 100 * -1
         mGame.setBirdposition(xImpise: mx, yImpulse: my)
     }
