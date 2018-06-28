@@ -10,7 +10,7 @@ import UIKit
 
 class CountExercisePickerViewDataSourceDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var count = 0
+    var count = 1
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -11,6 +11,7 @@ import UIKit
 class OperationPickerViewDataSource: NSObject, UIPickerViewDataSource{
   
     var selectedSubject : TKSubject = TKSubject(name: "Math",color: TKColor.yellow)
+    var selectedOperation : String = ""
     var subjectTypes = ["Math", "English"]
     
     let operationsMath = ["Add", "Subtract", "Multiply", "Divide"]

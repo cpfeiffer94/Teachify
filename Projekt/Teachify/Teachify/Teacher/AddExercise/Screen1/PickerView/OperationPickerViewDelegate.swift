@@ -25,5 +25,8 @@ class OperationPickerViewDelegate: NSObject, UIPickerViewDelegate {
             dataSource.selectedSubject = TKSubject(name: dataSource.subjectTypes[row], color: .black)
             pickerView.reloadComponent(1)
         }
+        if component == 1{
+            dataSource.selectedOperation = dataSource.getSelectedOperations()[row]
+        }
     }
 }
