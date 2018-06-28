@@ -1,4 +1,4 @@
-\chapter{Schüler UI, Anbindung an die Schnittstelle und entwicklung Mathe Piano Spiel}
+\chapter{Schüler UI, Anbindung an die Schnittstelle und Entwicklung des Mathe Piano Spiels}
 Christian Pfeiffer, Normen Krug \& \href{mailto:jofranz90@gmail.com?subject=Swift-Studienarbeit}{Johannes Franz}
 
 
@@ -17,7 +17,7 @@ Als Ziele der Studienarbeit wurden folgende Punkte definiert:
 \item Aufgaben die von Lehrern erstellt werden anzeigen und in ein spielbare Form überführen
 \item Die von Schüler beantworteten an den Lehrer weiterleiten
 \item Den Schülern die Möglichkeit bieten die Spiele im Endlos Modus, unabhängig der von Lehrer zugewiesenen Aufgaben, zu spielen
-\item Lernen eines neuen Apple Frameworks (\textbf{SpriteKit})
+\item Lernen eines neuen Apple Frameworks (\textit{SpriteKit})
 \item Erfahrung sammeln in Zusammenarbeit mit anderen Teams
 \end{itemize}
 \section{Spezifikation}
@@ -25,7 +25,7 @@ Als Strategie für die Umsetzung des Projektes wurde das Prinzip "Funktionalitä
 \subsection{Mathe Piano Spiel}
 Beim Spiel war es wichtig, möglichst schnell einen funktionsfähigen Prototypen zu entwickeln. Dieser wurde im Verlauf des Projektes nach und nach immer weiter verbessert.
 \subsubsection{Game Engine}
-Als Game Engine wurde die von Apple entwickelte Engine namens SpriteKit verwenden. Diese Engine hat einige Vorteile gegenüber anderen Spielengines:
+Als Game Engine wurde die von Apple entwickelte Engine namens \textit{SpriteKit} verwenden. Diese Engine hat einige Vorteile gegenüber anderen Spielengines:
 \begin{itemize}
 \item Gute Dokumentation
 \item Wiederverwendungen bereits gelernter Paradigmen    
@@ -36,26 +36,25 @@ Als Game Engine wurde die von Apple entwickelte Engine namens SpriteKit verwende
 \end{itemize}
 
 \subsubsection{Herausforderungen}
-Nach der ausgiebigen Einarbeitungen in das \textit{SpriteKit} \textit{Framework} haben sich einige Hürden ergeben. Das verwenden von dynamischen Buttons ist nicht trivial, weil es keine Buttons per Default gibt. Deshalb muss eine eigene Button Klasse implementiert und mit der gewünschten Funktionalität erweitert werden. Des weiteren war es schwierig den Code sinnvoll zu strukturieren, aufgrund der durch Spiel vorgegebenen Skript artigen Programmierung. 
+Nach der ausgiebigen Einarbeitung in das \textit{SpriteKit} \textit{Framework} haben sich einige Hürden ergeben. Das Verwenden von dynamischen Buttons ist nicht trivial, weil es keine Buttons per Default gibt. Deshalb muss eine eigene Button Klasse implementiert und mit der gewünschten Funktionalität erweitert werden. Des Weiteren war es schwierig den Code sinnvoll zu strukturieren, aufgrund der durch Spiel vorgegebenen skriptartigen Programmierung. %hier könnte doch der Code für einen Button als Beispiel in die Doku kommen. Eher besser in der Implementierungsphase
 \subsubsection{Testen des Spieles}
-Um das Spiel sinnvoll und schon währendes Entwicklungsprozesses testen zu können, musste ein Generator entwickelt werden der zufällige Aufgaben generiert. 
+Um das Spiel sinnvoll und schon währendes Entwicklungsprozesses testen zu können, musste ein Generator entwickelt werden der zufällige Aufgaben generiert. Dieser befindet sich in der \textit{RandomQuestionGenerator.swift} Klasse. 
 \subsubsection{Anbindungen an interne Schnittstellen}
-Von Anfang an musste darauf geachtet werden das, dass Spiel an die interne Schnittstelle angebunden werden muss. Da die Schnittstelle nicht von Beginn an verfügbar ist, muss eine temporäre Datenstruktur implementiert werden. Diese muss einfach austauschbar und erweiterbar sein.
+Von Anfang an musste darauf geachtet werden das, dass Spiel an die interne Schnittstelle angebunden werden muss, die von einem anderen Team entwickelt wurde. Da die Schnittstelle nicht von Beginn an verfügbar ist, muss eine temporäre Datenstruktur implementiert werden. Diese soll einfach austauschbar und erweiterbar sein.
 \subsubsection{User Interface}
-Bei der Gestaltung des User Interface muss explizit darauf geachtete werden, dass die Software primär von Kinder bedient werden wird. Das bedeute das die Größe der Bedienelemente deutlich größer ausfallen muss als bei herkömmlichen Applikationen.   
+Bei der Gestaltung des User Interfaces muss explizit darauf geachtet werden, dass die Software primär von Kinder bedient wird. Das bedeutet, dass die Größe der Bedienelemente deutlich größer ausfallen muss als bei herkömmlichen Applikationen.   
 
 \subsection{User Interface}
 
-\section{Implementierung Phase}
-An dieser Stelle wird die Implementierung der Aufgaben beschrieben. Dabei wird auf die Schnittstellenanbindung, das Mathe Piano Spiel sowie das User Interface eingegangen.
+\section{Implementierungsphase}
+An dieser Stelle wird die Implementierung der Aufgaben beschrieben. Dabei wird auf die Schnittstellenanbindung, das Mathe Piano Spiels sowie das User Interface eingegangen.
 \subsection{Mathe Piano Spiel}
 
 
 \subsection{User Interface}
-%please use/replace
-%\lstinputlisting[language=swift]{content/test.swift}%please use/replace
+
 
 \section{Fazit}
-Dieses Projekt war das erste große neu begonnene Projekt der Studiengruppe Mobile Computing 6. Semester mit entsprechend vielen Contributern. Dies stellte das ganze Team immer wieder vor Herausforderungen. Der Umgang mit Git (\href{https://github.com/cpfeiffer3008/Teachify}{Teachify Projekt Link}) brachte zugleich viele Vorteile aber auch Herausforderungen.\\
+Dieses Projekt war das Erste große neu begonnene Projekt der Studiengruppe Mobile Computing 6. Semester mit entsprechend vielen Contributern. Dies stellte das ganze Team immer wieder vor Herausforderungen mit sich. Der Umgang mit Git (\href{https://github.com/cpfeiffer3008/Teachify}{Teachify Projekt Link}) brachte zugleich viele Vorteile aber auch Herausforderungen.\\
 Durch die unterschiedlichen Herangehensweisen (Design vs. Funktion) und den damit weitgehend einhergehenden Verzicht auf einen Prototypen lenkte das Projekt gegen Ende des Projektzeitraums auf einen ``Big-Bang`` Ansatz.
-Positiv zu erwähnen war das Zusammenwachsen des Teams und die Zusammenarbeit untereinander. So hatten die meisten Teams eine Domäne in die sie sich eingearbeitet hatten und mussten für die Schnittpunkte ihrer Gebiete zusammenarbeiten.
+Positiv zu erwähnen war das Zusammenwachsen des Teams und die Zusammenarbeit untereinander. So hatten die meisten Teams eine Domäne in die sie sich eingearbeitet hatten und mussten bei der Überschneidung ihrer Gebiete zusammenarbeiten.
