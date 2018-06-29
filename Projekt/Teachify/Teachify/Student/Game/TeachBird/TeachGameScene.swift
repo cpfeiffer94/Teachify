@@ -34,7 +34,6 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
     
     let data=TeachDataModle()
     var label=SKLabelNode()
-    //var allLeben:[SKNode]=[]
     var aktuelleLeben=3
     var aTask=0
     
@@ -249,7 +248,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
             background.anchorPoint = CGPoint.init(x: 0, y: 0)
             background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
             background.name = "backgroundh"
-            background.size = (self.view?.bounds.size)!
+            background.size = (self.frame.size)
             self.addChild(background)
         }
         self.bird = createBird()
@@ -278,7 +277,6 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
         let birdAtlas = SKTextureAtlas(named:"Bird")
         var birdFrames: [SKTexture] = []
         let numImages = birdAtlas.textureNames.count
-        //print(numImages)
         for i in 1...numImages{
             let birdTextureName = "bird\(i)"
             birdFrames.append(birdAtlas.textureNamed(birdTextureName))
@@ -348,7 +346,6 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
         if aktuelleLeben > 0{
             aktuelleLeben = aktuelleLeben-1
             inMenue=false
-            print(aktuelleLeben)
         } else {
             score = 0
             aktuelleLeben=3
