@@ -13,6 +13,10 @@ class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var GamelistTableView: UITableView!
     
+    @IBOutlet weak var GameImage: UIImageView!
+    @IBOutlet weak var GameDescriptionLabel: UILabel!
+    @IBOutlet weak var GameTitleLabel: UILabel!
+    @IBOutlet weak var TopDetailContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

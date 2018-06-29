@@ -5,6 +5,7 @@
 //  Created by Christian Pfeiffer on 12.04.18.
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
+//  Der Code ist gut aber er ist nicht schön!
 
 import UIKit
 
@@ -22,18 +23,13 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         ContiniousMode = isContinous
     }
     
-    // TODO: SectionHeader not working
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        if (ContiniousMode){
-//            return 1
+//            return studentController.getContinousGameCount()
 //        }
 //        else {
-//            if studentController.isMyClassSet(){
-//                return studentController.getMyClass().subjects.count
-//                }
-//            }
-//
-//        return 0
+//            return tkFetchController.getSubjects().count
+//        }
 //    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,7 +37,13 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
             return studentController.getContinousGameCount()
         }
         else {
-            return tkFetchController.getSubjectCount()
+            var documentCounter = 0
+
+            for subject in tkFetchController.getSubjects() {
+                documentCounter += subject.documents.count
+            }
+            
+            return documentCounter
         }
     }
 
@@ -64,18 +66,19 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
             cell.setContiniousGame(game: myGame.type)
         }
         else{
-                let tempSubject : TKSubject = tkFetchController.getSubjects()[indexPath.item]
-                let tempDoc = tempSubject.documents[indexPath.row]
-            
-                cell.card.backgroundColor = tempSubject.color.color
+            print("my Index item: \(indexPath.item) my Index row: \(indexPath.row)")
+            //            [0] is Subject; [1] is Document
+                let myTuple = tkFetchController.getSubjectAndDocumentForCollectionIndex(index: indexPath.item)
+
+                cell.card.backgroundColor = myTuple.0.color.color
                 cell.card.icon = UIImage(named: "calculator")
-                cell.card.title = tempDoc.name
-                cell.card.itemTitle = tempSubject.name
-                cell.card.itemSubtitle = "Anzahl Übungen: \(tempDoc.exercises.count)"
+                cell.card.title = myTuple.1.name
+                cell.card.itemTitle = myTuple.0.name
+                cell.card.itemSubtitle = "Anzahl Übungen: \(myTuple.1.exercises.count)"
                 cell.card.buttonText = "Spielen"
                 cell.card.textColor = UIColor.white
-                
-//                cell.setExercises(newExercises: tempDoc.subjects[indexPath.item].documents[indexPath.row].exercises)
+                cell.setExercises(newExercises: myTuple.1.exercises)
+            
         }
         
         

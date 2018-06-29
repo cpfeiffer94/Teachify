@@ -16,7 +16,7 @@ class ExerciseOperation : BaseOperation {
     override init(opRank: TKRank) {
         super.init(opRank: opRank)
         exerciseCtrl.initialize(withRank: opRank) { (succeed) in
-            print("Exercise init --> \(succeed)")
+            print("Exercise init --> \(succeed) as: \(opRank)" )
         }
     }
     

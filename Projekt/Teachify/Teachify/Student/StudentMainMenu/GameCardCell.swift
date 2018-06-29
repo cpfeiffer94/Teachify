@@ -12,6 +12,7 @@ import Cards
 class GameCardCell: UICollectionViewCell {
     let card = CardHighlight(frame: CGRect(x: 0, y: 0, width: 600 , height: 400))
     var myExercises : [TKExercise]? = nil
+    var isContinousCell : Bool?
     
     @IBOutlet weak var view: CardHighlight!
     
@@ -24,11 +25,15 @@ class GameCardCell: UICollectionViewCell {
         let myExercise = TKExercise(name: "Continous Play", deadline: nil, type: game, data: "continous")
         myExercises = []
         myExercises?.append(myExercise)
+        isContinousCell = true
+        print("GameCell: \(myExercises?.first?.name) isContinous: \(isContinousCell)")
     }
     
     func setExercises(newExercises :[TKExercise]){
         myExercises = []
         myExercises = newExercises
+        isContinousCell = false
+        print("GameCell: \(myExercises?.first?.name) isContinous: \(isContinousCell)")
     }
     
 }
