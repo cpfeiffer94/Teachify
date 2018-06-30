@@ -251,11 +251,21 @@ class CloudKitTestViewController: UIViewController {
     }
     
     @IBAction func solutionTestAction(_ sender: UIButton) {
-        exerciseCtrl.fetchExercises { (allExercises, error) in
+//        exerciseCtrl.fetchExercises { (allExercises, error) in
+//            for exercise in allExercises {
+//                print(exercise.name)
+//            }
+//        }
+        
+        print("START")
+        
+        self.exerciseCtrl.fetchExercises { (allExercises, error) in
             for exercise in allExercises {
                 print(exercise.name)
             }
         }
+        
+        print("ENDE")
     }
     
 //    func fetchAllSolutions() {

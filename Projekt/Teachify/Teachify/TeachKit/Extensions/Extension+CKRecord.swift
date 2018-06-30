@@ -44,7 +44,9 @@ extension CKRecord {
         self[TKExercise.CloudKey.name] = exercise.name as CKRecordValue
         self[TKExercise.CloudKey.data] = exercise.data as CKRecordValue
         self[TKExercise.CloudKey.type] = exercise.type.tkCloudKey as CKRecordValue
-        self[TKExercise.CloudKey.solutions] = exercise.solutions as CKRecordValue
+        if let solutionData = try? JSONEncoder().encode(exercise.solutions) {
+            self[TKExercise.CloudKey.solutions] = solutionData as CKRecordValue
+        }
         
         guard let deadline = exercise.deadline else {
             return
