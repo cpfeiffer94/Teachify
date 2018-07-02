@@ -18,6 +18,7 @@ class EnglishVocabularyViewController: UIViewController {
     @IBOutlet var falseAnswer2: UITextField!
     @IBOutlet var falseAnswer3: UITextField!
     @IBOutlet var exerciseName: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     //MARK: Variables
     private var vocabularyBook = [VocabularyModel]()
@@ -56,7 +57,7 @@ class EnglishVocabularyViewController: UIViewController {
         for (i,exercise) in vocabularyBook.enumerated() {
             let data = try! JSONEncoder().encode(exercise)
             let dataString = String(data: data, encoding: .utf8)!
-            let exercise = TKExercise(name: "\(doc.name)\(i)", deadline: nil, type: selectedGame, data: dataString)
+            let exercise = TKExercise(name: "\(doc.name)\(i)", deadline: datePicker.date, type: selectedGame, data: dataString)
             exercises.append(exercise)
         }
         
