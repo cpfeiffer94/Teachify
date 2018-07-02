@@ -20,6 +20,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
     var highscoreLbl = SKLabelNode()
     var taptoplayLbl = SKLabelNode()
     var restartBtn = SKSpriteNode()
+    var backBtn = SKSpriteNode()
     var pauseBtn = SKSpriteNode()
     var switchNavigationBtn=SKSpriteNode()
     var navigationLbl=SKSpriteNode()
@@ -31,6 +32,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
     var birdSprites: [SKTexture]=[]
     var bird = SKSpriteNode()
     var repeatActionBird = SKAction()
+    let bgSound=SKAudioNode(fileNamed: "bkSound.mp3")
     
     let data=TeachDataModle()
     var label=SKLabelNode()
@@ -53,7 +55,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches{
             let location = touch.location(in: self)
-            if !switchNavigationBtn.contains(location) && trestart {
+            if !switchNavigationBtn.contains(location) && trestart && !backBtn.contains(location){
                 trestart=false
                 startdedGame()
             }
@@ -104,6 +106,13 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
                     navigationLbl.texture=SKTexture(imageNamed: "touchl")
                 }
             }
+            if backBtn.contains(location){
+                print("-> BACK <-")
+                bgSound.autoplayLooped = false
+//                removeChildren(in: bgSound)
+                let nc = NotificationCenter.default
+                nc.post(name: NSNotification.Name("exitGame"), object: nil)
+            }
             
         }
     }
@@ -116,6 +125,7 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
             createNavigationLable(image: "touchl")
         }
     }
+    
     func animateBackground(){
         sensor.startBackgroound()
         enumerateChildNodes(withName: "logo", using: ({
@@ -148,6 +158,10 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
             
             logoImg.run(SKAction.scale(to: 0.5, duration: 0.0), completion: {
                 self.logoImg.removeFromParent()
+                self.backBtn.removeFromParent()
+            })
+            restartBtn.run(SKAction.scale(to: 0.5, duration: 0.0), completion:{
+                
             })
             taptoplayLbl.removeFromParent()
             self.bird.run(repeatActionBird)
@@ -262,10 +276,11 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
         highscoreLbl=createHighscoreLabel()
         self.addChild(highscoreLbl)
         createLogo()
+        createBackBtn()
         taptoplayLbl = createTaptoplayLabel()
         self.addChild(taptoplayLbl)
         self.createLeben()
-        let bgSound=SKAudioNode(fileNamed: "bkSound.mp3")
+//        bgSound=SKAudioNode(fileNamed: "bkSound.mp3")
         bgSound.autoplayLooped=true
         setNavigationButton()
         addChild(bgSound)

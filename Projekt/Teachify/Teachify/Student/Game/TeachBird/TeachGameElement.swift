@@ -215,6 +215,15 @@ extension TeachGameScene{
         navigationLbl.zPosition = 6
         self.addChild(navigationLbl)
     }
+    func createBackBtn() {
+        backBtn = SKSpriteNode(imageNamed: "back")
+        backBtn.size = CGSize(width:150, height:150)
+        backBtn.position = CGPoint(x: 100, y: self.frame.midY - 300)
+        backBtn.zPosition = 6
+        backBtn.setScale(0)
+        self.addChild(backBtn)
+        backBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+    }
 }
 
 class TeachGameElement: SKScene {
