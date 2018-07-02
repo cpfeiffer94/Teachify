@@ -18,6 +18,10 @@ class ClassesCollectionViewDelegate: CenteredCollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //super.collectionView(collectionView, didSelectItemAt: indexPath)
-        delegate.didChangeClassIndex(to: indexPath.item)
+        //if let _ = collectionView.cellForItem(at: indexPath) as? ClassCell{
+            delegate.didChangeClassIndex(to: indexPath.item)
+        //}
     }
+    
+
 }

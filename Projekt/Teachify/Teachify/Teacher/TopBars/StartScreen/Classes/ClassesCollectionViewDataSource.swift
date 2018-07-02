@@ -8,7 +8,27 @@
 
 import UIKit
 
-class ClassesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+
+
+class ClassesCollectionViewDataSource: NSObject, UICollectionViewDataSource, CellMenuDelegate {
+    var collectionView: UICollectionView!
+    
+    func delete(cell: UICollectionViewCell) {
+        var ctrl = TKClassController()
+        ctrl.initialize(withRank: .teacher) { [unowned self] (_) in
+            if let indexPath = self.collectionView.indexPath(for: cell){
+                let aClass = TKModelSingleton.sharedInstance.downloadedClasses.remove(at: indexPath.item)
+                DispatchQueue.main.async{
+                    ctrl.delete(tkClass: aClass, completion: { (error) in
+                        DispatchQueue.main.async{
+                            self.collectionView.deleteItems(at: [indexPath])
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -19,6 +39,8 @@ class ClassesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         if indexPath.item != collectionView.numberOfItems(inSection: 0)-1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ClassCell
+            self.collectionView = collectionView
+            cell?.delegate = self
             cell?.className.text = TKModelSingleton.sharedInstance.downloadedClasses[indexPath.item].name
            return cell!
         }

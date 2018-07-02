@@ -77,13 +77,13 @@
 		404CDA8D208623B9001FEA15 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */; };
 		404CDA8F20862962001FEA15 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */; };
 		407E59E520A9A081007EFA8B /* AddExerciseFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */; };
+		407EAA6B20DB9545003E9678 /* FHHSwiftyBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EAA6A20DB9545003E9678 /* FHHSwiftyBehaviour.swift */; };
 		4089CE4120B5AB5500161A4C /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4020B5AB5500161A4C /* BaseOperation.swift */; };
 		4089CE4320B5AB7600161A4C /* ClassOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4220B5AB7600161A4C /* ClassOperation.swift */; };
 		4089CE4520B5ABE600161A4C /* SubjectOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4420B5ABE600161A4C /* SubjectOperation.swift */; };
 		4089CE4720B5ABFD00161A4C /* DocumentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4620B5ABFD00161A4C /* DocumentOperation.swift */; };
 		4089CE4920B5AC1600161A4C /* ExerciseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4820B5AC1600161A4C /* ExerciseOperation.swift */; };
 		4089CE5020B84A9200161A4C /* SubjectCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089CE4F20B84A9200161A4C /* SubjectCollectionViewDelegate.swift */; };
-		40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A773C8209B254D0030D1FE /* CloudKit.framework */; };
 		40A773CE209B3CF30030D1FE /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773CC209B3CF30030D1FE /* SegmentCell.swift */; };
 		40A773CF209B3CF30030D1FE /* SegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A773CD209B3CF30030D1FE /* SegmentCell.xib */; };
 		40A773D1209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A773D0209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift */; };
@@ -97,6 +97,9 @@
 		40AAF69A20848FB8008A45A7 /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */; };
 		40AAF69C2084AA22008A45A7 /* SegmentedControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */; };
 		40AAF69E2084AC18008A45A7 /* RoundAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */; };
+		40B295D720D7CD57002AA9C4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B295D620D7CD57002AA9C4 /* CloudKit.framework */; };
+		40B295DB20D7CDF1002AA9C4 /* FHHBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B295DA20D7CDF1002AA9C4 /* FHHBehaviour.m */; };
+		40B295E020D7D344002AA9C4 /* FHHTextValidationBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B295DF20D7D344002AA9C4 /* FHHTextValidationBehaviour.m */; };
 		40D02C8A20D7B7B900AC8AD5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D02C8920D7B7B900AC8AD5 /* ShareViewController.swift */; };
 		40D02C8D20D7B7B900AC8AD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40D02C8B20D7B7B900AC8AD5 /* MainInterface.storyboard */; };
 		40D02C9120D7B7B900AC8AD5 /* Sharing.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 40D02C8720D7B7B900AC8AD5 /* Sharing.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -274,13 +277,13 @@
 		404CDA8C208623B9001FEA15 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		404CDA8E20862962001FEA15 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		407E59E420A9A080007EFA8B /* AddExerciseFirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseFirstScreenViewController.swift; sourceTree = "<group>"; };
+		407EAA6A20DB9545003E9678 /* FHHSwiftyBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FHHSwiftyBehaviour.swift; sourceTree = "<group>"; };
 		4089CE4020B5AB5500161A4C /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		4089CE4220B5AB7600161A4C /* ClassOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassOperation.swift; sourceTree = "<group>"; };
 		4089CE4420B5ABE600161A4C /* SubjectOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectOperation.swift; sourceTree = "<group>"; };
 		4089CE4620B5ABFD00161A4C /* DocumentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentOperation.swift; sourceTree = "<group>"; };
 		4089CE4820B5AC1600161A4C /* ExerciseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseOperation.swift; sourceTree = "<group>"; };
 		4089CE4F20B84A9200161A4C /* SubjectCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		40A773C8209B254D0030D1FE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40A773CC209B3CF30030D1FE /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		40A773CD209B3CF30030D1FE /* SegmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentCell.xib; sourceTree = "<group>"; };
 		40A773D0209B5C670030D1FE /* ExcerciseCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +297,12 @@
 		40AAF69920848FB8008A45A7 /* AddExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		40AAF69B2084AA22008A45A7 /* SegmentedControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlHeaderView.swift; sourceTree = "<group>"; };
 		40AAF69D2084AC18008A45A7 /* RoundAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundAddCell.swift; path = Teachify/Teacher/TopBars/StartScreen/RoundAddCell.swift; sourceTree = SOURCE_ROOT; };
+		40B295D620D7CD57002AA9C4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		40B295D920D7CDF0002AA9C4 /* Teachify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teachify-Bridging-Header.h"; sourceTree = "<group>"; };
+		40B295DA20D7CDF1002AA9C4 /* FHHBehaviour.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FHHBehaviour.m; sourceTree = "<group>"; };
+		40B295DC20D7CE36002AA9C4 /* FHHBehaviour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHHBehaviour.h; sourceTree = "<group>"; };
+		40B295DD20D7D1E1002AA9C4 /* FHHTextValidationBehaviour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHHTextValidationBehaviour.h; sourceTree = "<group>"; };
+		40B295DF20D7D344002AA9C4 /* FHHTextValidationBehaviour.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FHHTextValidationBehaviour.m; sourceTree = "<group>"; };
 		40D02C8720D7B7B900AC8AD5 /* Sharing.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sharing.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		40D02C8920D7B7B900AC8AD5 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		40D02C8C20D7B7B900AC8AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -393,7 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7946FC8F4F1A8A729AE3BD17 /* Pods_Teachify.framework in Frameworks */,
-				40A773C9209B254D0030D1FE /* CloudKit.framework in Frameworks */,
+				40B295D720D7CD57002AA9C4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +557,7 @@
 		33FA51978547303283D73F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40A773C8209B254D0030D1FE /* CloudKit.framework */,
+				40B295D620D7CD57002AA9C4 /* CloudKit.framework */,
 				42B49DA43F1A766D32C3996B /* Pods_Teachify.framework */,
 				8EEC6EF6F522B52BCC0D3676 /* Pods_TeachifyTests.framework */,
 				2AA801A873A2A9D93CAE25BA /* Pods_TeachifyUITests.framework */,
@@ -732,6 +741,19 @@
 			path = ExcerciseCollectionView;
 			sourceTree = "<group>";
 		};
+		40B295D820D7CD9B002AA9C4 /* Behaviours */ = {
+			isa = PBXGroup;
+			children = (
+				40B295DC20D7CE36002AA9C4 /* FHHBehaviour.h */,
+				40B295DA20D7CDF1002AA9C4 /* FHHBehaviour.m */,
+				40B295D920D7CDF0002AA9C4 /* Teachify-Bridging-Header.h */,
+				40B295DD20D7D1E1002AA9C4 /* FHHTextValidationBehaviour.h */,
+				40B295DF20D7D344002AA9C4 /* FHHTextValidationBehaviour.m */,
+				407EAA6A20DB9545003E9678 /* FHHSwiftyBehaviour.swift */,
+			);
+			path = Behaviours;
+			sourceTree = "<group>";
+		};
 		40D02C8820D7B7B900AC8AD5 /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +920,7 @@
 		AA7415F920A05AFF0092B664 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				40B295D820D7CD9B002AA9C4 /* Behaviours */,
 				4035E3F620D287C300237DDD /* Views */,
 				4008235920CE7F1900B5A39A /* GameModels */,
 				AA8229D420888BC30018AB0E /* TKModelSingleton.swift */,
@@ -1042,6 +1065,7 @@
 					};
 					AA12AF6B207615170090404A = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1254,6 +1278,7 @@
 				AA8229D520888BC30018AB0E /* TKModelSingleton.swift in Sources */,
 				AA8229FF20888D3A0018AB0E /* RandomQuestionGenerator.swift in Sources */,
 				175A7DE920D2A09A00383EFA /* CustomAlertViewController.swift in Sources */,
+				40B295DB20D7CDF1002AA9C4 /* FHHBehaviour.m in Sources */,
 				0FBA793B2085F80400D20807 /* (null) in Sources */,
 				0F999DEA207B4D7900FF5542 /* TKColor.swift in Sources */,
 				AA8229E620888C260018AB0E /* TKLeaderboardController.swift in Sources */,
@@ -1276,6 +1301,7 @@
 				AA8229F520888C560018AB0E /* ResultScene.swift in Sources */,
 				0FF2A56220A1589500486CAC /* TKSolution.swift in Sources */,
 				17FA67A42091F90D009BC753 /* ProfileViewController.swift in Sources */,
+				40B295E020D7D344002AA9C4 /* FHHTextValidationBehaviour.m in Sources */,
 				17C279C120E510BD00A9B389 /* MathModel.swift in Sources */,
 				0F999DE5207B4D7900FF5542 /* TKLeaderboardEntry.swift in Sources */,
 				40AAF69020824E3E008A45A7 /* SubjectCollectionView.swift in Sources */,
@@ -1292,6 +1318,7 @@
 				4047BFDC207FAC6F00A0C076 /* SubjectCollectionViewDataSource.swift in Sources */,
 				17228957209B465D00BC116C /* PupilStatisticsTableViewDelegate.swift in Sources */,
 				402183062091E4B000DF772D /* ClassesCollectionViewDataSource.swift in Sources */,
+				407EAA6B20DB9545003E9678 /* FHHSwiftyBehaviour.swift in Sources */,
 				4047BFDF207FAC6F00A0C076 /* ClassesCollectionViewDelegate.swift in Sources */,
 				3D08013520DD02FF00D7391C /* TeachGameScene.swift in Sources */,
 				AA822A0320888D6B0018AB0E /* GameCardCell.swift in Sources */,
@@ -1586,6 +1613,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FM446M8BR4;
@@ -1597,6 +1625,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Teachify/Shared/Behaviours/Teachify-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1608,6 +1638,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Teachify/Teachify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FM446M8BR4;
@@ -1619,6 +1650,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "iosapps.hof-university.teachify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Teachify/Shared/Behaviours/Teachify-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

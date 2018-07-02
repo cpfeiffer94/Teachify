@@ -6,9 +6,9 @@
 //  Copyright © 2018 Christian Pfeiffer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol CustomAlertViewDelegate {
-    func okButtonTapped( textFieldValue: String, with caller : CustomAlertViewCallers)
+    func okButtonTapped( textFieldValue: String, subjectColor: TKColor, with caller : CustomAlertViewCallers)
     func cancelButtonTapped()
 }

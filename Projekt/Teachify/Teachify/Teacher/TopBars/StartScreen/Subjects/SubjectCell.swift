@@ -10,6 +10,28 @@ import UIKit
 
 class SubjectCell: UICollectionViewCell {
     
+    
+    var delegate : CellMenuDelegate?
+    
+    private func setupGestureRecognizer(){
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(openMenu(_:)))
+        gestureRecognizer.minimumPressDuration = 1.0
+        self.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc private func openMenu(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .began {
+            let actionSheet = UIAlertController(title: "Aktionen", message: "Wollen Sie die Klasse wirklich löschen?", preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: "Löschen", style: .destructive, handler: { [unowned self] (action) in
+                self.delegate?.delete(cell: self)
+            }))
+            
+            actionSheet.popoverPresentationController?.sourceView = contentView
+            actionSheet.popoverPresentationController?.sourceRect=contentView.frame
+            UIApplication.shared.keyWindow?.visibleViewController()?.present(actionSheet, animated: true, completion: nil)
+        }
+    }
+    
     let background : UIView = {
         let view = UIView()
         view.layer.masksToBounds = false
@@ -34,6 +56,7 @@ class SubjectCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        setupGestureRecognizer()
     }
     
     func setup(with subject : TKSubject){
