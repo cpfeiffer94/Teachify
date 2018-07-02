@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum TKExerciseType {
     case mathpiano
@@ -35,6 +36,22 @@ enum TKExerciseType {
         case "FeedMe": self = .feedme
         case "TeachBird": self = .teachbird
         default: return nil
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .mathpiano: return "Finde die richtige Lösung bevor die Welle deine Badesachen wegspült."
+        case .feedme: return "Füttere den süßen Drachen mit den Matheaufgaben, damit er groß und stark wird."
+        case .teachbird: return "Leite den kleinen Teachbird durch richtigen Englischaufgaben"
+        }
+    }
+    
+    var icon: UIImage {
+        switch self {
+        case .mathpiano: return #imageLiteral(resourceName: "FeedMe-Drache")
+        case .feedme: return #imageLiteral(resourceName: "FeedMe-Drache")
+        case .teachbird: return #imageLiteral(resourceName: "FeedMe-Drache")
         }
     }
     

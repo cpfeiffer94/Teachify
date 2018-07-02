@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GameLaunchController : NSObject {
+class GameController : NSObject {
     
     //    Instanzen der Spiel ViewController
     var mathpianoVC  = MathPianoGameViewController()
@@ -25,11 +25,25 @@ class GameLaunchController : NSObject {
     func getViewControllerForGame(game : TKExerciseType) -> UIViewController {
         switch game {
         case .mathpiano:
+            mathpianoVC = MathPianoGameViewController()
             return mathpianoVC
         case .feedme:
+            feedmeVC = FeedMeViewController()
             return feedmeVC
         case .teachbird:
+            teachBirdVC = TeachBirdViewController()
             return teachBirdVC
+        }
+    }
+    
+    func setExercisesForGame(game: TKExerciseType, exercises: [TKExercise]){
+        switch game {
+        case .mathpiano:
+            mathPianoCtrl.setExercises(exercises: exercises)
+        case .feedme:
+            feedmeCtrl.setExercises(exercises: exercises)
+        case .teachbird:
+            teachbirdCtrl.setExercises(exercises: exercises)
         }
     }
     
