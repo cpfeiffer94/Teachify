@@ -43,7 +43,10 @@ class SubjectCollectionView: UIView, ItemSelectedCallback {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+        
+     
     }
+    
     
     func setup() {
         delegate?.callback = self

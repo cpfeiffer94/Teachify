@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import ObjectiveC
 
 class TeacherMainViewController: UIViewController, CVIndexChanged {
 
@@ -15,7 +16,8 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let             dataSource = ClassesCollectionViewDataSource()
     @objc var       delegate : ClassesCollectionViewDelegate!
     var             titleView : UILabel!
-    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    var             loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    private var     currentSelectedSubject = 0
     
     
     private var selectedClassIndex : Int = 0
@@ -37,6 +39,22 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         titleView.textAlignment = .center
         navigationItem.titleView = titleView
         navigationController?.navigationBar.barTintColor = .barBlue
+        
+        //test
+        //convert self to unmanaged object
+        let anUnmanaged = Unmanaged<TeacherMainViewController>.passUnretained(self)
+        //get raw data pointer
+        let opaque = anUnmanaged.toOpaque()
+        //convert to Mutable to match Swift safe type check
+        let voidSelf = UnsafeMutableRawPointer(opaque)
+        
+        objc_setAssociatedObject(self, voidSelf, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        
+        
+        
+        //END TEST
+        
         
 //        CKContainer.default().fetchUserRecordID { (recordId, error) in
 //            if let error = error {
@@ -60,6 +78,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         classesCollectionView.dataSource = dataSource
         delegate = ClassesCollectionViewDelegate(delegate: self)
         classesCollectionView.delegate = delegate
+        classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
         
         subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
         subjectCollectionView.delegate = subjectDelegate
@@ -76,6 +95,10 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         }
     
         
+    }
+    
+    override func delete(_ sender: Any?){
+        print("Delete registered")
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -101,19 +124,6 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-       // if keyPath == #keyPath(delegate.selectedIndex) {
-            print("Changed Index")
-       //     subjectCollectionView.dataSource.selectedClass = delegate.selectedIndex
-            TKModelSingleton.sharedInstance.downloadedClasses[0].subjects.append(TKSubject(name: "A Test name", color: TKColor.yellow))
-            //subjectCollectionView.collectionView.reloadData()
-            subjectCollectionView.collectionView.insertItems(at: [IndexPath(row: 1, section: 0)])
-            subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
-            subjectCollectionView.collectionView.layoutIfNeeded()
-            subjectCollectionView.didSelectItem(at: 0)
-      //  }
-    }
-    
     func didChangeClassIndex(to: Int) {
         print("changed Index")
         subjectCollectionView.dataSource.selectedClass = to
@@ -131,11 +141,9 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     
     private func openCustomAlertView(for caller : CustomAlertViewCallers){
         let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController
-        customAlert.caller = caller
-        customAlert.providesPresentationContextTransitionStyle = true
-        customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        customAlert.caller = caller
         customAlert.delegate = self
         self.present(customAlert, animated: true, completion: nil)
     }
@@ -143,6 +151,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     func didChangeSubjectIndex(to: Int) {
         print("Changed subject Index")
         excerciseDataSource.selectedSubject = to
+        currentSelectedSubject = to
         excerciseCollectionView.reloadData()
         if to == TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex].subjects.count + 1{
             openCustomAlertView(for: .tkSubject)
@@ -179,11 +188,11 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         classesCollectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.layoutIfNeeded()
-        subjectCollectionView.didSelectItem(at: 0)
+        subjectCollectionView.didSelectItem(at: currentSelectedSubject)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        subjectCollectionView.didSelectItem(at: 0)
+        subjectCollectionView.didSelectItem(at: currentSelectedSubject)
         UIView.animate(withDuration: 0.3) { [unowned self] in
             self.titleView.transform = CGAffineTransform(scaleX: 2, y: 2)
         }
@@ -212,12 +221,12 @@ extension TeacherMainViewController : CustomAlertViewDelegate{
         return
     }
     
-    func okButtonTapped(textFieldValue: String, with caller: CustomAlertViewCallers) {
+    func okButtonTapped(textFieldValue: String, subjectColor: TKColor, with caller: CustomAlertViewCallers) {
         switch caller {
         case .tkClass:
             uploadClass(with: textFieldValue)
         case .tkSubject:
-            uploadSubject(with: textFieldValue)
+            uploadSubject(with: textFieldValue, color: subjectColor)
         }
     }
     
@@ -232,12 +241,13 @@ extension TeacherMainViewController : CustomAlertViewDelegate{
                 print(error)
             }else{
                 print("okButtonPressed: \(uploadedClass!)")
+                
             }
         }
     }
     
-    private func uploadSubject(with subjectName : String){
-        let newSubject = TKSubject(name: subjectName, color: .red)
+    private func uploadSubject(with subjectName : String, color: TKColor){
+        let newSubject = TKSubject(name: subjectName, color: color)
         var subjectCtrl = TKSubjectController()
         subjectCtrl.initialize(withRank: .teacher) { (success) in
             return

@@ -32,7 +32,7 @@ class AddSubjectReuseableCell: UICollectionViewCell {
     
     override var isHighlighted: Bool{
         didSet{
-            alpha = isSelected ? 1 : 0.5
+            alpha = isHighlighted ? 1 : 0.5
         }
     }
     

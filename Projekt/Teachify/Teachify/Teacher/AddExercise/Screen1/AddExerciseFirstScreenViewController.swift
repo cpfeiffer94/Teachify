@@ -61,6 +61,7 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
         addExerciseFirstScreenCollectionView.delegate   = subjectCollectionViewDelegate
         addExerciseFirstScreenCollectionView.dataSource = subjectCollectionViewDataSource
         
+        
         operationPickerViewDelegate     = OperationPickerViewDelegate()
         operationPickerViewDataSource   = OperationPickerViewDataSource()
         pickerView.delegate             = operationPickerViewDelegate
@@ -71,8 +72,10 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
         gameCollectionView.delegate     = gameCollectionViewDelegate
         gameCollectionView.dataSource   = gameCollectionViewDataSource
         
+        
         subjectCollectionViewDelegate.delegate = self
     }
+    
     
     func didChangeSubject(to subject: TKSubject) {
         operationPickerViewDataSource.selectedSubject = subject
@@ -100,7 +103,14 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
         }
     }
     
-    
+    override func viewWillLayoutSubviews() {
+        gameCollectionView.collectionViewLayout.invalidateLayout()
+        gameCollectionView.layoutIfNeeded()
+        addExerciseFirstScreenCollectionView.collectionViewLayout.invalidateLayout()
+        addExerciseFirstScreenCollectionView.layoutIfNeeded()
+        addExerciseFirstScreenCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        gameCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+    }
     
     
 }

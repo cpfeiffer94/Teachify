@@ -18,6 +18,9 @@ class CustomAlertViewController : UIViewController{
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButtonView: UIView!
     @IBOutlet weak var saveButtonView: UIView!
+    @IBOutlet var testOutlet: FHHSwiftyLengthRule!
+    @IBOutlet var heightConstraint: NSLayoutConstraint!
+    @IBOutlet var subjectType: UISegmentedControl!
     
     var delegate: CustomAlertViewDelegate?
     var caller : CustomAlertViewCallers!
@@ -25,7 +28,13 @@ class CustomAlertViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         alertTextField.becomeFirstResponder()
+        self.providesPresentationContextTransitionStyle = true
+        self.definesPresentationContext = true
+        
     }
+    
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,12 +47,13 @@ class CustomAlertViewController : UIViewController{
         view.layoutIfNeeded()
     }
     
+    
     func setupView(){
         createCornerRadius()
         setupText()
         view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         alertTextField.tintColor = UIColor.black
-    }
+        }
     
     func animateView(){
         alertView.alpha = 0
@@ -65,11 +75,23 @@ class CustomAlertViewController : UIViewController{
     
     @IBAction func onSaveCancelButton(_ sender: Any) {
         alertTextField.resignFirstResponder()
-        delegate?.okButtonTapped(textFieldValue: alertTextField.text!,with: caller)
+        let color = getSelectedColor()
+        delegate?.okButtonTapped(textFieldValue: alertTextField.text!, subjectColor: color,with: caller)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
+    private func getSelectedColor() -> TKColor {
+        switch subjectType.selectedSegmentIndex {
+        case 0: return .mathBlue
+        case 1: return .teacherRed
+        default:
+            return TKColor.black
+        }
+    }
+    
     private func createCornerRadius(){
+        alertView.layer.masksToBounds = true
         alertView.layer.cornerRadius = 15
         let path = UIBezierPath(roundedRect:cancelButtonView.bounds,
                                 byRoundingCorners:[.bottomLeft],
@@ -90,6 +112,7 @@ class CustomAlertViewController : UIViewController{
     }
     
     private func setupText(){
+        guard let caller = caller else {return}
         switch caller {
         case .tkSubject:
             titleLabel.text = "Create a new subject"
@@ -97,8 +120,8 @@ class CustomAlertViewController : UIViewController{
         case .tkClass:
             titleLabel.text = "Create a new class"
             descriptionLabel.text = "Enter class name"
-        default:
-            return
+            heightConstraint.constant = 0
+            subjectType.isHidden = true
         }
     }
 }
