@@ -15,6 +15,7 @@ class MathExerciseViewController: UIViewController {
     @IBOutlet weak var countExercisePickerView: UIPickerView!
     @IBOutlet weak var negativeResultsSwitch: UISwitch!
     @IBOutlet weak var exerciseName: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     //MARK: Private Properties
     
@@ -49,10 +50,6 @@ class MathExerciseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func createMathExercise(_ sender: Any) {
-        createRandomExercises()
-    }
-    
     private func createRandomExercises(){
         let lower = rangeDataSourceDelegate.from
         let upper = rangeDataSourceDelegate.to
@@ -67,8 +64,8 @@ class MathExerciseViewController: UIViewController {
     }
     
     private func addExercise(from lower : Int, to upper : Int){
-        let firstNumber = createRandomNumber(from: lower, to: upper)
-        let secondNumber = createRandomNumber(from: lower, to: upper)
+        var firstNumber = createRandomNumber(from: lower, to: upper)
+        var secondNumber = createRandomNumber(from: lower, to: upper)
         
         switch selectedOperation{
         case "Add":
@@ -84,9 +81,11 @@ class MathExerciseViewController: UIViewController {
             let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "*", correctAnswer: (firstNumber*secondNumber), falseAnswers: falseAnswers)
             mathExercises.append(exercise)
         case "Divide":
-            let falseAnswers = createFalseAnswers(from: firstNumber/secondNumber)
-            let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "/", correctAnswer: (firstNumber/secondNumber), falseAnswers: falseAnswers)
-            mathExercises.append(exercise)
+            while firstNumber < secondNumber{
+                firstNumber = createRandomNumber(from: lower, to: upper)
+                secondNumber = createRandomNumber(from: lower, to: upper)
+            }
+            calculateDivideResult(firstNumber, secondNumber)
         default:
             let falseAnswers = createFalseAnswers(from: firstNumber+secondNumber)
             let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "+", correctAnswer: (firstNumber+secondNumber), falseAnswers: falseAnswers)
@@ -113,6 +112,14 @@ class MathExerciseViewController: UIViewController {
         return randomToPass
     }
     
+    private func calculateDivideResult(_ firstNumber: Int, _ secondNumber : Int){
+        let roundedResult = Int(firstNumber/secondNumber)
+        let newFirstNumber = roundedResult * secondNumber
+        let falseAnswers = createFalseAnswers(from: roundedResult)
+        let exercise = MathModel(firstNumber: newFirstNumber, secondNumber: secondNumber, operation: "/", correctAnswer: roundedResult, falseAnswers: falseAnswers)
+        mathExercises.append(exercise)
+    }
+    
     private func uploadDocument(){
         var doc = TKDocument(name: exerciseName.text!, deadline: nil)
         
@@ -121,7 +128,7 @@ class MathExerciseViewController: UIViewController {
         for (i,exercise) in mathExercises.enumerated() {
             let data = try! JSONEncoder().encode(exercise)
             let dataString = String(data: data, encoding: .utf8)!
-            var exercise = TKExercise(name: "\(doc.name)\(i)", deadline: nil, type: selectedGame, data: dataString)
+            var exercise = TKExercise(name: "\(doc.name)\(i)", deadline: datePicker.date, type: selectedGame, data: dataString)
             exercises.append(exercise)
         }
         
@@ -168,6 +175,10 @@ class MathExerciseViewController: UIViewController {
     
     @IBAction func changedNegativeResultsAllowed(_ sender: Any) {
         setupRangeDataSourceDelegate()
+    }
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        createRandomExercises()
     }
     /*
     // MARK: - Navigation
