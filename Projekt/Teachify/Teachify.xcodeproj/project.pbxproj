@@ -130,7 +130,7 @@
 		AA6A068D20761F6500C9420E /* StudentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */; };
 		AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */; };
 		AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6A0692207A617C00C9420E /* StudenMainMenuViewController.swift */; };
-		AA7415F4209F5D400092B664 /* GameLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F3209F5D400092B664 /* GameLaunchController.swift */; };
+		AA7415F4209F5D400092B664 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F3209F5D400092B664 /* GameController.swift */; };
 		AA7415F6209F67290092B664 /* MathPainoExerciseSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7415F5209F67290092B664 /* MathPainoExerciseSingleton.swift */; };
 		AA7F31C1208DE6460012C383 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F31C0208DE6460012C383 /* NotificationNameExtension.swift */; };
 		AA8229D520888BC30018AB0E /* TKModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8229D420888BC30018AB0E /* TKModelSingleton.swift */; };
@@ -338,7 +338,7 @@
 		AA6A068C20761F6500C9420E /* StudentStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudentStoryboard.storyboard; sourceTree = "<group>"; };
 		AA6A068E20761FA700C9420E /* StudentStoyboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStoyboardID.swift; sourceTree = "<group>"; };
 		AA6A0692207A617C00C9420E /* StudenMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudenMainMenuViewController.swift; sourceTree = "<group>"; };
-		AA7415F3209F5D400092B664 /* GameLaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLaunchController.swift; sourceTree = "<group>"; };
+		AA7415F3209F5D400092B664 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		AA7415F5209F67290092B664 /* MathPainoExerciseSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPainoExerciseSingleton.swift; sourceTree = "<group>"; };
 		AA7F31C0208DE6460012C383 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		AA8229D420888BC30018AB0E /* TKModelSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TKModelSingleton.swift; sourceTree = "<group>"; };
@@ -484,7 +484,7 @@
 				3D08012920DD02CB00D7391C /* TeachBird */,
 				AA60B0D920A3248500FF2AB4 /* FeedMe */,
 				D4DE8D052099EA6A005C2A33 /* PianoGame */,
-				AA7415F3209F5D400092B664 /* GameLaunchController.swift */,
+				AA7415F3209F5D400092B664 /* GameController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -1238,7 +1238,7 @@
 				AACA0E8120E02B3700853A74 /* GameDetailListDataSource.swift in Sources */,
 				AA6A068F20761FA700C9420E /* StudentStoyboardID.swift in Sources */,
 				AACA0E7A20E0140F00853A74 /* FeedMeExerciseSingleton.swift in Sources */,
-				AA7415F4209F5D400092B664 /* GameLaunchController.swift in Sources */,
+				AA7415F4209F5D400092B664 /* GameController.swift in Sources */,
 				3D08013420DD02FF00D7391C /* TeachGameElement.swift in Sources */,
 				AAA446F220C8309B00481CDD /* QR_ScannerViewController.swift in Sources */,
 				AA6A0693207A617C00C9420E /* StudenMainMenuViewController.swift in Sources */,

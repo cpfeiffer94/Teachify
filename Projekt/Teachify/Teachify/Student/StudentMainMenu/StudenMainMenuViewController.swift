@@ -21,7 +21,7 @@ class StudentMainMenuViewController: UIViewController {
     let collectionDS = GameCollectionDataSource()
     let collectionDel = GameCollectionDelegate()
     let tkfetchctrl = TKFetchController()
-    let gamecontroller = GameLaunchController()
+    let gamecontroller = GameController()
     let tkusrctrlr = TKUserProfileController()
     let loadingIndicator = ProgressIndicatorView(msg: "Downloading...")
     
@@ -135,9 +135,8 @@ class StudentMainMenuViewController: UIViewController {
                 self.present(gameVC,animated: true)
             }
         }
-            
-        
     }
+    
     @IBAction func reloadButtonAction(_ sender: Any) {
         reloadTKContent()
     }
