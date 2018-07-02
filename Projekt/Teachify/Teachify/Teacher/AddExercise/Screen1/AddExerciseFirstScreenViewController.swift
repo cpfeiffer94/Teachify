@@ -104,7 +104,7 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
                 destVC.selectedClass        = selectedClass
                 destVC.selectedSubject      = selectedClass.subjects[indexPath.item]
                 destVC.selectedGame         = TKExerciseType.allExerciseTypes[(gameCollectionView.indexPathsForSelectedItems?.first?.row)!]
-                destVC.selectedOperation    = operationPickerViewDataSource.getSelectedOperations()[0]
+                destVC.selectedOperation    = operationPickerViewDataSource.selectedOperation
             }
             
         default:

@@ -74,9 +74,23 @@ class MathExerciseViewController: UIViewController {
         case "Add":
             let falseAnswers = createFalseAnswers(from: firstNumber+secondNumber)
             let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "+", correctAnswer: (firstNumber+secondNumber), falseAnswers: falseAnswers)
-                mathExercises.append(exercise)
+            mathExercises.append(exercise)
+        case "Subtract":
+            let falseAnswers = createFalseAnswers(from: firstNumber-secondNumber)
+            let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "-", correctAnswer: firstNumber-secondNumber, falseAnswers: falseAnswers)
+            mathExercises.append(exercise)
+        case "Multiply":
+            let falseAnswers = createFalseAnswers(from: firstNumber*secondNumber)
+            let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "*", correctAnswer: (firstNumber*secondNumber), falseAnswers: falseAnswers)
+            mathExercises.append(exercise)
+        case "Divide":
+            let falseAnswers = createFalseAnswers(from: firstNumber/secondNumber)
+            let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "/", correctAnswer: (firstNumber/secondNumber), falseAnswers: falseAnswers)
+            mathExercises.append(exercise)
         default:
-            print("Sorry hammer noch net gmacht")
+            let falseAnswers = createFalseAnswers(from: firstNumber+secondNumber)
+            let exercise = MathModel(firstNumber: firstNumber, secondNumber: secondNumber, operation: "+", correctAnswer: (firstNumber+secondNumber), falseAnswers: falseAnswers)
+            mathExercises.append(exercise)
         }
     }
     
