@@ -12,6 +12,7 @@ class SubjectOperation : BaseOperation {
     
     private var subjectCtrl : TKSubjectController = TKSubjectController()
     private var fetchCtrl : TKFetchController = TKFetchController()
+    private var countSubjectsIndex = 0
     
     var classes = [TKClass]()
     
@@ -36,13 +37,15 @@ class SubjectOperation : BaseOperation {
                     let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index { $0.classID == aClass.classID }
                     if let myClassIndex = myClassIndex
                     {
-                        print("myClassIndex: \(myClassIndex)")
+                        print("myClassIndex: \(myClassIndex) Index: \(index)")
                         TKModelSingleton.sharedInstance.downloadedClasses[myClassIndex].append(subjects: fetchedSubjects)
-                        if index == self.classes.count-1{
+                        if self.countSubjectsIndex == self.classes.count-1{
                             print("Fetch subjects finished")
                             self.finish()
                             return
                         }
+                        self.countSubjectsIndex = self.countSubjectsIndex+1
+                        print ("New Idx: \(self.countSubjectsIndex)")
                     }
                 
                 }

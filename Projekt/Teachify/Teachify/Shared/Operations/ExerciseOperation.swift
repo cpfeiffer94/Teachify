@@ -16,7 +16,7 @@ class ExerciseOperation : BaseOperation {
     override init(opRank: TKRank) {
         super.init(opRank: opRank)
         exerciseCtrl.initialize(withRank: opRank) { (succeed) in
-            print("Exercise init --> \(succeed)")
+            print("Exercise init --> \(succeed) as: \(opRank)" )
         }
     }
     
@@ -31,44 +31,44 @@ class ExerciseOperation : BaseOperation {
         
         if operationRank == .teacher {
             for (index,document) in documents.enumerated(){
-            exerciseCtrl.fetchExercises(forDocument: document, withFetchSortOptions: [.name]) { (fetchedExercises, error) in
-                if let error = error {
-                    print("Failed fetching Exercises from TK! Subjects:" + document.name + "with Error Message: \(error)")
-                    self.finish()
-                    return
-                }
-                
-                let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index(where:{ $0.subjects.first?.subjectID == document.subjectID })
-                
-                guard let classIndex = myClassIndex else {
-                    print("ExcerciseOperation/E: guard class Index")
-                    return
-                    
-                }
-                
-                let mySubjectIndex = self.getSubjectIndexInClass(for: document, with: classIndex)
-                
-                guard let subjectIndex = mySubjectIndex else {
-                    print("ExcerciseOperation/E: guard subject Index")
-                    return}
-                
-                let myDocumentIndex = TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents.index(where: {$0.documentID == document.documentID})
-                
-                if let documentIndex = myDocumentIndex
-                {
-                    print("ExerciseOperation exercise set")
-                    TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents[documentIndex].exercises.append(contentsOf: fetchedExercises)
-                    if index == self.documents.count-1{
-                        print("Fetch exercises finished")
+                exerciseCtrl.fetchExercises(forDocument: document, withFetchSortOptions: [.name]) { (fetchedExercises, error) in
+                    if let error = error {
+                        print("Failed fetching Exercises from TK! Subjects:" + document.name + "with Error Message: \(error)")
                         self.finish()
                         return
                     }
+                    
+                    let myClassIndex = TKModelSingleton.sharedInstance.downloadedClasses.index(where:{ $0.subjects.first?.subjectID == document.subjectID })
+                    
+                    guard let classIndex = myClassIndex else {
+                        print("ExcerciseOperation/E: guard class Index")
+                        return
+                        
+                    }
+                    
+                    let mySubjectIndex = self.getSubjectIndexInClass(for: document, with: classIndex)
+                    
+                    guard let subjectIndex = mySubjectIndex else {
+                        print("ExcerciseOperation/E: guard subject Index")
+                        return}
+                    
+                    let myDocumentIndex = TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents.index(where: {$0.documentID == document.documentID})
+                    
+                    if let documentIndex = myDocumentIndex
+                    {
+                        print("ExerciseOperation exercise set")
+                        TKModelSingleton.sharedInstance.downloadedClasses[classIndex].subjects[subjectIndex].documents[documentIndex].exercises.append(contentsOf: fetchedExercises)
+                        if index == self.documents.count-1{
+                            print("Fetch exercises finished")
+                            self.finish()
+                            return
+                        }
+                    }
+                    
+                    
                 }
                 
-                
             }
-            
-        }
         }
         if operationRank == .student {
             for (index,document) in documents.enumerated(){

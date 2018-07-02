@@ -20,7 +20,8 @@ class CloudKitTestViewController: UIViewController {
     var exerciseCtrl: TKExerciseController!
     var sharingCtrl: TKShareController!
     var settingsCtrl = TKSettingsController()
-    var solutionsCtrl: TKSolutionController!
+//    var solutionsCtrl: TKSolutionController!
+    var userCtrl: TKUserProfileController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,34 +41,35 @@ class CloudKitTestViewController: UIViewController {
     func initCtrl(withRank rank: TKRank) {
         classCtrl = TKClassController()
         classCtrl.initialize(withRank: rank) { (succeed) in
-            print("Class init --> \(succeed)")
+            print("Class init --> \(String(describing: succeed))")
         }
         
         teacherCtrl = TKTeacherController()
         teacherCtrl.initialize(withRank: rank) { (succeed) in
-            print("Teacher init --> \(succeed)")
+            print("Teacher init --> \(String(describing: succeed))")
         }
         
         subjectCtrl = TKSubjectController()
         subjectCtrl.initialize(withRank: rank) { (succeed) in
-            print("Subject init --> \(succeed)")
+            print("Subject init --> \(String(describing: succeed))")
         }
         
         documentCtrl = TKDocumentController()
         documentCtrl.initialize(withRank: rank) { (succeed) in
-            print("Document init --> \(succeed)")
+            print("Document init --> \(String(describing: succeed))")
         }
         
         exerciseCtrl = TKExerciseController()
         exerciseCtrl.initialize(withRank: rank) { (succeed) in
-            print("Exercise init --> \(succeed)")
+            print("Exercise init --> \(String(describing: succeed))")
         }
         
-        solutionsCtrl = TKSolutionController()
-        solutionsCtrl.initialize(withRank: rank) { (succeed) in
-            print("Solution init --> \(succeed)")
-        }
+//        solutionsCtrl = TKSolutionController()
+//        solutionsCtrl.initialize(withRank: rank) { (succeed) in
+//            print("Solution init --> \(succeed)")
+//        }
         
+        userCtrl = TKUserProfileController()
         
         sharingCtrl = TKShareController(view: self.view)
     }
@@ -75,7 +77,7 @@ class CloudKitTestViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func shareSubjectAction(_ sender: UIButton) {
-        let subjectNameToShare = "test_cpfeiffer_subject"
+        let subjectNameToShare = "mhTEST_subject"
         shareASubject(subjectName: subjectNameToShare)
     }
     
@@ -162,22 +164,22 @@ class CloudKitTestViewController: UIViewController {
         let tkClass = TKClass(name: className)
         let tkSubject = TKSubject(name: subjectName, color: TKColor.red)
         let tkDocument = TKDocument(name: documentName, deadline: nil)
-        let tkExercise = TKExercise(name: exerciseName, deadline: nil, type: .wordTranslation, data: "Daaaata")
+        let tkExercise = TKExercise(name: exerciseName, deadline: nil, type: .mathpiano, data: "Daaaata")
         
         self.classCtrl.create(tkClass: tkClass) { (createdClass, error) in
-            print("Class Error: \(error)")
+            print("Class Error: \(String(describing: error))")
             guard let createdClass = createdClass else { return }
             
             self.subjectCtrl.add(subject: tkSubject, toTKClass: createdClass, completion: { (createdSubject, error) in
-                print("Subject Error: \(error)")
+                print("Subject Error: \(String(describing: error))")
                 guard let createdSubject = createdSubject else { return }
                 
                 self.documentCtrl.add(document: tkDocument, toSubject: createdSubject, completion: { (createdDocument, error) in
-                    print("Document Error: \(error)")
+                    print("Document Error: \(String(describing: error))")
                     guard let createdDocument = createdDocument else { return }
                     
                     self.exerciseCtrl.create(exercise: tkExercise, toDocument: createdDocument, completion: { (createdExercise, error) in
-                        print("Exercise Error: \(error)")
+                        print("Exercise Error: \(String(describing: error))")
                     })
                     
                 })
@@ -192,7 +194,7 @@ class CloudKitTestViewController: UIViewController {
         let subjectName = "Subject17"
         let documentName = "Document17"
         
-        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .wordTranslation, data: "Hello das ist die Dataaaaaa!")
+        let exercise = TKExercise(name: "Aufgabe17", deadline: nil, type: .mathpiano, data: "Hello das ist die Dataaaaaa!")
         
         classCtrl.fetchClasses { (fetchedClasses, error) in
             
@@ -209,7 +211,7 @@ class CloudKitTestViewController: UIViewController {
                                         if document.name == documentName {
                                             
                                             self.exerciseCtrl.create(exercise: exercise, toDocument: document, completion: { (createdExercise, error) in
-                                                print("error: \(error) -- \(createdExercise?.name)")
+                                                print("error: \(error) -- \(String(describing: createdExercise?.name))")
                                             })
                                             
                                         }
@@ -227,9 +229,9 @@ class CloudKitTestViewController: UIViewController {
     }
     
     func shareASubject(subjectName: String) {
-        
+    
         self.subjectCtrl.fetchSubject { (fetchedSubjects, error) in
-            print("subject error: \(error) -- count: \(fetchedSubjects.count)")
+            print("subject error: \(String(describing: error)) -- count: \(fetchedSubjects.count)")
             for subject in fetchedSubjects {
                 print("sss \(subject.name)")
                 
@@ -237,7 +239,7 @@ class CloudKitTestViewController: UIViewController {
                     self.sharingCtrl.createCloudSharingController(forSubject: subject,
                                                                   withShareOption: TKShareOption.addParticipant,
                                                                   completion: { (sharingViewCtrl, error) in
-                                                                    print("Sharing Errors: \(error)")
+                                                                    print("Sharing Errors: \(String(describing: error))")
                                                                     if let sharingViewCtrl = sharingViewCtrl {
                                                                         self.present(sharingViewCtrl, animated: true)
                                                                     }
@@ -248,4 +250,113 @@ class CloudKitTestViewController: UIViewController {
         }
     }
     
+    @IBAction func solutionTestAction(_ sender: UIButton) {
+//        exerciseCtrl.fetchExercises { (allExercises, error) in
+//            for exercise in allExercises {
+//                print(exercise.name)
+//            }
+//        }
+        
+        print("START")
+        
+        self.exerciseCtrl.fetchExercises { (allExercises, error) in
+            for exercise in allExercises {
+                print(exercise.name)
+            }
+        }
+        
+        print("ENDE")
+    }
+    
+//    func fetchAllSolutions() {
+//        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+//            for solution in allSolutions {
+//                print(solution.userSolution)
+//            }
+//        }
+//    }
+//
+//    func deleteAllSolutions() {
+//        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+//            for solution in allSolutions {
+//                self.solutionsCtrl.delete(solution: solution, completion: { (error) in
+//                    print("solution-delete-error: \(error)")
+//                })
+//            }
+//        }
+//    }
+//
+//    func updateSoltution() {
+//        solutionsCtrl.fetchSolutions { (allSolutions, error) in
+//            for var solution in allSolutions {
+//                solution.userSolution = "Muhahahahahahahaha :)))))))"
+//                self.solutionsCtrl.update(solution: solution, completion: { (updatedSolution, error) in
+//                    print("error: \(error)")
+//                })
+//            }
+//        }
+//    }
+//
+//    func addSolution() {
+//        CKContainer.default().fetchUserRecordID { (userRecordID, error) in
+//            if let userRecordID = userRecordID {
+//                let userID = userRecordID.recordName
+//                let solution = TKSolution(userSolution: "This is my solution :)", status: .correct, owner: userID)
+//                let test2 = TKSolution2(status: .correct, userSolution: "This is my solution :)))))", ownerID: userID)
+//
+//                self.exerciseCtrl.fetchExercises(completion: { (allExercises, error) in
+//                    for var exercise in allExercises {
+//                        if exercise.name == "mhTEST_exercise" {
+//
+//
+//                            exercise.solutions = [test2]
+//
+//                            self.exerciseCtrl.update(exercise: exercise, completion: { (newExercise, error) in
+//                                print("---- > error: \(error) - \(newExercise)")
+//                            })
+//
+//                        }
+//                    }
+//                })
+//
+//            } else {
+//                print("Solution upload error - id fetching failed: \(error)")
+//            }
+//        }
+//    }
+    
+    
+    @IBAction func userProfileAction(_ sender: UIButton) {
+//        userCtrl.fetchUserProfile { (user, error) in
+//            guard var user = user else { return }
+//            user.firstname = "Vorname"
+//            user.lastname = "Nachname"
+//            user.image = UIImage(named: "Inder")
+//
+//            self.userCtrl.update(user: user, completion: { (updatedUser, error) in
+//                print("----> \(updatedUser)")
+//            })
+//
+//        }
+        userCtrl.fetchUserProfile { (user, error) in
+            guard let user = user else { return }
+            DispatchQueue.main.async {
+                self.sharingQRImageView.image = user.image
+                print("image: \(String(describing: user.image))")
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -301,6 +301,20 @@
                                     <action selector="stopSharing:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="rFT-hw-k8b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQr-bh-b6y">
+                                <rect key="frame" x="8" y="472.5" width="752" height="30"/>
+                                <state key="normal" title="Solution Test Action"/>
+                                <connections>
+                                    <action selector="solutionTestAction:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="Ngg-yZ-9gc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9je-Qh-I17">
+                                <rect key="frame" x="8" y="510.5" width="752" height="30"/>
+                                <state key="normal" title="User Profile Action"/>
+                                <connections>
+                                    <action selector="userProfileAction:" destination="j4h-Hl-NbV" eventType="touchUpInside" id="Icw-OO-6S0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -313,20 +327,26 @@
                             <constraint firstItem="9Fk-uM-bX1" firstAttribute="top" secondItem="Cwj-WB-zvu" secondAttribute="bottom" constant="8" id="DCW-jM-Sfj"/>
                             <constraint firstItem="1WJ-Ju-RPf" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="K4Y-qj-wmf"/>
                             <constraint firstItem="rrl-GS-hN7" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="KeR-bQ-7Iv"/>
+                            <constraint firstItem="9je-Qh-I17" firstAttribute="top" secondItem="cQr-bh-b6y" secondAttribute="bottom" constant="8" id="Kfc-QY-pI9"/>
                             <constraint firstItem="1WJ-Ju-RPf" firstAttribute="top" secondItem="6aU-2Y-Gve" secondAttribute="bottom" constant="8" id="MeD-ti-zIY"/>
                             <constraint firstItem="6aU-2Y-Gve" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="Mrl-6o-nlx"/>
                             <constraint firstItem="9Fk-uM-bX1" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="RUl-nz-DJV"/>
                             <constraint firstItem="hya-9O-ekD" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="RzB-aU-3Vt"/>
                             <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="rrl-GS-hN7" secondAttribute="trailing" constant="8" id="SH2-6T-Ab1"/>
                             <constraint firstItem="S3o-4S-a08" firstAttribute="top" secondItem="CZu-Vy-Yn6" secondAttribute="bottom" constant="8" id="SKB-3n-0UR"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="cQr-bh-b6y" secondAttribute="trailing" constant="8" id="Udz-FI-dCZ"/>
                             <constraint firstItem="r0J-gT-Wz4" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="UhE-pO-t5f"/>
+                            <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="9je-Qh-I17" secondAttribute="trailing" constant="8" id="V4s-pV-ksl"/>
                             <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="hya-9O-ekD" secondAttribute="trailing" constant="8" id="VKd-kW-Lr7"/>
                             <constraint firstItem="r0J-gT-Wz4" firstAttribute="top" secondItem="1WJ-Ju-RPf" secondAttribute="bottom" constant="8" id="XTs-Id-wpN"/>
+                            <constraint firstItem="cQr-bh-b6y" firstAttribute="top" secondItem="r0J-gT-Wz4" secondAttribute="bottom" constant="8" id="dtz-pT-eTa"/>
                             <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="r0J-gT-Wz4" secondAttribute="trailing" constant="8" id="eI1-uF-jGS"/>
                             <constraint firstItem="hya-9O-ekD" firstAttribute="top" secondItem="rrl-GS-hN7" secondAttribute="bottom" constant="8" id="lVA-Lr-bO0"/>
                             <constraint firstItem="CZu-Vy-Yn6" firstAttribute="top" secondItem="hya-9O-ekD" secondAttribute="bottom" constant="8" id="pE7-F5-dVQ"/>
                             <constraint firstItem="Cwj-WB-zvu" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="16" id="rgE-fP-qlU"/>
+                            <constraint firstItem="cQr-bh-b6y" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="sg3-oo-sDW"/>
                             <constraint firstItem="S3o-4S-a08" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="tuy-Ld-ebX"/>
+                            <constraint firstItem="9je-Qh-I17" firstAttribute="leading" secondItem="sGF-G3-70A" secondAttribute="leading" constant="8" id="uNh-p1-Vxj"/>
                             <constraint firstItem="Cwj-WB-zvu" firstAttribute="top" secondItem="sGF-G3-70A" secondAttribute="top" id="uum-h2-pJZ"/>
                             <constraint firstItem="6aU-2Y-Gve" firstAttribute="top" secondItem="S3o-4S-a08" secondAttribute="bottom" constant="8" id="xI9-uz-rgh"/>
                             <constraint firstItem="sGF-G3-70A" firstAttribute="trailing" secondItem="6aU-2Y-Gve" secondAttribute="trailing" constant="8" id="xQT-Nf-sWD"/>

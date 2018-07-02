@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-//    private var label : SKLabelNode?
+    //    private var label : SKLabelNode?
     
     var board1 : SKSpriteNode?
     var board2 : SKSpriteNode?
@@ -26,27 +26,29 @@ class GameScene: SKScene {
     var antwort4: SKLabelNode?
     var originalPosition: CGPoint?
     var heart : SKSpriteNode?
-     var heart2 : SKSpriteNode?
-     var heart3 : SKSpriteNode?
+    var heart2 : SKSpriteNode?
+    var heart3 : SKSpriteNode?
     var winning : String?
     var currentAnswer : String?
     var lifes : Int!
+    var gameoverBoard : SKSpriteNode?
+    var backBoard : SKSpriteNode?
     
     var dragonFrames : [SKTexture] = []
     var dragonEvilFrames : [SKTexture]  = []
- 
+    
     
     
     override func didMove(to view: SKView) {
         
-//        // Get label node from scene and store it for use later
-//        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-//        if let label = self.label {
-//            label.alpha = 0.0
-//            label.run(SKAction.fadeIn(withDuration: 2.0))
-//        }
-//
-       
+        //        // Get label node from scene and store it for use later
+        //        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+        //        if let label = self.label {
+        //            label.alpha = 0.0
+        //            label.run(SKAction.fadeIn(withDuration: 2.0))
+        //        }
+        //
+        
         
         self.board1 = self.childNode(withName: "board1") as? SKSpriteNode
         self.board2 = self.childNode(withName: "board2") as? SKSpriteNode
@@ -54,7 +56,7 @@ class GameScene: SKScene {
         self.board4 = self.childNode(withName: "board4") as? SKSpriteNode
         self.question = self.childNode(withName: "question") as? SKSpriteNode
         
-       
+        
         self.heart = self.childNode(withName: "heart")   as? SKSpriteNode
         self.heart2 = self.childNode(withName: "heart2")   as? SKSpriteNode
         self.heart3 = self.childNode(withName: "heart3")   as? SKSpriteNode
@@ -66,7 +68,8 @@ class GameScene: SKScene {
         self.antwort2 = board2?.childNode(withName: "antwort2") as? SKLabelNode
         self.antwort3 = board3?.childNode(withName: "antwort3") as? SKLabelNode
         self.antwort4 = board4?.childNode(withName: "antwort4") as? SKLabelNode
-        
+        self.gameoverBoard = self.childNode(withName: "gameoverBoard") as? SKSpriteNode
+        self.backBoard = self.childNode(withName: "backBoard") as? SKSpriteNode
         lifes = 3
         
         buildDragon()
@@ -74,13 +77,15 @@ class GameScene: SKScene {
         animateDragon()
         
         
-
+        
+        
         
         makeQuiz()
         
         let backgroundMusic = SKAudioNode(fileNamed: "sky-loop.wav")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
+        
         
         
         
@@ -93,35 +98,49 @@ class GameScene: SKScene {
         if let touch = touches.first {
             let location = touch.location(in: self)
             
-            if  (board1?.contains(location))!{
-                movableNode = board1
-                currentAnswer = antwort?.text
-                originalPosition = movableNode?.position
-                movableNode!.position = location
+            if(lifes == -1){
+                gameoverBoard?.isHidden = false
+                backBoard?.isHidden = false
+                if(gameoverBoard?.contains(location))!{
+                    newGame()
+                }
+                if(backBoard?.contains(location))!{
+                    removeFeedMeView()
+                }
+                
+            }else{
+                gameoverBoard?.isHidden = true
+                backBoard?.isHidden = true
+                
+                if  (board1?.contains(location))!{
+                    movableNode = board1
+                    currentAnswer = antwort?.text
+                    originalPosition = movableNode?.position
+                    movableNode!.position = location
+                }
+                if  (board2?.contains(location))!{
+                    movableNode = board2
+                    currentAnswer = antwort2?.text
+                    originalPosition = movableNode?.position
+                    movableNode!.position = location
+                }
+                if  (board3?.contains(location))!{
+                    movableNode = board3
+                    currentAnswer = antwort3?.text
+                    originalPosition = movableNode?.position
+                    movableNode!.position = location
+                }
+                if  (board4?.contains(location))!{
+                    movableNode = board4
+                    currentAnswer = antwort4?.text
+                    originalPosition = movableNode?.position
+                    movableNode!.position = location
+                }
+                
+                
+                run(SKAction.playSoundFileNamed("beeps.wav", waitForCompletion: false))
+                
             }
-            if  (board2?.contains(location))!{
-                movableNode = board2
-                currentAnswer = antwort2?.text
-                originalPosition = movableNode?.position
-                movableNode!.position = location
-            }
-            if  (board3?.contains(location))!{
-                movableNode = board3
-                currentAnswer = antwort3?.text
-                originalPosition = movableNode?.position
-                movableNode!.position = location
-            }
-            if  (board4?.contains(location))!{
-                movableNode = board4
-                currentAnswer = antwort4?.text
-                originalPosition = movableNode?.position
-                movableNode!.position = location
-            }
-            
-            
-           run(SKAction.playSoundFileNamed("beeps.wav", waitForCompletion: false))
-            
-            
         }
     }
     
@@ -129,11 +148,11 @@ class GameScene: SKScene {
         if let touch = touches.first, movableNode != nil {
             movableNode!.position = touch.location(in: self)
             
-            }
-
-            }
-            
+        }
         
+    }
+    
+    
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -146,13 +165,17 @@ class GameScene: SKScene {
                 
                 checkWinning()
                 
+                if(lifes != -1){
+                    makeQuiz()
+                }
+                
             }
             
             movableNode?.position = originalPosition!
             
             
             movableNode = nil
-            makeQuiz()
+            
             
             
             
@@ -163,14 +186,19 @@ class GameScene: SKScene {
             movableNode = nil
         }
     }
-//    Mathe
+    //    Mathe
     
     func makeQuiz(){
+        gameoverBoard?.isHidden = true
+        backBoard?.isHidden = true
         
-        
-        if lifes == -1{
-            newGame()
-        }
+        //        if lifes == -1{
+        //
+        //            gameoverBoard?.isHidden = false
+        //
+        //
+        //
+        //        }
         
         var answerArray = [Int(arc4random_uniform(1001)),Int(arc4random_uniform(1001)),
                            Int(arc4random_uniform(1001)),Int(arc4random_uniform(1001))]
@@ -224,11 +252,17 @@ class GameScene: SKScene {
                 break
             case 0:
                 run(SKAction.playSoundFileNamed("gameOver.wav", waitForCompletion: false))
-
-                lifes = -1
                 
+                lifes = -1
+                antwort?.text = ""
+                antwort2?.text = ""
+                antwort3?.text = ""
+                antwort4?.text = ""
+                frage?.text = "Game Over"
+                gameoverBoard?.isHidden = false
+                backBoard?.isHidden = false
                 break
-              
+                
                 
             default:
                 print("lose")
@@ -244,7 +278,9 @@ class GameScene: SKScene {
     
     func newGame(){
         
-        
+        makeQuiz()
+        gameoverBoard?.isHidden = true
+        backBoard?.isHidden = true
         var actions = Array<SKAction>();
         actions.append(SKAction.wait(forDuration: TimeInterval(0.5)))
         actions.append(SKAction.playSoundFileNamed("newPower.wav", waitForCompletion: false))
@@ -258,8 +294,13 @@ class GameScene: SKScene {
         animateDragon()
         //      run(SKAction.playSoundFileNamed("newPower.wav", waitForCompletion: false))
         
-
         
+        
+    }
+    
+    func removeFeedMeView(){
+        let nc = NotificationCenter.default
+        nc.post(name: NSNotification.Name("exitGame"), object: nil)
     }
     
     func buildDragon(){
@@ -277,7 +318,7 @@ class GameScene: SKScene {
         
         
         
-       
+        
     }
     
     
@@ -297,12 +338,12 @@ class GameScene: SKScene {
     
     func animateDragon() {
         if lifes > 1{
-        dragon?.run(SKAction.repeatForever(
-            SKAction.animate(with: dragonFrames,
-                             timePerFrame: 0.5,
-                             resize: false,
-                             restore: true)),
-                 withKey:"walkingInPlaceDragon")
+            dragon?.run(SKAction.repeatForever(
+                SKAction.animate(with: dragonFrames,
+                                 timePerFrame: 0.5,
+                                 resize: false,
+                                 restore: true)),
+                        withKey:"walkingInPlaceDragon")
             dragon?.xScale = 0.8
         } else {
             dragon?.run(SKAction.repeatForever(
@@ -314,6 +355,8 @@ class GameScene: SKScene {
             dragon?.xScale  = 1.0
         }
     }
+    
+    
     
     
     

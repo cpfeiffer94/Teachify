@@ -16,7 +16,7 @@ struct TKClassController {
     var cloudCtrl: TKGenericCloudController<TKClass>!
     var rank: TKRank!
     
-    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (TKError?) -> ()) {
         self.rank = rank
         
         switch rank {
@@ -24,13 +24,13 @@ struct TKClassController {
             if let recordZone = TKGenericCloudController<TKClass>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
                                                                         forDatabase: CKContainer.default().sharedCloudDatabase) {
                 self.cloudCtrl = TKGenericCloudController<TKClass>(zone: recordZone, database: rank.database)
-                completion(true)
+                completion(nil)
             } else {
-                completion(false)
+                completion(TKError.noSharedData)
             }
         case .teacher:
             cloudCtrl = TKGenericCloudController<TKClass>(zone: CKRecordZone.teachKitZone, database: rank.database)
-            completion(true)
+            completion(nil)
         }
     }
     

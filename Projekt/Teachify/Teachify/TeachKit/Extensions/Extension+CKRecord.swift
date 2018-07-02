@@ -44,6 +44,9 @@ extension CKRecord {
         self[TKExercise.CloudKey.name] = exercise.name as CKRecordValue
         self[TKExercise.CloudKey.data] = exercise.data as CKRecordValue
         self[TKExercise.CloudKey.type] = exercise.type.tkCloudKey as CKRecordValue
+        if let solutionData = try? JSONEncoder().encode(exercise.solutions) {
+            self[TKExercise.CloudKey.solutions] = solutionData as CKRecordValue
+        }
         
         guard let deadline = exercise.deadline else {
             return
@@ -53,15 +56,11 @@ extension CKRecord {
     }
     
 //    convenience init(solution: TKSolution, withRecordZoneID recordZoneID: CKRecordZoneID) {
-//        self.init(recordType: TKCloudKey.RecordType.solutions, zoneID: recordZoneID)
+//        self.init(recordType: TKCloudKey.RecordType.solution, zoneID: recordZoneID)
 //        self[TKSolution.CloudKey.userSolution] = solution.userSolution as CKRecordValue
 //        self[TKSolution.CloudKey.status] = solution.status.tkCloudKey as CKRecordValue
+//        self[TKSolution.CloudKey.ownerID] = solution.ownerID as CKRecordValue
 //    }
-    
-    convenience init(solutionList: TKSolutionList, withRecordZoneID recordZoneID: CKRecordZoneID) {
-        self.init(recordType: TKCloudKey.RecordType.solutionList, zoneID: recordZoneID)
-        self[TKSolutionList.CloudKey.solutions] = solutionList.solutions as CKRecordValue
-    }
     
     convenience init?(cloudObject: TKCloudObject, withRecordZoneID recordZoneID: CKRecordZoneID) {
         if let tkClass = cloudObject as? TKClass {
@@ -74,8 +73,8 @@ extension CKRecord {
             self.init(exercise: exercise, withRecordZoneID: recordZoneID)
         } else if let student = cloudObject as? TKStudent {
             self.init(student: student, withRecordZoneID: recordZoneID)
-        } else if let solutionList = cloudObject as? TKSolutionList {
-            self.init(solutionList: solutionList, withRecordZoneID: recordZoneID)
+//        } else if let solution = cloudObject as? TKSolution {
+//            self.init(solution: solution, withRecordZoneID: recordZoneID)
         } else {
             return nil
         }

@@ -72,7 +72,11 @@ class EnglishVocabularyViewController: UIViewController {
         uploadCtrl.add(document: doc, toSubject: selectedSubject) { (document, error) in
             print(self.selectedSubject)
             exerciseUploadCtrl.create(exercises: exercises, toDocument: document!, completion: { (exercises, error) in
-                print("Upload success")
+                if let newError = error {
+                    print(newError)
+                }else{
+                    print("Upload success")
+                }
             })
         }
 

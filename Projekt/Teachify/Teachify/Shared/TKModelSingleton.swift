@@ -80,7 +80,7 @@ class TKFetchController: NSObject {
 //MARK: Zugriffsschicht
 extension TKFetchController{
     
-    /* For Queries in the already fetched Model */
+    /* For Class Queries in the already fetched Model */
     func getClassIndexForName(queryName : String) -> Int{
         
         let index = model.downloadedClasses.index { (myclass) -> Bool in
@@ -96,6 +96,27 @@ extension TKFetchController{
         return -1
     }
     
+    /* For Subject Queries in the already fetched Model */
+    func getSubjectIndexForName(queryName : String) -> Int{
+        
+        let index = model.downloadedSubjects.index { (mySubject) -> Bool in
+            if (mySubject.name == queryName){
+                return true
+            }
+            return false
+        }
+        
+        if let returnIndex = index {
+            return returnIndex
+        }
+        return -1
+    }
+    
+    func getSubjectForIndex(index : Int) -> TKSubject {
+        return model.downloadedSubjects[index]
+    }
+    
+    
     func getClasses() -> [TKClass] {
         return model.downloadedClasses
     }
@@ -110,6 +131,24 @@ extension TKFetchController{
     
     func getSubjectCount() -> Int {
         return model.downloadedSubjects.count
+    }
+    
+    func getDocumentCountForSubject(subjectIndex: Int) -> Int {
+        return model.downloadedSubjects[subjectIndex].documents.count
+    }
+    
+    func getSubjectAndDocumentForCollectionIndex(index : Int) -> (TKSubject,TKDocument) {
+        var myindex = index
+        for element in model.downloadedSubjects {
+            if ((element.documents.count-1) < myindex) {
+                myindex -= element.documents.count
+            }
+            else {
+                return (element, element.documents[myindex])
+            }
+        }
+        return (TKSubject(name: "Unknown Subject", color: TKColor.black), TKDocument(name: "nf", deadline: nil))
+        
     }
     
     func getClassForIndex(myIndex: Int) -> TKClass{

@@ -15,7 +15,7 @@ struct TKTeacherController {
     var cloudCtrl: TKGenericCloudController<TKStudent>!
     var rank: TKRank!
     
-    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (TKError?) -> ()) {
         self.rank = rank
         
         switch rank {
@@ -23,13 +23,13 @@ struct TKTeacherController {
             if let recordZone = TKGenericCloudController<TKStudent>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
                                                                           forDatabase: CKContainer.default().sharedCloudDatabase) {
                 self.cloudCtrl = TKGenericCloudController<TKStudent>(zone: recordZone, database: rank.database)
-                completion(true)
+                completion(nil)
             } else {
-                completion(false)
+                completion(TKError.noSharedData)
             }
         case .teacher:
             cloudCtrl = TKGenericCloudController<TKStudent>(zone: CKRecordZone.teachKitZone, database: rank.database)
-            completion(true)
+            completion(nil)
         }
     }
     
@@ -72,7 +72,7 @@ struct TKTeacherController {
     //             --> "Server Record Changed"
     func add(student: TKStudent, toTKClass tkClass: TKClass, completion: @escaping (TKStudent?, TKError?) -> ()) {
         guard let recordTypeID = tkClass.recordTypeID else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.parentObjectIsFaulty)
             return
         }
         
@@ -92,7 +92,7 @@ struct TKTeacherController {
     // ✅
     func remove(student: TKStudent, fromClass tkClass: TKClass, completion: @escaping (TKStudent?, TKError?) -> ()) {
         guard let recordTypeID = tkClass.recordTypeID else {
-            completion(nil, TKError.dooooImplement)
+            completion(nil, TKError.parentObjectIsFaulty)
             return
         }
         

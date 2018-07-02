@@ -18,6 +18,6 @@ struct TKCloudKey {
         static let students = "Students"
         static let documents = "Documents"
         static let exercises = "Exercises"
-        static let solutionList = "SolutionList"
+        static let solution = "Solutions"
     }
 }

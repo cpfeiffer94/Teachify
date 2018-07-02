@@ -14,7 +14,7 @@ struct TKExerciseController {
     var cloudCtrl: TKGenericCloudController<TKExercise>!
     var rank: TKRank!
     
-    mutating func initialize(withRank rank: TKRank, completion: @escaping (Bool) -> ()) {
+    mutating func initialize(withRank rank: TKRank, completion: @escaping (TKError?) -> ()) {
         self.rank = rank
         
         switch rank {
@@ -22,14 +22,14 @@ struct TKExerciseController {
             if let recordZone = TKGenericCloudController<TKExercise>.fetch(recordZone: CKRecordZone.teachKitZone.zoneID.zoneName,
                                                                            forDatabase: CKContainer.default().sharedCloudDatabase) {
                 self.cloudCtrl = TKGenericCloudController<TKExercise>(zone: recordZone, database: rank.database)
-                completion(true)
+                completion(nil)
             } else {
                 cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
-                completion(false)
+                completion(TKError.noSharedData)
             }
         case .teacher:
             cloudCtrl = TKGenericCloudController<TKExercise>(zone: CKRecordZone.teachKitZone, database: rank.database)
-            completion(true)
+            completion(nil)
         }
     }
     
@@ -53,7 +53,7 @@ struct TKExerciseController {
     func create(exercise: TKExercise, toDocument document: TKDocument, completion: @escaping (TKExercise?, TKError?) -> ()) {
         cloudCtrl.create(object: exercise) { (createdExercise, error) in
             guard let createdExercise = createdExercise else {
-                completion(nil, TKError.dooooImplement)
+                completion(nil, TKError.objectIsFaultyAfterCloudUpload)
                 return
             }
             

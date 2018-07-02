@@ -31,7 +31,9 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
         let selectedSubject = operationPickerViewDataSource.selectedSubject
         switch selectedSubject.name {
         case "English":
-            performSegue(withIdentifier: "AddExercise2ExerciseDetails", sender: self)
+            performSegue(withIdentifier: "Segue2AddEnglishExercise", sender: self)
+        case "Math":
+            performSegue(withIdentifier: "Segue2AddMathExercise", sender: self)
         default:
             print("Mathe ist noch nicht verfügbar, siehe AddExerciseFirstScreenViewController")
             return
@@ -85,7 +87,7 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "AddExercise2ExerciseDetails":
+        case "Segue2AddEnglishExercise":
             let destVC = segue.destination as! EnglishVocabularyViewController
            
            
@@ -95,7 +97,17 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
                 destVC.selectedSubject      = selectedClass.subjects[indexPath.item]
                 destVC.selectedGame         = TKExerciseType.allExerciseTypes[(gameCollectionView.indexPathsForSelectedItems?.first?.row)!]
                 
-                destVC.selectedOperation    = operationPickerViewDataSource.getSelectedOperations()[pickerView.selectedRow(inComponent: 0)]
+                destVC.selectedOperation    = operationPickerViewDataSource.getSelectedOperations()[0]
+            }
+        case "Segue2AddMathExercise":
+            let destVC = segue.destination as! MathExerciseViewController
+            
+            if let indexPaths = addExerciseFirstScreenCollectionView.indexPathsForSelectedItems,
+                let indexPath = indexPaths.first{
+                destVC.selectedClass        = selectedClass
+                destVC.selectedSubject      = selectedClass.subjects[indexPath.item]
+                destVC.selectedGame         = TKExerciseType.allExerciseTypes[(gameCollectionView.indexPathsForSelectedItems?.first?.row)!]
+                destVC.selectedOperation    = operationPickerViewDataSource.selectedOperation
             }
             
         default:
