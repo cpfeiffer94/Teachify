@@ -317,16 +317,18 @@
                                 <rect key="frame" x="0.0" y="192" width="768" height="832"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IFC-K7-6WE" customClass="GameDetailListTableViewCell" customModule="Teachify" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" id="IFC-K7-6WE" customClass="GameDetailListTableViewCell" customModule="Teachify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFC-K7-6WE" id="bog-BJ-97i">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. FeedMe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjR-fp-Wt5">
-                                                    <rect key="frame" x="15" y="11" width="88" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. FeedMe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjR-fp-Wt5">
+                                                    <rect key="frame" x="15" y="11" width="87.5" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="aPU-6Z-Vj4"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -342,6 +344,7 @@
                                                     <rect key="frame" x="617" y="11" width="103" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="A97-6u-5Wy"/>
+                                                        <constraint firstAttribute="width" constant="103" id="cPM-Br-XjJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
@@ -349,12 +352,19 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="KjR-fp-Wt5" firstAttribute="leading" secondItem="bog-BJ-97i" secondAttribute="leadingMargin" id="0rn-7R-oeW"/>
                                                 <constraint firstItem="hho-Vp-MJa" firstAttribute="top" secondItem="bog-BJ-97i" secondAttribute="top" constant="6" id="Efi-VR-d40"/>
                                                 <constraint firstAttribute="trailing" secondItem="hho-Vp-MJa" secondAttribute="trailing" constant="10" id="OTt-P1-EdD"/>
+                                                <constraint firstItem="KjR-fp-Wt5" firstAttribute="top" secondItem="bog-BJ-97i" secondAttribute="topMargin" id="Rad-G0-8QE"/>
                                                 <constraint firstItem="hho-Vp-MJa" firstAttribute="leading" secondItem="iad-fk-L4C" secondAttribute="trailing" constant="8" id="c9c-DD-iPX"/>
                                                 <constraint firstItem="iad-fk-L4C" firstAttribute="top" secondItem="bog-BJ-97i" secondAttribute="topMargin" id="vO7-yJ-lrT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="exerciseCompletionBox" destination="hho-Vp-MJa" id="95m-0m-U5F"/>
+                                            <outlet property="exerciseCountLabel" destination="iad-fk-L4C" id="RLi-Br-6fd"/>
+                                            <outlet property="exerciseNameLabel" destination="KjR-fp-Wt5" id="QXc-0A-yNH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -427,10 +437,10 @@ Who put the first Beta on their primary devices"</string>
                         <viewLayoutGuide key="safeArea" id="4MW-WR-wL1"/>
                     </view>
                     <connections>
-                        <outlet property="GameDescriptionLabel" destination="4HH-UM-o3w" id="QqA-H5-x1e"/>
-                        <outlet property="GameImage" destination="hp8-jy-hYd" id="4JF-0i-fdr"/>
-                        <outlet property="GameTitleLabel" destination="o3d-S5-5Ht" id="OJ7-jT-4jy"/>
-                        <outlet property="GamelistTableView" destination="RjC-pJ-gmr" id="mgh-qz-zr2"/>
+                        <outlet property="gameDescriptionLabel" destination="4HH-UM-o3w" id="QqA-H5-x1e"/>
+                        <outlet property="gameImage" destination="hp8-jy-hYd" id="4JF-0i-fdr"/>
+                        <outlet property="gameTitleLabel" destination="o3d-S5-5Ht" id="OJ7-jT-4jy"/>
+                        <outlet property="gamelistTableView" destination="RjC-pJ-gmr" id="mgh-qz-zr2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caK-tx-DI8" userLabel="First Responder" sceneMemberID="firstResponder"/>

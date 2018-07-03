@@ -42,16 +42,16 @@ enum TKExerciseType {
     var description: String {
         switch self {
         case .mathpiano: return "Finde die richtige Lösung bevor die Welle deine Badesachen wegspült."
-        case .feedme: return "Füttere den süßen Drachen mit den Matheaufgaben, damit er groß und stark wird."
-        case .teachbird: return "Leite den kleinen Teachbird durch richtigen Englischaufgaben"
+        case .feedme: return "Füttere den süßen Drachen mit den richtigen Matheaufgaben, damit er groß und stark wird."
+        case .teachbird: return "Leite den kleinen Teachbird durch die richtigen Englischaufgaben"
         }
     }
     
     var icon: UIImage {
         switch self {
-        case .mathpiano: return #imageLiteral(resourceName: "FeedMe-Drache")
+        case .mathpiano: return #imageLiteral(resourceName: "mathpiano_icon")
         case .feedme: return #imageLiteral(resourceName: "FeedMe-Drache")
-        case .teachbird: return #imageLiteral(resourceName: "FeedMe-Drache")
+        case .teachbird: return #imageLiteral(resourceName: "teachbird_icon")
         }
     }
     

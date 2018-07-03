@@ -64,6 +64,11 @@ extension GameCardCell: CardDelegate {
     
     func cardIsShowingDetail(card: Card) {
         print("Card is showing Detail")
+        
+        if let selectedExercises = myExercises {
+        let exerciseDict :[Int : [TKExercise]] = [0:selectedExercises]
+            NotificationCenter.default.post(name: .exerciseSelected, object: nil, userInfo: exerciseDict)
+        }
     }
 }
 

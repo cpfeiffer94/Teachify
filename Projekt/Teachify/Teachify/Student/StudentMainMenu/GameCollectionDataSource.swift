@@ -67,7 +67,7 @@ class GameCollectionDataSource: NSObject,UICollectionViewDataSource {
         }
         else{
             print("my Index item: \(indexPath.item) my Index row: \(indexPath.row)")
-            //            [0] is Subject; [1] is Document
+//              [0] is Subject; [1] is Document
                 let myTuple = tkFetchController.getSubjectAndDocumentForCollectionIndex(index: indexPath.item)
 
                 cell.card.backgroundColor = myTuple.0.color.color

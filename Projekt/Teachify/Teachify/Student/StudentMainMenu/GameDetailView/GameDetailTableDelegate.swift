@@ -9,5 +9,11 @@
 import UIKit
 
 class GameDetailTableDelegate: NSObject,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedExercise :[Int : Int] = [0:indexPath.row]
+        
+        NotificationCenter.default.post(name: .setDetailedExercise, object: nil, userInfo: selectedExercise)
+    }
 
 }
