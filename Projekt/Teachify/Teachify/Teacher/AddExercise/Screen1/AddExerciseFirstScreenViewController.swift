@@ -116,14 +116,21 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         gameCollectionView.collectionViewLayout.invalidateLayout()
         gameCollectionView.layoutIfNeeded()
         addExerciseFirstScreenCollectionView.collectionViewLayout.invalidateLayout()
         addExerciseFirstScreenCollectionView.layoutIfNeeded()
-        addExerciseFirstScreenCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
-        gameCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+        gameCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        addExerciseFirstScreenCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+    }
     
 }
 

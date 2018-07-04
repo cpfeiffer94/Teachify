@@ -126,6 +126,10 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     
     func didChangeClassIndex(to: Int) {
         print("changed Index")
+        if to == TKModelSingleton.sharedInstance.downloadedClasses.count {
+            openCustomAlertView(for: .tkClass)
+            return
+        }
         subjectCollectionView.dataSource.selectedClass = to
         excerciseDataSource.selectedClass              = to
         subjectCollectionView.collectionView.reloadData()
@@ -134,9 +138,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         subjectCollectionView.didSelectItem(at: 0)
         selectedClassIndex = to
         excerciseCollectionView.reloadData()
-        if to == TKModelSingleton.sharedInstance.downloadedClasses.count {
-            openCustomAlertView(for: .tkClass)
-        }
+        
     }
     
     private func openCustomAlertView(for caller : CustomAlertViewCallers){
@@ -216,15 +218,19 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
 extension TeacherMainViewController : CustomAlertViewDelegate{
     
     func cancelButtonTapped() {
-        return
+        print("Cancel tapped")
+        didChangeClassIndex(to: 0)
     }
     
     func okButtonTapped(textFieldValue: String, subjectColor: TKColor, with caller: CustomAlertViewCallers) {
         switch caller {
         case .tkClass:
             uploadClass(with: textFieldValue)
+            didChangeClassIndex(to: 0)
         case .tkSubject:
             uploadSubject(with: textFieldValue, color: subjectColor)
+            didChangeSubjectIndex(to: 0)
+            
         }
     }
     

@@ -18,7 +18,6 @@ class CustomAlertViewController : UIViewController{
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButtonView: UIView!
     @IBOutlet weak var saveButtonView: UIView!
-    @IBOutlet var testOutlet: FHHSwiftyLengthRule!
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var subjectType: UISegmentedControl!
     

@@ -135,8 +135,16 @@ class FHHSwiftyTextValidationBehaviour: FHHSwiftyBehaviour {
 
 
 class FHHSwiftyLengthRule : NSObject, FHHSwiftyTextValidationRule{
-    @IBInspectable var minCharacterCount: Int = 2
-    @IBInspectable var maxCharacterCount: Int = 20
+    @IBInspectable var minCharacterCount: Int = 2 {
+        didSet{
+            self.range = NSMakeRange(minCharacterCount, maxCharacterCount-minCharacterCount)
+        }
+    }
+    @IBInspectable var maxCharacterCount: Int = 20{
+        didSet{
+            self.range = NSMakeRange(minCharacterCount, maxCharacterCount-minCharacterCount)
+        }
+    }
 
     
     

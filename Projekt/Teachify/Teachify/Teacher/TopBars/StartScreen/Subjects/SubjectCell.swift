@@ -109,13 +109,15 @@ class SubjectCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            iconView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 55, green: 105, blue: 182)
+            //iconView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 55, green: 105, blue: 182)
+            iconView.tintColor = UIColor.white
         }
     }
     
     override var isSelected: Bool {
         didSet {
-            iconView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 55, green: 105, blue: 182)
+            //iconView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 55, green: 105, blue: 182)
+            iconView.tintColor = UIColor.white
         }
     }
     
