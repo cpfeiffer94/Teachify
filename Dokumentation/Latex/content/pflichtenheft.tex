@@ -1,0 +1,136 @@
+\chapter{Pflichtenheft}
+Christian Pfeiffer, Normen Krug \& \href{mailto:jofranz90@gmail.com?subject=Swift-Studienarbeit}{Johannes Franz}
+
+
+\section{Zielbestimmung}
+Es ist eine Lernspiel Software für Grundschulschüler zu entwickeln, welche auf iPads ab iOS Version 10 lauffähig ist. Schüler sollen Lernspiele bzw. Aufgaben bearbeiten können, welche von den Lehrern vorher generiert werden. Nach den Spielen können Schüler ihre eigenen Leistungen ansehen. Auch Lehrer sollen einen Überblick über die Leistungen der eigenen Schüler haben. Die Ausarbeitung der App ist auf ein Semester beschränkt, das bedeutet es stehen 3 Monate zur Umsetzung zur Verfügung. Kurz vor der Abgabe ist die Funktionsfähigkeit der Software durch Tests zu bestätigen.
+
+\subsection{Musskriterien}
+
+\subsubsection{Allgemein}
+\begin{enumerate}[a)]
+\item Die App muss auf iPads mit iOS 11 laufen
+\end{enumerate}
+
+
+
+\subsubsection{Login}
+\begin{enumerate}[a)]
+\item Login für den Schüler
+\item Login für den Lehrer
+\end{enumerate}
+
+\subsubsection{Schüler}
+\begin{enumerate}[a)]
+\item Übersicht über alle freigegebenen Spiele (Spiele von der Schnittstelle abrufen)
+\item Übersicht über erreichte Punktzahlen
+\item Spielbeschreibung anzeigen
+\item Spiel spielen
+\item Ergebnisse anzeigen
+\item Ergebnisse über die Schnittstelle hochladen
+\end{enumerate}
+
+\subsubsection{Lehrer}
+\begin{enumerate}[a)]
+\item Übersicht über alle registrierten Schüler
+\item Einladen von Schülern in “Klassen”
+\item Anzeigen von Ergebnissen einzelner Schüler
+\item Aufgaben erstellen
+\end{enumerate}
+
+
+\subsubsection{Schnittstelle}
+\begin{enumerate}[a)]
+\item Abrufen der freigegebenen Spiele für einen Schüler
+\item Schüler zu Aufgaben einladen (durch den Lehrer)
+\item Abspeichern der Ergebnisse der gelösten Aufgaben
+\item Abrufen der Ergebnisse der gelösten Aufgaben (Lehrer)
+\end{enumerate}
+
+
+\subsection{Wunschkriterien}
+%todo
+\subsubsection{Allgemein}
+\begin{enumerate}[a)]
+\item Die App kann auch auf anderen iOS Geräten (iPhone) laufen
+\end{enumerate}
+
+\subsubsection{Login}
+\begin{enumerate}[a)]
+\item Alternative Login Methode für den Lehrer
+\end{enumerate}
+
+\subsubsection{Schüler}
+\begin{enumerate}[a)]
+\item Übersicht über die vergangen Spiele
+\item Lösen von Aufgaben unter Zeitdruck
+\item Kindgerechte und einfache Menügestaltung
+\item Schüler soll es ermöglicht werden in eigenen Tempo lernen
+\end{enumerate}
+
+\subsubsection{Lehrer}
+\begin{enumerate}[a)]
+\item Einteilung der Schüler in Klassen
+\item Ranking der Spielergebnisse der Klassen
+\item Individuelle Förderung von Schülern
+\end{enumerate}
+
+
+\subsubsection{Schnittstelle}
+\begin{enumerate}[a)]
+\item Detailliertes Speichern der Spiele für eine Auswertung (gebrauchte Antwortzeit, Statistiken für Klassen)
+\item Abspeichern von Bildern
+\end{enumerate}
+
+
+\subsection{Abgrenzungskriterien}
+Das System besitzt keine Schnittstellen zu anderen Produkten.\\ %todo: evtl. bullet points
+Es existiert keine automatische Erfassung von Benutzern aus Fremddaten.
+
+\section{Produkteinsatz}
+Die App soll als Referenz für die Lehre der Fortgeschrittenen Swift 4 Entwicklung des Mobile Computing Studiengangs an der Hochschule Hof dienen.\\
+\\
+Hypothetisch soll die App im Rahmen des Grundschulunterrichts eingesetzt werden. Hierbei hat jeder Schüler ein eigenes Tablet und kann mit diesem Aufgaben bearbeiten. Der Lehrer kann den Schülern Aufgaben zuweisen und die Aufgaben Ergebnisse einsehen.  
+
+\subsection{Anwendungsbereiche}
+Primär Grundschulen, später Erweiterung für höhere Bildungseinrichtungen denkbar. 
+
+\subsection{Zielgruppen}
+Schüler / Studenten und Lehrer bzw. Lehrbeauftragte
+
+\subsection{Betriebsbedingungen}
+Um die App in allen Funktionen nutzen zu können, wird ein iPad mit iOS 10 mit Internetverbindung vorausgesetzt. Beim Einloggen als Schüler müssen alle freigeschalteten und geteilten Aufgaben abgerufen werden. Eingeloggte Lehrer sollen eine Übersicht über die verfügbaren Aufgabentypen sowie Schüler bzw. deren Klassen haben. Die Pflege der Schnittstelle soll Wartungsfrei sein. Die administrative Gewalt (Zuweisung der Aufgaben, sowie Einblick in die Statistik der Schüler) soll bei den Lehrern stehen.
+
+
+
+\section{Produktfunktionen}
+\subsection{/F0010/ Einloggen}
+Ein beliebiger App Nutzer kann sich über den Startscreen einloggen. 
+Als Kennung wird sein iCloud Account verwendet. Die App muss zwischen Schülerbenutzern und Lehrerbenutzern unterscheiden können. Die Unterscheidung dieser zwei Benutzergruppen geschieht durch unterschiedliche Loginverfahren (Zum Login eines Lehrers muss ein Button gedrückt werden,  bzw. ein QR Code verwendet werden).Nach dem Login wird der Benutzer in das seiner Benutzergruppe zugehörige Hauptmenü weitergeleitet (Schüler bzw. Lehrer).
+
+
+\subsection{/F0020/ Verfügbare Spiele herunterladen (Schüler/Schnittstelle)}
+Schülerbenutzer kann im Schülerhauptmenü seine ihm freigegebenen Aufgaben bzw. Spiele einsehen. Das Herunterladen dieser geschieht automatisch nach dem Login. Falls dem Schüler keine Aufgaben freigegeben wurden, wird ihm anstatt der Aufgaben ein Hinweis angezeigt.
+
+
+\subsection{/F0030/ Spielinformationen anzeigen (Schüler)}
+Wählt der Schüler ein ihm freigegebenes Spiel in dem Schülerhauptmenü aus, so werden ihm Informationen über das ausgewählte Spiel (Spielregeln, Schwierigkeit… etc. angezeigt).\\
+Über einen ''Spiel starten'' Button, kann der Schüler das Spiel starten. Mit einer Geste bzw. einem Zurückbutton kann er zurück in das Hauptmenü gelangen.
+
+
+\subsection{/F0040/ Spiel spielen (Schüler)}
+Wählt der Schüler den “Spiel starten” Button in den Spielinformationen aus, wird das Spiel gestartet und  er kann die Aufgaben bearbeiten. Nach dem Bearbeiten der Aufgaben werden die Spielergebnisse über die Schnittstelle wieder hochgeladen.
+
+
+
+\subsection{/F0050/ Leistungen anzeigen (Schüler)}
+Wählt ein Schüler den ''Erfolge Tab'' in dem Schülerhauptmenü aus, so kann er seine Spielerfolge einsehen. Hierbei wird ihm eine Punktzahl, welche die Summe der innerhalb der Lernspiele erreichten Punkte ist. Zudem kann er sich eine Übersicht über seine letzten Spiele und die darin richtig bzw. falsch gelösten Aufgaben anzeigen lassen.
+
+\subsection{/F0060/ Schüler in Klassen einladen (Lehrer/Schnittstelle/Schüler)}
+Bevor der Lehrer Aufgaben verteilen kann muss er seine Schüler in eine Klasse einladen. Wenn die Schüler die Einladung der Lehrer annehmen, werden sie der Klasse hinzugefügt.
+
+\subsection{/F0070/ Aufgaben Klassen zuteilen}
+Ein Lehrer kann an einzelne Schüler spezielle Aufgaben stellen.
+
+\subsection{/F0080/ Ergebnisse einzelner Schüler anzeigen}
+Für den Lehrer muss es möglich sein, die Ergebnisse der Schüler einzusehen.
