@@ -160,7 +160,7 @@ extension TeachGameScene{
             let position=CGPoint(x: self.frame.width / 2 + randP, y: self.frame.height - CGFloat(move))
             let loes=createLabl(name: data.getTask(number: aTask)[i], position: position,tamplate: false)
             if i == 1{
-                loes.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
+                loes.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(x: -155, y: -30, width: 320, height: 50))
                 loes.physicsBody?.categoryBitMask = CollisionBitMask.corectAnswareCategory
                 loes.physicsBody?.collisionBitMask = 0
             } else{
