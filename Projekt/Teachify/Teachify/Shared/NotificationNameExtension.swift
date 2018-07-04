@@ -17,6 +17,7 @@ extension Notification.Name {
     static let reloadGameCards = Notification.Name("reloadGameCards")
     
     static let excerciseLoaded = Notification.Name("exerciseLoaded")
+    static let userNameLoaded = Notification.Name("userName")
     static let exerciseSelected = Notification.Name("exerciseSelected")
     static let setDetailedExercise = Notification.Name("setDetailedDocument")
     

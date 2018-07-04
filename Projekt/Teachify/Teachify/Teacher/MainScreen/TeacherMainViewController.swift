@@ -18,6 +18,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     var             titleView : UILabel!
     var             loadingIndicator = ProgressIndicatorView(msg: "Downloading")
     private var     currentSelectedSubject = 0
+    private var     provider: ICloudUserIDProvider!
     
     
     private var selectedClassIndex : Int = 0
@@ -30,61 +31,21 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let excerciseDataSource = ExerciseCollectionViewDataSource()
     let excerciseDelegate = ExcerciseCollectionViewDelegate()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        titleView.text = "Excercises"
-        titleView.textColor = UIColor.white
-        titleView.textAlignment = .center
-        navigationItem.titleView = titleView
-        navigationController?.navigationBar.barTintColor = .barBlue
+        setupNavBar()
         
-        //test
-        //convert self to unmanaged object
-        let anUnmanaged = Unmanaged<TeacherMainViewController>.passUnretained(self)
-        //get raw data pointer
-        let opaque = anUnmanaged.toOpaque()
-        //convert to Mutable to match Swift safe type check
-        let voidSelf = UnsafeMutableRawPointer(opaque)
+        setupNotifications()
+        provider = ICloudUserIDProvider()
+        provider.request()
         
-        objc_setAssociatedObject(self, voidSelf, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        
-        
-        
-        
-        //END TEST
-        
-        
-//        CKContainer.default().fetchUserRecordID { (recordId, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//            print(recordId)
-//            CKContainer.default().discoverUserIdentity(withUserRecordID: recordId!, completionHandler: { (identity, error) in
-//                if let error = error {
-//                    print(error)
-//                }
-//                print(identity?.lookupInfo?.emailAddress)
-//                self.navigationItem.prompt = identity?.lookupInfo?.emailAddress
-//            })
-//        }
-        //get Rid of Background Shaodw Image in iOS 10
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        
-        
-        
-        classesCollectionView.dataSource = dataSource
-        delegate = ClassesCollectionViewDelegate(delegate: self)
-        classesCollectionView.delegate = delegate
-        classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
-        
-        subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
-        subjectCollectionView.delegate = subjectDelegate
-        
+        setupClassesCollectionView()
+        setupSubjectCollectionView()
         setupExcerciseCollectionView()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+        
         
         view.addSubview(loadingIndicator)
         
@@ -95,6 +56,39 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         }
     
         
+    }
+    
+    fileprivate func setupNavBar() {
+        titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        titleView.text = "Excercises"
+        titleView.textColor = UIColor.white
+        titleView.textAlignment = .center
+        navigationItem.titleView = titleView
+        navigationController?.navigationBar.barTintColor = .barBlue
+        //get Rid of Background Shaodw Image in iOS 10
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    }
+    
+    fileprivate func setupClassesCollectionView() {
+        classesCollectionView.dataSource = dataSource
+        delegate = ClassesCollectionViewDelegate(delegate: self)
+        classesCollectionView.delegate = delegate
+        classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+    }
+    
+    fileprivate func setupSubjectCollectionView() {
+        subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
+        subjectCollectionView.delegate = subjectDelegate
+    }
+    
+    fileprivate func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setUsername), name: .userNameLoaded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+    }
+    
+    @objc private func setUsername(){
+        navigationItem.prompt = provider.username
     }
     
     override func delete(_ sender: Any?){
