@@ -36,7 +36,7 @@ class OperationPickerViewDataSource: NSObject, UIPickerViewDataSource{
         case "English":
             return operationsEnglish
         default:
-            return []
+            return operationsMath
         }
     }
     

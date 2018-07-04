@@ -81,7 +81,7 @@ class AddExerciseFirstScreenViewController: UIViewController, CVChangedSubject{
     
     func didChangeSubject(to subject: TKSubject) {
         operationPickerViewDataSource.selectedSubject = subject
-        pickerView.setNeedsLayout()
+        pickerView.reloadAllComponents()
     }
     
 
