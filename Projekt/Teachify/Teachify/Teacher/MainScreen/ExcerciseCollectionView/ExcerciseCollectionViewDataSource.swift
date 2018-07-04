@@ -118,7 +118,13 @@ class ExerciseCollectionViewDataSource: NSObject, UICollectionViewDataSource, Ce
         
             let data = documents[indexPath.item]
             cell.excerciseTitle.text = data.name
-            cell.dueDate.text = data.deadline?.description ?? "No due date set"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.yyyy"
+            if let date = data.deadline{
+                cell.dueDate.text = formatter.string(from: date)
+            }else{
+                cell.dueDate.text = "No due date set"
+            }
         let subject = TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects.first(where:{$0.subjectID == documents[indexPath.item].subjectID})
         cell.subjectTitle.text = subject?.name
             cell.backgroundColor = subject?.color.color

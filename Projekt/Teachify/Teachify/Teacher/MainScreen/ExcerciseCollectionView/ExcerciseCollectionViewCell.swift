@@ -12,7 +12,13 @@ class ExcerciseCollectionViewCell: UICollectionViewCell {
     //MARK: IBOutlets
     @IBOutlet var subjectTitle: UILabel!
     @IBOutlet var excerciseTitle: UILabel!
-    @IBOutlet var dueDate: UILabel!
+    @IBOutlet var dueDate: UILabel!{
+        didSet{
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.yyyy"
+            dueDate.text = formatter.date(from: dueDate.text!)?.description
+        }
+    }
     @IBOutlet var subjectImage: UIImageView! {
         didSet{
             let rotateBy = CGFloat(Measurement(value: -30, unit: UnitAngle.degrees).converted(to: .radians).value)

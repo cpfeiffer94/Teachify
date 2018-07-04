@@ -163,9 +163,6 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         UIApplication.shared.beginIgnoringInteractionEvents()
         let fetchCtrl = TKFetchController()
         fetchCtrl.fetchAll(notificationName: .excerciseLoaded, rank: .teacher)
-        
-        
-        
     }
     
     func setupExcerciseCollectionView(){
@@ -178,6 +175,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = .barBlue
+        //loadData()
     }
   
     
