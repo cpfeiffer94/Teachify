@@ -1,6 +1,6 @@
 \chapter{Implementierung eines gemeinsamen Datenmodells (TKFetchController/TKFetchSingleton \& FetchOperations)}
 Bastian Kusserow (Team Lehrer) \& Christian Pfeiffer (Team Schüler)
-\subsection{Ziele}
+\section{Ziele}
 
 
 \begin{itemize}
@@ -10,5 +10,17 @@ Bastian Kusserow (Team Lehrer) \& Christian Pfeiffer (Team Schüler)
 \item Vereinheitlichter Zugriff und Downloadabwicklung (Fetch) von Schnittstellendaten
 \end{itemize}
 
+\section{Implementierung}
 
-\subsection{}
+\subsection{TKModelSingleton}
+Um das Ziel des Vereinheitlichten Zugriffs auf Schnittstellendaten zu erfüllen, wird eine Singleton Klasse zum Abspeichern der Schnittstellendaten verwendet.
+
+\lstinputlisting[language=swift]{source/fetchsingleton.swift}
+
+\subsection{TKFetchController}
+
+\lstinputlisting[language=swift]{source/fetchsingleton.swift}
+
+\subsection{TKFetchController - Zugriffschicht}
+
+\lstinputlisting[language=swift]{source/fetchctrlextension.swift}
