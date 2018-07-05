@@ -14,7 +14,8 @@
 %\usepackage[T1]{fontenc}
 \usepackage[pdftex]{graphicx}
 \usepackage[bookmarks]{hyperref}
-\usepackage{scrpage2}
+%\usepackage{scrpage2} %old
+\usepackage{scrlayer-scrpage}
 \usepackage{longtable}
 \usepackage{caption}
 %\usepackage{pgfplots} not used?
@@ -73,12 +74,14 @@
 
 % #################################################################
 
+\begin{document}
+
 \hyphenation{Cha-otn-gsch-werl}
 \setlength\headheight{1.75cm}
 
-\ihead{\small{Fortgeschrittene Programmierung unter SWIFT (FWPM)}}
+\ihead*{\small{Fortgeschrittene Programmierung unter SWIFT (FWPM)}}
 \chead{}
-\ohead{\includegraphics[height=0.05\textheight]{fh_logo}}
+\ohead*{\includegraphics[height=0.05\textheight]{fh_logo}}
 \pagestyle{scrheadings}
 
 
@@ -104,7 +107,7 @@ Phillipp Dümleim, Carl Phillipp Knoblauch}
 \date{09.07.2018\\ Vorgelegt bei Prof. Dr. Sven Rill} %##Abgabedatum einfügen
 
 
-\begin{document}
+%\begin{document}
 \maketitle
 \pagenumbering{roman}
 \tableofcontents
