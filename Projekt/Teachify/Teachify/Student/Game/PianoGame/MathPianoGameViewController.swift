@@ -26,14 +26,17 @@ class MathPianoGameViewController: UIViewController {
         super.viewDidLoad()
         print("Game")
         
-        
+        scene = BasicScene(size: view.frame.size)
         let converter = ExerciseConverter()
         converterReturn = converter.convert()
         
         if converterReturn.1{
              mathPianoGameModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+             scene.gameMode = .endless
+
         }else{
             mathPianoGameModel = converterReturn.0
+            scene.gameMode = .task
         }
         //
         
@@ -48,7 +51,6 @@ class MathPianoGameViewController: UIViewController {
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scene = BasicScene(size: view.frame.size)
         scene.pianoModel = mathPianoGameModel
         skView.presentScene(scene)
         
