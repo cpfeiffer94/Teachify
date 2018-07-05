@@ -11,6 +11,9 @@ import SpriteKit
 
 class MathPianoGameViewController: UIViewController {
     
+    var converterReturn: (MathPianoGame, Bool)!
+    var mathPianoGameModel: MathPianoGame!
+    
     let skView: SKView = {
         let view = SKView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +26,17 @@ class MathPianoGameViewController: UIViewController {
         super.viewDidLoad()
         print("Game")
         
-        let mathPianoGameModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+        
+        let converter = ExerciseConverter()
+        converterReturn = converter.convert()
+        
+        if converterReturn.1{
+             mathPianoGameModel = RandomQuestionGenerator().generateGame(numberOfQuestions: 10, lifes: 3)
+        }else{
+            mathPianoGameModel = converterReturn.0
+        }
+        //
+        
         
       
         
