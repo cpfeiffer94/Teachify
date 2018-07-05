@@ -16,12 +16,19 @@ class DocumentOperation : BaseOperation {
     override init(opRank : TKRank) {
         super.init(opRank: opRank)
 //        force Unwrap!
-        documentCtrl.initialize(withRank: operationRank!) {_ in
-            print("Document init --> true")
+        documentCtrl.initialize(withRank: operationRank!) {(succeed) in
+            print("Document init --> \(succeed)")
+            if (succeed == nil){
+                self.isInitialized = true
+            }
         }
     }
     
     override func execute() {
+        if (!isInitialized){
+            self.finish()
+            return
+        }
             if operationRank == .teacher{
                 for (index,subject) in subjects.enumerated() {
                 documentCtrl.fetchDocuments(forSubject: subject, withFetchSortOptions: [.name]) {(fetchedDocuments, error) in
@@ -57,7 +64,7 @@ class DocumentOperation : BaseOperation {
                     self.finish()
                 }}
             if subjects.count == 0 {
-                finish()
+                self.finish()
             }
         }
         else if (operationRank == .student){

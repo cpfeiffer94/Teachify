@@ -17,11 +17,18 @@ class ClassOperation : BaseOperation {
 //        Force Unwrap
         classCtrl.initialize(withRank: operationRank!) { (succeed) in
             print("Class init --> \(succeed)")
+            if (succeed == nil){
+                self.isInitialized = true
+            }
         }
     }
     
     
     override func execute() {
+        if (!isInitialized){
+            self.finish()
+            return
+        }
         if operationRank == .student {
             self.finish()
             return

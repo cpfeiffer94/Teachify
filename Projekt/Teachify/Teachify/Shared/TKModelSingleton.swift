@@ -216,10 +216,17 @@ extension TKFetchController{
         }
         exerciseOperation.completionBlock = {
             if let notificationName = notificationName {
+                if exerciseOperation.isInitialized == false {
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(Notification(name: notificationName))
+                    }
+                }
+                else {
                 print("Completion Block")
                 self.debugPrintAfterFetch()
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(Notification(name: notificationName))
+                    }
                 }
             }
         }
