@@ -18,8 +18,12 @@ class ExerciseConverter{
         let exerxises = pianoSingeltonController.getExercises()
         var pianoModels: [MathPianoQuestionModel] = []
         
-        for item in exerxises{
-
+        if exerxises.first?.name == "Continous Play MathPiano"{
+            isContinous = true
+        }
+        else{
+            for item in exerxises{
+            
             if let jsonData = item.data.data(using: .utf8){
                 let mathModel = try? JSONDecoder().decode(MathModel.self, from: jsonData)
                 var leftSide: [String] = []
@@ -35,12 +39,13 @@ class ExerciseConverter{
                 
                 let pianoEntry = MathPianoQuestionModel(leftSide: leftSide, rightSide: rightSide, correctAnswer: mathModel!.correctAnswer!, allAnswers: allAnswer)
                 pianoModels.append(pianoEntry)
-
+                
             }
         }
-        if exerxises.first?.name == "Continous Play MathPiano"{
-            isContinous = true
+            
         }
+     
+       
         let mathPianoGame = MathPianoGame(gameQuestions: pianoModels, lifes: 3)
         return (mathPianoGame,isContinous)
     }
