@@ -160,7 +160,7 @@ extension TeachGameScene{
             let position=CGPoint(x: self.frame.width / 2 + randP, y: self.frame.height - CGFloat(move))
             let loes=createLabl(name: data.getTask(number: aTask)[i], position: position,tamplate: false)
             if i == 1{
-                loes.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
+                loes.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(x: -155, y: -30, width: 320, height: 50))
                 loes.physicsBody?.categoryBitMask = CollisionBitMask.corectAnswareCategory
                 loes.physicsBody?.collisionBitMask = 0
             } else{
@@ -214,6 +214,15 @@ extension TeachGameScene{
         navigationLbl.position=CGPoint(x: self.frame.width - 180, y: self.frame.height - 22)
         navigationLbl.zPosition = 6
         self.addChild(navigationLbl)
+    }
+    func createBackBtn() {
+        backBtn = SKSpriteNode(imageNamed: "back")
+        backBtn.size = CGSize(width:150, height:150)
+        backBtn.position = CGPoint(x: 100, y: self.frame.midY - 300)
+        backBtn.zPosition = 6
+        backBtn.setScale(0)
+        self.addChild(backBtn)
+        backBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
     }
 }
 

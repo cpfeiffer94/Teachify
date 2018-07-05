@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import ObjectiveC
 
 class TeacherMainViewController: UIViewController, CVIndexChanged {
 
@@ -15,7 +16,9 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let             dataSource = ClassesCollectionViewDataSource()
     @objc var       delegate : ClassesCollectionViewDelegate!
     var             titleView : UILabel!
-    var loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    var             loadingIndicator = ProgressIndicatorView(msg: "Downloading")
+    private var     currentSelectedSubject = 0
+    private var     provider: ICloudUserIDProvider!
     
     
     private var selectedClassIndex : Int = 0
@@ -28,44 +31,21 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     let excerciseDataSource = ExerciseCollectionViewDataSource()
     let excerciseDelegate = ExcerciseCollectionViewDelegate()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        titleView.text = "Excercises"
-        titleView.textColor = UIColor.white
-        titleView.textAlignment = .center
-        navigationItem.titleView = titleView
-        navigationController?.navigationBar.barTintColor = .barBlue
+        setupNavBar()
         
-//        CKContainer.default().fetchUserRecordID { (recordId, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//            print(recordId)
-//            CKContainer.default().discoverUserIdentity(withUserRecordID: recordId!, completionHandler: { (identity, error) in
-//                if let error = error {
-//                    print(error)
-//                }
-//                print(identity?.lookupInfo?.emailAddress)
-//                self.navigationItem.prompt = identity?.lookupInfo?.emailAddress
-//            })
-//        }
-        //get Rid of Background Shaodw Image in iOS 10
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        setupNotifications()
+        provider = ICloudUserIDProvider()
+        provider.request()
         
-        
-        
-        classesCollectionView.dataSource = dataSource
-        delegate = ClassesCollectionViewDelegate(delegate: self)
-        classesCollectionView.delegate = delegate
-        
-        subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
-        subjectCollectionView.delegate = subjectDelegate
-        
+        setupClassesCollectionView()
+        setupSubjectCollectionView()
         setupExcerciseCollectionView()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+        
         
         view.addSubview(loadingIndicator)
         
@@ -76,6 +56,43 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         }
     
         
+    }
+    
+    fileprivate func setupNavBar() {
+        titleView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        titleView.text = "Excercises"
+        titleView.textColor = UIColor.white
+        titleView.textAlignment = .center
+        navigationItem.titleView = titleView
+        navigationController?.navigationBar.barTintColor = .barBlue
+        //get Rid of Background Shaodw Image in iOS 10
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    }
+    
+    fileprivate func setupClassesCollectionView() {
+        classesCollectionView.dataSource = dataSource
+        delegate = ClassesCollectionViewDelegate(delegate: self)
+        classesCollectionView.delegate = delegate
+        classesCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+    }
+    
+    fileprivate func setupSubjectCollectionView() {
+        subjectDelegate = SubjectCollectionViewDelegate(delegate: self)
+        subjectCollectionView.delegate = subjectDelegate
+    }
+    
+    fileprivate func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setUsername), name: .userNameLoaded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .excerciseLoaded, object: nil)
+    }
+    
+    @objc private func setUsername(){
+        navigationItem.prompt = provider.username
+    }
+    
+    override func delete(_ sender: Any?){
+        print("Delete registered")
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -101,21 +118,12 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-       // if keyPath == #keyPath(delegate.selectedIndex) {
-            print("Changed Index")
-       //     subjectCollectionView.dataSource.selectedClass = delegate.selectedIndex
-            TKModelSingleton.sharedInstance.downloadedClasses[0].subjects.append(TKSubject(name: "A Test name", color: TKColor.yellow))
-            //subjectCollectionView.collectionView.reloadData()
-            subjectCollectionView.collectionView.insertItems(at: [IndexPath(row: 1, section: 0)])
-            subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
-            subjectCollectionView.collectionView.layoutIfNeeded()
-            subjectCollectionView.didSelectItem(at: 0)
-      //  }
-    }
-    
     func didChangeClassIndex(to: Int) {
         print("changed Index")
+        if to == TKModelSingleton.sharedInstance.downloadedClasses.count {
+            openCustomAlertView(for: .tkClass)
+            return
+        }
         subjectCollectionView.dataSource.selectedClass = to
         excerciseDataSource.selectedClass              = to
         subjectCollectionView.collectionView.reloadData()
@@ -124,18 +132,14 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         subjectCollectionView.didSelectItem(at: 0)
         selectedClassIndex = to
         excerciseCollectionView.reloadData()
-        if to == TKModelSingleton.sharedInstance.downloadedClasses.count {
-            openCustomAlertView(for: .tkClass)
-        }
+        
     }
     
     private func openCustomAlertView(for caller : CustomAlertViewCallers){
         let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController
-        customAlert.caller = caller
-        customAlert.providesPresentationContextTransitionStyle = true
-        customAlert.definesPresentationContext = true
         customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        customAlert.caller = caller
         customAlert.delegate = self
         self.present(customAlert, animated: true, completion: nil)
     }
@@ -143,6 +147,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     func didChangeSubjectIndex(to: Int) {
         print("Changed subject Index")
         excerciseDataSource.selectedSubject = to
+        currentSelectedSubject = to
         excerciseCollectionView.reloadData()
         if to == TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex].subjects.count + 1{
             openCustomAlertView(for: .tkSubject)
@@ -154,9 +159,6 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         UIApplication.shared.beginIgnoringInteractionEvents()
         let fetchCtrl = TKFetchController()
         fetchCtrl.fetchAll(notificationName: .excerciseLoaded, rank: .teacher)
-        
-        
-        
     }
     
     func setupExcerciseCollectionView(){
@@ -169,6 +171,7 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = .barBlue
+        //loadData()
     }
   
     
@@ -179,11 +182,11 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
         classesCollectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.collectionViewLayout.invalidateLayout()
         subjectCollectionView.collectionView.layoutIfNeeded()
-        subjectCollectionView.didSelectItem(at: 0)
+        subjectCollectionView.didSelectItem(at: currentSelectedSubject)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        subjectCollectionView.didSelectItem(at: 0)
+        subjectCollectionView.didSelectItem(at: currentSelectedSubject)
         UIView.animate(withDuration: 0.3) { [unowned self] in
             self.titleView.transform = CGAffineTransform(scaleX: 2, y: 2)
         }
@@ -209,15 +212,19 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
 extension TeacherMainViewController : CustomAlertViewDelegate{
     
     func cancelButtonTapped() {
-        return
+        print("Cancel tapped")
+        didChangeClassIndex(to: 0)
     }
     
-    func okButtonTapped(textFieldValue: String, with caller: CustomAlertViewCallers) {
+    func okButtonTapped(textFieldValue: String, subjectColor: TKColor, with caller: CustomAlertViewCallers) {
         switch caller {
         case .tkClass:
             uploadClass(with: textFieldValue)
+            didChangeClassIndex(to: 0)
         case .tkSubject:
-            uploadSubject(with: textFieldValue)
+            uploadSubject(with: textFieldValue, color: subjectColor)
+            didChangeSubjectIndex(to: 0)
+            
         }
     }
     
@@ -232,12 +239,13 @@ extension TeacherMainViewController : CustomAlertViewDelegate{
                 print(error)
             }else{
                 print("okButtonPressed: \(uploadedClass!)")
+                
             }
         }
     }
     
-    private func uploadSubject(with subjectName : String){
-        let newSubject = TKSubject(name: subjectName, color: .red)
+    private func uploadSubject(with subjectName : String, color: TKColor){
+        let newSubject = TKSubject(name: subjectName, color: color)
         var subjectCtrl = TKSubjectController()
         subjectCtrl.initialize(withRank: .teacher) { (success) in
             return

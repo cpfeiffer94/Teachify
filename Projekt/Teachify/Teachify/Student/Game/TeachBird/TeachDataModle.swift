@@ -17,7 +17,7 @@ class TeachDataModle {
         aufgaben = [["consider", "beachten","kontrollieren","können","kennen"],
                     ["this","diese","die","dessen","deselbe","dagegen"],
                     ["dedicated","gewidmet","gesteigert","erkennen","erlösen","gefährdend"],
-                    ["sophisticated","hochentwickelt","erlösen","kennen","gesteigert","dagegen"],
+                ["sophisticated","hochentwickelt","erlösen","kennen","gesteigert","dagegen"],
                     ["compromise","gefährdend","erlösen","kennen","erkennen","dagegen"],
                     ["ransom","erlösen","kennen","dagegen","gesteigert","gefährdend"],
                     ["increased","gesteigert","erlösen","erkennen","dagegen","kontrollieren"],

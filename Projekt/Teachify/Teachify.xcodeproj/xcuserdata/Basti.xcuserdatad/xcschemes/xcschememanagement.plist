@@ -12,17 +12,40 @@
 		<key>Sharing.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Teachify.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Test.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>40D02C8620D7B7B900AC8AD5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA12AF6B207615170090404A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA12AF7F207615190090404A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA12AF8A2076151A0090404A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

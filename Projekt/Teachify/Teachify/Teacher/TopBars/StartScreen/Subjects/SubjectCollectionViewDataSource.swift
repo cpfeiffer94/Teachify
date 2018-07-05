@@ -8,11 +8,29 @@
 
 import UIKit
 
-class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource, CellMenuDelegate {
     
     var selectedClass = 0
    
+    var collectionView: UICollectionView!
     
+    func delete(cell: UICollectionViewCell) {
+        var ctrl = TKSubjectController()
+        ctrl.initialize(withRank: .teacher) { [unowned self] (_) in
+            if let indexPath = self.collectionView.indexPath(for: cell){
+                let aClass = TKModelSingleton.sharedInstance.downloadedClasses[self.selectedClass].subjects.remove(at: indexPath.item-1)
+                DispatchQueue.main.async{
+                    ctrl.delete(subject: aClass, completion: { (error) in
+                        DispatchQueue.main.async{
+                            self.collectionView.deleteItems(at: [indexPath])
+                            
+                            (self.collectionView.window?.visibleViewController() as? TeacherMainViewController)?.subjectCollectionView.didSelectItem(at: 0)
+                        }
+                    })
+                }
+            }
+        }
+    }
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if TKModelSingleton.sharedInstance.downloadedClasses.count > 0 && TKModelSingleton.sharedInstance.downloadedClasses.count != selectedClass {
@@ -36,7 +54,8 @@ class SubjectCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath) as! SubjectCell
         cell.setup(with: TKModelSingleton.sharedInstance.downloadedClasses[selectedClass].subjects[indexPath.item-1])
-        
+        self.collectionView = collectionView
+        cell.delegate = self
         return cell
     }
     

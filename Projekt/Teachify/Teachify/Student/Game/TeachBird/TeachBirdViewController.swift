@@ -12,6 +12,8 @@ import SpriteKit
 
 class TeachBirdViewController: UIViewController {
     
+    var scene:SKScene?
+    
     let skView: SKView = {
         let view = SKView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -21,19 +23,28 @@ class TeachBirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(exitGame), name: Notification.Name("exitGame"), object: nil)
+        
         view.addSubview(skView)
 
         skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        let scene = TeachGameScene(size: view.frame.size)
+        scene = TeachGameScene(size: view.frame.size)
         
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = false
 
         skView.presentScene(scene)
+    }
+    @objc func exitGame(){
+        //TODO: let viewcontroller disappear
+        self.dismiss(animated: true) {
+            self.scene?.removeFromParent()
+        }
+        //switch to view
     }
     override var shouldAutorotate: Bool {
         return false

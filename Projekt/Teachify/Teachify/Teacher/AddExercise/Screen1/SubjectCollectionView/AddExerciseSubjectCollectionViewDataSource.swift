@@ -17,15 +17,12 @@ class AddExerciseSubjectCollectionViewDataSource: NSObject, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSubjectReuseableCell", for: indexPath) as! AddSubjectReuseableCell
-        cell.alpha = 0.5
         cell.subjectName.text = subjects[indexPath.row].name
-        cell.backgroundColor = subjects[indexPath.row].color.color
+        let color = subjects[indexPath.row].color.color.withAlphaComponent(0.5)
+        cell.backgroundColor = color
         return cell
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
     }
     
 

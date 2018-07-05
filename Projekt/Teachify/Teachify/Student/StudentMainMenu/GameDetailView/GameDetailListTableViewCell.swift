@@ -9,7 +9,10 @@
 import UIKit
 
 class GameDetailListTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var exerciseNameLabel: UILabel!
+    @IBOutlet weak var exerciseCompletionBox: UIImageView!
+    @IBOutlet weak var exerciseCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

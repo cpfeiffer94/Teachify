@@ -19,15 +19,11 @@ class GameCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSubjectReuseableCell", for: indexPath) as! AddSubjectReuseableCell
-        cell.alpha = 0.5
-        
+        cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0.5)
         cell.subjectName.text = TKExerciseType.allExerciseTypes[indexPath.item].name
+        
         return cell
     }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
 
+    
 }

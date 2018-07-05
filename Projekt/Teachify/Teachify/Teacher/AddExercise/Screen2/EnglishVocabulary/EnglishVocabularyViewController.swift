@@ -18,6 +18,7 @@ class EnglishVocabularyViewController: UIViewController {
     @IBOutlet var falseAnswer2: UITextField!
     @IBOutlet var falseAnswer3: UITextField!
     @IBOutlet var exerciseName: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     //MARK: Variables
     private var vocabularyBook = [VocabularyModel]()
@@ -48,15 +49,15 @@ class EnglishVocabularyViewController: UIViewController {
         
     }
     
-    func acceptAnswer() {
-        var doc = TKDocument(name: exerciseName.text!, deadline: nil)
+    func acceptAnswer(completion: @escaping () -> ()) {
+        var doc = TKDocument(name: exerciseName.text!, deadline: datePicker.date)
         
         var exercises = [TKExercise]()
         
         for (i,exercise) in vocabularyBook.enumerated() {
             let data = try! JSONEncoder().encode(exercise)
             let dataString = String(data: data, encoding: .utf8)!
-            let exercise = TKExercise(name: "\(doc.name)\(i)", deadline: nil, type: selectedGame, data: dataString)
+            let exercise = TKExercise(name: "\(doc.name)\(i)", deadline: datePicker.date, type: selectedGame, data: dataString)
             exercises.append(exercise)
         }
         
@@ -76,6 +77,7 @@ class EnglishVocabularyViewController: UIViewController {
                     print(newError)
                 }else{
                     print("Upload success")
+                    completion()
                 }
             })
         }
@@ -84,7 +86,13 @@ class EnglishVocabularyViewController: UIViewController {
     
     override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
         
-        acceptAnswer()
+        guard let mainTeachVC = unwindSegue.destination as? TeacherMainViewController else {
+            return
+        }
+        acceptAnswer {
+             mainTeachVC.loadData()
+        }
+       
     }
     
 }

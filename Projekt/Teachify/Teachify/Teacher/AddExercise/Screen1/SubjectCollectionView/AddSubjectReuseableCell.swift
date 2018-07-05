@@ -10,29 +10,27 @@ import UIKit
 
 class AddSubjectReuseableCell: UICollectionViewCell {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
     @IBOutlet weak var subjectName: UILabel!
     @IBOutlet weak var subjectIcon: UIImageView!{
         didSet{
             let rotateBy = CGFloat(Measurement(value: -30, unit: UnitAngle.degrees).converted(to: .radians).value)
             subjectIcon.transform = CGAffineTransform(rotationAngle: rotateBy)
+
         }
+        
     }
+    
     
     
     override var isSelected: Bool{
         didSet{
-            alpha = isSelected ? 1 : 0.5
+            backgroundColor = isSelected ? backgroundColor?.withAlphaComponent(1) : backgroundColor?.withAlphaComponent(0.5)
         }
     }
     
     override var isHighlighted: Bool{
         didSet{
-            alpha = isSelected ? 1 : 0.5
+            backgroundColor = isSelected ? backgroundColor?.withAlphaComponent(1) : backgroundColor?.withAlphaComponent(0.5)
         }
     }
     
