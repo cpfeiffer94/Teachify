@@ -74,15 +74,22 @@
 
 % #################################################################
 
-\begin{document}
+%\begin{document}
 
 \hyphenation{Cha-otn-gsch-werl}
 \setlength\headheight{1.75cm}
 
-\ihead*{\small{Fortgeschrittene Programmierung unter SWIFT (FWPM)}}
-\chead{}
+%\ihead*{\small{Fortgeschrittene Programmierung unter SWIFT (FWPM)}}
 \ohead*{\includegraphics[height=0.05\textheight]{fh_logo}}
 \pagestyle{scrheadings}
+
+\begin{document}
+
+
+\ohead*{\includegraphics[height=0.05\textheight]{fh_logo}}
+\ifoot*{\small{The Teachify Project}}
+\ofoot*{\small{Prof. Dr. Sven Rill}}
+
 
 
 \setcounter{secnumdepth}{5}
@@ -92,7 +99,7 @@
 \parskip0.5\baselineskip plus 0.125\baselineskip minus 0.25\baselineskip
 \parindent0em
 
-%\automark[section]{chapter}
+\automark*[section]{chapter}
 
 \titlehead{\begin{center}\includegraphics[width=5cm]{fh_logo}\end{center}}
  \title{
@@ -107,7 +114,6 @@ Phillipp Dümleim, Carl Phillipp Knoblauch}
 \date{09.07.2018\\ Vorgelegt bei Prof. Dr. Sven Rill} %##Abgabedatum einfügen
 
 
-%\begin{document}
 \maketitle
 \pagenumbering{roman}
 \tableofcontents
