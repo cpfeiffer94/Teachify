@@ -1,7 +1,7 @@
 \chapter{Implementierung eines gemeinsamen Datenmodells (TKFetchController/TKFetchSingleton \& FetchOperations)}
 Bastian Kusserow (Team Lehrer) \& Christian Pfeiffer (Team Schüler)
 \section{Ziele}
-
+Zur Umsetzung des temporären Datenmodells haben wir uns folgende Ziele gesetzt:
 
 \begin{itemize}
 \item Vermeidung von Redundanz
@@ -14,13 +14,31 @@ Bastian Kusserow (Team Lehrer) \& Christian Pfeiffer (Team Schüler)
 
 \subsection{TKModelSingleton}
 Um das Ziel des Vereinheitlichten Zugriffs auf Schnittstellendaten zu erfüllen, wird eine Singleton Klasse zum Abspeichern der Schnittstellendaten verwendet.
+Das Besondere an einem Singleton ist, dass es immer nur ein Objekt der Klasse existiert, welches von der Singleton Klasse selbst erzeugt und verwaltet wird. 
 
 \lstinputlisting[language=swift]{source/fetchsingleton.swift}
+
+In unseren TKModelSingleton werden verschiedene Variablen gehalten, welche an verschiedenen anderen Stellen in der App benötigt werden. Die Konstante \textit{sharedInstance} hält die Instanz des Singleton. Die Variable \texttt{downloadedClasses} hält die heruntergeladenen TKClass Objekte in einem Array, welche von der private Database des Nutzers gefetched wurden. In der Variable \texttt{downloadedSubjects} werden die TKSubjects abgespeichert, welche von der shared Database des Nutzers stammen. Die Variable \texttt{myTKRank} enthälgt den TKRank auf welchen der Controller bei dem letzten Fetch initialisiert wurde.
+
 
 \subsection{TKFetchController}
+Als Zugriffsschicht auf den TKModelSingleton wurde der TKFetchController implementiert. In ihm sind einerseits Getter und Setter Methoden für den Zugriff auf den Singleton implementiert. Andererseits ist in diesem auch die Logik für die Fetch Funktionalitäten von der Schnittstelle implementiert.
 
-\lstinputlisting[language=swift]{source/fetchsingleton.swift}
+\subsubsection{Abrufen von Daten aus dem TKFetchSingleton}
+\lstinputlisting[language=swift]{source/getSubjAndDoc.swift}
+Um die Daten aus dem Singleton abzurufen, wurden verschiedenartige Getter und Setter Methodiken implementiert. Exemplarisch soll hier eine etwas komplexere Get-Methode dargestellt werden:
+Die Methode: \texttt{getSubjectAndDocumentForCollectionIndex()} liefert Beispielsweise für die CardViews im Schülerhauptmenü das benötigte TKSubject \& TKDocument für die View.
 
-\subsection{TKFetchController - Zugriffschicht}
+\subsubsection{Abrufen aus der Schnittstelle mit Operations}
+\lstinputlisting[language=swift]{source/fetchAll.swift}
 
-\lstinputlisting[language=swift]{source/fetchctrlextension.swift}
+\textbf{1: Zuruecksetzen der des Controllers und initialisieren der Operations}
+Bevor die Operations initialisiert werden können, werden mit der Methode \texttt{resetWithRank()} die in dem TKModelSingleton gehaltenen Variablen zurückgesetzt und der TKRank mit den neuen TKRank aktualisiert. Danach werden alle Operations mit den neuen TKRank initialisert.
+
+\textbf{2: Definieren der Completion Blocks nach der Operations}
+Anschließend werden die Completion Blocks der Operations definiert. Hierbei werden die jeweiligen heruntergeladenen Objekte von der Schnittstelle in die darauffolgende Operation eingefügt. In dem Completion Block der Exercise Operation wird eine Notification an die UIThreads geschickt, welche anschließend die neuen von der Schnittstelle abgerufenen Daten abrufen können.
+
+\textbf{3: Setzen der Operation Dependencies und Aufsetzen der Queue}
+Hier werden die Dependencies (Abhängikeiten) der Operations zu einander gesetzt. Es muss immer die darüberliegende Operation den Completion Block abgehandelt haben, bevor die darunterliegende Operation beginnen kann. Anschließend werden die Operations mithilfe einer Queue in die richtige Reihenfolge gebracht.
+
+Weiter Informationen über die Funktionsweise von den Operations ist in dem Leherteil dieser Dokumentation enthalten.

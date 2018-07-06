@@ -1,3 +1,5 @@
+
+
 \chapter{Schüler UI, Anbindung an die Schnittstelle und Entwicklung des Mathe Piano Spiels}
 Christian Pfeiffer, Normen Krug \& \href{mailto:jofranz90@gmail.com?subject=Swift-Studienarbeit}{Johannes Franz}
 
@@ -20,7 +22,58 @@ Als Ziele der Studienarbeit wurden folgende Punkte definiert:
 \item Erfahrung sammeln in Zusammenarbeit mit anderen Teams
 \end{itemize}
 \section{Spezifikation}
-Als Strategie für die Umsetzung des Projektes wurde das Prinzip "Funktionalität vor UI-Design" gewählt. Als die Funktionalität dann zufriedenstellend.
+
+
+\subsection{Schülerhauptmenü}
+\subsubsection{Einleitung}
+Primäre Benutzerzielgruppe von Teachify sind Grundschüler. Deswegen ist es wichtig die Hauptmenüs so simpel und zielführend wie möglich zu gestalten. Weiterhin ist es nötig auch die Designsprache so kindgerecht wie möglich zu gestalten.
+
+\subsubsection{Ziele}
+\begin{itemize}
+    \item Einfache Loginmöglichkeiten
+    \item simple Navigationsmöglichkeiten zu Spielen
+    \item Unterscheidung zwischen Aufgaben und Endlosspielen
+    \item Simple Darstellung von Hintergrundaktivitäten
+\end{itemize}
+
+\subsubsection{Einfache Loginmöglichkeiten}
+Da es in Teachify zwei Benutzergruppen (Lehrer und Schüler) gibt, muss es eine Möglichkeit geben wie sich diese authentifizieren und danach einloggen können. Als Grundlage unserer App dient das von dem Schnittstellenteam entwickelte "TeachKit". Dies stellt Teachify die von iCloud zur Verfügung gestellten Möglichkeiten zur Verfügung. Zur Authentifizierung des Benuters verwenden wir daher die iCloud Accounts. Innerhalb dieser iCloud Accounts ist aber nicht definiert, ob ein Benutzer zu der Gruppe der Lehrer oder der Schüler gehört. Deswegen wird der Benutzer beim Start von Teachify mit der LoginView begrüßt, innerhalb derer er seine Rolle wählen kann.
+
+\subsubsection{Simple Navigationsmöglichkeiten zu den Spielen}
+Nach dem Login als Schüler wird der Benutzer zu dem Schülerhauptmenü weitergeleitet. Innerhalb dessen soll er eine kurze Übersicht über seine Statistiken und bereits erbrachten Erfolgen bekommen. Prominent sollen die Spiele bzw. Übungen welche der Schüler spielen bzw. erarbeiten kann, dargestellt werden. Hierfür sollen die in iOS 11 neu hinzugekommenen Cards dienen, welche ebenso prominent im AppStore verwendet werden. Als weitere Interaktionsmöglichkeiten soll der Schüler in der Lage sein neue Aufgaben aus herunterzuladen und Einladungen, welche in Form von QR-Codes verschickt werden, einzuscannen und somit anzunehmen
+
+\subsubsection{Unterscheidung zwischen Aufgaben und Endlosspielen}
+Die Schüler sollen nicht nur in der Lage sein Aufgaben welche von den Lehrern gestellt wurden zu bearbeiten, sondern sollen die implementierten Spiele auch in einen Endlosmodus spielen können. Bei dem Endlosmodus kann der Benutzer endlos lange Aufgaben bearbeiten, welche vorher per Zufallsgenerator generiert wurden. Der Endlosmodus basiert nicht auf von Aufgaben, welche von den Lehrern gestellt wurden.
+
+\subsubsection{Darstellung von Hintergrundaktivitäten}
+Da in Teachify oft zeitaufwendige Aufgaben im Hintergrund ausgeführt werden (wie das Abrufen von Daten von der Schnittstelle), muss der Benutzer auch über diese Abläufe informiert werden. Dies soll durch Einblendungen wie einem Progress Indicator, während die Download Operationen laufen, umgesetzt werden.
+
+
+\subsubsection{User Interface}
+\begin{figure}[H]
+	\centering
+  \frame{ 
+  \includegraphics[width=1\textwidth]{images/LoginMenu.png}
+  }
+	\caption{Der Login Bildschirm (Schüler)}
+	\label{Der Login Bildschirm}
+\end{figure}
+\begin{figure}[H]
+	\centering
+  \frame{ 
+  \includegraphics[width=0.99\textwidth]{images/studentMainMenu_Continious.png}
+  }
+	\caption{Das Schülerhauptmenü (Schüler)}
+	\label{Das Schuelerhauptmenue}
+\end{figure}
+\begin{figure}[H]
+	\centering
+  \frame{ 
+  \includegraphics[width=1\textwidth]{images/exerciseDetail.png}
+  }
+	\caption{Detailansicht einer Übungsaufgabe (Schüler)}
+	\label{Detailansicht einer Uebungsaufgabe}
+\end{figure}
 
 \subsection{Mathe Piano Spiel}
 Bei der Entwicklung des Spiels war es wichtig, möglichst schnell einen funktionsfähigen Prototypen zu ertstellen. Dieser wurde im Verlauf des Projektes immer weiter verbessert.
@@ -49,7 +102,8 @@ Bei der Gestaltung des User Interfaces muss explizit darauf geachtet werden, das
 \section{Implementierungsphase}
 An dieser Stelle wird die Implementierung der Aufgaben beschrieben. Dabei wird auf die Schnittstellenanbindung, das Mathe Piano Spiels sowie das User Interface eingegangen.
 \subsection{Mathe Piano Spiel}
-%normen
+%todo: normen
+%todo: normen Section für Schrifterkennung im Bezug auf Piano Game 
 
 %todo: replace with a real example
 \lstinputlisting[language=swift]{source/test.swift}
@@ -72,5 +126,3 @@ Um das Mathepianospiel so Zielgruppen freundlich wie möglich zu gestalten, wurd
 Teachify war ein herausforderendes Projekt für das 6. Semester. Dies stellte das ganze Team immer wieder vor anspruchsvolle Aufgaben. Der Umgang mit Git (\href{https://github.com/cpfeiffer3008/Teachify}{Teachify Projekt Link}) brachte zugleich viele Vorteile aber auch Herausforderungen.\\
 Durch die unterschiedlichen Herangehensweisen (Design vs. Funktion) und den damit weitgehend einhergehenden Verzicht auf einen Prototypen lenkte das Projekt gegen Ende des Projektzeitraums auf einen ``Big-Bang`` Ansatz.
 Positiv zu erwähnen war das Zusammenwachsen des Teams und die Zusammenarbeit untereinander. So hatten die meisten Teams eine Domäne in die sie sich eingearbeitet hatten und mussten bei der Überschneidung ihrer Gebiete zusammenarbeiten.
-
-\section{Umsetzung des Schülerhauptmenüs \& Loginmenü}
