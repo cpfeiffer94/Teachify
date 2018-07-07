@@ -1,0 +1,69 @@
+\chapter{Lehrer UI, Anbindung an die Schnittstelle, Erstellen und Teilen von Aufgaben}
+Philipp Dümlein, Bastian Kusserow, Maximilian Sonntag
+
+
+\section{Lehrer UI}
+Zu Beginn des Projekts musste zunächst eine funktionale und optisch ordentliche Benutzeroberfläche für den Lehrer entwickelt werden. Hierbei waren Ziele moderne UI-Elemente zu verwenden, sowie erste Erfahrungen bei der Implementierung von Views im Code zu sammeln. Ganz besonders zeigt sich dies auf dem Homescreen des Lehrers.
+\subsection{Homescreen}
+Auf dem Homescreen wurde durch die Kombination von mehreren CollectionViews (CVs), die unterschiedlich angepasst wurden, ein funktionales und übersichtliches UI geschaffen. Die Aufteilung wurde wie folgt implementiert:
+\begin{itemize}
+\item CV zur Anzeige, Auswahl und Erstellung von Klassen
+\item CV zur Anzeige, Auswahl und Erstellung des Faches    
+\item Animierter Indikator zur Anzeige des aktuell gewählten Fachs
+\item CV zur Anzeige, Auswahl und Erstellung von Dokumenten
+\end{itemize}
+Eine Besonderheit der CV der Dokumente ist die Sharing-Funktion, welche durch langen Druck auf ein Dokument aufgerufen werden kann. Nach erfolgreichem Sharing wird in einem Overlay der QR-Code mit dem Freigabelink angezeigt. Dieser kann dann von Schülern verwendet werden um Zugriff auf das geteilte Dokument zu bekommen.
+
+\subsection{Erstellen von Aufgaben}
+Bei der Erstellung von Aufgaben muss der Lehrer zunächst auswählen um welches Fach es sich handelt. Daraufhin muss ausgewählt werden, welche Art von Aufgaben erstellt werden sollen. Hierbei muss neben dem Fach auch eine genauere Angabe zum Aufgabentyp gemacht werden. Aktuell gibt es Folgende Auswahlmöglichkeiten:
+\begin{itemize}
+\item Englisch - Vokabeln
+\item Englisch - Grammatik
+\item Englisch - Synonyme
+\item Mathematik - Addition
+\item Mathematik - Subtraktion
+\item Mathematik - Division
+\item Mathematik - Multiplikation
+\end{itemize}
+Danach muss noch eine Auswahl getroffen werden zu welchem Spiel die Aufgaben auf Schülerseite werden sollen.
+Je nach Auswahl des Aufgabentyps werden unterschiedliche Views geöffnet, auf denen spezifische Einstellungen zur Auswahl gesetzt werden.
+Im Rahmen der Studienarbeit wurde bisher die Erstellung von Englisch Vokabeltests und von Mathematik-Aufgaben mit allen Grundrechenarten implementiert.
+
+
+\section{Implementierung}
+\subsection{Homescreen}
+
+\subsubsection{Klassen- und Fächer-CVs}
+Die CVs zur Anzeige und Auswahl der Klassen und Fächer verfügen neben den einzelnen Elementen auch Einträge zur Anzeige von allen Unterelementen und zum Hinzufügen von Klassen/Fächern.
+Letzteres geschieht über einen eigens geschriebenen ViewController, welcher modal als Overlay angezeigt wird. Hier kann der Name für die Klasse bzw. das Fach eingetragen werden. Wird der Save-Button betätigt, wird automatisch ein Objekt in die Cloud hochgeladen.\\Die einzelnen Elemente der CVs können selektiert werden. Daraufhin werden die jeweils darunterliegenden CVs entsprechend angepasst. Als visuelles Feedback für den Nutzer wird bei Klassen der Name des ausgewählten Eintrags fett geschrieben. Für die Fächer gibt es einen weißen Indikator, welcher unterhalb des ausgewählten Eintrags angezeigt wird und beim Wechsel animiert zum neuen Eintrag springt.
+
+\subsubsection{Dokumente-CV}
+Die CV zeigt immer die Dokumente des aktuell ausgewählten Fachs einer Klasse. Die wohl wichtigste Funktion ist das Sharing einzelner Dokumente. Dies wurde durch eine Long-Tap-Action und einem sog. \textit{MenuItem} umgesetzt. Wird auf dieses gedrückt, öffnet sich ein modaler SharingController, in dem alle Sharing-Optionen angezeigt werden.\\Hier wird auch der eigene Share-Service \textit{'Sharing'} angezeigt, welcher dafür sorgt, dass die Aufgabe in die Cloud geladen wird und der Link für die Freigabe zurückgeliefert und als QR-Code angezeigt wird. Dieser kann dann von Schülern verwendet werden um Zugriff zur geteilten Aufgabe zu erhalten.
+
+\subsection{Herunterladen der Clouddaten}
+Beim Start der Lehrerseite werden zunächst alle bereits durch die App hochgeladenen Daten auf dem iCloud Account des Nutzers heruntergeladen. Aufgrund des Datenmappings ist hierbei die Reihenfolge enorm wichtig. Zur Erklärung:
+\begin{itemize}
+\item Eine Klasse ist eigenständig
+\item Ein Fach gehört zu einer Klasse
+\item Ein Dokument gehört zu einem Fach
+\item Eine Aufgabe gehört zu einem Dokument
+\end{itemize}
+Da die jeweiligen Unterobjekte ohne deren Überobjekt nicht erreichbar sind, müssen also zunächst Klassen, dann deren Fächer, daraufhin die jeweiligen Dokumente und zuletzt die entsprechenden Aufgaben heruntergeladen werden.
+Für den Download selbst bietet die Schnittstelle zwar entsprechende Methoden, dennoch stellt die Reihenfolge der Downloads ein Problem dar.
+
+\subsubsection{Problematik}
+Beim Herunterladen der Daten ist es durch das Mapping zwingend notwendig eine bestimmte Reihenfolge einzuhalten. Da Downloads aber standardmäßig asynchron ablaufen, kann nie genau gesagt werden, wann welche Daten verfügbar sind.
+Eine Möglichkeit des Downloads ist die Verschachtelung der einzelnen Aufrufe. Das bedeutet, das zunächst alle Klassen heruntergeladen werden, danach alle Fächer, alle Dokumente und alle Aufgaben. Dies ist zwangsläufig notwendig, im Code allerdings extrem unübersichtlich und unsauber. Daher wurde eine zwar etwas aufwändigere, aber deutlich schönere Lösung implementiert.
+
+\subsubsection{Lösung}
+Um die Verschachtelung sauber zu Implementieren wurde auf \textit{Operations} zurückgegriffen. Es wurde eine \textit{BaseOperation} implementiert, welche von \textit{Operation} erbt. Hierdurch kann der genaue Zustand eines Downloads gesteuert/abgerufen werden.
+Es wurden für den Download von Klassen, Fächern, Dokumenten und Aufgaben eigene Operationen implementiert, welche von der \textit{BaseOperation} erben.
+Beim Download werden nun lediglich die Completionblocks angegeben, um die heruntergeladenen Daten entsprechend zu setzen. 
+\\Die einzelnen Operationen werden dann in einer \textit{OperationQueue} ausgeführt. Die Reihenfolge der Downloads wird durch sog. \textit{Dependencies} gesteuert. Die Dependencies sorgen dafür, dass ein in der Reihe später stehender Block erst ausgeführt wird, wenn der vorhergehende beendet ist. Außerdem wird maximal eine Operation gleichzeitig ausgeführt, wodurch zusätzlich verhindert wird, dass Downloads gestartet werden, für die die erforderlichen Daten noch nicht vorhanden sind.
+
+\section{Aufgaben erstellen}
+Beim Erstellen von Aufgaben sind insbesondere die Mathematik-Aufgaben interessant. Es kann mit Hilfe zweier Picker ausgewählt werden, in welchem Bereich sich die Operanden der Rechenoperation befinden sollen. Zudem kann angegeben werden, ob diese Zahlen auch negative Werte annehmen dürfen. In Abhängigkeit der Auswahl werden die Picker entsprechend angepasst. Das bedeutet, negative Zahlen sind verfügbar bzw. nicht verfügbar und der Zahlenbereich umfasst immer mindestens eins. Das bedeutet auch, dass beim Verändern der Picker die jeweils andere Seite entsprechend geändert wird, sodass ein positiver Zahlenbereich entsteht.
+
+\section{Fazit}
+Der aktuelle Implementierungsstand umfasst den größten Teil der Grundfunkionalität. Das Erstellen und Teilen von Aufgaben ist grundsätzlich möglich und funktioniert. Im Rahmen der Studienarbeit konnten aus zeitlichen Gründen nicht mehr Aufgabentypen, Fächer und Operationen implementiert werden, die Rahmenbedingungen hierfür sind aber für eine zukünftige Erweiterung der Anwendung gegeben und funktionsfähig.
+\\Die Implementierung bis zu diesem Punkt war umfangreich, die Aufgaben der Lehrerseite umfassten aber leider kaum neue Komponenten. Dennoch wurde erstmals mit XIB-Dateien gearbeitet, UI und Contraints im Code erzeugt und mit Operations gearbeitet. Somit konnten trotzdem neue Techniken und Funktionalitäten getestet und erlernt werden.
