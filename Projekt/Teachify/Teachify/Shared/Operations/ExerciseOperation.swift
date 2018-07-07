@@ -17,17 +17,25 @@ class ExerciseOperation : BaseOperation {
         super.init(opRank: opRank)
         exerciseCtrl.initialize(withRank: opRank) { (succeed) in
             print("Exercise init --> \(succeed) as: \(opRank)" )
+            if (succeed == nil){
+                self.isInitialized = true
+            }
         }
     }
     
     
     override func execute() {
-        print("Fetch exercises started")
         if documents.count == 0 {
             print("Fetch excercises finished documents is empty!")
-            finish()
+            self.finish()
             return
         }
+        
+        if (!isInitialized){
+            self.finish()
+            return
+        }
+        print("Fetch exercises started")
         
         if operationRank == .teacher {
             for (index,document) in documents.enumerated(){

@@ -175,6 +175,7 @@
 		D443C51220A99AE000185CEF /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443C51120A99ADF00185CEF /* BasicButton.swift */; };
 		D499F07D20DFDB6000F34B7E /* ICloudUserIDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499F07C20DFDB6000F34B7E /* ICloudUserIDProvider.swift */; };
 		D49D3FD720CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */; };
+		D4AAF3CA20EA31A000E1C859 /* ExerciseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF3C920EA31A000E1C859 /* ExerciseConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -388,7 +389,8 @@
 		D443C50D20A999FD00185CEF /* BasicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNode.swift; sourceTree = "<group>"; };
 		D443C51120A99ADF00185CEF /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		D499F07C20DFDB6000F34B7E /* ICloudUserIDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudUserIDProvider.swift; sourceTree = "<group>"; };
-		D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathPianoGameFeedbackModel.swift; path = Teachify/Student/Game/PianoGame/MathPianoGameFeedbackModel.swift; sourceTree = SOURCE_ROOT; };
+		D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathPianoGameFeedbackModel.swift; path = Teachify/Student/Game/PianoGame/Model/MathPianoGameFeedbackModel.swift; sourceTree = SOURCE_ROOT; };
+		D4AAF3C920EA31A000E1C859 /* ExerciseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -957,19 +959,44 @@
 			path = GameDetailView;
 			sourceTree = "<group>";
 		};
+		D4AAF3CB20ED5E4700E1C859 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA7415F5209F67290092B664 /* MathPainoExerciseSingleton.swift */,
+				D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */,
+				AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */,
+				AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D4AAF3CC20ED5E6D00E1C859 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */,
+				D4AAF3C920EA31A000E1C859 /* ExerciseConverter.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		D4AAF3CD20ED5E9100E1C859 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				2676A31D20AD767B0039C599 /* BasicScene.swift */,
+				AA8229F120888C560018AB0E /* ResultScene.swift */,
+				D443C50D20A999FD00185CEF /* BasicNode.swift */,
+				D443C51120A99ADF00185CEF /* BasicButton.swift */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
 		D4DE8D052099EA6A005C2A33 /* PianoGame */ = {
 			isa = PBXGroup;
 			children = (
-				AA8229FD20888D3A0018AB0E /* MathPianoGame.swift */,
-				D49D3FD620CEC9E5002AAE6C /* MathPianoGameFeedbackModel.swift */,
-				AA8229FE20888D3A0018AB0E /* MathPianoQuestionModel.swift */,
-				AA8229FC20888D3A0018AB0E /* RandomQuestionGenerator.swift */,
-				AA8229F120888C560018AB0E /* ResultScene.swift */,
+				D4AAF3CD20ED5E9100E1C859 /* SpriteKit */,
+				D4AAF3CC20ED5E6D00E1C859 /* Helper */,
+				D4AAF3CB20ED5E4700E1C859 /* Model */,
 				AA8229F220888C560018AB0E /* MathPianoGameViewController.swift */,
-				2676A31D20AD767B0039C599 /* BasicScene.swift */,
-				D443C50D20A999FD00185CEF /* BasicNode.swift */,
-				D443C51120A99ADF00185CEF /* BasicButton.swift */,
-				AA7415F5209F67290092B664 /* MathPainoExerciseSingleton.swift */,
 			);
 			path = PianoGame;
 			sourceTree = "<group>";
@@ -1346,6 +1373,7 @@
 				AA486186207F8FC900C43588 /* GameCollectionDelegate.swift in Sources */,
 				4035E3F820D287D300237DDD /* ProgressIndicatorView.swift in Sources */,
 				3D08013A20DD02FF00D7391C /* TeachDataModle.swift in Sources */,
+				D4AAF3CA20EA31A000E1C859 /* ExerciseConverter.swift in Sources */,
 				D443C51020A99A0900185CEF /* (null) in Sources */,
 				D443C50E20A999FD00185CEF /* BasicNode.swift in Sources */,
 				0F999DE4207B4D7900FF5542 /* TKUser.swift in Sources */,

@@ -21,10 +21,17 @@ class SubjectOperation : BaseOperation {
 //        forced Unwrap
         subjectCtrl.initialize(withRank: operationRank!) { (succeed) in
             print("Subject init --> \(succeed)")
+            if (succeed == nil){
+                self.isInitialized = true
+            }
         }
     }
     
     override func execute() {
+        if (!isInitialized){
+            self.finish()
+            return
+        }
         print("Fetch Subjects started with Rank: \(operationRank)")
         if (operationRank == .teacher){
             for (index,aClass) in classes.enumerated() {

@@ -11,6 +11,7 @@ import Foundation
 class BaseOperation : Operation {
     var operationRank : TKRank?
     let modelCtrl : TKFetchController = TKFetchController()
+    var isInitialized : Bool = false
     
     override var isAsynchronous: Bool {
         return true
