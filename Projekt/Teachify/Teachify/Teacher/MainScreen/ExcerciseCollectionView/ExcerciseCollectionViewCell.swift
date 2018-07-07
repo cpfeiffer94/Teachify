@@ -66,6 +66,7 @@ class ExcerciseCollectionViewCell: UICollectionViewCell {
                 return
             }
             
+            
             UIApplication.shared.keyWindow!.visibleViewController()!.present(shareVC!, animated: true)
         }
     }

@@ -88,7 +88,9 @@ class TeacherMainViewController: UIViewController, CVIndexChanged {
     }
     
     @objc private func setUsername(){
-        navigationItem.prompt = provider.username
+        DispatchQueue.main.async { [unowned self] in
+            self.navigationItem.prompt = self.provider.username
+        }
     }
     
     override func delete(_ sender: Any?){
@@ -229,33 +231,26 @@ extension TeacherMainViewController : CustomAlertViewDelegate{
     }
     
     private func uploadClass(with className : String){
+        let addCtrl = TKAddController()
         let newClass = TKClass(name: className)
-        var classCtrl = TKClassController()
-        classCtrl.initialize(withRank: .teacher) { (succes) in
-            return
-        }
-        classCtrl.cloudCtrl.create(object: newClass) { (uploadedClass, error) in
-            if let error = error{
-                print(error)
-            }else{
-                print("okButtonPressed: \(uploadedClass!)")
-                
+        addCtrl.addClass(class: newClass, completion: DispatchQueue.main.async {
+            let itemCount = self.classesCollectionView.numberOfItems(inSection: 0)
+            let indexPath = IndexPath(item: itemCount-1, section: 0)
+            self.classesCollectionView.insertItems(at: [indexPath])
             }
-        }
+        )
+        
     }
     
     private func uploadSubject(with subjectName : String, color: TKColor){
         let newSubject = TKSubject(name: subjectName, color: color)
-        var subjectCtrl = TKSubjectController()
-        subjectCtrl.initialize(withRank: .teacher) { (success) in
-            return
-        }
-        subjectCtrl.add(subject: newSubject, toTKClass: TKModelSingleton.sharedInstance.downloadedClasses[selectedClassIndex]) { (uploadedSubject, error) in
-            if let error = error{
-                print(error)
-            }else{
-                print("okButtonPressed: \(uploadedSubject)")
-            }
+        let model = TKModelSingleton.sharedInstance
+        let addCtrl = TKAddController()
+        addCtrl.addSubject(newSubject: newSubject, toClass: model.downloadedClasses[selectedClassIndex]){
+            let itemCount = self.subjectCollectionView.collectionView.numberOfItems(inSection: 0)
+            let indexPath = IndexPath(item: itemCount-1, section: 0)
+            self.subjectCollectionView.collectionView.insertItems(at: [indexPath])
+            self.subjectCollectionView.didSelectItem(at: 0)
         }
     }
     
