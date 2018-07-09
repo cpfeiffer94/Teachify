@@ -1,12 +1,9 @@
-
-
-\chapter{Schüler UI, Anbindung an die Schnittstelle und Entwicklung des Mathe Piano Spiels}
+\chapter{Schülerteam: MathePiano Spiel, Login \& Schülerhauptmenü}
 Christian Pfeiffer, Normen Krug \& \href{mailto:jofranz90@gmail.com?subject=Swift-Studienarbeit}{Johannes Franz}
 
 
 \section{Einleitung}
 In diesem Abschnitt werden die Ziele und die Motivation des Projektes definiert. Dabei werden unter anderem die Erwartungen an das Projekt genannt.
-
 \subsection{Motivation}
 Die Hauptmotivation des Projektes war das Lernen und Einarbeiten in neue Apple Frameworks (wie \textit{SpriteKit} und \textit{CloudKit}) und Erfahrungen sammeln in der Zusammenarbeit mit mehreren Entwicklerteams, welche gleichzeitig an einem Projekt arbeiten. Deshalb war es zwingend notwendig, sich mit anderen Teams zu verständigen und auszutauschen.  
 
@@ -50,7 +47,7 @@ Da in Teachify oft zeitaufwendige Aufgaben im Hintergrund ausgeführt werden (wi
 
 
 \subsubsection{User Interface}
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
   \frame{ 
   \includegraphics[width=1\textwidth]{images/LoginMenu.png}
@@ -58,6 +55,7 @@ Da in Teachify oft zeitaufwendige Aufgaben im Hintergrund ausgeführt werden (wi
 	\caption{Der Login Bildschirm (Schüler)}
 	\label{Der Login Bildschirm}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
   \frame{ 
@@ -91,7 +89,7 @@ Als Grundlage wurde die von Apple entwickelte Game Engine namens \textit{SpriteK
 \end{itemize}
 
 \subsubsection{Herausforderungen}
-Nach der ausgiebigen Einarbeitung in das \textit{SpriteKit} \textit{Framework} haben sich einige Hürden ergeben. Das Verwenden von dynamischen Buttons ist nicht trivial, weil es keine Buttons per Default gibt. Deshalb muss eine eigene Button Klasse implementiert und mit der gewünschten Funktionalität erweitert werden. Des Weiteren war es schwierig den Code sinnvoll zu strukturieren, aufgrund der durch Spiel vorgegebenen skriptartigen Programmierung. %todo: hier könnte doch der Code für einen Button als Beispiel in die Doku kommen. Eher besser in der Implementierungsphase
+Nach der ausgiebigen Einarbeitung in das \textit{SpriteKit} \textit{Framework} haben sich einige Hürden ergeben. Das Verwenden von dynamischen Buttons ist nicht trivial, weil es keine Buttons per Default gibt. Deshalb muss eine eigene Button Klasse implementiert und mit der gewünschten Funktionalität erweitert werden. Des Weiteren war es schwierig den Code sinnvoll zu strukturieren, aufgrund der durch Spiel vorgegebenen skriptartigen Programmierung. 
 \subsubsection{Testen des Spieles}
 Um das Spiel sinnvoll und schon währendes Entwicklungsprozesses testen zu können, musste ein Generator entwickelt werden der zufällige Aufgaben generiert. Dieser befindet sich in der \textit{RandomQuestionGenerator.swift} Klasse. 
 \subsubsection{Anbindungen an interne Schnittstellen}
@@ -102,12 +100,21 @@ Bei der Gestaltung des User Interfaces muss explizit darauf geachtet werden, das
 \section{Implementierungsphase}
 An dieser Stelle wird die Implementierung der Aufgaben beschrieben. Dabei wird auf die Schnittstellenanbindung, das Mathe Piano Spiels sowie das User Interface eingegangen.
 \subsection{Mathe Piano Spiel}
-%todo: normen
-%todo: normen Section für Schrifterkennung im Bezug auf Piano Game 
-
-%todo: replace with a real example
+\subsubsection{SpriteKit}
+Durch die Verwendung von den generischen Klassen \textit{BasicNode, BasicButton} konnte schnell auf Änderungen reagiert werden.Besonders zu betrachten ist der \textit{BasicButton}. 
+Dieser implementiert das \textit{BasicButtonDelegate}.
 \lstinputlisting[language=swift]{source/test.swift}
-
+Mit Hilfe diese Protokolls können Button mit beliebigen Funktionen erstellt werden. 
+Alle Nodes werden effizient in der \textit{BasicScene} verwaltet. Die \textit{BasicScene} wird vom \textit{MathPianoGameViewController} erstellt und angezeigt. Wie bei anderen Spielen üblich wird der State der Scene mit jeden neu gerenderten Bild verändert. Dadurch ist es egal auf welchen Device das Spiel läuft.
+Schon am Beginn der Implementierungsphase wurde die Software so strukturiert das sie in mehreren Modi gestartet werden kann. Aufgrund des Modi wird der interne State an den jeweiligen Modus angepasst. Diese Modi werden in einen \textit{Enum} abgebildet. Diese hat den Vorteil das es einfach erweiterbar ist, im falle das noch ein neuer Modus dazukommen würde. \\
+Die Schwierigkeit des Spiel war es, immer einen konsistenten State zu behalten. Diese war besonders schwierig bei den vielen verschiedenen Iteration Schritten die das Spiele durchlebt hat. Der größte Iterations Schritt war die Vorbereitung auf die Zahlenerkennung. Für diese Feature wurde  parallel eine Testapplikation entwickelt. Bei diesen Prototypen war relativ schnell klar das, dass ausgewählte Modell, aus mehreren Gründen, ungeeignet war. Die Zahlenerkennung funktioniert nicht ausreichend gut, um sie als Ersatz für die \textit{Buttons} zu verwenden. Diese schlechte Erkennungsrate ist auf zwei Hauptfaktoren zurückzuführen.\\
+Das Modell wurde mit amerikanischen Zahlen trainiert. Diese unterscheiden sich geringfügig von den deutschen. Durch diese Sprachunterschiede, vorallen bei der Zahl 4,ist die Erkennungsrate messbar schlechter. Der zweite und größere Faktor ist die Art der \textit{Inputschicht} des \textit{neuronale Netzes}.
+Das neuronales Netz benötigt Bilder als Eingabequelle.
+Die Bilder müssen in einen Format von 28x28 vorliegen. Das hat den entscheidenden Nachteil das man das Bild, welches man aus der \textit{UIView} generiert, stark skalieren muss. Durch diese Skalierung gehen viele Merkmale verloren.
+\subsubsection{Game Models}
+Der \textit{MathPianoGameViewcontroller} holt sich alle \textit{TKExercises} aus den \textit{TKModelSingelton}, welches in \ref{TKModelSingleton} \nameref{TKModelSingleton} beschrieben ist. Diese \textit{TKExercise} werden in eine Spiel interne Datenstruktur überführt. Das \textit{MathPianoQuestionModel} ist die interne Repräsentation des \textit{TKExercise} nur auf die Anforderung des Spiels optimiert. Die einzelnen \textit{MathPianoQuestionModels} werden im \textit{PianoGame} zusammengefasst. Für diese Umwandlung wurde ein Converter implementiert. 
+Im Hintergrund während der Benutzer spielt, werden die Antworten in ein Feedback Model gespeichert. Für diese Aufgabe wurde das \textit{MathPianoGameFeedbackModel} implementiert. \\
+Um einen sinnvollen Endlos Spielmodus zu implementieren, werden generierte Fragen benötigt. Für diesen Zweck wurde der \textit{RandomQuestionGenerator} erstellt.
 
 \subsection{User Interface}
 \begin{figure}[H]
