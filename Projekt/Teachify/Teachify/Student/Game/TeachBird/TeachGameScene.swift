@@ -98,12 +98,12 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
                 if !self.sensorAktive {
                     self.sensorAktive=true
                     switchNavigationBtn.texture=SKTexture(imageNamed: "touch")
-                    navigationLbl.texture=SKTexture(imageNamed: "rotatel")
+                    navigationLbl.texture=SKTexture(imageNamed: "rotatela")
                     animateBackground()
                 }else{
                     self.sensorAktive=false
                     switchNavigationBtn.texture=SKTexture(imageNamed: "rotate")
-                    navigationLbl.texture=SKTexture(imageNamed: "touchl")
+                    navigationLbl.texture=SKTexture(imageNamed: "touchla")
                 }
             }
             if backBtn.contains(location){
@@ -119,10 +119,10 @@ class TeachGameScene: SKScene, SKPhysicsContactDelegate {
     func setNavigationButton(){
         if self.sensorAktive {
             createSwitchNavigationBtn(image: "touch")
-            createNavigationLable(image: "rotatel")
+            createNavigationLable(image: "rotatela")
         } else {
             createSwitchNavigationBtn(image: "rotate")
-            createNavigationLable(image: "touchl")
+            createNavigationLable(image: "touchla")
         }
     }
     
