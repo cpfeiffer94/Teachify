@@ -1,4 +1,4 @@
-\chapter{Gemeinsamen Datenmodell zur Speicherung der Schnittstellendaten}
+\chapter{Gemeinsames Datenmodell zur Speicherung der Schnittstellendaten}
 Christian Pfeiffer \& Bastian Kusserow
 \section{Ziele}
 Zur Umsetzung des temporären Datenmodells haben wir uns folgende Ziele gesetzt:
@@ -13,12 +13,12 @@ Zur Umsetzung des temporären Datenmodells haben wir uns folgende Ziele gesetzt:
 \section{Implementierung}
 
 \subsection{TKModelSingleton} \label{TKModelSingleton}
-Um das Ziel des Vereinheitlichten Zugriffs auf Schnittstellendaten zu erfüllen, wird eine Singleton Klasse zum Abspeichern der Schnittstellendaten verwendet.
+Um das Ziel des vereinheitlichten Zugriffs auf Schnittstellendaten zu erfüllen, wird eine Singleton Klasse zum Abspeichern der Schnittstellendaten verwendet.
 Das Besondere an einem Singleton ist, dass es immer nur ein Objekt der Klasse existiert, welches von der Singleton Klasse selbst erzeugt und verwaltet wird. 
 
 \lstinputlisting[language=swift]{source/fetchsingleton.swift}
 
-In unseren \texttt{TKModelSingleton} werden verschiedene Variablen gehalten, welche an verschiedenen anderen Stellen in der App benötigt werden. Die Konstante \texttt{sharedInstance} hält die Instanz des Singleton. Die Variable \texttt{downloadedClasses} hält die heruntergeladenen TKClass Objekte in einem Array, welche von der private Database des Nutzers gefetched wurden. In der Variable \texttt{downloadedSubjects} werden die TKSubjects abgespeichert, welche von der shared Database des Nutzers stammen. Die Variable \texttt{myTKRank} enthälgt den TKRank auf welchen der Controller bei dem letzten Fetch initialisiert wurde.
+In unseren \textit{TKModelSingleton} werden verschiedene Variablen gehalten, welche an verschiedenen anderen Stellen in der App benötigt werden. Die Konstante \textit{sharedInstance} hält die Instanz des Singleton. Die Variable \textit{downloadedClasses} hält die heruntergeladenen TKClass Objekte in einem Array, welche von der private Database des Nutzers gefetched wurden. In der Variable \textit{downloadedSubjects} werden die TKSubjects abgespeichert, welche von der shared Database des Nutzers stammen. Die Variable \textit{myTKRank} enthält den TKRank, auf welchen der Controller bei dem letzten Fetch initialisiert wurde.
 
 
 \subsection{TKFetchController}
@@ -27,19 +27,19 @@ Als Zugriffsschicht auf den TKModelSingleton wurde der TKFetchController impleme
 Im folgenden Codeblock soll exemplarisch dargestellt werden, wie Daten aus dem TKFetchSingleton bereit gestellt werden:
 \lstinputlisting[language=swift]{source/getSubjAndDoc.swift}
 Um die Daten aus dem Singleton abzurufen, wurden verschiedenartige Getter und Setter Methodiken implementiert. Exemplarisch soll hier eine etwas komplexere Get-Methode dargestellt werden:
-Die Methode: \texttt{getSubjectAndDocumentForCollectionIndex()} liefert Beispielsweise für die \texttt{CardViews} im Schülerhauptmenü das benötigte \texttt{TKSubject} \& \texttt{TKDocument} für die View.
+Die Methode: \textit{getSubjectAndDocumentForCollectionIndex()} liefert beispielsweise für die \textit{CardViews} im Schülerhauptmenü das benötigte \textit{TKSubject} \& \textit{TKDocument} für die View.
 
 \subsubsection{Abrufen aus der Schnittstelle mit Operations}
 Da die Schnittstelle die Daten mit vier verschiedenen verschachtelten Datentypen bereitstellt, soll im Folgenden dargestellt werden, wie die Schnittstellendaten mithilfe von Operations abgerufen werden können.
 \lstinputlisting[language=swift]{source/fetchAll.swift}
 
-\textbf{1: Zuruecksetzen der des Controllers und initialisieren der Operations}
-Bevor die Operations initialisiert werden können, werden mit der Methode \texttt{resetWithRank()} die in dem \texttt{TKModelSingleton} gehaltenen Variablen zurückgesetzt und der \texttt{TKRank} mit den neuen \texttt{TKRank} aktualisiert. Danach werden alle Operations mit den neuen \texttt{TKRank} initialisert.
+\textbf{1: Zuruecksetzen des Controllers und Initialisieren der Operations}
+Bevor die Operations initialisiert werden können, werden mit der Methode \textit{resetWithRank()} die in dem \textit{TKModelSingleton} gehaltenen Variablen zurückgesetzt und der \textit{TKRank} mit den neuen \textit{TKRank} aktualisiert. Danach werden alle Operations mit den neuen \textit{TKRank} initialisert.
 
 \textbf{2: Definieren der Completion Blocks nach der Operations}
-Anschließend werden die Completion Blocks der Operations definiert. Hierbei werden die jeweiligen heruntergeladenen Objekte von der Schnittstelle in die darauffolgende Operation eingefügt. In dem \texttt{Completion Block} der Exercise Operation wird eine Notification an die \texttt{UIThreads} geschickt, welche anschließend die neuen von der Schnittstelle abgerufenen Daten abrufen können.
+Anschließend werden die Completion Blocks der Operations definiert. Hierbei werden die jeweiligen heruntergeladenen Objekte von der Schnittstelle in die darauf folgende Operation eingefügt. In dem \textit{Completion Block} der Exercise Operation wird eine Notification an die \textit{UIThreads} geschickt, welche anschließend die neuen von der Schnittstelle abgerufenen Daten abrufen können.
 
 \textbf{3: Setzen der Operation Dependencies und Aufsetzen der Queue}
-Hier werden die Dependencies (Abhängikeiten) der Operations zueinander gesetzt. Es muss immer die darüberliegende Operation den \texttt{Completion Block} abgehandelt haben, bevor die darunterliegende Operation beginnen kann. Anschließend werden die Operations mithilfe einer Queue in die richtige Reihenfolge gebracht.
+Hier werden die Dependencies (Abhängikeiten) der Operations zueinander gesetzt. Es muss immer die darüberliegende Operation den \textit{Completion Block} abgehandelt haben, bevor die darunterliegende Operation beginnen kann. Anschließend werden die Operations mithilfe einer Queue in die richtige Reihenfolge gebracht.
 
-Weiter Informationen über die Funktionsweise von den Operations ist in dem Leherteil dieser Dokumentation enthalten. %todo: Leherteil verlinken sobald der existiert info an lehrerteil mit \label...
+Weitere Informationen über die Funktionsweise von den Operations ist in dem Lehrerteil dieser Dokumentation enthalten. %todo: Leherteil verlinken sobald der existiert info an lehrerteil mit \label...
